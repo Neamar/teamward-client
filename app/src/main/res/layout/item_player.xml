@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:layout_height="@dimen/player_pod_height">
 
@@ -11,6 +10,8 @@
         android:id="@+id/championImage"
         android:src="@drawable/aatrox"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -19,7 +20,7 @@
         android:layout_height="@dimen/summoner_spell_size"
         android:layout_marginLeft="8dp"
         android:id="@+id/spellDImage"
-        android:src="@drawable/SummonerFlash"
+        android:src="@drawable/spell_flash"
         android:layout_alignTop="@+id/championImage"
         android:layout_toRightOf="@+id/championImage"
         android:layout_toEndOf="@+id/championImage"
@@ -29,7 +30,7 @@
         android:layout_width="@dimen/summoner_spell_size"
         android:layout_height="@dimen/summoner_spell_size"
         android:id="@+id/spellFImage"
-        android:src="@drawable/SummonerFlash"
+        android:src="@drawable/spell_flash"
         android:layout_alignBottom="@+id/championImage"
         android:layout_alignLeft="@+id/spellDImage"
         android:layout_alignStart="@+id/spellDImage" />
@@ -90,5 +91,16 @@
             android:id="@+id/rankingDivisionText"
             android:gravity="center" />
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="@dimen/champion_mastery_size"
+        android:layout_height="@dimen/champion_mastery_size"
+        android:id="@+id/championMasteryImage"
+        android:src="@drawable/champion_mastery_4"
+        android:layout_marginTop="@dimen/champion_mastery_half_size"
+        android:layout_marginLeft="@dimen/champion_mastery_half_size"
+        android:layout_alignTop="@+id/championImage"
+        android:layout_alignStart="@+id/championImage"
+        android:layout_alignLeft="@+id/championImage" />
 
 </RelativeLayout>

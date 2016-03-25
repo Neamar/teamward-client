@@ -8,12 +8,18 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import fr.neamar.lolgamedata.fragment.TeamFragment;
+import fr.neamar.lolgamedata.pojo.Game;
+import fr.neamar.lolgamedata.pojo.Player;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -32,16 +38,30 @@ public class GameActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+
+    private JSONObject dummy;
+    private Game game;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        try {
+            dummy = new JSONObject("{  \"map_id\": 11,  \"participants\": [    {      \"summoner\": {        \"id\": 70448430,        \"name\": \"Neamar\",        \"level\": 30      },      \"champion\": {        \"name\": \"Illaoi\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Illaoi.png\",        \"level\": 5,        \"champion_rank\": 1      },      \"known_champions\": 27,      \"spell_d\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"spell_f\": {        \"name\": \"Smite\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerSmite.png\"      },      \"currentSeasonRank\": {        \"tier\": \"\",        \"division\": \"\"      }    },    {      \"summoner\": {        \"id\": 19083089,        \"name\": \"MrFaper\",        \"level\": 30      },      \"champion\": {        \"name\": \"Gragas\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Gragas.png\",        \"level\": 0,        \"champion_rank\": -1      },      \"known_champions\": -1,      \"spell_d\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"spell_f\": {        \"name\": \"Ignite\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerDot.png\"      },      \"currentSeasonRank\": {        \"tier\": \"GOLD\",        \"division\": \"I\"      }    },    {      \"summoner\": {        \"id\": 19917877,        \"name\": \"whitewolfhd\",        \"level\": 30      },      \"champion\": {        \"name\": \"Tristana\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Tristana.png\",        \"level\": 0,        \"champion_rank\": -1      },      \"known_champions\": -1,      \"spell_d\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"spell_f\": {        \"name\": \"Heal\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerHeal.png\"      },      \"currentSeasonRank\": {        \"tier\": \"GOLD\",        \"division\": \"V\"      }    },    {      \"summoner\": {        \"id\": 57780340,        \"name\": \"XxxJorge19xxX\",        \"level\": 30      },      \"champion\": {        \"name\": \"Blitzcrank\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Blitzcrank.png\",        \"level\": 0,        \"champion_rank\": -1      },      \"known_champions\": -1,      \"spell_d\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"spell_f\": {        \"name\": \"Exhaust\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerExhaust.png\"      },      \"currentSeasonRank\": {        \"tier\": \"\",        \"division\": \"\"      }    },    {      \"summoner\": {        \"id\": 53870009,        \"name\": \"ORIOLbrcnslpz\",        \"level\": 30      },      \"champion\": {        \"name\": \"Irelia\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Irelia.png\",        \"level\": 0,        \"champion_rank\": -1      },      \"known_champions\": -1,      \"spell_d\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"spell_f\": {        \"name\": \"Teleport\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerTeleport.png\"      },      \"currentSeasonRank\": {        \"tier\": \"\",        \"division\": \"\"      }    },    {      \"summoner\": {        \"id\": 19917878,        \"name\": \"Touchpad Hero\",        \"level\": 30      },      \"champion\": {        \"name\": \"Lee Sin\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/LeeSin.png\",        \"level\": 0,        \"champion_rank\": -1      },      \"known_champions\": -1,      \"spell_d\": {        \"name\": \"Smite\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerSmite.png\"      },      \"spell_f\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"currentSeasonRank\": {        \"tier\": \"\",        \"division\": \"\"      }    },    {      \"summoner\": {        \"id\": 27321542,        \"name\": \"LeGrasCèLaVie\",        \"level\": 30      },      \"champion\": {        \"name\": \"LeBlanc\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Leblanc.png\",        \"level\": 0,        \"champion_rank\": -1      },      \"known_champions\": -1,      \"spell_d\": {        \"name\": \"Ignite\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerDot.png\"      },      \"spell_f\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"currentSeasonRank\": {        \"tier\": \"\",        \"division\": \"\"      }    },    {      \"summoner\": {        \"id\": 78179191,        \"name\": \"Acarys\",        \"level\": 30      },      \"champion\": {        \"name\": \"Aatrox\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Aatrox.png\",        \"level\": 0,        \"champion_rank\": -1      },      \"known_champions\": -1,      \"spell_d\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"spell_f\": {        \"name\": \"Teleport\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerTeleport.png\"      },      \"currentSeasonRank\": {        \"tier\": \"\",        \"division\": \"\"      }    },    {      \"summoner\": {        \"id\": 38621938,        \"name\": \"TDK d view\",        \"level\": 30      },      \"champion\": {        \"name\": \"Veigar\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Veigar.png\",        \"level\": 0,        \"champion_rank\": -1      },      \"known_champions\": -1,      \"spell_d\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"spell_f\": {        \"name\": \"Ignite\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerDot.png\"      },      \"currentSeasonRank\": {        \"tier\": \"\",        \"division\": \"\"      }    },    {      \"summoner\": {        \"id\": 79947339,        \"name\": \"Scrubalist\",        \"level\": 28      },      \"champion\": {        \"name\": \"Kog'Maw\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/KogMaw.png\",        \"level\": 0,        \"champion_rank\": -1      },      \"known_champions\": -1,      \"spell_d\": {        \"name\": \"Heal\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerHeal.png\"      },      \"spell_f\": {        \"name\": \"Flash\",        \"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"      },      \"currentSeasonRank\": {        \"tier\": \"\",        \"division\": \"\"      }    }  ]}");
+
+            game = new Game(dummy);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("WTF", "WTF");
+            Log.e("WTF", e.toString());
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        Log.e("WTF", "LENGTH" + game.players.size());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), game.players);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -51,6 +71,7 @@ public class GameActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         assert tabLayout != null;
         tabLayout.setupWithViewPager(mViewPager);
+
     }
 
 
@@ -76,56 +97,27 @@ public class GameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_team, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        public ArrayList<Player> players;
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        public SectionsPagerAdapter(FragmentManager fm, ArrayList<Player> players) {
             super(fm);
+            Log.e("WTF", "WROTE PLAYERS");
+            this.players = players;
         }
 
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+
+            Log.e("WTF", "READ PLAYERS");
+            return TeamFragment.newInstance(position + 1, players);
         }
 
         @Override
