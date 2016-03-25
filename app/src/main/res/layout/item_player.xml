@@ -8,7 +8,7 @@
         android:layout_width="@dimen/champion_size"
         android:layout_height="@dimen/champion_size"
         android:id="@+id/championImage"
-        android:src="@drawable/aatrox"
+        android:src="@drawable/default_champion"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
 
@@ -20,7 +20,7 @@
         android:layout_height="@dimen/summoner_spell_size"
         android:layout_marginLeft="8dp"
         android:id="@+id/spellDImage"
-        android:src="@drawable/spell_flash"
+        android:src="@drawable/default_spell"
         android:layout_alignTop="@+id/championImage"
         android:layout_toRightOf="@+id/championImage"
         android:layout_toEndOf="@+id/championImage"
@@ -30,7 +30,7 @@
         android:layout_width="@dimen/summoner_spell_size"
         android:layout_height="@dimen/summoner_spell_size"
         android:id="@+id/spellFImage"
-        android:src="@drawable/spell_flash"
+        android:src="@drawable/default_spell"
         android:layout_alignBottom="@+id/championImage"
         android:layout_alignLeft="@+id/spellDImage"
         android:layout_alignStart="@+id/spellDImage" />
@@ -79,7 +79,7 @@
             android:layout_width="@dimen/tier_size"
             android:layout_height="@dimen/tier_size"
             android:id="@+id/rankingTierImage"
-            android:src="@drawable/silver"/>
+            android:src="@drawable/tier_diamond"/>
 
         <TextView
             android:layout_width="match_parent"

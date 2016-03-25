@@ -14,6 +14,8 @@ public class Player implements Serializable {
     public Spell spellD;
     public Spell spellF;
 
+    public Rank rank;
+
     public int knownChampions;
 
     public Player(JSONObject player) throws JSONException {
@@ -23,5 +25,7 @@ public class Player implements Serializable {
         this.spellF = new Spell(player.getJSONObject("spell_f"));
 
         this.knownChampions = player.getInt("known_champions");
+
+        this.rank = new Rank(player.getJSONObject("current_season_rank"));
     }
 }

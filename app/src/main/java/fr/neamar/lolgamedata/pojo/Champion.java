@@ -11,13 +11,13 @@ import java.io.Serializable;
 public class Champion implements Serializable {
     public String name;
     public String imageUrl;
-    public int level;
+    public int mastery;
     public int championRank;
 
     public Champion(JSONObject champion) throws JSONException {
         name = champion.getString("name");
         imageUrl = champion.getString("image");
-        level = champion.getInt("level");
+        mastery = champion.getInt("mastery");
         championRank = champion.getInt("champion_rank");
     }
 }
