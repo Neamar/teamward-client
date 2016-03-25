@@ -12,20 +12,19 @@ import java.util.ArrayList;
  */
 public class Game implements Serializable {
     public int mapId;
-    public ArrayList<Player> players;
+    public ArrayList<Team> teams;
 
     public Game(JSONObject game) throws JSONException {
-        // mapId = game.getInt("map_id");
-        JSONArray playersJson = game.getJSONArray("participants");
-        players = new ArrayList<>();
-        for (int i = 0; i < playersJson.length(); i++) {
+        mapId = game.getInt("map_id");
+
+        JSONArray teamsJson = game.getJSONArray("teams");
+        teams = new ArrayList<>();
+        for (int i = 0; i < teamsJson.length(); i++) {
             try {
-                players.add(new Player(playersJson.getJSONObject(i)));
+                teams.add(new Team(teamsJson.getJSONObject(i)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-
-
     }
 }

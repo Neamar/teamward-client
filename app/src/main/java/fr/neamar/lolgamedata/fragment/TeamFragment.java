@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.adapter.PlayerAdapter;
-import fr.neamar.lolgamedata.pojo.Player;
+import fr.neamar.lolgamedata.pojo.Team;
 
 
 public class TeamFragment extends Fragment {
@@ -21,9 +19,9 @@ public class TeamFragment extends Fragment {
      * fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
-    private static final String ARG_SECTION_PLAYERS = "section_players";
+    private static final String ARG_SECTION_TEAM = "section_team";
 
-    private ArrayList<Player> players;
+    private Team team;
 
     public TeamFragment() {
     }
@@ -32,11 +30,11 @@ public class TeamFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static TeamFragment newInstance(int sectionNumber, ArrayList<Player> players) {
+    public static TeamFragment newInstance(int sectionNumber, Team team) {
         TeamFragment fragment = new TeamFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-        args.putSerializable(ARG_SECTION_PLAYERS, players);
+        args.putSerializable(ARG_SECTION_TEAM, team);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,8 +47,8 @@ public class TeamFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
-        players = (ArrayList<Player>) getArguments().getSerializable(ARG_SECTION_PLAYERS);
-        PlayerAdapter adapter = new PlayerAdapter(players);
+        team = (Team) getArguments().getSerializable(ARG_SECTION_TEAM);
+        PlayerAdapter adapter = new PlayerAdapter(team.players);
         recyclerView.setAdapter(adapter);
         return rootView;
     }
