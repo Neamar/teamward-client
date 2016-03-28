@@ -19,7 +19,6 @@ import fr.neamar.lolgamedata.pojo.Player;
  * Created by neamar on 25/03/16.
  */
 public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private static final String TAG = "AdvertHolder";
 
     private static final int[] championMasteriesResources = new int[]{
             0,
