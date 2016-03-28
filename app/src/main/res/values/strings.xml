@@ -6,6 +6,15 @@
     <string name="red_team">Red team</string>
     <string name="unknown_team">\? team</string>
     <string name="summoner_level">level %s</string>
+    <string name="champion_image">Champion image</string>
+    <string name="summoner_spell_d">Summoner spell D</string>
+    <string name="summoner_spell_f">Summoner spell F</string>
+    <string name="stub_champion_name">Aatrox</string>
+    <string name="stub_summoner_name">Acarys</string>
+    <string name="stub_previous_ranking">level 27</string>
+    <string name="current_ranking_tier">Current ranking tier</string>
+    <string name="stub_ranking_division">IV</string>
+    <string name="champion_mastery">Champion mastery</string>
+    <string name="champion_mastery_level">Champion mastery level %s</string>
 
 </resources>
-²

@@ -1,106 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:layout_height="@dimen/player_pod_height">
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/player_pod_height"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
 
     <ImageView
+        android:id="@+id/championImage"
         android:layout_width="@dimen/champion_size"
         android:layout_height="@dimen/champion_size"
-        android:id="@+id/championImage"
-        android:src="@drawable/default_champion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
 
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:contentDescription="@string/champion_image"
+        android:src="@drawable/default_champion" />
 
     <ImageView
-        android:layout_width="@dimen/summoner_spell_size"
-        android:layout_height="@dimen/summoner_spell_size"
-        android:layout_marginLeft="8dp"
         android:id="@+id/spellDImage"
-        android:src="@drawable/default_spell"
-        android:layout_alignTop="@+id/championImage"
-        android:layout_toRightOf="@+id/championImage"
-        android:layout_toEndOf="@+id/championImage"
-        android:layout_marginStart="8dp" />
-
-    <ImageView
         android:layout_width="@dimen/summoner_spell_size"
         android:layout_height="@dimen/summoner_spell_size"
+        android:layout_alignTop="@+id/championImage"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/championImage"
+        android:layout_toRightOf="@+id/championImage"
+        android:contentDescription="@string/summoner_spell_d"
+        android:src="@drawable/default_spell" />
+
+    <ImageView
         android:id="@+id/spellFImage"
-        android:src="@drawable/default_spell"
+        android:layout_width="@dimen/summoner_spell_size"
+        android:layout_height="@dimen/summoner_spell_size"
         android:layout_alignBottom="@+id/championImage"
         android:layout_alignLeft="@+id/spellDImage"
-        android:layout_alignStart="@+id/spellDImage" />
+        android:layout_alignStart="@+id/spellDImage"
+        android:contentDescription="@string/summoner_spell_f"
+        android:src="@drawable/default_spell" />
 
     <TextView
+        android:id="@+id/championNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/spellDImage"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Aatrox"
-        android:id="@+id/championNameText"
-        android:layout_alignTop="@+id/spellDImage"
+        android:layout_toEndOf="@+id/spellDImage"
         android:layout_toRightOf="@+id/spellDImage"
-        android:layout_toEndOf="@+id/spellDImage" />
+        android:text="@string/stub_champion_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Acarys"
         android:id="@+id/summonerNameText"
-        android:layout_below="@+id/championNameText"
-        android:layout_alignLeft="@+id/championNameText"
-        android:layout_alignStart="@+id/championNameText" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="11dp"
-        android:text="level 27"
+        android:layout_alignLeft="@+id/championNameText"
+        android:layout_alignStart="@+id/championNameText"
+        android:layout_below="@+id/championNameText"
+        android:text="@string/stub_summoner_name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
         android:id="@+id/previousRankingText"
-        android:layout_below="@+id/summonerNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/summonerNameText"
-        android:layout_alignStart="@+id/summonerNameText" />
+        android:layout_alignStart="@+id/summonerNameText"
+        android:layout_below="@+id/summonerNameText"
+        android:text="@string/stub_previous_ranking"
+        android:textSize="11dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:orientation="vertical"
         android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:orientation="vertical">
+
         <ImageView
+            android:id="@+id/rankingTierImage"
+            android:contentDescription="@string/current_ranking_tier"
             android:layout_width="@dimen/tier_size"
             android:layout_height="@dimen/tier_size"
-            android:id="@+id/rankingTierImage"
-            android:src="@drawable/tier_diamond"/>
+            android:src="@drawable/tier_diamond" />
 
         <TextView
+            android:id="@+id/rankingDivisionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="IV"
-            android:singleLine="true"
+            android:gravity="center"
             android:maxLines="1"
-            android:id="@+id/rankingDivisionText"
-            android:gravity="center" />
+            android:singleLine="true"
+            android:text="@string/stub_ranking_division"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/championMasteryImage"
+        android:contentDescription="@string/champion_mastery"
         android:layout_width="@dimen/champion_mastery_size"
         android:layout_height="@dimen/champion_mastery_size"
-        android:id="@+id/championMasteryImage"
-        android:src="@drawable/champion_mastery_4"
-        android:layout_marginTop="@dimen/champion_mastery_half_size"
-        android:layout_marginLeft="@dimen/champion_mastery_half_size"
-        android:layout_alignTop="@+id/championImage"
+        android:layout_alignLeft="@+id/championImage"
         android:layout_alignStart="@+id/championImage"
-        android:layout_alignLeft="@+id/championImage" />
+        android:layout_alignTop="@+id/championImage"
+        android:layout_marginLeft="@dimen/champion_mastery_half_size"
+        android:layout_marginStart="@dimen/champion_mastery_half_size"
+        android:layout_marginTop="@dimen/champion_mastery_half_size"
+        android:src="@drawable/champion_mastery_4" />
 
 </RelativeLayout>

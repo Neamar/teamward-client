@@ -14,3 +14,4 @@ local.properties
 /.settings/*
 .idea/
 *.iml
+npm-debug.log

@@ -81,9 +81,12 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         this.summonerName.setText(player.summoner.name);
 
         ImageLoader.getInstance().displayImage(player.champion.imageUrl, championImage);
+        championImage.setContentDescription(player.champion.name);
         ImageLoader.getInstance().displayImage(player.spellD.imageUrl, spellDImage);
+        spellDImage.setContentDescription(player.spellD.name);
         ImageLoader.getInstance().displayImage(player.spellF.imageUrl, spellFImage);
-
+        spellFImage.setContentDescription(player.spellF.name);
+        
         @DrawableRes
         int championMasteryResource = championMasteriesResources[player.champion.mastery];
 
@@ -93,6 +96,8 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         else {
             championMastery.setVisibility(View.VISIBLE);
             championMastery.setImageResource(championMasteryResource);
+            String chammpionMasteryTemplate = championMastery.getContext().getString(R.string.champion_mastery_level);
+            championMastery.setContentDescription(String.format(chammpionMasteryTemplate, player.champion.mastery));
         }
 
         if(player.rank.tier.isEmpty() || !rankingTierResources.containsKey(player.rank.tier.toLowerCase())) {
@@ -104,6 +109,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             rankingDivision.setText(player.rank.division);
             rankingTier.setVisibility(View.VISIBLE);
             rankingTier.setImageResource(rankingTierResources.get(player.rank.tier.toLowerCase()));
+            rankingTier.setContentDescription(player.rank.tier);
         }
 
         String summonerLevelTemplate = previousRanking.getContext().getString(R.string.summoner_level);
