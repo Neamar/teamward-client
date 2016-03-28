@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -42,9 +50,8 @@ public class GameActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    private TabLayout mTabLayout;
 
-    private JSONObject dummy;
-    private Game game;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,31 +67,15 @@ public class GameActivity extends AppCompatActivity {
                 .build();
         ImageLoader.getInstance().init(config);
 
-        try {
-            dummy = new JSONObject("{\"map_id\": 11,\"teams\": [{\"team_id\": 100,\"players\": [{\"team_id\": 100,\"summoner\": {\"id\": 23407958,\"name\": \"Mr Coconuts\",\"level\": 30},\"champion\": {\"id\": \"136\",\"name\": \"Aurelion Sol\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/AurelionSol.png\",\"mastery\": 2,\"champion_rank\": 29},\"known_champions\": 53,\"spell_d\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"name\": \"Smite\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerSmite.png\"},\"current_season_rank\": {\"tier\": \"GOLD\",\"division\": \"III\"}},{\"team_id\": 100,\"summoner\": {\"id\": 23471946,\"name\": \"Quéen\",\"level\": 30},\"champion\": {\"id\": \"58\",\"name\": \"Renekton\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Renekton.png\",\"mastery\": 3,\"champion_rank\": 13},\"known_champions\": 79,\"spell_d\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"name\": \"Teleport\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerTeleport.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"division\": \"I\"}},{\"team_id\": 100,\"summoner\": {\"id\": 19489169,\"name\": \"Majestrix\",\"level\": 30},\"champion\": {\"id\": \"127\",\"name\": \"Lissandra\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Lissandra.png\",\"mastery\": 2,\"champion_rank\": 22},\"known_champions\": 73,\"spell_d\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"name\": \"Ignite\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerDot.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"division\": \"IV\"}},{\"team_id\": 100,\"summoner\": {\"id\": 33943853,\"name\": \"Napkin Holder\",\"level\": 30},\"champion\": {\"id\": \"21\",\"name\": \"Miss Fortune\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/MissFortune.png\",\"mastery\": 3,\"champion_rank\": 10},\"known_champions\": 38,\"spell_d\": {\"name\": \"Heal\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerHeal.png\"},\"spell_f\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"division\": \"I\"}},{\"team_id\": 100,\"summoner\": {\"id\": 19686199,\"name\": \"Lascar24\",\"level\": 30},\"champion\": {\"id\": \"201\",\"name\": \"Braum\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Braum.png\",\"mastery\": 4,\"champion_rank\": 2},\"known_champions\": 15,\"spell_d\": {\"name\": \"Ignite\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerDot.png\"},\"spell_f\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"current_season_rank\": {\"tier\": \"GOLD\",\"division\": \"IV\"}}]},{\"team_id\": 200,\"players\": [{\"team_id\": 200,\"summoner\": {\"id\": 19083089,\"name\": \"N4dlPb\",\"level\": 30},\"champion\": {\"id\": \"143\",\"name\": \"Zyra\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Zyra.png\",\"mastery\": 5,\"champion_rank\": 1},\"known_champions\": 39,\"spell_d\": {\"name\": \"Exhaust\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerExhaust.png\"},\"spell_f\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"division\": \"V\"}},{\"team_id\": 200,\"summoner\": {\"id\": 27861215,\"name\": \"Heaven Buster\",\"level\": 30},\"champion\": {\"id\": \"421\",\"name\": \"Rek'Sai\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/RekSai.png\",\"mastery\": 3,\"champion_rank\": 44},\"known_champions\": 111,\"spell_d\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"name\": \"Smite\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerSmite.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"division\": \"III\"}},{\"team_id\": 200,\"summoner\": {\"id\": 37710585,\"name\": \"BobZer\",\"level\": 30},\"champion\": {\"id\": \"85\",\"name\": \"Kennen\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Kennen.png\",\"mastery\": 5,\"champion_rank\": 4},\"known_champions\": 61,\"spell_d\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"name\": \"Teleport\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerTeleport.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"division\": \"V\"}},{\"team_id\": 200,\"summoner\": {\"id\": 51398158,\"name\": \"LordWup\",\"level\": 30},\"champion\": {\"id\": \"81\",\"name\": \"Ezreal\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Ezreal.png\",\"mastery\": 4,\"champion_rank\": 6},\"known_champions\": 89,\"spell_d\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"name\": \"Heal\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerHeal.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"division\": \"V\"}},{\"team_id\": 200,\"summoner\": {\"id\": 43652731,\"name\": \"Not Anonymos\",\"level\": 30},\"champion\": {\"id\": \"238\",\"name\": \"Zed\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/champion/Zed.png\",\"mastery\": 3,\"champion_rank\": 11},\"known_champions\": 96,\"spell_d\": {\"name\": \"Flash\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"name\": \"Ignite\",\"image\": \"http://ddragon.leagueoflegends.com/cdn/6.5.1/img/spell/SummonerDot.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"division\": \"V\"}}]}]}");
-
-            game = new Game(dummy);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.e("WTF", "WTF");
-            Log.e("WTF", e.toString());
-        }
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), game.teams);
 
-        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-        assert mViewPager != null;
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        assert mTabLayout != null;
+        mTabLayout.setVisibility(View.GONE);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        assert tabLayout != null;
-        tabLayout.setupWithViewPager(mViewPager);
-
+        loadCurrentGame("n4dlpb", "euw");
     }
 
 
@@ -140,14 +131,59 @@ public class GameActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             int teamId = teams.get(position).teamId;
 
-            if(teamId == 100) {
+            if (teamId == 100) {
                 return getString(R.string.blue_team);
-            }
-            else if(teamId == 200) {
+            } else if (teamId == 200) {
                 return getString(R.string.red_team);
             }
 
             return getString(R.string.unknown_team);
         }
+    }
+
+    public void loadCurrentGame(final String summonerName, final String region) {
+        final ProgressDialog dialog = ProgressDialog.show(this, "",
+                String.format(getString(R.string.loading_game_data), summonerName), true);
+        dialog.show();
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, "http://lol-game-stats.herokuapp.com/game/data?summoner=" + summonerName + "&region=" + region, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Game game = new Game(response);
+                            displayGame(summonerName, game);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        dialog.dismiss();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dialog.dismiss();
+                Log.e("GameActivity", error.toString());
+            }
+        });
+        queue.add(jsonRequest);
+    }
+
+    public void displayGame(String summonerName, Game game) {
+        String titleTemplate = getString(R.string.game_data_title);
+        setTitle(String.format(titleTemplate, summonerName));
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), game.teams);
+
+        // Set up the ViewPager with the sections adapter.
+        assert mViewPager != null;
+        assert mTabLayout != null;
+
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mTabLayout.setVisibility(View.VISIBLE);
     }
 }

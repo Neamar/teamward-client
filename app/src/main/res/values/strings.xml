@@ -16,5 +16,7 @@
     <string name="stub_ranking_division">IV</string>
     <string name="champion_mastery">Champion mastery</string>
     <string name="champion_mastery_level">Champion mastery level %s</string>
+    <string name="loading_game_data">Loading game data for %s</string>
+    <string name="game_data_title">Game data for %s</string>
 
 </resources>

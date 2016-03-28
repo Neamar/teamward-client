@@ -47,9 +47,12 @@
         android:layout_alignTop="@+id/spellDImage"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="-5dp"
         android:layout_toEndOf="@+id/spellDImage"
         android:layout_toRightOf="@+id/spellDImage"
-        android:layout_marginTop="-5dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
         android:text="@string/stub_champion_name"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -60,6 +63,9 @@
         android:layout_alignLeft="@+id/championNameText"
         android:layout_alignStart="@+id/championNameText"
         android:layout_below="@+id/championNameText"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
         android:text="@string/stub_summoner_name"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -84,9 +90,9 @@
 
         <ImageView
             android:id="@+id/rankingTierImage"
-            android:contentDescription="@string/current_ranking_tier"
             android:layout_width="@dimen/tier_size"
             android:layout_height="@dimen/tier_size"
+            android:contentDescription="@string/current_ranking_tier"
             android:src="@drawable/tier_diamond" />
 
         <TextView
@@ -102,7 +108,6 @@
 
     <ImageView
         android:id="@+id/championMasteryImage"
-        android:contentDescription="@string/champion_mastery"
         android:layout_width="@dimen/champion_mastery_size"
         android:layout_height="@dimen/champion_mastery_size"
         android:layout_alignLeft="@+id/championImage"
@@ -111,6 +116,7 @@
         android:layout_marginLeft="@dimen/champion_mastery_half_size"
         android:layout_marginStart="@dimen/champion_mastery_half_size"
         android:layout_marginTop="@dimen/champion_mastery_half_size"
+        android:contentDescription="@string/champion_mastery"
         android:src="@drawable/champion_mastery_4" />
 
 </RelativeLayout>
