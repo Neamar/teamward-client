@@ -21,7 +21,7 @@ import fr.neamar.lolgamedata.pojo.Player;
 public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private static final String TAG = "AdvertHolder";
 
-    private static final int[] championMasteriesResources = new int[] {
+    private static final int[] championMasteriesResources = new int[]{
             0,
             R.drawable.champion_mastery_1,
             R.drawable.champion_mastery_2,
@@ -33,6 +33,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     };
 
     private static final Map<String, Integer> rankingTierResources;
+
     static {
         Map<String, Integer> map = new HashMap<>();
         map.put("bronze", R.drawable.tier_bronze);
@@ -86,34 +87,35 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         spellDImage.setContentDescription(player.spellD.name);
         ImageLoader.getInstance().displayImage(player.spellF.imageUrl, spellFImage);
         spellFImage.setContentDescription(player.spellF.name);
-        
+
         @DrawableRes
         int championMasteryResource = championMasteriesResources[player.champion.mastery];
 
-        if(championMasteryResource == 0) {
+        if (championMasteryResource == 0) {
             championMastery.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             championMastery.setVisibility(View.VISIBLE);
             championMastery.setImageResource(championMasteryResource);
             String chammpionMasteryTemplate = championMastery.getContext().getString(R.string.champion_mastery_level);
             championMastery.setContentDescription(String.format(chammpionMasteryTemplate, player.champion.mastery));
         }
 
-        if(player.rank.tier.isEmpty() || !rankingTierResources.containsKey(player.rank.tier.toLowerCase())) {
+        if (player.rank.tier.isEmpty() || !rankingTierResources.containsKey(player.rank.tier.toLowerCase())) {
             rankingDivision.setVisibility(View.INVISIBLE);
             rankingTier.setVisibility(View.INVISIBLE);
-        }
-        else {
+
+            previousRanking.setVisibility(View.VISIBLE);
+            String summonerLevelTemplate = previousRanking.getContext().getString(R.string.summoner_level);
+            previousRanking.setText(summonerLevelTemplate.replace("%s", Integer.toString(player.summoner.level)));
+        } else {
             rankingDivision.setVisibility(View.VISIBLE);
             rankingDivision.setText(player.rank.division);
             rankingTier.setVisibility(View.VISIBLE);
             rankingTier.setImageResource(rankingTierResources.get(player.rank.tier.toLowerCase()));
             rankingTier.setContentDescription(player.rank.tier);
+            previousRanking.setVisibility(View.GONE);
         }
 
-        String summonerLevelTemplate = previousRanking.getContext().getString(R.string.summoner_level);
-        previousRanking.setText(summonerLevelTemplate.replace("%s", Integer.toString(player.summoner.level)));
     }
 
     @Override
