@@ -1,12 +1,14 @@
 package fr.neamar.lolgamedata;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -20,21 +22,20 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.fragment.TeamFragment;
+import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Team;
 
 public class GameActivity extends AppCompatActivity {
-
+    public static final String TAG = "GameActivity";
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -47,16 +48,6 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        // Create global configuration and initialize ImageLoader with this config
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .build();
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
-                .defaultDisplayImageOptions(defaultOptions)
-                .build();
-        ImageLoader.getInstance().init(config);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -65,7 +56,9 @@ public class GameActivity extends AppCompatActivity {
         assert mTabLayout != null;
         mTabLayout.setVisibility(View.GONE);
 
-        loadCurrentGame("neamar", "euw");
+        Account account = (Account) getIntent().getSerializableExtra("account");
+
+        loadCurrentGame(account.summonerName, account.region);
     }
 
 
@@ -155,7 +148,26 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialog.dismiss();
-                Log.e("GameActivity", error.toString());
+                Log.e(TAG, error.toString());
+
+                try {
+                    String responseBody = new String(error.networkResponse.data, "utf-8");
+                    Log.i(TAG, responseBody);
+
+                    new AlertDialog.Builder(GameActivity.this)
+                            .setTitle("Unable to load game data.")
+                            .setMessage(responseBody)
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                catch (NullPointerException e) {}
             }
         });
         queue.add(jsonRequest);

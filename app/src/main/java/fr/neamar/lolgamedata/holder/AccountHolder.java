@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata.holder;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import fr.neamar.lolgamedata.GameActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Account;
 
@@ -20,7 +22,7 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
         super(view);
 
         summonerImage = (ImageView) view.findViewById(R.id.summonerImage);
-        summonerName = (TextView) view.findViewById(R.id.summonerNameText);
+        summonerName = (TextView) view.findViewById(R.id.summonerText);
 
         view.setOnClickListener(this);
     }
@@ -40,6 +42,8 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
             return;
         }
 
-        // TODO
+        Intent i = new Intent(v.getContext(), GameActivity.class);
+        i.putExtra("account", account);
+        v.getContext().startActivity(i);
     }
 }

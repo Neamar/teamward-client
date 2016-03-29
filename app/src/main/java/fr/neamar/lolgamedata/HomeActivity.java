@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void initView() {
-        String accountsString = prefs.getString(ACCOUNTS_KEY, "[{\"summonerName\":\"neamar\",\"region\":\"euw\",\"summonerImage\":\"http://ddragon.leagueoflegends.com/cdn/6.6.1/img/profileicon/588.png\"}]");
+        String accountsString = prefs.getString(ACCOUNTS_KEY, "[{\"name\":\"neamar\",\"region\":\"euw\",\"image\":\"http://ddragon.leagueoflegends.com/cdn/6.6.1/img/profileicon/26.png\"},{\"name\":\"Graphistos\",\"region\":\"euw\",\"image\":\"http://ddragon.leagueoflegends.com/cdn/6.6.1/img/profileicon/22.png\"}]");
         JSONArray accountsJson;
 
         try {
