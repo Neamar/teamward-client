@@ -7,13 +7,13 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/summonerNameText"
+        android:id="@+id/summonerText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:ems="10"
         android:hint="Summoner name"
-        android:inputType="number" />
+        android:inputType="text" />
 
 
     <Spinner
@@ -23,7 +23,7 @@
         android:layout_gravity="center_horizontal" />
 
     <Button
-        android:id="@+id/set"
+        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add account" />

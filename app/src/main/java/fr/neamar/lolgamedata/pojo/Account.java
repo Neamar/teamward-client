@@ -18,4 +18,23 @@ public class Account implements Serializable {
         this.summonerImage = account.getString("image");
         this.region = account.getString("region");
     }
+
+    public Account(String summonerName, String region, String summonerImage) {
+        this.summonerName = summonerName;
+        this.region = region;
+        this.summonerImage = summonerImage;
+    }
+
+    public JSONObject toJsonObject() {
+        JSONObject o = new JSONObject();
+        try {
+            o.putOpt("name", summonerName);
+            o.putOpt("region", region);
+            o.putOpt("image", summonerImage);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return o;
+    }
 }

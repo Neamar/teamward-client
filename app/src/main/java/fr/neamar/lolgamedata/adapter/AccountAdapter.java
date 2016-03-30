@@ -19,6 +19,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountHolder> {
 
     public AccountAdapter(ArrayList<Account> accounts) {
         this.accounts = accounts;
+        setHasStableIds(true);
     }
 
     @Override
@@ -30,9 +31,19 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountHolder> {
         return new AccountHolder(view);
     }
 
+    public void updateAccounts(ArrayList<Account> accounts)  {
+        this.accounts = accounts;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(AccountHolder holder, int position) {
         holder.bindAdvert(accounts.get(position));
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return accounts.get(position).summonerName.hashCode();
     }
 
     @Override

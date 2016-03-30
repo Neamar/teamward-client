@@ -19,5 +19,6 @@
     <string name="loading_game_data">Loading game data for %s</string>
     <string name="game_data_title">Game data for %s</string>
     <string name="stub_account">Neamar</string>
+    <string name="add_account_title">Add a new account</string>
 
 </resources>
