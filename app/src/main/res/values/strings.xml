@@ -20,5 +20,19 @@
     <string name="game_data_title">Game data for %s</string>
     <string name="stub_account">Neamar</string>
     <string name="add_account_title">Add a new account</string>
+    <string name="loading_summoner_data">Loading summoner information for %s</string>
+    <string name="unable_load_summoner_data">Unable to load summoner data.</string>
 
+    <string-array name="regions_code">
+        <item>EUNE</item>
+        <item>EUW</item>
+        <item>NA</item>
+    </string-array>
+
+
+    <string-array name="regions">
+        <item>EUNE [EU Nordic &amp; East]</item>
+        <item>EUW [EU West]</item>
+        <item>NA [North America]</item>
+    </string-array>
 </resources>

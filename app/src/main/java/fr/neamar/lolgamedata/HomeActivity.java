@@ -1,9 +1,12 @@
 package fr.neamar.lolgamedata;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,12 +14,22 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.adapter.AccountAdapter;
@@ -104,7 +117,7 @@ public class HomeActivity extends AppCompatActivity {
     public void writeAccounts(ArrayList<Account> accounts) {
         JSONArray accountsJson = new JSONArray();
 
-        for(int i = 0; i < accounts.size(); i++) {
+        for (int i = 0; i < accounts.size(); i++) {
             accountsJson.put(accounts.get(i).toJsonObject());
         }
 
@@ -120,19 +133,69 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 d.dismiss();
-                ArrayList<Account> accounts = getAccounts();
                 String name = ((TextView) d.findViewById(R.id.summonerText)).getText().toString();
-                String region = "euw";
-                Account newAccount = new Account(name, region, "http://ddragon.leagueoflegends.com/cdn/6.6.1/img/profileicon/26.png");
-                Log.i(TAG, "Added new account:" + name);
-                accounts.add(newAccount);
+                String region = ((Spinner) d.findViewById(R.id.summonerRegion)).getSelectedItem().toString();
 
-                AccountAdapter adapter = (AccountAdapter) recyclerView.getAdapter();
-                adapter.updateAccounts(accounts);
+                Log.i(TAG, "Adding new account: " + name + " (" + region + ")");
 
-                writeAccounts(accounts);
+                saveAccount(name, region);
             }
         });
         d.show();
+    }
+
+    public Account saveAccount(String name, String region) {
+        final ArrayList<Account> accounts = getAccounts();
+        final Account newAccount = new Account(name, region, "");
+
+        final ProgressDialog dialog = ProgressDialog.show(this, "",
+                String.format(getString(R.string.loading_summoner_data), name), true);
+        dialog.show();
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, "http://lol-game-stats.herokuapp.com/summoner/data?summoner=" + name + "&region=" + region, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        newAccount.summonerImage = response.optString("profileIcon", "");
+                        accounts.add(newAccount);
+
+                        AccountAdapter adapter = (AccountAdapter) recyclerView.getAdapter();
+                        adapter.updateAccounts(accounts);
+
+                        writeAccounts(accounts);
+                        dialog.dismiss();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dialog.dismiss();
+                Log.e(TAG, error.toString());
+
+                try {
+                    String responseBody = new String(error.networkResponse.data, "utf-8");
+                    Log.i(TAG, responseBody);
+
+                    new AlertDialog.Builder(HomeActivity.this)
+                            .setTitle("Unable to load game data.")
+                            .setMessage(responseBody)
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (NullPointerException e) {
+                }
+            }
+        });
+        queue.add(jsonRequest);
+
+        return newAccount;
     }
 }

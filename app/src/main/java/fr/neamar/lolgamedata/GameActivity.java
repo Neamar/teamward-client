@@ -155,7 +155,7 @@ public class GameActivity extends AppCompatActivity {
                     Log.i(TAG, responseBody);
 
                     new AlertDialog.Builder(GameActivity.this)
-                            .setTitle("Unable to load game data.")
+                            .setTitle(getString(R.string.unable_load_summoner_data))
                             .setMessage(responseBody)
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
