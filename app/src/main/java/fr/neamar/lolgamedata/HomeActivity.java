@@ -134,7 +134,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 d.dismiss();
                 String name = ((TextView) d.findViewById(R.id.summonerText)).getText().toString();
-                String region = ((Spinner) d.findViewById(R.id.summonerRegion)).getSelectedItem().toString();
+                String region = ((Spinner) d.findViewById(R.id.summonerRegion)).getSelectedItem().toString().replaceAll(" .+$", "");
 
                 Log.i(TAG, "Adding new account: " + name + " (" + region + ")");
 
@@ -179,7 +179,7 @@ public class HomeActivity extends AppCompatActivity {
                     Log.i(TAG, responseBody);
 
                     new AlertDialog.Builder(HomeActivity.this)
-                            .setTitle("Unable to load game data.")
+                            .setTitle("Unable to load player data.")
                             .setMessage(responseBody)
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
