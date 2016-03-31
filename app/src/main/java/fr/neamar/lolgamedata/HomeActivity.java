@@ -2,11 +2,11 @@ package fr.neamar.lolgamedata;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -43,12 +43,14 @@ public class HomeActivity extends AppCompatActivity {
     public SharedPreferences prefs;
 
     public RecyclerView recyclerView;
+    public CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -167,6 +169,9 @@ public class HomeActivity extends AppCompatActivity {
 
                         writeAccounts(accounts);
                         dialog.dismiss();
+
+                        Snackbar snackbar = Snackbar.make(coordinatorLayout, String.format("Added account %s", newAccount.summonerName), Snackbar.LENGTH_LONG);
+                        snackbar.show();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -178,16 +183,8 @@ public class HomeActivity extends AppCompatActivity {
                     String responseBody = new String(error.networkResponse.data, "utf-8");
                     Log.i(TAG, responseBody);
 
-                    new AlertDialog.Builder(HomeActivity.this)
-                            .setTitle("Unable to load player data.")
-                            .setMessage(responseBody)
-                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            })
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-
+                    Snackbar snackbar = Snackbar.make(coordinatorLayout, responseBody.isEmpty() ? "Unable to load player data" : responseBody, Snackbar.LENGTH_LONG);
+                    snackbar.show();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 } catch (NullPointerException e) {
