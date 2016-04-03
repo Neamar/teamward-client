@@ -23,6 +23,7 @@ public class LolApplication extends Application {
                 .defaultDisplayImageOptions(defaultOptions)
                 .build();
 
+
         ImageLoader.getInstance().init(config);
     }
 }
