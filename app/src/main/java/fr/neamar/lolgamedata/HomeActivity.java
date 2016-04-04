@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -26,8 +25,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -38,13 +35,13 @@ import fr.neamar.lolgamedata.pojo.Account;
 
 public class HomeActivity extends AppCompatActivity {
     public static final String TAG = "HomeActivity";
-    public static final String ACCOUNTS_KEY = "accounts";
-    public static final String DEFAULT_VALUE = "[]";
 
     public SharedPreferences prefs;
 
     public RecyclerView recyclerView;
     public CoordinatorLayout coordinatorLayout;
+
+    public AccountManager accountManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +60,8 @@ public class HomeActivity extends AppCompatActivity {
                 addAccount();
             }
         });
+
+        accountManager = new AccountManager(this);
 
         initView();
     }
@@ -90,42 +89,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void initView() {
-        ArrayList<Account> accounts = getAccounts();
+        ArrayList<Account> accounts = accountManager.getAccounts();
 
         AccountAdapter adapter = new AccountAdapter(accounts);
         recyclerView.setAdapter(adapter);
     }
 
-    public ArrayList<Account> getAccounts() {
-        String accountsString = prefs.getString(ACCOUNTS_KEY, DEFAULT_VALUE);
-
-        try {
-            JSONArray accountsJson = new JSONArray(accountsString);
-            ArrayList<Account> accounts = new ArrayList<>();
-
-            for (int i = 0; i < accountsJson.length(); i += 1) {
-                Account account = new Account(accountsJson.getJSONObject(i));
-                accounts.add(account);
-            }
-
-            return accounts;
-        } catch (JSONException e) {
-            Toast.makeText(HomeActivity.this, "Accounts got corrupted, resetting app.", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-            prefs.edit().clear().apply();
-            return new ArrayList<>();
-        }
-    }
-
-    public void writeAccounts(ArrayList<Account> accounts) {
-        JSONArray accountsJson = new JSONArray();
-
-        for (int i = 0; i < accounts.size(); i++) {
-            accountsJson.put(accounts.get(i).toJsonObject());
-        }
-
-        prefs.edit().putString(ACCOUNTS_KEY, accountsJson.toString()).apply();
-    }
 
     public void addAccount() {
         final Dialog d = new Dialog(this);
@@ -148,7 +117,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public Account saveAccount(String name, String region) {
-        final ArrayList<Account> accounts = getAccounts();
         final Account newAccount = new Account(name, region, "");
 
         final ProgressDialog dialog = ProgressDialog.show(this, "",
@@ -163,12 +131,12 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         newAccount.summonerImage = response.optString("profileIcon", "");
-                        accounts.add(newAccount);
+
+                        accountManager.addAccount(newAccount);
 
                         AccountAdapter adapter = (AccountAdapter) recyclerView.getAdapter();
-                        adapter.updateAccounts(accounts);
+                        adapter.updateAccounts(accountManager.getAccounts());
 
-                        writeAccounts(accounts);
                         dialog.dismiss();
 
                         Snackbar snackbar = Snackbar.make(coordinatorLayout, String.format("Added account %s", newAccount.summonerName), Snackbar.LENGTH_LONG);
