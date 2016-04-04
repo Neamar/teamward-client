@@ -2,6 +2,7 @@ package fr.neamar.lolgamedata;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -32,6 +33,8 @@ import fr.neamar.lolgamedata.pojo.Account;
 
 public class HomeActivity extends SnackBarActivity {
     public static final String TAG = "HomeActivity";
+
+    public int GAME_DETAILS = 0;
 
     public SharedPreferences prefs;
 
@@ -83,7 +86,7 @@ public class HomeActivity extends SnackBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void initView() {
+    private void initView() {
         ArrayList<Account> accounts = accountManager.getAccounts();
 
         AccountAdapter adapter = new AccountAdapter(accounts, this);
@@ -91,7 +94,7 @@ public class HomeActivity extends SnackBarActivity {
     }
 
 
-    public void addAccount() {
+    private void addAccount() {
         final Dialog d = new Dialog(this);
         d.setTitle(R.string.add_account_title);
         d.setContentView(R.layout.dialog_add_account);
@@ -111,7 +114,7 @@ public class HomeActivity extends SnackBarActivity {
         d.show();
     }
 
-    public Account saveAccount(String name, String region) {
+    private Account saveAccount(String name, String region) {
         final Account newAccount = new Account(name, region, "");
 
         final ProgressDialog dialog = ProgressDialog.show(this, "",
@@ -162,5 +165,19 @@ public class HomeActivity extends SnackBarActivity {
         queue.add(jsonRequest);
 
         return newAccount;
+    }
+
+    public void openGameDetails(Account account) {
+        Intent i = new Intent(this, GameActivity.class);
+        i.putExtra("account", account);
+        startActivityForResult(i, GAME_DETAILS);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == GAME_DETAILS && resultCode == GameActivity.NO_GAME_FOUND) {
+            displaySnack(data.getStringExtra("error"));
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

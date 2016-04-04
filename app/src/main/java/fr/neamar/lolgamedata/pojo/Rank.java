@@ -1,5 +1,7 @@
 package fr.neamar.lolgamedata.pojo;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,6 +15,7 @@ public class Rank implements Serializable {
     public String division;
 
     public Rank(JSONObject rank) throws JSONException {
+        Log.e("WTF", rank.toString());
         tier = rank.getString("tier");
         division = rank.getString("division");
 

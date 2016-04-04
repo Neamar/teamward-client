@@ -1,14 +1,13 @@
 package fr.neamar.lolgamedata;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -36,6 +35,9 @@ import fr.neamar.lolgamedata.pojo.Team;
 
 public class GameActivity extends AppCompatActivity {
     public static final String TAG = "GameActivity";
+
+    public static final int NO_GAME_FOUND = 44;
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -151,20 +153,16 @@ public class GameActivity extends AppCompatActivity {
                     String responseBody = new String(error.networkResponse.data, "utf-8");
                     Log.i(TAG, responseBody);
 
-                    new AlertDialog.Builder(GameActivity.this)
-                            .setTitle(getString(R.string.unable_load_summoner_data))
-                            .setMessage(responseBody)
-                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            })
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
+                    Intent intent = new Intent();
+                    intent.putExtra("error", responseBody);
+                    setResult(NO_GAME_FOUND, intent);
 
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
                 catch (NullPointerException e) {}
+
+                finish();
             }
         });
 
