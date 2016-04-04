@@ -64,4 +64,10 @@ public class AccountManager {
         accounts.add(account);
         writeAccounts(accounts);
     }
+
+    public void removeAccount(Account account) {
+        ArrayList<Account> accounts = getAccounts();
+        accounts.remove(account);
+        writeAccounts(accounts);
+    }
 }

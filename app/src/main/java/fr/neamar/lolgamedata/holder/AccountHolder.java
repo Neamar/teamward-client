@@ -8,12 +8,15 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import fr.neamar.lolgamedata.AccountManager;
 import fr.neamar.lolgamedata.GameActivity;
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.adapter.AccountAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 
-public class AccountHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class AccountHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
     private Account account;
+    private AccountAdapter accountAdapter;
 
     private final ImageView summonerImage;
     private final TextView summonerName;
@@ -25,9 +28,11 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
         summonerName = (TextView) view.findViewById(R.id.summonerText);
 
         view.setOnClickListener(this);
+        view.setOnLongClickListener(this);
     }
 
-    public void bindAdvert(Account account) {
+    public void bindAdvert(AccountAdapter accountAdapter, Account account) {
+        this.accountAdapter = accountAdapter;
         this.account = account;
 
         this.summonerName.setText(account.summonerName);
@@ -45,5 +50,22 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
         Intent i = new Intent(v.getContext(), GameActivity.class);
         i.putExtra("account", account);
         v.getContext().startActivity(i);
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        final AccountManager accountManager = new AccountManager(v.getContext());
+
+        accountManager.removeAccount(account);
+
+        accountAdapter.updateAccounts(accountManager.getAccounts());
+        accountAdapter.snackBarActivity.displaySnack("Account removed.", "Undo", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                accountManager.addAccount(account);
+                accountAdapter.updateAccounts(accountManager.getAccounts());
+            }
+        });
+        return true;
     }
 }

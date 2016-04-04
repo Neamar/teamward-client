@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.SnackBarActivity;
 import fr.neamar.lolgamedata.holder.AccountHolder;
 import fr.neamar.lolgamedata.pojo.Account;
 
@@ -16,9 +17,11 @@ import fr.neamar.lolgamedata.pojo.Account;
  */
 public class AccountAdapter extends RecyclerView.Adapter<AccountHolder> {
     public ArrayList<Account> accounts;
+    public SnackBarActivity snackBarActivity;
 
-    public AccountAdapter(ArrayList<Account> accounts) {
+    public AccountAdapter(ArrayList<Account> accounts, SnackBarActivity snackBarActivity) {
         this.accounts = accounts;
+        this.snackBarActivity = snackBarActivity;
         setHasStableIds(true);
     }
 
@@ -38,12 +41,12 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountHolder> {
 
     @Override
     public void onBindViewHolder(AccountHolder holder, int position) {
-        holder.bindAdvert(accounts.get(position));
+        holder.bindAdvert(this, accounts.get(position));
     }
 
     @Override
     public long getItemId(int position) {
-        return accounts.get(position).summonerName.hashCode();
+        return accounts.get(position).hashCode();
     }
 
     @Override

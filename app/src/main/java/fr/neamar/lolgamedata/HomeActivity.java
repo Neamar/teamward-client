@@ -4,10 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,13 +30,12 @@ import java.util.ArrayList;
 import fr.neamar.lolgamedata.adapter.AccountAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends SnackBarActivity {
     public static final String TAG = "HomeActivity";
 
     public SharedPreferences prefs;
 
     public RecyclerView recyclerView;
-    public CoordinatorLayout coordinatorLayout;
 
     public AccountManager accountManager;
 
@@ -48,7 +44,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -91,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
     public void initView() {
         ArrayList<Account> accounts = accountManager.getAccounts();
 
-        AccountAdapter adapter = new AccountAdapter(accounts);
+        AccountAdapter adapter = new AccountAdapter(accounts, this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -139,8 +134,7 @@ public class HomeActivity extends AppCompatActivity {
 
                         dialog.dismiss();
 
-                        Snackbar snackbar = Snackbar.make(coordinatorLayout, String.format("Added account %s", newAccount.summonerName), Snackbar.LENGTH_LONG);
-                        snackbar.show();
+                        displaySnack(String.format("Added account %s", newAccount.summonerName));
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -152,8 +146,7 @@ public class HomeActivity extends AppCompatActivity {
                     String responseBody = new String(error.networkResponse.data, "utf-8");
                     Log.i(TAG, responseBody);
 
-                    Snackbar snackbar = Snackbar.make(coordinatorLayout, responseBody.isEmpty() ? "Unable to load player data" : responseBody, Snackbar.LENGTH_LONG);
-                    snackbar.show();
+                    displaySnack(responseBody.isEmpty() ? "Unable to load player data" : responseBody);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 } catch (NullPointerException e) {
