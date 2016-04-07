@@ -133,7 +133,7 @@ public class HomeActivity extends SnackBarActivity {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, "http://lol-game-stats.herokuapp.com/summoner/data?summoner=" + name + "&region=" + region, null,
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/summoner/data?summoner=" + name + "&region=" + region, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

@@ -11,6 +11,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
  * Created by neamar on 29/03/16.
  */
 public class LolApplication extends Application {
+    public static final String API_URL = "https://teamward.herokuapp.com";
     public static final String MIXPANEL_TOKEN = "1a7075d95ff6db6d08714db52edb706a";
 
     private MixpanelAPI mixpanel = null;

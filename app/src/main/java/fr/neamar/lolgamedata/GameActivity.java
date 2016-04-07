@@ -68,6 +68,7 @@ public class GameActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
+
         assert mTabLayout != null;
         mTabLayout.setVisibility(View.GONE);
 
@@ -78,6 +79,7 @@ public class GameActivity extends AppCompatActivity {
 
 
         loadCurrentGame(account.summonerName, account.region);
+
     }
 
 
@@ -102,7 +104,6 @@ public class GameActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -151,7 +152,7 @@ public class GameActivity extends AppCompatActivity {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, "http://lol-game-stats.herokuapp.com/game/data?summoner=" + summonerName + "&region=" + region, null,
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/game/data?summoner=" + summonerName + "&region=" + region, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
