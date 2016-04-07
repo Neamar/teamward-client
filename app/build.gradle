@@ -8,8 +8,8 @@ android {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.2"
     }
     buildTypes {
         release {
@@ -26,4 +26,6 @@ dependencies {
     compile 'com.android.support:design:23.2.1'
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile "com.mixpanel.android:mixpanel-android:4.+"
+    compile "com.google.android.gms:play-services:3.1+"
 }

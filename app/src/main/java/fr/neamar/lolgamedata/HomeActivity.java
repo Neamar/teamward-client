@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -60,6 +61,14 @@ public class HomeActivity extends SnackBarActivity {
         });
 
         accountManager = new AccountManager(this);
+
+        JSONObject j = new JSONObject();
+        try {
+            j.put("accounts_count", accountManager.getAccounts().size());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ((LolApplication) getApplication()).getMixpanel().track("View account list", j);
 
         initView();
     }
@@ -138,6 +147,10 @@ public class HomeActivity extends SnackBarActivity {
                         dialog.dismiss();
 
                         displaySnack(String.format("Added account %s", newAccount.summonerName));
+
+                        JSONObject j = newAccount.toJsonObject();
+                        ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
+                        ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", accountManager.getAccounts().size());
                     }
                 }, new Response.ErrorListener() {
             @Override

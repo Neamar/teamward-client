@@ -38,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
 
     public static final int NO_GAME_FOUND = 44;
 
+    public Account account;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -55,7 +56,11 @@ public class GameActivity extends AppCompatActivity {
         assert mTabLayout != null;
         mTabLayout.setVisibility(View.GONE);
 
-        Account account = (Account) getIntent().getSerializableExtra("account");
+        account = (Account) getIntent().getSerializableExtra("account");
+
+        ((LolApplication) getApplication()).getMixpanel().getPeople().increment("games_viewed_count", 1);
+        ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
+
 
         loadCurrentGame(account.summonerName, account.region);
     }
@@ -138,6 +143,11 @@ public class GameActivity extends AppCompatActivity {
                         try {
                             Game game = new Game(response);
                             displayGame(summonerName, game);
+
+                            // Timing automatically added (see timeEvent() call)
+                            JSONObject j = account.toJsonObject();
+                            ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -159,8 +169,8 @@ public class GameActivity extends AppCompatActivity {
 
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
+                } catch (NullPointerException e) {
                 }
-                catch (NullPointerException e) {}
 
                 finish();
             }
@@ -178,14 +188,7 @@ public class GameActivity extends AppCompatActivity {
         setTitle(String.format(titleTemplate, summonerName));
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        /*
-      The {@link android.support.v4.view.PagerAdapter} that will provide
-      fragments for each of the sections. We use a
-      {@link FragmentPagerAdapter} derivative, which will keep every
-      loaded fragment in memory. If this becomes too memory intensive, it
-      may be best to switch to a
-      {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
+
         SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), game.teams);
 
         // Set up the ViewPager with the sections adapter.
