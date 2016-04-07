@@ -2,7 +2,6 @@ package fr.neamar.lolgamedata.holder;
 
 import android.support.annotation.DrawableRes;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -99,10 +98,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             String chammpionMasteryTemplate = championMastery.getContext().getString(R.string.champion_mastery_level);
             championMastery.setContentDescription(String.format(chammpionMasteryTemplate, player.champion.mastery));
         }
-
-
-        Log.e("WTF", "TIER" + player.rank.tier);
-        Log.e("WTF", "DIVISION" + player.rank.division);
 
         if (player.rank.tier.isEmpty() || !rankingTierResources.containsKey(player.rank.tier.toLowerCase())) {
             rankingDivision.setVisibility(View.INVISIBLE);
