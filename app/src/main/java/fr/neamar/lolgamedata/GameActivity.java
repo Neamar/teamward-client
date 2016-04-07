@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -29,13 +28,14 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import fr.neamar.lolgamedata.fragment.TeamFragment;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Team;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends SnackBarActivity {
     public static final String TAG = "GameActivity";
 
     public static final int NO_GAME_FOUND = 44;
@@ -47,6 +47,8 @@ public class GameActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private TabLayout mTabLayout;
+
+    private Date lastLoaded = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +81,20 @@ public class GameActivity extends AppCompatActivity {
 
 
         loadCurrentGame(account.summonerName, account.region);
-
     }
 
+    @Override
+    protected void onResume() {
+        if(lastLoaded != null && (new Date().getTime() - lastLoaded.getTime()) > 30000) {
+            displaySnack("Stale data?", "Reload", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loadCurrentGame(account.summonerName, account.region);
+                }
+            });
+        }
+        super.onResume();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -168,6 +181,8 @@ public class GameActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         dialog.dismiss();
+
+                        lastLoaded = new Date();
                     }
                 }, new Response.ErrorListener() {
             @Override
