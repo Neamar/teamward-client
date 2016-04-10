@@ -3,6 +3,7 @@ package fr.neamar.lolgamedata;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,7 +29,10 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import fr.neamar.lolgamedata.fragment.TeamFragment;
 import fr.neamar.lolgamedata.pojo.Account;
@@ -50,12 +54,31 @@ public class GameActivity extends SnackBarActivity {
 
     private Date lastLoaded = null;
 
+    @StringRes
+    private static final Map<Integer, Integer> MAP_NAMES;
+
+    static {
+        Map<Integer, Integer> mapNames = new HashMap<>();
+        mapNames.put(1, R.string.summoners_rift);
+        mapNames.put(2, R.string.summoners_rift);
+        mapNames.put(3, R.string.proving_grounds);
+        mapNames.put(4, R.string.twisted_treeline);
+        mapNames.put(8, R.string.crystal_scar);
+        mapNames.put(10, R.string.twisted_treeline);
+        mapNames.put(11, R.string.summoners_rift);
+        mapNames.put(12, R.string.howling_abyss);
+        mapNames.put(14, R.string.butchers_bridge);
+
+        MAP_NAMES = Collections.unmodifiableMap(mapNames);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        assert toolbar != null;
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
 
@@ -198,9 +221,14 @@ public class GameActivity extends SnackBarActivity {
                     intent.putExtra("error", responseBody);
                     setResult(NO_GAME_FOUND, intent);
 
-                } catch (UnsupportedEncodingException e) {
+                    JSONObject j = account.toJsonObject();
+                    j.put("error", responseBody);
+                    ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
+
+                } catch (UnsupportedEncodingException | JSONException e) {
                     e.printStackTrace();
                 } catch (NullPointerException e) {
+                    // Do nothing, no text content in the HTTP reply.
                 }
 
                 finish();
@@ -216,7 +244,10 @@ public class GameActivity extends SnackBarActivity {
 
     public void displayGame(String summonerName, Game game) {
         String titleTemplate = getString(R.string.game_data_title);
-        setTitle(String.format(titleTemplate, summonerName));
+
+        @StringRes Integer stringRes = MAP_NAMES.containsKey(game.mapId) ? MAP_NAMES.get(game.mapId) : R.string.unknown_map;
+
+        setTitle(String.format(titleTemplate, summonerName, getString(stringRes)));
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
 

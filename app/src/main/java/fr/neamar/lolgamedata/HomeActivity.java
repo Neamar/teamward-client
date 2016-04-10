@@ -188,7 +188,7 @@ public class HomeActivity extends SnackBarActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == GAME_DETAILS && resultCode == GameActivity.NO_GAME_FOUND) {
+        if (requestCode == GAME_DETAILS && resultCode == GameActivity.NO_GAME_FOUND) {
             displaySnack(data.getStringExtra("error"));
         }
         super.onActivityResult(requestCode, resultCode, data);

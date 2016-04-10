@@ -17,11 +17,18 @@
     <string name="champion_mastery">Champion mastery</string>
     <string name="champion_mastery_level">Champion mastery level %s</string>
     <string name="loading_game_data">Loading game data for %s</string>
-    <string name="game_data_title">Game data for %s</string>
+    <string name="game_data_title">%2$s (%1$s)</string>
     <string name="stub_account">Neamar</string>
     <string name="add_account_title">Add a new account</string>
     <string name="loading_summoner_data">Loading summoner information for %s</string>
     <string name="unable_load_summoner_data">Unable to load summoner data.</string>
+    <string name="summoners_rift">Summoner\'s Rift</string>
+    <string name="proving_grounds">The proving grounds</string>
+    <string name="twisted_treeline">Twisted Treeline</string>
+    <string name="crystal_scar">The Crystal Scar</string>
+    <string name="howling_abyss">Howling Abyss</string>
+    <string name="butchers_bridge">Butcher\'s Bridge</string>
+    <string name="unknown_map">LoL</string>
 
     <string-array name="regions_code">
         <item>EUNE</item>
