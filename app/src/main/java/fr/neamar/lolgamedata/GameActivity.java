@@ -45,6 +45,8 @@ public class GameActivity extends SnackBarActivity {
     public static final int NO_GAME_FOUND = 44;
 
     public Account account;
+    public Game game;
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -108,14 +110,19 @@ public class GameActivity extends SnackBarActivity {
 
     @Override
     protected void onResume() {
-        if(lastLoaded != null && (new Date().getTime() - lastLoaded.getTime()) > 30000) {
-            displaySnack("Stale data?", "Reload", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    loadCurrentGame(account.summonerName, account.region);
-                }
-            });
+        if (lastLoaded != null) {
+            long timeSinceLastView = new Date().getTime() - lastLoaded.getTime();
+            long timeSinceGameStart = new Date().getTime() - game.gameStartTime.getTime();
+            if (timeSinceLastView > 30000 && timeSinceGameStart > 60000 * 10) {
+                displaySnack("Stale data?", "Reload", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        loadCurrentGame(account.summonerName, account.region);
+                    }
+                });
+            }
         }
+
         super.onResume();
     }
 
@@ -178,6 +185,7 @@ public class GameActivity extends SnackBarActivity {
 
             return getString(R.string.unknown_team);
         }
+
     }
 
     public void loadCurrentGame(final String summonerName, final String region) {
@@ -193,7 +201,7 @@ public class GameActivity extends SnackBarActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Game game = new Game(response);
+                            game = new Game(response);
                             displayGame(summonerName, game);
 
                             // Timing automatically added (see timeEvent() call)

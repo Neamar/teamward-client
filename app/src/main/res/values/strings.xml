@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lol Game Data</string>
+    <string name="app_name">Team Ward</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_game">Game details</string>
     <string name="blue_team">Blue team</string>
@@ -38,8 +38,16 @@
 
 
     <string-array name="regions">
-        <item>EUNE [EU Nordic &amp; East]</item>
         <item>EUW [EU West]</item>
+        <item>BR [Brazil]</item>
+        <item>EUNE [EU Nordic &amp; East]</item>
+        <item>KR [Republic of Korea]</item>
+        <item>LAN [Latin America North]</item>
+        <item>LAS [Latin America South]</item>
         <item>NA [North America]</item>
+        <item>OCE [Oceania]</item>
+        <item>PBE [Public Build Environment]</item>
+        <item>RU [Russia]</item>
+        <item>TR [Turkey]</item>
     </string-array>
 </resources>
