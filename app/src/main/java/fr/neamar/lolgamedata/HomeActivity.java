@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.adapter.AccountAdapter;
@@ -61,14 +62,20 @@ public class HomeActivity extends SnackBarActivity {
         });
 
         accountManager = new AccountManager(this);
-
+        ArrayList<Account> accounts = accountManager.getAccounts();
         JSONObject j = new JSONObject();
         try {
-            j.put("accounts_count", accountManager.getAccounts().size());
+            j.put("accounts_count", accounts.size());
         } catch (JSONException e) {
             e.printStackTrace();
         }
         ((LolApplication) getApplication()).getMixpanel().track("View account list", j);
+
+        if (accounts.size() > 0) {
+            ((LolApplication) getApplication()).getMixpanel().getPeople().set("$username", accounts.get(0).summonerName);
+            ((LolApplication) getApplication()).getMixpanel().getPeople().set("$name", accounts.get(0).summonerName);
+            ((LolApplication) getApplication()).getMixpanel().getPeople().set("region", accounts.get(0).region);
+        }
 
         initView();
     }
@@ -133,49 +140,54 @@ public class HomeActivity extends SnackBarActivity {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/summoner/data?summoner=" + name + "&region=" + region, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        newAccount.summonerImage = response.optString("profileIcon", "");
+        try {
+            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/summoner/data?summoner=" + URLEncoder.encode(name, "UTF-8") + "&region=" + region,
+                    null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            newAccount.summonerImage = response.optString("profileIcon", "");
 
-                        accountManager.addAccount(newAccount);
+                            accountManager.addAccount(newAccount);
 
-                        AccountAdapter adapter = (AccountAdapter) recyclerView.getAdapter();
-                        adapter.updateAccounts(accountManager.getAccounts());
+                            AccountAdapter adapter = (AccountAdapter) recyclerView.getAdapter();
+                            adapter.updateAccounts(accountManager.getAccounts());
 
-                        dialog.dismiss();
+                            dialog.dismiss();
 
-                        displaySnack(String.format("Added account %s", newAccount.summonerName));
+                            displaySnack(String.format("Added account %s", newAccount.summonerName));
 
-                        JSONObject j = newAccount.toJsonObject();
-                        ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
-                        ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", accountManager.getAccounts().size());
+                            JSONObject j = newAccount.toJsonObject();
+                            ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
+                            ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", accountManager.getAccounts().size());
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    dialog.dismiss();
+                    Log.e(TAG, error.toString());
+
+                    try {
+                        String responseBody = new String(error.networkResponse.data, "utf-8");
+                        Log.i(TAG, responseBody);
+
+                        displaySnack(responseBody.isEmpty() ? "Unable to load player data" : responseBody);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    } catch (NullPointerException e) {
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                dialog.dismiss();
-                Log.e(TAG, error.toString());
-
-                try {
-                    String responseBody = new String(error.networkResponse.data, "utf-8");
-                    Log.i(TAG, responseBody);
-
-                    displaySnack(responseBody.isEmpty() ? "Unable to load player data" : responseBody);
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                } catch (NullPointerException e) {
                 }
-            }
-        });
+            });
 
-        jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                30000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    30000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        queue.add(jsonRequest);
+            queue.add(jsonRequest);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         return newAccount;
     }

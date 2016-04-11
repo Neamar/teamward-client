@@ -28,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -196,58 +197,63 @@ public class GameActivity extends SnackBarActivity {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/game/data?summoner=" + summonerName + "&region=" + region, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            game = new Game(response);
-                            displayGame(summonerName, game);
+        JsonObjectRequest jsonRequest = null;
+        try {
+            jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region, null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                game = new Game(response);
+                                displayGame(summonerName, game);
 
-                            // Timing automatically added (see timeEvent() call)
-                            JSONObject j = account.toJsonObject();
-                            ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
+                                // Timing automatically added (see timeEvent() call)
+                                JSONObject j = account.toJsonObject();
+                                ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            dialog.dismiss();
+
+                            lastLoaded = new Date();
                         }
-                        dialog.dismiss();
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    dialog.dismiss();
+                    Log.e(TAG, error.toString());
 
-                        lastLoaded = new Date();
+                    try {
+                        String responseBody = new String(error.networkResponse.data, "utf-8");
+                        Log.i(TAG, responseBody);
+
+                        Intent intent = new Intent();
+                        intent.putExtra("error", responseBody);
+                        setResult(NO_GAME_FOUND, intent);
+
+                        JSONObject j = account.toJsonObject();
+                        j.put("error", responseBody);
+                        ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
+
+                    } catch (UnsupportedEncodingException | JSONException e) {
+                        e.printStackTrace();
+                    } catch (NullPointerException e) {
+                        // Do nothing, no text content in the HTTP reply.
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                dialog.dismiss();
-                Log.e(TAG, error.toString());
 
-                try {
-                    String responseBody = new String(error.networkResponse.data, "utf-8");
-                    Log.i(TAG, responseBody);
-
-                    Intent intent = new Intent();
-                    intent.putExtra("error", responseBody);
-                    setResult(NO_GAME_FOUND, intent);
-
-                    JSONObject j = account.toJsonObject();
-                    j.put("error", responseBody);
-                    ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
-
-                } catch (UnsupportedEncodingException | JSONException e) {
-                    e.printStackTrace();
-                } catch (NullPointerException e) {
-                    // Do nothing, no text content in the HTTP reply.
+                    finish();
                 }
+            });
 
-                finish();
-            }
-        });
-
-        jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                30000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        queue.add(jsonRequest);
+            jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    30000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            queue.add(jsonRequest);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     public void displayGame(String summonerName, Game game) {
