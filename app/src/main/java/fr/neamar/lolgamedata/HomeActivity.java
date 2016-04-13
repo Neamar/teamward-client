@@ -2,10 +2,12 @@ package fr.neamar.lolgamedata;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -97,8 +99,16 @@ public class HomeActivity extends SnackBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_about) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.action_about)
+                    .setMessage(getString(R.string.about_text))
+                    .setPositiveButton(R.string.rammus_ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).show();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
