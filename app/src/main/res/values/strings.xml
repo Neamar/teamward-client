@@ -29,6 +29,7 @@
     <string name="howling_abyss">Howling Abyss</string>
     <string name="butchers_bridge">Butcher\'s Bridge</string>
     <string name="unknown_map">LoL</string>
+    <string name="home_empty">Add your main League of Legends\naccount to get started.</string>
 
     <string-array name="regions_code">
         <item>EUNE</item>

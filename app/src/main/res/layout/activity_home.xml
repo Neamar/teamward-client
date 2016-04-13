@@ -13,8 +13,14 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity"
         tools:listitem="@layout/item_account">
-
     </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@android:id/empty"
+        android:text="@string/home_empty"
+        android:gravity="center"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

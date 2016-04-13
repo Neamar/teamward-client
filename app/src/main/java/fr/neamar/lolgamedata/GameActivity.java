@@ -114,7 +114,7 @@ public class GameActivity extends SnackBarActivity {
         if (lastLoaded != null) {
             long timeSinceLastView = new Date().getTime() - lastLoaded.getTime();
             long timeSinceGameStart = new Date().getTime() - game.gameStartTime.getTime();
-            if (timeSinceLastView > 30000 && timeSinceGameStart > 60000 * 10) {
+            if (timeSinceLastView > 30000 && timeSinceGameStart > 60000 * 15) {
                 displaySnack("Stale data?", "Reload", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

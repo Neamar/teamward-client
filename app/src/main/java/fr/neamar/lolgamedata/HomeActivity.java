@@ -105,7 +105,7 @@ public class HomeActivity extends SnackBarActivity {
     private void initView() {
         ArrayList<Account> accounts = accountManager.getAccounts();
 
-        AccountAdapter adapter = new AccountAdapter(accounts, this);
+        AccountAdapter adapter = new AccountAdapter(accounts, this, findViewById(android.R.id.empty), recyclerView);
         recyclerView.setAdapter(adapter);
     }
 
