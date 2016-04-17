@@ -119,6 +119,15 @@ public class GameActivity extends SnackBarActivity {
                 displaySnack("Stale data?", "Reload", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        SectionsPagerAdapter emptySectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), new ArrayList<Team>());
+
+                        // Set up the ViewPager with the sections adapter.
+                        assert mViewPager != null;
+                        assert mTabLayout != null;
+                        mViewPager.setAdapter(emptySectionsPagerAdapter);
+                        mTabLayout.setupWithViewPager(mViewPager);
+
+
                         loadCurrentGame(account.summonerName, account.region);
                     }
                 });

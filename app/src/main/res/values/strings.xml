@@ -34,8 +34,8 @@
     <string name="about_text">htps://github.com/Neamar/teamward-client\n\nTeamWard isn\'t endorsed by Riot Games and doesn\'t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
     <string name="rammus_ok">Rammus</string>
     <string name="first_main">MAIN</string>
-    <string name="second_main">2&lt;sup&gt;nd&lt;/sup&gt; MAIN</string>
-    <string name="third_main">32&lt;sup&gt;rd&lt;/sup&gt;MAIN</string>
+    <string name="second_main">2ⁿᵈ MAIN</string>
+    <string name="third_main">3ʳᵈ MAIN</string>
 
     <string-array name="regions_code">
         <item>EUNE</item>
