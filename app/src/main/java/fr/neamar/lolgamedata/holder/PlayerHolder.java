@@ -1,7 +1,9 @@
 package fr.neamar.lolgamedata.holder;
 
 import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import fr.neamar.lolgamedata.pojo.Player;
  */
 public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+    @DrawableRes
     private static final int[] championMasteriesResources = new int[]{
             0,
             R.drawable.champion_mastery_1,
@@ -46,6 +49,14 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         rankingTierResources = Collections.unmodifiableMap(map);
     }
 
+    @StringRes
+    private static final int[] mainChampionResources = new int[]{
+            0,
+            R.string.first_main,
+            R.string.second_main,
+            R.string.third_main
+    };
+
     private Player player;
 
     private final ImageView championImage;
@@ -57,6 +68,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     private final ImageView rankingTier;
     private final ImageView spellDImage;
     private final ImageView spellFImage;
+    private final TextView mainChampionText;
 
     public PlayerHolder(View view) {
         super(view);
@@ -70,6 +82,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         rankingTier = (ImageView) view.findViewById(R.id.rankingTierImage);
         spellDImage = (ImageView) view.findViewById(R.id.spellDImage);
         spellFImage = (ImageView) view.findViewById(R.id.spellFImage);
+        mainChampionText = (TextView) view.findViewById(R.id.mainChampion);
 
         view.setOnClickListener(this);
     }
@@ -113,6 +126,15 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             rankingTier.setImageResource(rankingTierResources.get(player.rank.tier.toLowerCase()));
             rankingTier.setContentDescription(player.rank.tier);
             previousRanking.setVisibility(View.GONE);
+        }
+
+        if (player.knownChampionsCount > 12 && player.champion.championRank <= 3) {
+            // Main champion!
+            mainChampionText.setVisibility(View.VISIBLE);
+            String mainText = mainChampionText.getContext().getString(mainChampionResources[player.champion.championRank]);
+            mainChampionText.setText(Html.fromHtml(mainText));
+        } else {
+            mainChampionText.setVisibility(View.GONE);
         }
 
     }

@@ -113,7 +113,8 @@ public class GameActivity extends SnackBarActivity {
     protected void onResume() {
         if (lastLoaded != null) {
             long timeSinceLastView = new Date().getTime() - lastLoaded.getTime();
-            long timeSinceGameStart = new Date().getTime() - game.gameStartTime.getTime();
+            long timeSinceGameStart = new Date().getTime() - game.startTime.getTime();
+            Log.i(TAG, "Game started since " + Math.floor(timeSinceGameStart / 1000 / 60));
             if (timeSinceLastView > 30000 && timeSinceGameStart > 60000 * 15) {
                 displaySnack("Stale data?", "Reload", new View.OnClickListener() {
                     @Override
@@ -206,6 +207,8 @@ public class GameActivity extends SnackBarActivity {
                             try {
                                 game = new Game(response);
                                 displayGame(summonerName, game);
+
+                                Log.i(TAG, "Displaying game #" + game.gameId);
 
                                 // Timing automatically added (see timeEvent() call)
                                 JSONObject j = account.toJsonObject();

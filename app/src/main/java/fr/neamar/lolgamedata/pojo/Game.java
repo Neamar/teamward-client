@@ -12,14 +12,17 @@ import java.util.Date;
  * Created by neamar on 25/03/16.
  */
 public class Game implements Serializable {
+    public long gameId;
     public int mapId;
-    public Date gameStartTime;
+    public Date startTime;
 
     public ArrayList<Team> teams;
 
     public Game(JSONObject game) throws JSONException {
+        gameId = game.getLong("game_id");
         mapId = game.getInt("map_id");
-        gameStartTime = new Date(game.optLong("game_start_time", new Date().getTime()));
+
+        startTime = new Date(game.optLong("game_start_time", new Date().getTime()));
 
         JSONArray teamsJson = game.getJSONArray("teams");
         teams = new ArrayList<>();
