@@ -16,6 +16,7 @@ import java.util.Map;
 
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Player;
+import fr.neamar.lolgamedata.view.AdApView;
 
 /**
  * Created by neamar on 25/03/16.
@@ -69,6 +70,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     private final ImageView spellDImage;
     private final ImageView spellFImage;
     private final TextView mainChampionText;
+    private final AdApView adApView;
 
     public PlayerHolder(View view) {
         super(view);
@@ -83,6 +85,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         spellDImage = (ImageView) view.findViewById(R.id.spellDImage);
         spellFImage = (ImageView) view.findViewById(R.id.spellFImage);
         mainChampionText = (TextView) view.findViewById(R.id.mainChampion);
+        adApView = (AdApView) view.findViewById(R.id.apAd);
 
         view.setOnClickListener(this);
     }
@@ -137,6 +140,8 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             mainChampionText.setVisibility(View.GONE);
         }
 
+        adApView.setAd(player.champion.ad);
+        adApView.setAp(player.champion.ap);
     }
 
     @Override

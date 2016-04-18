@@ -6,25 +6,36 @@
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 
+    <fr.neamar.lolgamedata.view.AdApView
+        android:layout_marginLeft="3dp"
+        android:layout_marginStart="3dp"
+        android:id="@+id/apAd"
+        android:layout_width="2dp"
+        android:layout_height="@dimen/champion_size"
+        android:layout_alignTop="@+id/championImage"
+        android:layout_toRightOf="@+id/championImage"
+        android:layout_toEndOf="@+id/championImage" />" />
+
     <ImageView
         android:id="@+id/championImage"
         android:layout_width="@dimen/champion_size"
         android:layout_height="@dimen/champion_size"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="16dp"
 
         android:contentDescription="@string/champion_image"
-        android:src="@drawable/default_champion" />
+        android:src="@drawable/default_champion"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp" />
 
     <ImageView
         android:id="@+id/spellDImage"
         android:layout_width="@dimen/summoner_spell_size"
         android:layout_height="@dimen/summoner_spell_size"
         android:layout_alignTop="@+id/championImage"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         android:layout_toEndOf="@+id/championImage"
         android:layout_toRightOf="@+id/championImage"
         android:contentDescription="@string/summoner_spell_d"
