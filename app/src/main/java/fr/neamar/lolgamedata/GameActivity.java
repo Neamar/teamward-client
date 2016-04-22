@@ -46,7 +46,8 @@ public class GameActivity extends SnackBarActivity {
     public static final int NO_GAME_FOUND = 44;
 
     public Account account;
-    public Game game;
+    public Game game = null;
+    public String summonerName;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -106,7 +107,9 @@ public class GameActivity extends SnackBarActivity {
         ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
 
 
-        loadCurrentGame(account.summonerName, account.region);
+        if(savedInstanceState == null || !savedInstanceState.containsKey("game")) {
+            loadCurrentGame(account.summonerName, account.region);
+        }
     }
 
     @Override
@@ -215,6 +218,7 @@ public class GameActivity extends SnackBarActivity {
                         public void onResponse(JSONObject response) {
                             try {
                                 game = new Game(response);
+                                GameActivity.this.summonerName = summonerName;
                                 displayGame(summonerName, game);
 
                                 Log.i(TAG, "Displaying game #" + game.gameId);
@@ -286,5 +290,24 @@ public class GameActivity extends SnackBarActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(game != null) {
+            outState.putSerializable("summonerName", summonerName);
+            outState.putSerializable("game", game);
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if(savedInstanceState.containsKey("game")) {
+            summonerName = savedInstanceState.getString("summonerName");
+            game = (Game) savedInstanceState.getSerializable("game");
+            displayGame(summonerName, game);
+        }
     }
 }

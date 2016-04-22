@@ -26,7 +26,6 @@
         <activity
             android:name=".GameActivity"
             android:label="@string/title_activity_game"
-            android:configChanges="orientation|keyboardHidden|screenSize"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
