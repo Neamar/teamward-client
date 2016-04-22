@@ -8,7 +8,7 @@ import android.view.View;
 /**
  * Created by neamar on 03/04/16.
  */
-public class SnackBarActivity extends AppCompatActivity {
+public abstract class SnackBarActivity extends AppCompatActivity {
     public void displaySnack(String snack) {
         CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 

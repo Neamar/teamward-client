@@ -7,27 +7,28 @@
     android:paddingRight="@dimen/activity_horizontal_margin">
 
     <fr.neamar.lolgamedata.view.AdApView
-        android:layout_marginLeft="3dp"
-        android:layout_marginStart="3dp"
         android:id="@+id/apAd"
-        android:layout_width="2dp"
-        android:layout_height="@dimen/champion_size"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignLeft="@+id/championImage"
+        android:layout_alignStart="@+id/championImage"
         android:layout_alignTop="@+id/championImage"
-        android:layout_toRightOf="@+id/championImage"
-        android:layout_toEndOf="@+id/championImage" />" />
+        android:layout_marginLeft="-3dp"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="-3dp" />
 
     <ImageView
         android:id="@+id/championImage"
         android:layout_width="@dimen/champion_size"
         android:layout_height="@dimen/champion_size"
-        android:layout_marginLeft="16dp"
-
-        android:contentDescription="@string/champion_image"
-        android:src="@drawable/default_champion"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
+
         android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp" />
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/champion_image"
+        android:src="@drawable/default_champion" />
 
     <ImageView
         android:id="@+id/spellDImage"
@@ -60,7 +61,9 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginTop="-5dp"
         android:layout_toEndOf="@+id/spellDImage"
+        android:layout_toLeftOf="@+id/rankingLayout"
         android:layout_toRightOf="@+id/spellDImage"
+        android:layout_toStartOf="@+id/rankingLayout"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
@@ -74,6 +77,8 @@
         android:layout_alignLeft="@+id/championNameText"
         android:layout_alignStart="@+id/championNameText"
         android:layout_below="@+id/championNameText"
+        android:layout_toLeftOf="@+id/rankingLayout"
+        android:layout_toStartOf="@+id/rankingLayout"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
@@ -88,9 +93,10 @@
         android:layout_alignStart="@+id/summonerNameText"
         android:layout_below="@+id/summonerNameText"
         android:text="@string/stub_previous_ranking"
-        android:textSize="11dp" />
+        android:textSize="11sp" />
 
     <LinearLayout
+        android:id="@+id/rankingLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
@@ -131,17 +137,17 @@
         android:src="@drawable/champion_mastery_4" />
 
     <TextView
+        android:id="@+id/mainChampion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/first_main"
-        android:padding="3dp"
-        android:background="@drawable/gold_border"
-        android:textColor="#dfbf61"
-        android:textSize="8sp"
-        android:id="@+id/mainChampion"
         android:layout_alignBottom="@+id/championImage"
         android:layout_toLeftOf="@+id/spellDImage"
-        android:layout_toStartOf="@+id/spellDImage" />
+        android:layout_toStartOf="@+id/spellDImage"
+        android:background="@drawable/gold_border"
+        android:padding="3dp"
+        android:text="@string/first_main"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#dfbf61"
+        android:textSize="8sp" />
 
 </RelativeLayout>

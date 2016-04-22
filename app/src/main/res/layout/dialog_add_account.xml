@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:ems="10"
-        android:hint="Summoner name"
+        android:hint="@string/summoner_name"
         android:inputType="text" />
 
 
@@ -27,6 +27,6 @@
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add account" />
+        android:text="@string/add_account" />
 
 </LinearLayout>

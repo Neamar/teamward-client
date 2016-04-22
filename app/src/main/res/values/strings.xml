@@ -36,6 +36,9 @@
     <string name="first_main">MAIN</string>
     <string name="second_main">2ⁿᵈ MAIN</string>
     <string name="third_main">3ʳᵈ MAIN</string>
+    <string name="summoner_icon">Summoner icon</string>
+    <string name="summoner_name">Summoner name</string>
+    <string name="add_account">Add account</string>
 
     <string-array name="regions_code">
         <item>EUNE</item>
