@@ -17,7 +17,6 @@ public class AdApView extends View {
 
     private float ap = 5;
     private float ad = 5;
-    private float apdSum = 10;
 
     public AdApView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -41,22 +40,35 @@ public class AdApView extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
-        float ratio = ap / apdSum;
         apPaint.setStrokeWidth(getWidth());
         adPaint.setStrokeWidth(getWidth());
-
         int halfWidth = getWidth() / 2;
-        canvas.drawLine(halfWidth, 0, halfWidth , getHeight() * ratio, apPaint);
-        canvas.drawLine(halfWidth , getHeight() * ratio, halfWidth , getHeight(), adPaint);
+
+        if(isAp() && isAd()) {
+            canvas.drawLine(halfWidth, 0, halfWidth , getHeight() / 2, apPaint);
+            canvas.drawLine(halfWidth , getHeight() / 2, halfWidth , getHeight(), adPaint);
+        }
+        else if(isAd()) {
+            canvas.drawLine(halfWidth, 0, halfWidth , getHeight(), adPaint);
+        }
+        else if(isAp()) {
+            canvas.drawLine(halfWidth, 0, halfWidth, getHeight(), apPaint);
+        }
     }
 
     public void setAp(int ap) {
         this.ap = ap;
-        apdSum = ap + ad;
     }
 
     public void setAd(int ad) {
         this.ad = ad;
-        apdSum = ap + ad;
+    }
+
+    public boolean isAp() {
+        return ap * .75 > ad;
+    }
+
+    public boolean isAd() {
+        return ad * .75 > ap;
     }
 }

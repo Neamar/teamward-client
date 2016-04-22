@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 'android-N'
+    buildToolsVersion "24.0.0-rc1"
 
     defaultConfig {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 'N'
         versionCode 9
         versionName "1.8"
     }
