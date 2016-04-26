@@ -35,6 +35,7 @@ public class TeamFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         args.putSerializable(ARG_SECTION_TEAM, team);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,8 +49,14 @@ public class TeamFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
         team = (Team) getArguments().getSerializable(ARG_SECTION_TEAM);
+
         PlayerAdapter adapter = new PlayerAdapter(team.players);
         recyclerView.setAdapter(adapter);
         return rootView;
     }
+
+    public Team getTeam() {
+        return team;
+    }
+
 }

@@ -44,7 +44,7 @@ public class AdApView extends View {
         adPaint.setStrokeWidth(getWidth());
         int halfWidth = getWidth() / 2;
 
-        if(isAp() && isAd()) {
+        if(!isAp() && !isAd()) {
             canvas.drawLine(halfWidth, 0, halfWidth , getHeight() / 2, apPaint);
             canvas.drawLine(halfWidth , getHeight() / 2, halfWidth , getHeight(), adPaint);
         }

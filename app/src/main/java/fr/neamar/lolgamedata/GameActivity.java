@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -29,16 +26,14 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.neamar.lolgamedata.fragment.TeamFragment;
+import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
-import fr.neamar.lolgamedata.pojo.Team;
 
 public class GameActivity extends SnackBarActivity {
     public static final String TAG = "GameActivity";
@@ -55,6 +50,8 @@ public class GameActivity extends SnackBarActivity {
     private ViewPager mViewPager;
 
     private TabLayout mTabLayout;
+
+    private SectionsPagerAdapter sectionsPagerAdapter;
 
     private Date lastLoaded = null;
 
@@ -101,13 +98,21 @@ public class GameActivity extends SnackBarActivity {
         assert mTabLayout != null;
         mTabLayout.setVisibility(View.GONE);
 
+        sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), this);
+
+        // Set up the ViewPager with the sections adapter.
+        assert mViewPager != null;
+        assert mTabLayout != null;
+        mViewPager.setAdapter(sectionsPagerAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+
         account = (Account) getIntent().getSerializableExtra("account");
 
         ((LolApplication) getApplication()).getMixpanel().getPeople().increment("games_viewed_count", 1);
         ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
 
 
-        if(savedInstanceState == null || !savedInstanceState.containsKey("game")) {
+        if (savedInstanceState == null || !savedInstanceState.containsKey("game")) {
             loadCurrentGame(account.summonerName, account.region);
         }
     }
@@ -122,15 +127,6 @@ public class GameActivity extends SnackBarActivity {
                 displaySnack("Stale data?", "Reload", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        SectionsPagerAdapter emptySectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), new ArrayList<Team>());
-
-                        // Set up the ViewPager with the sections adapter.
-                        assert mViewPager != null;
-                        assert mTabLayout != null;
-                        mViewPager.setAdapter(emptySectionsPagerAdapter);
-                        mTabLayout.setupWithViewPager(mViewPager);
-
-
                         loadCurrentGame(account.summonerName, account.region);
                     }
                 });
@@ -160,46 +156,6 @@ public class GameActivity extends SnackBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-        public ArrayList<Team> teams;
-
-        public SectionsPagerAdapter(FragmentManager fm, ArrayList<Team> teams) {
-            super(fm);
-            this.teams = teams;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-
-            return TeamFragment.newInstance(position + 1, teams.get(position));
-        }
-
-        @Override
-        public int getCount() {
-            return teams.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            int teamId = teams.get(position).teamId;
-
-            if (teamId == 100) {
-                return getString(R.string.blue_team);
-            } else if (teamId == 200) {
-                return getString(R.string.red_team);
-            }
-
-            return getString(R.string.unknown_team);
-        }
-
     }
 
     public void loadCurrentGame(final String summonerName, final String region) {
@@ -281,21 +237,17 @@ public class GameActivity extends SnackBarActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
 
-        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), game.teams);
+        sectionsPagerAdapter.setTeams(game.teams);
 
         // Set up the ViewPager with the sections adapter.
-        assert mViewPager != null;
         assert mTabLayout != null;
-
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if(game != null) {
+        if (game != null) {
             outState.putSerializable("summonerName", summonerName);
             outState.putSerializable("game", game);
         }
@@ -304,7 +256,7 @@ public class GameActivity extends SnackBarActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        if(savedInstanceState.containsKey("game")) {
+        if (savedInstanceState.containsKey("game")) {
             summonerName = savedInstanceState.getString("summonerName");
             game = (Game) savedInstanceState.getSerializable("game");
             displayGame(summonerName, game);
