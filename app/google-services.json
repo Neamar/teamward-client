@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "684742175142",
+    "project_id": "team-ward-4b6b2"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684742175142:android:ebe8443eb8aada3c",
+        "android_client_info": {
+          "package_name": "fr.neamar.lolgamedata"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjMLLzWJfBjFvT4loothO7CIr_o64k0t8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
