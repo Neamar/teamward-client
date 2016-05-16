@@ -42,11 +42,15 @@
             </intent-filter>
         </receiver>
         <service
-            android:name=".service.GcmListenerService"
+            android:name=".service.MyGcmListenerService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
+        </service>
+        <service
+            android:name=".service.RegistrationIntentService"
+            android:exported="false" >
         </service>
         <service
             android:name=".service.MyInstanceIDListenerService"
@@ -55,6 +59,8 @@
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
+
+        <activity android:name="com.mixpanel.android.surveys.SurveyActivity" />
     </application>
 
 </manifest>

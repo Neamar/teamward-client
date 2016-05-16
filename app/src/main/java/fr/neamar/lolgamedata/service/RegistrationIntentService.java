@@ -9,7 +9,11 @@ import android.util.Log;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
+import java.util.ArrayList;
+
+import fr.neamar.lolgamedata.AccountManager;
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.pojo.Account;
 
 /**
  * Created by neamar on 16/05/16.
@@ -25,6 +29,7 @@ public class RegistrationIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        Log.e(TAG, "onHandleIntent");
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         try {
@@ -43,7 +48,13 @@ public class RegistrationIntentService extends IntentService {
             // You should store a boolean that indicates whether the generated token has been
             // sent to your server. If the boolean is false, send the token to your server,
             // otherwise your server should have already received the token.
-            sharedPreferences.edit().putString(SENT_TOKEN_TO_SERVER, token).apply();
+            sharedPreferences.edit().putBoolean(SENT_TOKEN_TO_SERVER, true).apply();
+
+            AccountManager accountManager = new AccountManager(this);
+            ArrayList<Account> accounts = accountManager.getAccounts();
+            if(accounts.size() > 0) {
+                sendTokenToServer(token, accounts.get(0));
+            }
             // [END register_for_gcm]
         } catch (Exception e) {
             Log.e(TAG, "Failed to complete token refresh", e);
@@ -51,5 +62,9 @@ public class RegistrationIntentService extends IntentService {
             // on a third-party server, this ensures that we'll attempt the update at a later time.
             sharedPreferences.edit().remove(SENT_TOKEN_TO_SERVER).apply();
         }
+    }
+
+    private void sendTokenToServer(String token, Account account) {
+        Log.e("WTF", token);
     }
 }

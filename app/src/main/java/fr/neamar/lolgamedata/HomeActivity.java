@@ -24,6 +24,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,9 +36,11 @@ import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.adapter.AccountAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
+import fr.neamar.lolgamedata.service.RegistrationIntentService;
 
 public class HomeActivity extends SnackBarActivity {
     public static final String TAG = "HomeActivity";
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     public int GAME_DETAILS = 0;
 
@@ -80,6 +84,17 @@ public class HomeActivity extends SnackBarActivity {
         }
 
         initView();
+
+        registerForPushNotification(accounts);
+    }
+
+    private void registerForPushNotification(ArrayList<Account> accounts) {
+        if (checkPlayServices() && accounts.size() > 0) {
+            // Start IntentService to register this application with GCM.
+            Intent intent = new Intent(this, RegistrationIntentService.class);
+            Log.e(TAG, "Starting Service");
+            startService(intent);
+        }
     }
 
     @Override
@@ -167,9 +182,12 @@ public class HomeActivity extends SnackBarActivity {
 
                             displaySnack(String.format("Added account %s", newAccount.summonerName));
 
+                            ArrayList<Account> newAccounts = accountManager.getAccounts();
                             JSONObject j = newAccount.toJsonObject();
                             ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
-                            ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", accountManager.getAccounts().size());
+                            ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", newAccounts.size());
+
+                            registerForPushNotification(newAccounts);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -214,5 +232,25 @@ public class HomeActivity extends SnackBarActivity {
             displaySnack(data.getStringExtra("error"));
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    /**
+     * Check the device to make sure it has the Google Play Services APK. If
+     * it doesn't, display a dialog that allows users to download the APK from
+     * the Google Play Store or enable it in the device's system settings.
+     */
+    private boolean checkPlayServices() {
+        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (apiAvailability.isUserResolvableError(resultCode)) {
+                apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
+                        .show();
+            } else {
+                Log.i(TAG, "This device is not supported for GCM.");
+            }
+            return false;
+        }
+        return true;
     }
 }
