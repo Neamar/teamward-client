@@ -9,8 +9,8 @@ android {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 14
-        versionName "1.9.4"
+        versionCode 15
+        versionName "1.9.5"
     }
     buildTypes {
         release {

@@ -3,6 +3,7 @@ package fr.neamar.lolgamedata;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
@@ -231,7 +232,7 @@ public class GameActivity extends SnackBarActivity {
     public void displayGame(String summonerName, Game game) {
         String titleTemplate = getString(R.string.game_data_title);
 
-        @StringRes Integer stringRes = MAP_NAMES.containsKey(game.mapId) ? MAP_NAMES.get(game.mapId) : R.string.unknown_map;
+        @StringRes Integer stringRes = getMapName(game.mapId);
 
         setTitle(String.format(titleTemplate, summonerName, getString(stringRes)));
         // Create the adapter that will return a fragment for each of the three
@@ -261,5 +262,10 @@ public class GameActivity extends SnackBarActivity {
             game = (Game) savedInstanceState.getSerializable("game");
             displayGame(summonerName, game);
         }
+    }
+
+    @NonNull
+    public static Integer getMapName(int mapId) {
+        return MAP_NAMES.containsKey(mapId) ? MAP_NAMES.get(mapId) : R.string.unknown_map;
     }
 }

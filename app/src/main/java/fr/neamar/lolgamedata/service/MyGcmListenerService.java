@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.google.android.gms.gcm.GcmListenerService;
 
 import fr.neamar.lolgamedata.GameActivity;
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.pojo.Account;
 
 public class MyGcmListenerService extends GcmListenerService {
 
@@ -29,9 +31,15 @@ public class MyGcmListenerService extends GcmListenerService {
     // [START receive_message]
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        String message = data.getString("message");
+        String gameMode = data.getString("gameMode");
+        String summonerName = data.getString("summonerName");
+        String region = data.getString("region");
+        int mapId = Integer.parseInt(data.getString("mapId"));
+
+        Account account = new Account(summonerName,region, "");
+
         Log.d(TAG, "From: " + from);
-        Log.d(TAG, "Message: " + message);
+        Log.d(TAG, "Game mode: " + gameMode);
 
         // [START_EXCLUDE]
         /**
@@ -45,7 +53,7 @@ public class MyGcmListenerService extends GcmListenerService {
          * In some cases it may be useful to show a notification indicating to the user
          * that a message was received.
          */
-        displayNotification(message);
+        displayNotification(account, mapId, gameMode);
         // [END_EXCLUDE]
     }
     // [END receive_message]
@@ -53,19 +61,21 @@ public class MyGcmListenerService extends GcmListenerService {
     /**
      * Create and show a simple notification containing the received GCM message.
      *
-     * @param message GCM message received.
      */
-    private void displayNotification(String message) {
+    private void displayNotification(Account account, int mapId, String gameMode) {
         Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra("account", account);
+
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("GCM Message")
-                .setContentText(message)
+                .setSmallIcon(R.drawable.ic_launcher_transparent)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_transparent))
+                .setContentTitle(String.format("Welcome to %s!", getString(GameActivity.getMapName(mapId))))
+                .setContentText(String.format("%s is in game. Touch for information", account.summonerName))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
