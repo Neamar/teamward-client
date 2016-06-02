@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="240dp"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/activity_horizontal_margin"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Add LoL account"
-        android:id="@+id/textView" />
 
     <EditText
         android:id="@+id/summonerText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/activity_horizontal_margin"
         android:ems="10"
         android:hint="@string/summoner_name"
         android:inputType="text" />
@@ -27,13 +21,15 @@
         android:id="@+id/summonerRegion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/regions"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:entries="@array/regions" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
         android:text="@string/add_account" />
 
 </LinearLayout>

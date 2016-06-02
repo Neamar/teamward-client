@@ -138,7 +138,7 @@ public class HomeActivity extends SnackBarActivity {
     private void addAccount() {
         final Dialog d = new Dialog(this);
         d.setTitle(R.string.add_account_title);
-        d.setContentView(R.layout.dialog_add_account);
+        d.setContentView(R.layout.activity_add_account);
 
         d.findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
             @Override
