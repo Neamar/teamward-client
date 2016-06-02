@@ -22,7 +22,6 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.pojo.Account;
 
@@ -31,13 +30,9 @@ public class AddAccountActivity extends Activity {
     public static final String NEW_ACCOUNT = "new_account";
     public static final int RESULT_ERROR = 1;
 
-    protected AccountManager accountManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        accountManager = new AccountManager(this);
 
         setContentView(R.layout.activity_add_account);
 
@@ -83,17 +78,10 @@ public class AddAccountActivity extends Activity {
 
                             newAccount.summonerImage = response.optString("profileIcon", "");
 
-                            accountManager.addAccount(newAccount);
-
                             Intent intent = new Intent();
                             intent.putExtra("type", NEW_ACCOUNT);
                             intent.putExtra("account", newAccount);
                             setResult(RESULT_OK, intent);
-
-                            ArrayList<Account> newAccounts = accountManager.getAccounts();
-                            JSONObject j = newAccount.toJsonObject();
-                            ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
-                            ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", newAccounts.size());
 
                             finish();
                         }

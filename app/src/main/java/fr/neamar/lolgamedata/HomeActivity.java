@@ -1,7 +1,5 @@
 package fr.neamar.lolgamedata;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,24 +12,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.adapter.AccountAdapter;
@@ -41,6 +28,7 @@ import fr.neamar.lolgamedata.service.RegistrationIntentService;
 public class HomeActivity extends SnackBarActivity {
     public static final String TAG = "HomeActivity";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    private static final int ADD_NEW_ACCOUNT = 1;
 
     public int GAME_DETAILS = 0;
 
@@ -136,88 +124,8 @@ public class HomeActivity extends SnackBarActivity {
 
 
     private void addAccount() {
-        final Dialog d = new Dialog(this);
-        d.setTitle(R.string.add_account_title);
-        d.setContentView(R.layout.activity_add_account);
-
-        d.findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                d.dismiss();
-                String name = ((TextView) d.findViewById(R.id.summonerText)).getText().toString();
-                String region = ((Spinner) d.findViewById(R.id.summonerRegion)).getSelectedItem().toString().replaceAll(" .+$", "");
-
-                Log.i(TAG, "Adding new account: " + name + " (" + region + ")");
-
-                saveAccount(name, region);
-            }
-        });
-        d.show();
-    }
-
-    private Account saveAccount(String name, String region) {
-        final Account newAccount = new Account(name, region, "");
-
-        final ProgressDialog dialog = ProgressDialog.show(this, "",
-                String.format(getString(R.string.loading_summoner_data), name), true);
-        dialog.show();
-
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/summoner/data?summoner=" + URLEncoder.encode(name, "UTF-8") + "&region=" + region,
-                    null,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            newAccount.summonerImage = response.optString("profileIcon", "");
-
-                            accountManager.addAccount(newAccount);
-
-                            AccountAdapter adapter = (AccountAdapter) recyclerView.getAdapter();
-                            adapter.updateAccounts(accountManager.getAccounts());
-
-                            dialog.dismiss();
-
-                            displaySnack(String.format("Added account %s", newAccount.summonerName));
-
-                            ArrayList<Account> newAccounts = accountManager.getAccounts();
-                            JSONObject j = newAccount.toJsonObject();
-                            ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
-                            ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", newAccounts.size());
-
-                            registerForPushNotification(newAccounts);
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    dialog.dismiss();
-                    Log.e(TAG, error.toString());
-
-                    try {
-                        String responseBody = new String(error.networkResponse.data, "utf-8");
-                        Log.i(TAG, responseBody);
-
-                        displaySnack(responseBody.isEmpty() ? "Unable to load player data" : responseBody);
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    } catch (NullPointerException e) {
-                    }
-                }
-            });
-
-            jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    30000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-            queue.add(jsonRequest);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        return newAccount;
+        Intent i = new Intent(HomeActivity.this, AddAccountActivity.class);
+        startActivityForResult(i, ADD_NEW_ACCOUNT);
     }
 
     public void openGameDetails(Account account) {
@@ -231,7 +139,28 @@ public class HomeActivity extends SnackBarActivity {
         if (requestCode == GAME_DETAILS && resultCode == GameActivity.NO_GAME_FOUND) {
             displaySnack(data.getStringExtra("error"));
         }
-        super.onActivityResult(requestCode, resultCode, data);
+        else if(requestCode == ADD_NEW_ACCOUNT && resultCode == RESULT_OK) {
+            Account newAccount = (Account) data.getSerializableExtra("account");
+            accountManager.addAccount(newAccount);
+
+            AccountAdapter adapter = (AccountAdapter) recyclerView.getAdapter();
+            adapter.updateAccounts(accountManager.getAccounts());
+
+            displaySnack(String.format("Added account %s", newAccount.summonerName));
+
+            ArrayList<Account> newAccounts = accountManager.getAccounts();
+            JSONObject j = newAccount.toJsonObject();
+            ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
+            ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", newAccounts.size());
+
+            registerForPushNotification(newAccounts);
+        }
+        else if(requestCode == ADD_NEW_ACCOUNT && resultCode == AddAccountActivity.RESULT_ERROR) {
+            displaySnack(data.getStringExtra("error"));
+        }
+        else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     /**
