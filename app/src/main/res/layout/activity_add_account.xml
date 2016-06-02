@@ -11,9 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:imeOptions="actionNext"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:ems="10"
         android:hint="@string/summoner_name"
+        android:nextFocusDown="@+id/summonerRegion"
         android:inputType="text" />
 
 
