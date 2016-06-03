@@ -61,4 +61,5 @@
         <item>TR [Turkey]</item>
     </string-array>
     <string name="title_activity_add_account">Add new account</string>
+
 </resources>

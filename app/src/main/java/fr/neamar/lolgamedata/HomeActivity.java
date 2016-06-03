@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +19,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import fr.neamar.lolgamedata.adapter.AccountAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.service.RegistrationIntentService;
 
@@ -34,8 +31,6 @@ public class HomeActivity extends SnackBarActivity {
 
     public SharedPreferences prefs;
 
-    public RecyclerView recyclerView;
-
     public AccountManager accountManager;
 
     @Override
@@ -43,11 +38,11 @@ public class HomeActivity extends SnackBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        accountManager = new AccountManager(this);
 
         prefs = getPreferences(MODE_PRIVATE);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +50,6 @@ public class HomeActivity extends SnackBarActivity {
             }
         });
 
-        accountManager = new AccountManager(this);
         ArrayList<Account> accounts = accountManager.getAccounts();
         JSONObject j = new JSONObject();
         try {
@@ -63,7 +57,6 @@ public class HomeActivity extends SnackBarActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ((LolApplication) getApplication()).getMixpanel().track("View account list", j);
 
         if (accounts.size() > 0) {
             ((LolApplication) getApplication()).getMixpanel().getPeople().set("$username", accounts.get(0).summonerName);
@@ -71,16 +64,21 @@ public class HomeActivity extends SnackBarActivity {
             ((LolApplication) getApplication()).getMixpanel().getPeople().set("region", accounts.get(0).region);
         }
 
-        initView();
-
         registerForPushNotification(accounts);
+
+        if (!accounts.isEmpty()) {
+            Account mainAccount = accounts.get(0);
+            Intent i = new Intent(this, GameActivity.class);
+            i.putExtra("account", mainAccount);
+            startActivityForResult(i, GAME_DETAILS);
+            finish();
+        }
     }
 
     private void registerForPushNotification(ArrayList<Account> accounts) {
         if (checkPlayServices() && accounts.size() > 0) {
             // Start IntentService to register this application with GCM.
             Intent intent = new Intent(this, RegistrationIntentService.class);
-            Log.e(TAG, "Starting Service");
             startService(intent);
         }
     }
@@ -115,36 +113,15 @@ public class HomeActivity extends SnackBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void initView() {
-        ArrayList<Account> accounts = accountManager.getAccounts();
-
-        AccountAdapter adapter = new AccountAdapter(accounts, this, findViewById(android.R.id.empty), recyclerView);
-        recyclerView.setAdapter(adapter);
-    }
-
-
     private void addAccount() {
         Intent i = new Intent(HomeActivity.this, AddAccountActivity.class);
         startActivityForResult(i, ADD_NEW_ACCOUNT);
     }
 
-    public void openGameDetails(Account account) {
-        Intent i = new Intent(this, GameActivity.class);
-        i.putExtra("account", account);
-        startActivityForResult(i, GAME_DETAILS);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == GAME_DETAILS && resultCode == GameActivity.NO_GAME_FOUND) {
-            displaySnack(data.getStringExtra("error"));
-        }
-        else if(requestCode == ADD_NEW_ACCOUNT && resultCode == RESULT_OK) {
+        if (requestCode == ADD_NEW_ACCOUNT && resultCode == RESULT_OK) {
             Account newAccount = (Account) data.getSerializableExtra("account");
-            accountManager.addAccount(newAccount);
-
-            AccountAdapter adapter = (AccountAdapter) recyclerView.getAdapter();
-            adapter.updateAccounts(accountManager.getAccounts());
 
             displaySnack(String.format("Added account %s", newAccount.summonerName));
 
@@ -154,11 +131,9 @@ public class HomeActivity extends SnackBarActivity {
             ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", newAccounts.size());
 
             registerForPushNotification(newAccounts);
-        }
-        else if(requestCode == ADD_NEW_ACCOUNT && resultCode == AddAccountActivity.RESULT_ERROR) {
+        } else if (requestCode == ADD_NEW_ACCOUNT && resultCode == AddAccountActivity.RESULT_ERROR) {
             displaySnack(data.getStringExtra("error"));
-        }
-        else {
+        } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }

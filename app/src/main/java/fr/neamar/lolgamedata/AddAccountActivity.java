@@ -83,6 +83,7 @@ public class AddAccountActivity extends Activity {
                             intent.putExtra("account", newAccount);
                             setResult(RESULT_OK, intent);
 
+                            (new AccountManager(AddAccountActivity.this)).addAccount(newAccount);
                             finish();
                         }
                     }, new Response.ErrorListener() {
