@@ -131,6 +131,11 @@ public class HomeActivity extends SnackBarActivity {
             ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", newAccounts.size());
 
             registerForPushNotification(newAccounts);
+
+            Intent i = new Intent(this, GameActivity.class);
+            i.putExtra("account", newAccount);
+            startActivityForResult(i, GAME_DETAILS);
+            finish();
         } else if (requestCode == ADD_NEW_ACCOUNT && resultCode == AddAccountActivity.RESULT_ERROR) {
             displaySnack(data.getStringExtra("error"));
         } else {
