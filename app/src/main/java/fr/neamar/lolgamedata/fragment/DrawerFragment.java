@@ -69,6 +69,6 @@ public class DrawerFragment extends Fragment {
             public void onReceive(Context context, Intent intent) {
                 adapter.updateAccounts(accountManager.getAccounts());
             }
-        }, new IntentFilter(AddAccountActivity.NEW_ACCOUNT));
+        }, new IntentFilter(AccountManager.ACCOUNTS_CHANGE));
     }
 }

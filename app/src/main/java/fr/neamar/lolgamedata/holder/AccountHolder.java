@@ -12,12 +12,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import fr.neamar.lolgamedata.AccountManager;
 import fr.neamar.lolgamedata.GameActivity;
 import fr.neamar.lolgamedata.R;
-import fr.neamar.lolgamedata.adapter.AccountAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 
 public class AccountHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
     private Account account;
-    private AccountAdapter accountAdapter;
 
     private final ImageView summonerImage;
     private final TextView summonerName;
@@ -32,8 +30,7 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
         view.setOnLongClickListener(this);
     }
 
-    public void bindAdvert(AccountAdapter accountAdapter, Account account) {
-        this.accountAdapter = accountAdapter;
+    public void bindAdvert(Account account) {
         this.account = account;
 
         this.summonerName.setText(account.summonerName);
@@ -55,11 +52,8 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
 
     @Override
     public boolean onLongClick(View v) {
-        final AccountManager accountManager = new AccountManager(v.getContext());
-
+        AccountManager accountManager = new AccountManager(v.getContext());
         accountManager.removeAccount(account);
-
-        accountAdapter.updateAccounts(accountManager.getAccounts());
 
         Toast.makeText(v.getContext(), R.string.account_removed, Toast.LENGTH_SHORT).show();
         return true;

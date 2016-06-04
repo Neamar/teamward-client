@@ -38,7 +38,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountHolder> {
 
     @Override
     public void onBindViewHolder(AccountHolder holder, int position) {
-        holder.bindAdvert(this, accounts.get(position));
+        holder.bindAdvert(accounts.get(position));
     }
 
     @Override

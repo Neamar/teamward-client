@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -85,7 +84,6 @@ public class AddAccountActivity extends Activity {
 
                             (new AccountManager(AddAccountActivity.this)).addAccount(newAccount);
 
-                            LocalBroadcastManager.getInstance(AddAccountActivity.this).sendBroadcast(intent);
                             finish();
                         }
                     }, new Response.ErrorListener() {
