@@ -8,8 +8,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -37,6 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
+import fr.neamar.lolgamedata.fragment.DrawerFragment;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
 
@@ -86,6 +89,9 @@ public class GameActivity extends SnackBarActivity {
         MAP_NAMES = Collections.unmodifiableMap(mapNames);
     }
 
+    private DrawerLayout mDrawerLayout;
+    private DrawerFragment mDrawerList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,21 +117,18 @@ public class GameActivity extends SnackBarActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         assert toolbar != null;
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
 
-        toolbar.setTitle(R.string.title_activity_game);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavUtils.navigateUpFromSameTask(GameActivity.this);
-            }
-        });
-
+        ActionBar ab = getSupportActionBar();
+        assert ab != null;
+        ab.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setTitle(R.string.title_activity_game);
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mFab = (FloatingActionButton) findViewById(R.id.fab);
         mEmptyView = findViewById(android.R.id.empty);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), this);
 
@@ -149,7 +152,6 @@ public class GameActivity extends SnackBarActivity {
         notInGame.setText(String.format(getString(R.string.s_is_not_in_game_right_now), account.summonerName));
 
         setUiMode(UI_MODE_LOADING);
-
 
         ((LolApplication) getApplication()).getMixpanel().getPeople().increment("games_viewed_count", 1);
         ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
@@ -194,6 +196,9 @@ public class GameActivity extends SnackBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if(id == android.R.id.home) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_about) {
