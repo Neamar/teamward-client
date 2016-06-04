@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -43,6 +45,10 @@ public class GameActivity extends SnackBarActivity {
 
     public static final int NO_GAME_FOUND = 44;
 
+    public static final int UI_MODE_LOADING = 0;
+    public static final int UI_MODE_IN_GAME = 1;
+    public static final int UI_MODE_NOT_IN_GAME = 2;
+
     public Account account;
     public Game game = null;
     public String summonerName;
@@ -51,6 +57,10 @@ public class GameActivity extends SnackBarActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
+    private View mEmptyView;
+
+    private FloatingActionButton mFab;
 
     private TabLayout mTabLayout;
 
@@ -81,6 +91,23 @@ public class GameActivity extends SnackBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        // First run: open accounts activity, finish this one
+        AccountManager accountManager = new AccountManager(this);
+        if (accountManager.getAccounts().isEmpty()) {
+            Intent i = new Intent(this, HomeActivity.class);
+            startActivity(i);
+            finish();
+            return;
+        }
+
+
+        // Get account
+        if (getIntent() != null && getIntent().hasExtra("account")) {
+            account = (Account) getIntent().getSerializableExtra("account");
+        } else {
+            account = accountManager.getAccounts().get(0);
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         assert toolbar != null;
         setSupportActionBar(toolbar);
@@ -97,9 +124,8 @@ public class GameActivity extends SnackBarActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
-
-        assert mTabLayout != null;
-        mTabLayout.setVisibility(View.GONE);
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        mEmptyView = findViewById(android.R.id.empty);
 
         sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), this);
 
@@ -109,7 +135,21 @@ public class GameActivity extends SnackBarActivity {
         mViewPager.setAdapter(sectionsPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
-        account = (Account) getIntent().getSerializableExtra("account");
+        assert mFab != null;
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUiMode(UI_MODE_LOADING);
+                loadCurrentGame(account.summonerName, account.region);
+            }
+        });
+
+        TextView notInGame = ((TextView) findViewById(R.id.summoner_not_in_game_text));
+        assert notInGame != null;
+        notInGame.setText(String.format(getString(R.string.s_is_not_in_game_right_now), account.summonerName));
+
+        setUiMode(UI_MODE_LOADING);
+
 
         ((LolApplication) getApplication()).getMixpanel().getPeople().increment("games_viewed_count", 1);
         ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
@@ -169,6 +209,27 @@ public class GameActivity extends SnackBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    protected void setUiMode(int uiMode) {
+        assert mTabLayout != null;
+        assert mEmptyView != null;
+        assert mFab != null;
+
+        if(uiMode == UI_MODE_LOADING) {
+            mTabLayout.setVisibility(View.GONE);
+            mEmptyView.setVisibility(View.GONE);
+            mFab.setVisibility(View.GONE);
+        }
+        else if(uiMode == UI_MODE_NOT_IN_GAME) {
+            mTabLayout.setVisibility(View.GONE);
+            mEmptyView.setVisibility(View.VISIBLE);
+            mFab.setVisibility(View.VISIBLE);
+        }
+        else if(uiMode == UI_MODE_IN_GAME) {
+            mTabLayout.setVisibility(View.VISIBLE);
+            mEmptyView.setVisibility(View.GONE);
+            mFab.setVisibility(View.GONE);
+        }
+    }
     public void loadCurrentGame(final String summonerName, final String region) {
         final ProgressDialog dialog = ProgressDialog.show(this, "",
                 String.format(getString(R.string.loading_game_data), summonerName), true);
@@ -207,25 +268,22 @@ public class GameActivity extends SnackBarActivity {
                     dialog.dismiss();
                     Log.e(TAG, error.toString());
 
+                    setUiMode(UI_MODE_NOT_IN_GAME);
                     try {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
 
-                        Intent intent = new Intent();
-                        intent.putExtra("error", responseBody);
-                        setResult(NO_GAME_FOUND, intent);
-
-                        JSONObject j = account.toJsonObject();
-                        j.put("error", responseBody);
-                        ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
-
+                        if(!responseBody.contains("ummoner not in game")) {
+                            displaySnack(responseBody);
+                            JSONObject j = account.toJsonObject();
+                            j.put("error", responseBody);
+                            ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
+                        }
                     } catch (UnsupportedEncodingException | JSONException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
                     }
-
-                    finish();
                 }
             });
 
@@ -250,9 +308,7 @@ public class GameActivity extends SnackBarActivity {
 
         sectionsPagerAdapter.setTeams(game.teams);
 
-        // Set up the ViewPager with the sections adapter.
-        assert mTabLayout != null;
-        mTabLayout.setVisibility(View.VISIBLE);
+        setUiMode(UI_MODE_IN_GAME);
     }
 
     @Override
