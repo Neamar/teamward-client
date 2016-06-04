@@ -2,13 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAd"
+    android:background="@android:color/white"
+    android:layout_marginTop="24dp"
     tools:context="fr.neamar.lolgamedata.fragment.DrawerFragment">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher_transparent"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_centerHorizontal="true" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_account"></android.support.v7.widget.RecyclerView>
-
+        tools:listitem="@layout/item_account"
+        android:layout_below="@+id/imageView2"></android.support.v7.widget.RecyclerView>
 </RelativeLayout>
