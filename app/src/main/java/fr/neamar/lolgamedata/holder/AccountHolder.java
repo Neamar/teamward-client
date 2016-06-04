@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -60,6 +61,7 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
 
         accountAdapter.updateAccounts(accountManager.getAccounts());
 
+        Toast.makeText(v.getContext(), R.string.account_removed, Toast.LENGTH_SHORT).show();
         return true;
     }
 }

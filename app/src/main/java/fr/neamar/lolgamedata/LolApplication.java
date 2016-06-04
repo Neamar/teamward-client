@@ -1,6 +1,7 @@
 package fr.neamar.lolgamedata;
 
 import android.app.Application;
+import android.os.StrictMode;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -31,6 +32,20 @@ public class LolApplication extends Application {
 
 
         ImageLoader.getInstance().init(config);
+
+        if (BuildConfig.DEBUG) {
+
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .penaltyDeath()
+                    .build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .penaltyDeath()
+                    .build());
+        }
     }
 
     public MixpanelAPI getMixpanel() {
