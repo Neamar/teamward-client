@@ -1,9 +1,14 @@
 package fr.neamar.lolgamedata.fragment;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +18,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.AccountManager;
+import fr.neamar.lolgamedata.AddAccountActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.adapter.AccountAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
@@ -47,7 +53,22 @@ public class DrawerFragment extends Fragment {
 
         ArrayList<Account> accounts = accountManager.getAccounts();
 
-        AccountAdapter adapter = new AccountAdapter(accounts);
+        final AccountAdapter adapter = new AccountAdapter(accounts);
         recyclerView.setAdapter(adapter);
+
+        getView().findViewById(R.id.addLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), AddAccountActivity.class);
+                startActivity(i);
+            }
+        });
+
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                adapter.updateAccounts(accountManager.getAccounts());
+            }
+        }, new IntentFilter(AddAccountActivity.NEW_ACCOUNT));
     }
 }

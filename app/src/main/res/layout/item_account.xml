@@ -4,10 +4,7 @@
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
     android:gravity="center_vertical"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="4dp"
-    android:paddingBottom="4dp"
-    android:paddingLeft="@dimen/activity_horizontal_margin">
+    android:padding="@dimen/activity_horizontal_margin">
 
     <ImageView
         android:id="@+id/summonerImage"
@@ -23,8 +20,8 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:gravity="center_vertical"
+        android:text="@string/stub_account"
         android:textColor="@android:color/black"
-        android:textStyle="bold"
         android:textSize="14sp"
-        android:text="@string/stub_account" />
+        android:textStyle="bold" />
 </LinearLayout>

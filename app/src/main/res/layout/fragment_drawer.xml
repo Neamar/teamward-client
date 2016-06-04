@@ -3,23 +3,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:layout_marginTop="24dp"
     tools:context="fr.neamar.lolgamedata.fragment.DrawerFragment">
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:src="@drawable/ic_launcher_transparent"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:layout_centerHorizontal="true" />
+        android:src="@drawable/banner" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/imageView2"
         tools:listitem="@layout/item_account"
-        android:layout_below="@+id/imageView2"></android.support.v7.widget.RecyclerView>
+        android:layout_above="@+id/view"></android.support.v7.widget.RecyclerView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#89000000"
+        android:layout_above="@+id/addLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/settingsLayout"
+
+        android:background="?attr/selectableItemBackground"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="4dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="4dp"
+        android:id="@+id/addLayout">
+
+        <ImageView
+            android:layout_width="@dimen/champion_mastery_size"
+            android:layout_height="@dimen/champion_mastery_size"
+            android:scaleType="center"
+            android:contentDescription="@string/add_account"
+            android:src="@drawable/ic_add_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:gravity="center_vertical"
+            android:text="@string/add_account"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/selectableItemBackground"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="4dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="4dp"
+        android:id="@+id/settingsLayout">
+
+        <ImageView
+            android:layout_width="@dimen/champion_mastery_size"
+            android:layout_height="@dimen/champion_mastery_size"
+            android:scaleType="center"
+            android:contentDescription="App settings"
+            android:src="@drawable/ic_settings_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:gravity="center_vertical"
+            android:text="Settings"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </RelativeLayout>
