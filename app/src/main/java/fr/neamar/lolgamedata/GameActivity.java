@@ -241,7 +241,7 @@ public class GameActivity extends SnackBarActivity {
         dialog.show();
 
         // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
+        final RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonObjectRequest jsonRequest = null;
         try {
@@ -266,6 +266,8 @@ public class GameActivity extends SnackBarActivity {
                             dialog.dismiss();
 
                             lastLoaded = new Date();
+
+                            queue.stop();
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -289,6 +291,8 @@ public class GameActivity extends SnackBarActivity {
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
                     }
+
+                    queue.stop();
                 }
             });
 

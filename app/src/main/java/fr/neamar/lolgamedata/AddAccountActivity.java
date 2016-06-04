@@ -66,7 +66,7 @@ public class AddAccountActivity extends Activity {
         dialog.show();
 
         // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
+        final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
             JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/summoner/data?summoner=" + URLEncoder.encode(name, "UTF-8") + "&region=" + region,
@@ -84,6 +84,7 @@ public class AddAccountActivity extends Activity {
 
                             (new AccountManager(AddAccountActivity.this)).addAccount(newAccount);
 
+                            queue.stop();
                             finish();
                         }
                     }, new Response.ErrorListener() {
@@ -105,6 +106,7 @@ public class AddAccountActivity extends Activity {
                     } catch (NullPointerException e) {
                     }
 
+                    queue.stop();
                     finish();
                 }
             });

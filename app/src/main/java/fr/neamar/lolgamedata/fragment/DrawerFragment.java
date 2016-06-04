@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import fr.neamar.lolgamedata.pojo.Account;
  * A simple {@link Fragment} subclass.
  */
 public class DrawerFragment extends Fragment {
+    private static final String TAG = "DrawerFragment";
     protected RecyclerView recyclerView;
     protected AccountManager accountManager;
     private BroadcastReceiver mBroadcastReceiver;
@@ -72,11 +74,13 @@ public class DrawerFragment extends Fragment {
             }
         };
 
+        Log.i(TAG, "Starting account change receiver");
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mBroadcastReceiver, new IntentFilter(AccountManager.ACCOUNTS_CHANGE));
     }
 
     @Override
-    public void onStop() {
+    public void onDestroy() {
+        Log.i(TAG, "Stopping account change receiver");
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mBroadcastReceiver);
 
         super.onStop();
