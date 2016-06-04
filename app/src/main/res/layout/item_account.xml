@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:gravity="center_vertical"
+    android:paddingBottom="12dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="12dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/summonerImage"
         android:layout_width="@dimen/champion_mastery_size"
         android:layout_height="@dimen/champion_mastery_size"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:contentDescription="@string/summoner_icon"
         android:src="@drawable/default_champion" />
 
@@ -19,14 +20,11 @@
         android:id="@+id/summonerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/summonerImage"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/summonerImage"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
-        android:layout_toRightOf="@+id/summonerImage"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:gravity="center_vertical"
         android:text="@string/stub_account"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-</RelativeLayout>
+        android:textColor="#dd000000"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+</LinearLayout>

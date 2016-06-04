@@ -1,18 +1,24 @@
 package fr.neamar.lolgamedata;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -33,6 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
+import fr.neamar.lolgamedata.fragment.DrawerFragment;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
 
@@ -40,6 +47,10 @@ public class GameActivity extends SnackBarActivity {
     public static final String TAG = "GameActivity";
 
     public static final int NO_GAME_FOUND = 44;
+
+    public static final int UI_MODE_LOADING = 0;
+    public static final int UI_MODE_IN_GAME = 1;
+    public static final int UI_MODE_NOT_IN_GAME = 2;
 
     public Account account;
     public Game game = null;
@@ -49,6 +60,10 @@ public class GameActivity extends SnackBarActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
+    private View mEmptyView;
+
+    private FloatingActionButton mFab;
 
     private TabLayout mTabLayout;
 
@@ -74,30 +89,46 @@ public class GameActivity extends SnackBarActivity {
         MAP_NAMES = Collections.unmodifiableMap(mapNames);
     }
 
+    private DrawerLayout mDrawerLayout;
+    private DrawerFragment mDrawerList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        // First run: open accounts activity, finish this one
+        AccountManager accountManager = new AccountManager(this);
+        if (accountManager.getAccounts().isEmpty()) {
+            Intent i = new Intent(this, AccountsActivity.class);
+            startActivity(i);
+            finish();
+            return;
+        }
+
+
+        // Get account
+        if (getIntent() != null && getIntent().hasExtra("account")) {
+            account = (Account) getIntent().getSerializableExtra("account");
+        } else {
+            account = accountManager.getAccounts().get(0);
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         assert toolbar != null;
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
 
-        toolbar.setTitle(R.string.title_activity_game);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavUtils.navigateUpFromSameTask(GameActivity.this);
-            }
-        });
-
+        ActionBar ab = getSupportActionBar();
+        assert ab != null;
+        ab.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setTitle(R.string.title_activity_game);
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
-
-        assert mTabLayout != null;
-        mTabLayout.setVisibility(View.GONE);
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        mEmptyView = findViewById(android.R.id.empty);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), this);
 
@@ -107,7 +138,20 @@ public class GameActivity extends SnackBarActivity {
         mViewPager.setAdapter(sectionsPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
-        account = (Account) getIntent().getSerializableExtra("account");
+        assert mFab != null;
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUiMode(UI_MODE_LOADING);
+                loadCurrentGame(account.summonerName, account.region);
+            }
+        });
+
+        TextView notInGame = ((TextView) findViewById(R.id.summoner_not_in_game_text));
+        assert notInGame != null;
+        notInGame.setText(String.format(getString(R.string.s_is_not_in_game_right_now), account.summonerName));
+
+        setUiMode(UI_MODE_LOADING);
 
         ((LolApplication) getApplication()).getMixpanel().getPeople().increment("games_viewed_count", 1);
         ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
@@ -140,25 +184,57 @@ public class GameActivity extends SnackBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_game, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the HomeActivity/Up button, so long
+        // automatically handle clicks on the AccountsActivity/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if(id == android.R.id.home) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_about) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.action_about)
+                    .setMessage(getString(R.string.about_text))
+                    .setPositiveButton(R.string.rammus_ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).show();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+    protected void setUiMode(int uiMode) {
+        assert mTabLayout != null;
+        assert mEmptyView != null;
+        assert mFab != null;
+
+        if(uiMode == UI_MODE_LOADING) {
+            mTabLayout.setVisibility(View.GONE);
+            mEmptyView.setVisibility(View.GONE);
+            mFab.setVisibility(View.GONE);
+        }
+        else if(uiMode == UI_MODE_NOT_IN_GAME) {
+            mTabLayout.setVisibility(View.GONE);
+            mEmptyView.setVisibility(View.VISIBLE);
+            mFab.setVisibility(View.VISIBLE);
+        }
+        else if(uiMode == UI_MODE_IN_GAME) {
+            mTabLayout.setVisibility(View.VISIBLE);
+            mEmptyView.setVisibility(View.GONE);
+            mFab.setVisibility(View.GONE);
+        }
+    }
     public void loadCurrentGame(final String summonerName, final String region) {
         final ProgressDialog dialog = ProgressDialog.show(this, "",
                 String.format(getString(R.string.loading_game_data), summonerName), true);
@@ -197,25 +273,22 @@ public class GameActivity extends SnackBarActivity {
                     dialog.dismiss();
                     Log.e(TAG, error.toString());
 
+                    setUiMode(UI_MODE_NOT_IN_GAME);
                     try {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
 
-                        Intent intent = new Intent();
-                        intent.putExtra("error", responseBody);
-                        setResult(NO_GAME_FOUND, intent);
-
-                        JSONObject j = account.toJsonObject();
-                        j.put("error", responseBody);
-                        ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
-
+                        if(!responseBody.contains("ummoner not in game")) {
+                            displaySnack(responseBody);
+                            JSONObject j = account.toJsonObject();
+                            j.put("error", responseBody);
+                            ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
+                        }
                     } catch (UnsupportedEncodingException | JSONException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
                     }
-
-                    finish();
                 }
             });
 
@@ -240,9 +313,7 @@ public class GameActivity extends SnackBarActivity {
 
         sectionsPagerAdapter.setTeams(game.teams);
 
-        // Set up the ViewPager with the sections adapter.
-        assert mTabLayout != null;
-        mTabLayout.setVisibility(View.VISIBLE);
+        setUiMode(UI_MODE_IN_GAME);
     }
 
     @Override

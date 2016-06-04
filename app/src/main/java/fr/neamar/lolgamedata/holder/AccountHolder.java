@@ -1,13 +1,16 @@
 package fr.neamar.lolgamedata.holder;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import fr.neamar.lolgamedata.AccountManager;
+import fr.neamar.lolgamedata.GameActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.adapter.AccountAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
@@ -45,7 +48,9 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
             return;
         }
 
-        accountAdapter.homeActivity.openGameDetails(account);
+        Intent i = new Intent(v.getContext(), GameActivity.class);
+        i.putExtra("account", account);
+        v.getContext().startActivity(i);
     }
 
     @Override
@@ -55,13 +60,8 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
         accountManager.removeAccount(account);
 
         accountAdapter.updateAccounts(accountManager.getAccounts());
-        accountAdapter.homeActivity.displaySnack("Account removed.", "Undo", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                accountManager.addAccount(account);
-                accountAdapter.updateAccounts(accountManager.getAccounts());
-            }
-        });
+
+        Toast.makeText(v.getContext(), R.string.account_removed, Toast.LENGTH_SHORT).show();
         return true;
     }
 }

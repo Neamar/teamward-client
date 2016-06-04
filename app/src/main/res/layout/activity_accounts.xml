@@ -4,16 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/coordinatorLayout"
-    tools:context=".HomeActivity">
-
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        tools:listitem="@layout/item_account">
-    </android.support.v7.widget.RecyclerView>
+    tools:context=".AccountsActivity">
 
     <TextView
         android:layout_width="match_parent"
