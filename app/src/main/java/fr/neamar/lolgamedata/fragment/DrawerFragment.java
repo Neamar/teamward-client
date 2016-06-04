@@ -29,6 +29,7 @@ import fr.neamar.lolgamedata.pojo.Account;
 public class DrawerFragment extends Fragment {
     protected RecyclerView recyclerView;
     protected AccountManager accountManager;
+    private BroadcastReceiver mBroadcastReceiver;
 
     public DrawerFragment() {
         // Required empty public constructor
@@ -64,11 +65,20 @@ public class DrawerFragment extends Fragment {
             }
         });
 
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(new BroadcastReceiver() {
+        mBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 adapter.updateAccounts(accountManager.getAccounts());
             }
-        }, new IntentFilter(AccountManager.ACCOUNTS_CHANGE));
+        };
+
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mBroadcastReceiver, new IntentFilter(AccountManager.ACCOUNTS_CHANGE));
+    }
+
+    @Override
+    public void onStop() {
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mBroadcastReceiver);
+
+        super.onStop();
     }
 }
