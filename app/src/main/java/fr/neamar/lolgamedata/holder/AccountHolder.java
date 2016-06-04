@@ -59,13 +59,7 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
         accountManager.removeAccount(account);
 
         accountAdapter.updateAccounts(accountManager.getAccounts());
-        accountAdapter.accountsActivity.displaySnack("Account removed.", "Undo", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                accountManager.addAccount(account);
-                accountAdapter.updateAccounts(accountManager.getAccounts());
-            }
-        });
+
         return true;
     }
 }
