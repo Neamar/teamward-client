@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.service.RegistrationIntentService;
 
-public class HomeActivity extends SnackBarActivity {
-    public static final String TAG = "HomeActivity";
+public class AccountsActivity extends SnackBarActivity {
+    public static final String TAG = "AccountsActivity";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final int ADD_NEW_ACCOUNT = 1;
 
@@ -36,7 +36,7 @@ public class HomeActivity extends SnackBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_accounts);
 
         accountManager = new AccountManager(this);
 
@@ -93,7 +93,7 @@ public class HomeActivity extends SnackBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the HomeActivity/Up button, so long
+        // automatically handle clicks on the AccountsActivity/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -114,7 +114,7 @@ public class HomeActivity extends SnackBarActivity {
     }
 
     private void addAccount() {
-        Intent i = new Intent(HomeActivity.this, AddAccountActivity.class);
+        Intent i = new Intent(AccountsActivity.this, AddAccountActivity.class);
         startActivityForResult(i, ADD_NEW_ACCOUNT);
     }
 

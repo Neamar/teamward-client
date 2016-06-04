@@ -94,7 +94,7 @@ public class GameActivity extends SnackBarActivity {
         // First run: open accounts activity, finish this one
         AccountManager accountManager = new AccountManager(this);
         if (accountManager.getAccounts().isEmpty()) {
-            Intent i = new Intent(this, HomeActivity.class);
+            Intent i = new Intent(this, AccountsActivity.class);
             startActivity(i);
             finish();
             return;
@@ -189,7 +189,7 @@ public class GameActivity extends SnackBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the HomeActivity/Up button, so long
+        // automatically handle clicks on the AccountsActivity/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
