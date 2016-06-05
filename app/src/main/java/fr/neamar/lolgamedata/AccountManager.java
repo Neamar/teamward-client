@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -12,6 +13,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.pojo.Account;
+import fr.neamar.lolgamedata.service.RegistrationIntentService;
 
 /**
  * Created by neamar on 03/04/16.
@@ -20,6 +22,7 @@ public class AccountManager {
     public static final String ACCOUNTS_KEY = "accounts";
     public static final String DEFAULT_VALUE = "[]";
     public static final String ACCOUNTS_CHANGE = "accounts_change";
+    private static final String TAG = "AccountManager";
 
     private Context context;
 
@@ -40,8 +43,16 @@ public class AccountManager {
 
         getSharedPreferences().edit().putString(ACCOUNTS_KEY, accountsJson.toString()).apply();
 
+        // Broadcast change
         Intent i = new Intent(ACCOUNTS_CHANGE);
         LocalBroadcastManager.getInstance(context).sendBroadcast(i);
+
+        // And (re-)register for push notifications
+        // TODO: can we start a service automatically from the manifest on a BroadcastManager
+        // Start IntentService to register this application with GCM.
+        Intent intent = new Intent(context, RegistrationIntentService.class);
+        Log.e(TAG, "Starting Service");
+        context.startService(intent);
 
     }
 

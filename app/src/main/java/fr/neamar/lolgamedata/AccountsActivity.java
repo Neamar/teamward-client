@@ -6,13 +6,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +16,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.pojo.Account;
-import fr.neamar.lolgamedata.service.RegistrationIntentService;
 
 public class AccountsActivity extends SnackBarActivity {
     public static final String TAG = "AccountsActivity";
@@ -64,22 +59,12 @@ public class AccountsActivity extends SnackBarActivity {
             ((LolApplication) getApplication()).getMixpanel().getPeople().set("region", accounts.get(0).region);
         }
 
-        registerForPushNotification(accounts);
-
         if (!accounts.isEmpty()) {
             Account mainAccount = accounts.get(0);
             Intent i = new Intent(this, GameActivity.class);
             i.putExtra("account", mainAccount);
             startActivityForResult(i, GAME_DETAILS);
             finish();
-        }
-    }
-
-    private void registerForPushNotification(ArrayList<Account> accounts) {
-        if (checkPlayServices() && accounts.size() > 0) {
-            // Start IntentService to register this application with GCM.
-            Intent intent = new Intent(this, RegistrationIntentService.class);
-            startService(intent);
         }
     }
 
@@ -130,8 +115,6 @@ public class AccountsActivity extends SnackBarActivity {
             ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
             ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", newAccounts.size());
 
-            registerForPushNotification(newAccounts);
-
             Intent i = new Intent(this, GameActivity.class);
             i.putExtra("account", newAccount);
             startActivityForResult(i, GAME_DETAILS);
@@ -141,25 +124,5 @@ public class AccountsActivity extends SnackBarActivity {
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
-    }
-
-    /**
-     * Check the device to make sure it has the Google Play Services APK. If
-     * it doesn't, display a dialog that allows users to download the APK from
-     * the Google Play Store or enable it in the device's system settings.
-     */
-    private boolean checkPlayServices() {
-        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
-        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
-        if (resultCode != ConnectionResult.SUCCESS) {
-            if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
-                        .show();
-            } else {
-                Log.i(TAG, "This device is not supported for GCM.");
-            }
-            return false;
-        }
-        return true;
     }
 }

@@ -13,6 +13,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
@@ -42,6 +44,13 @@ public class RegistrationIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            Log.e(TAG, "DEvine is not eligible for push notification.");
+            return;
+        }
 
         try {
             // [START register_for_gcm]
@@ -77,7 +86,7 @@ public class RegistrationIntentService extends IntentService {
 
     private void sendTokenToServer(String token, Account account) {
         // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
+        final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
             JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/push?token=" + token + "&summoner=" + URLEncoder.encode(account.summonerName, "UTF-8") + "&region=" + account.region,
@@ -86,6 +95,7 @@ public class RegistrationIntentService extends IntentService {
                         @Override
                         public void onResponse(JSONObject response) {
                             Log.i(TAG, "Token registered with server.");
+                            queue.stop();
                         }
                     }, new Response.ErrorListener() {
                 @Override
