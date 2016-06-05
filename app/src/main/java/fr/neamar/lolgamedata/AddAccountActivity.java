@@ -77,6 +77,7 @@ public class AddAccountActivity extends Activity {
                             dialog.dismiss();
 
                             newAccount.summonerImage = response.optString("profileIcon", "");
+                            newAccount.summonerName = response.optString("name", newAccount.summonerName);
 
                             Intent intent = new Intent(NEW_ACCOUNT);
                             intent.putExtra("account", newAccount);

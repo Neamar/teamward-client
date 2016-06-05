@@ -72,7 +72,7 @@ public class RegistrationIntentService extends IntentService {
 
             AccountManager accountManager = new AccountManager(this);
             ArrayList<Account> accounts = accountManager.getAccounts();
-            if(accounts.size() > 0) {
+            if(!accounts.isEmpty()) {
                 sendTokenToServer(token, accounts.get(0));
             }
             // [END register_for_gcm]
@@ -84,7 +84,7 @@ public class RegistrationIntentService extends IntentService {
         }
     }
 
-    private void sendTokenToServer(String token, Account account) {
+    private void sendTokenToServer(String token, final Account account) {
         // Instantiate the RequestQueue.
         final RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -94,7 +94,7 @@ public class RegistrationIntentService extends IntentService {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Log.i(TAG, "Token registered with server.");
+                            Log.i(TAG, "Token registered with server for user " + account.summonerName);
                             queue.stop();
                         }
                     }, new Response.ErrorListener() {
