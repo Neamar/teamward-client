@@ -47,6 +47,7 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
 
         Intent i = new Intent(v.getContext(), GameActivity.class);
         i.putExtra("account", account);
+        i.putExtra("source", "drawer");
         v.getContext().startActivity(i);
     }
 

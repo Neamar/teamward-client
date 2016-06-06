@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -85,6 +86,8 @@ public class AddAccountActivity extends Activity {
 
                             (new AccountManager(AddAccountActivity.this)).addAccount(newAccount);
 
+                            ((LolApplication) getApplication()).getMixpanel().track("Account added", newAccount.toJsonObject());
+
                             queue.stop();
                             finish();
                         }
@@ -96,13 +99,19 @@ public class AddAccountActivity extends Activity {
 
                     try {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
-                        Log.i(TAG, responseBody);
+                        String errorMessage = responseBody.isEmpty() ? "Unable to load player data" : responseBody;
+                        Log.i(TAG, errorMessage);
 
                         Intent intent = new Intent();
                         intent.putExtra("type", NEW_ACCOUNT);
-                        intent.putExtra("error", responseBody.isEmpty() ? "Unable to load player data" : responseBody);
+                        intent.putExtra("error", errorMessage);
                         setResult(RESULT_ERROR, intent);
-                    } catch (UnsupportedEncodingException e) {
+
+                        JSONObject j = newAccount.toJsonObject();
+                        j.putOpt("error", errorMessage);
+                        ((LolApplication) getApplication()).getMixpanel().track("Error adding account", j);
+
+                    } catch (UnsupportedEncodingException | JSONException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                     }

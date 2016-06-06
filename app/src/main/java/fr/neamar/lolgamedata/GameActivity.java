@@ -169,10 +169,11 @@ public class GameActivity extends SnackBarActivity {
             long timeSinceGameStart = new Date().getTime() - game.startTime.getTime();
             Log.i(TAG, "Game started since " + Math.floor(timeSinceGameStart / 1000 / 60));
             if (timeSinceLastView > 30000 && timeSinceGameStart > 60000 * 15) {
-                displaySnack("Stale data?", "Reload", new View.OnClickListener() {
+                displaySnack(getString(R.string.stale_data), getString(R.string.reload), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         loadCurrentGame(account.summonerName, account.region);
+                        ((LolApplication) getApplication()).getMixpanel().track("Relaod stale game");
                     }
                 });
             }
@@ -196,7 +197,7 @@ public class GameActivity extends SnackBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if(id == android.R.id.home) {
+        if (id == android.R.id.home) {
             mDrawerLayout.openDrawer(GravityCompat.START);
         }
         if (id == R.id.action_settings) {
@@ -219,22 +220,21 @@ public class GameActivity extends SnackBarActivity {
         assert mEmptyView != null;
         assert mFab != null;
 
-        if(uiMode == UI_MODE_LOADING) {
+        if (uiMode == UI_MODE_LOADING) {
             mTabLayout.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.GONE);
             mFab.setVisibility(View.GONE);
-        }
-        else if(uiMode == UI_MODE_NOT_IN_GAME) {
+        } else if (uiMode == UI_MODE_NOT_IN_GAME) {
             mTabLayout.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.VISIBLE);
             mFab.setVisibility(View.VISIBLE);
-        }
-        else if(uiMode == UI_MODE_IN_GAME) {
+        } else if (uiMode == UI_MODE_IN_GAME) {
             mTabLayout.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
             mFab.setVisibility(View.GONE);
         }
     }
+
     public void loadCurrentGame(final String summonerName, final String region) {
         final ProgressDialog dialog = ProgressDialog.show(this, "",
                 String.format(getString(R.string.loading_game_data), summonerName), true);
@@ -258,6 +258,18 @@ public class GameActivity extends SnackBarActivity {
 
                                 // Timing automatically added (see timeEvent() call)
                                 JSONObject j = account.toJsonObject();
+                                j.putOpt("game_map_id", game.mapId);
+                                j.putOpt("game_map_name", getString(getMapName(game.mapId)));
+                                j.putOpt("game_mode", game.gameMode);
+                                j.putOpt("game_type", game.gameType);
+                                j.putOpt("game_id", game.gameId);
+                                if (getIntent() != null && !getIntent().getStringExtra("source").isEmpty()) {
+                                    j.putOpt("source", getIntent().getStringExtra("source"));
+                                }
+                                else {
+                                    j.putOpt("source", "unknown");
+                                }
+
                                 ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
 
                             } catch (JSONException e) {
@@ -280,7 +292,7 @@ public class GameActivity extends SnackBarActivity {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
 
-                        if(!responseBody.contains("ummoner not in game")) {
+                        if (!responseBody.contains("ummoner not in game")) {
                             displaySnack(responseBody);
                             JSONObject j = account.toJsonObject();
                             j.put("error", responseBody);

@@ -12,8 +12,10 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import fr.neamar.lolgamedata.GameActivity;
+import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Account;
 
@@ -65,6 +67,7 @@ public class MyGcmListenerService extends GcmListenerService {
     private void displayNotification(Account account, int mapId, String gameMode) {
         Intent intent = new Intent(this, GameActivity.class);
         intent.putExtra("account", account);
+        intent.putExtra("source", "notification");
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -84,5 +87,7 @@ public class MyGcmListenerService extends GcmListenerService {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+
+        MixpanelAPI.getInstance(this, LolApplication.MIXPANEL_TOKEN).track("Notification displayed", account.toJsonObject());
     }
 }
