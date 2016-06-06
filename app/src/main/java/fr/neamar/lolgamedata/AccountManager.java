@@ -7,6 +7,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -81,11 +83,20 @@ public class AccountManager {
         ArrayList<Account> accounts = getAccounts();
         accounts.add(account);
         writeAccounts(accounts);
+
+        if(accounts.size() == 1) {
+            FirebaseAnalytics.getInstance(context).logEvent(FirebaseAnalytics.Event.LOGIN, account.toAnalyticsBundle());
+            FirebaseAnalytics.getInstance(context).setUserProperty("region", account.region);
+        }
+
+        FirebaseAnalytics.getInstance(context).logEvent("new_account_added", account.toAnalyticsBundle());
     }
 
     public void removeAccount(Account account) {
         ArrayList<Account> accounts = getAccounts();
         accounts.remove(account);
         writeAccounts(accounts);
+
+        FirebaseAnalytics.getInstance(context).logEvent("account_removed", account.toAnalyticsBundle());
     }
 }

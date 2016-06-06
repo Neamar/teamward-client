@@ -1,7 +1,6 @@
 package fr.neamar.lolgamedata;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,7 +11,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -27,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,14 +38,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
-import fr.neamar.lolgamedata.fragment.DrawerFragment;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
 
-public class GameActivity extends SnackBarActivity {
+public class GameActivity extends BaseActivity {
     public static final String TAG = "GameActivity";
-
-    public static final int NO_GAME_FOUND = 44;
 
     public static final int UI_MODE_LOADING = 0;
     public static final int UI_MODE_IN_GAME = 1;
@@ -90,7 +86,6 @@ public class GameActivity extends SnackBarActivity {
     }
 
     private DrawerLayout mDrawerLayout;
-    private DrawerFragment mDrawerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +95,7 @@ public class GameActivity extends SnackBarActivity {
         // First run: open accounts activity, finish this one
         AccountManager accountManager = new AccountManager(this);
         if (accountManager.getAccounts().isEmpty()) {
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.TUTORIAL_BEGIN, new Bundle());
             Intent i = new Intent(this, AccountsActivity.class);
             startActivity(i);
             finish();
@@ -172,6 +168,7 @@ public class GameActivity extends SnackBarActivity {
                 displaySnack("Stale data?", "Reload", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        mFirebaseAnalytics.logEvent("reload_stale_data", account.toAnalyticsBundle());
                         loadCurrentGame(account.summonerName, account.region);
                     }
                 });
@@ -202,14 +199,7 @@ public class GameActivity extends SnackBarActivity {
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_about) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.action_about)
-                    .setMessage(getString(R.string.about_text))
-                    .setPositiveButton(R.string.rammus_ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    }).show();
+            displayAboutDialog();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -256,6 +246,14 @@ public class GameActivity extends SnackBarActivity {
 
                                 Log.i(TAG, "Displaying game #" + game.gameId);
 
+                                Bundle b = account.toAnalyticsBundle();
+                                b.putString("gameId", Long.toString(game.gameId));
+                                b.putInt("mapId", game.mapId);
+                                b.putString("mapName", getString(GameActivity.getMapName(game.mapId)));
+                                b.putString("gameMode", game.gameMode);
+                                b.putString("gameType", game.gameType);
+
+                                mFirebaseAnalytics.logEvent("view_game", b);
                                 // Timing automatically added (see timeEvent() call)
                                 JSONObject j = account.toJsonObject();
                                 ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
@@ -282,6 +280,10 @@ public class GameActivity extends SnackBarActivity {
 
                         if(!responseBody.contains("ummoner not in game")) {
                             displaySnack(responseBody);
+                            Bundle b = account.toAnalyticsBundle();
+                            b.putString("error", responseBody);
+
+                            mFirebaseAnalytics.logEvent("error_viewing_game", b);
                             JSONObject j = account.toJsonObject();
                             j.put("error", responseBody);
                             ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);

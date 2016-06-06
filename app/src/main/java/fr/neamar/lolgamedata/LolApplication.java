@@ -2,9 +2,11 @@ package fr.neamar.lolgamedata;
 
 import android.app.Application;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -54,6 +56,8 @@ public class LolApplication extends Application {
         Intent intent = new Intent(this, RegistrationIntentService.class);
         Log.e(TAG, "Starting Service");
         startService(intent);
+
+        FirebaseAnalytics.getInstance(this).logEvent(FirebaseAnalytics.Event.APP_OPEN, new Bundle());
     }
 
     public MixpanelAPI getMixpanel() {
