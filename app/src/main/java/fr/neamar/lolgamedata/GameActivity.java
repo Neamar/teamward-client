@@ -102,6 +102,9 @@ public class GameActivity extends SnackBarActivity {
         if (accountManager.getAccounts().isEmpty()) {
             Intent i = new Intent(this, AccountsActivity.class);
             startActivity(i);
+
+            ((LolApplication) getApplication()).getMixpanel().track("First time app open");
+
             finish();
             return;
         }
@@ -295,7 +298,7 @@ public class GameActivity extends SnackBarActivity {
                         if (!responseBody.contains("ummoner not in game")) {
                             displaySnack(responseBody);
                             JSONObject j = account.toJsonObject();
-                            j.put("error", responseBody);
+                            j.put("error", responseBody.replace("Error:", ""));
                             ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
                         }
                     } catch (UnsupportedEncodingException | JSONException e) {
