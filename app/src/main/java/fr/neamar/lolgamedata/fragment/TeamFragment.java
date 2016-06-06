@@ -49,6 +49,7 @@ public class TeamFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
         team = (Team) getArguments().getSerializable(ARG_SECTION_TEAM);
+        assert team != null;
 
         PlayerAdapter adapter = new PlayerAdapter(team.players);
         recyclerView.setAdapter(adapter);

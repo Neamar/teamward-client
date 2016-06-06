@@ -68,6 +68,6 @@
         android:name="fr.neamar.lolgamedata.fragment.DrawerFragment"
         android:layout_width="280dp"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_drawer"></fragment>
+        tools:layout="@layout/fragment_drawer"/>
 
 </android.support.v4.widget.DrawerLayout>

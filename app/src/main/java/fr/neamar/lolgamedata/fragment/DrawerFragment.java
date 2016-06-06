@@ -52,6 +52,7 @@ public class DrawerFragment extends Fragment {
         accountManager = new AccountManager(getActivity());
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
+        assert recyclerView != null;
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         ArrayList<Account> accounts = accountManager.getAccounts();

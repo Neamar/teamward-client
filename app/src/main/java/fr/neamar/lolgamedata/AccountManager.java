@@ -24,7 +24,7 @@ public class AccountManager {
     public static final String ACCOUNTS_CHANGE = "accounts_change";
     private static final String TAG = "AccountManager";
 
-    private Context context;
+    private final Context context;
 
     public AccountManager(Context context) {
         this.context = context;

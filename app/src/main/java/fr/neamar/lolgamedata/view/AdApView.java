@@ -12,8 +12,8 @@ import fr.neamar.lolgamedata.R;
  * Created by neamar on 17/04/16.
  */
 public class AdApView extends View {
-    Paint apPaint = new Paint();
-    Paint adPaint = new Paint();
+    final Paint apPaint = new Paint();
+    final Paint adPaint = new Paint();
 
     private float ap = 5;
     private float ad = 5;

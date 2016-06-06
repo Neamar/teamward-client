@@ -39,14 +39,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
-import fr.neamar.lolgamedata.fragment.DrawerFragment;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
 
 public class GameActivity extends SnackBarActivity {
     public static final String TAG = "GameActivity";
-
-    public static final int NO_GAME_FOUND = 44;
 
     public static final int UI_MODE_LOADING = 0;
     public static final int UI_MODE_IN_GAME = 1;
@@ -90,7 +87,6 @@ public class GameActivity extends SnackBarActivity {
     }
 
     private DrawerLayout mDrawerLayout;
-    private DrawerFragment mDrawerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -246,9 +242,8 @@ public class GameActivity extends SnackBarActivity {
         // Instantiate the RequestQueue.
         final RequestQueue queue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonRequest = null;
         try {
-            jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region, null,
+            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {

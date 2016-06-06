@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:scaleType="centerCrop"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
         android:layout_alignParentTop="true"
         android:src="@drawable/banner" />
 
@@ -20,7 +21,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/imageView2"
         tools:listitem="@layout/item_account"
-        android:layout_above="@+id/view"></android.support.v7.widget.RecyclerView>
+        android:layout_above="@+id/view"/>
 
     <View
         android:layout_width="match_parent"
@@ -81,7 +82,7 @@
             android:layout_width="@dimen/champion_mastery_size"
             android:layout_height="@dimen/champion_mastery_size"
             android:scaleType="center"
-            android:contentDescription="App settings"
+            android:contentDescription="@string/action_settings"
             android:src="@drawable/ic_settings_black_24dp" />
 
         <TextView
@@ -90,7 +91,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:gravity="center_vertical"
-            android:text="Settings"
+            android:text="@string/action_settings"
             android:textColor="#dd000000"
             android:textSize="14sp"
             android:textStyle="bold" />

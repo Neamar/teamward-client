@@ -2,7 +2,6 @@ package fr.neamar.lolgamedata;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -19,12 +18,9 @@ import fr.neamar.lolgamedata.pojo.Account;
 
 public class AccountsActivity extends SnackBarActivity {
     public static final String TAG = "AccountsActivity";
-    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final int ADD_NEW_ACCOUNT = 1;
 
-    public int GAME_DETAILS = 0;
-
-    public SharedPreferences prefs;
+    public final int GAME_DETAILS = 0;
 
     public AccountManager accountManager;
 
@@ -35,7 +31,6 @@ public class AccountsActivity extends SnackBarActivity {
 
         accountManager = new AccountManager(this);
 
-        prefs = getPreferences(MODE_PRIVATE);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {

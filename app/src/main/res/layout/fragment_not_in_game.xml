@@ -19,6 +19,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
+        android:contentDescription="@string/app_name"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/ic_launcher_transparent" />
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
-        android:text="TeamWard only gets data from Riot once you are in the game loading screen."
+        android:text="@string/no_game_2"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="If you're still in the lobby, wait and press refresh."
+        android:text="@string/no_game_3"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 </LinearLayout>
