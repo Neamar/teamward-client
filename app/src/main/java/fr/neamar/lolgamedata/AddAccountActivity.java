@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONObject;
 
@@ -84,6 +85,8 @@ public class AddAccountActivity extends Activity {
                             setResult(RESULT_OK, intent);
 
                             (new AccountManager(AddAccountActivity.this)).addAccount(newAccount);
+
+                            FirebaseAnalytics.getInstance(AddAccountActivity.this).logEvent(FirebaseAnalytics.Event.TUTORIAL_COMPLETE, newAccount.toAnalyticsBundle());
 
                             queue.stop();
                             finish();

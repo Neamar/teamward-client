@@ -23,12 +23,29 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.google.android.gms:play-services-gcm:8.3.0'
+
+    // Support libs
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
-    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.mixpanel.android:mixpanel-android:4.8.5'
     compile 'com.android.support:support-v4:23.4.0'
+
+    // Volley
+    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+
+    // Load imageView from http
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
+    // Analytics
+    compile 'com.mixpanel.android:mixpanel-android:4.8.5'
+
+    // Push to GCM
+    compile 'com.google.android.gms:play-services-gcm:9.0.0'
+
+    // Rounded images
     compile 'de.hdodenhof:circleimageview:2.0.0'
+
+    // Firebase analytics
+    compile 'com.google.firebase:firebase-analytics:9.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

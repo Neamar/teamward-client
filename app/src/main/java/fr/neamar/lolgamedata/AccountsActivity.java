@@ -1,11 +1,9 @@
 package fr.neamar.lolgamedata;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +15,7 @@ import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.pojo.Account;
 
-public class AccountsActivity extends SnackBarActivity {
+public class AccountsActivity extends BaseActivity {
     public static final String TAG = "AccountsActivity";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final int ADD_NEW_ACCOUNT = 1;
@@ -86,14 +84,7 @@ public class AccountsActivity extends SnackBarActivity {
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_about) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.action_about)
-                    .setMessage(getString(R.string.about_text))
-                    .setPositiveButton(R.string.rammus_ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    }).show();
+            displayAboutDialog();
         }
         return super.onOptionsItemSelected(item);
     }

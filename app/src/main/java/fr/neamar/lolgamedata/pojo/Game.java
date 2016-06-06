@@ -14,6 +14,8 @@ import java.util.Date;
 public class Game implements Serializable {
     public long gameId;
     public int mapId;
+    public String gameMode;
+    public String gameType;
     public Date startTime;
 
     public ArrayList<Team> teams;
@@ -21,6 +23,8 @@ public class Game implements Serializable {
     public Game(JSONObject game) throws JSONException {
         gameId = game.getLong("game_id");
         mapId = game.getInt("map_id");
+        gameMode = game.getString("game_mode");
+        gameType = game.getString("game_type");
 
         startTime = new Date(game.optLong("game_start_time", new Date().getTime()));
 
