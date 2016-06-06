@@ -106,6 +106,10 @@ public class GameActivity extends BaseActivity {
         // Get account
         if (getIntent() != null && getIntent().hasExtra("account")) {
             account = (Account) getIntent().getSerializableExtra("account");
+
+            if(getIntent().getStringExtra("source").equals("notification")) {
+                mFirebaseAnalytics.logEvent("notification_opened", new Bundle());
+            }
         } else {
             account = accountManager.getAccounts().get(0);
         }
