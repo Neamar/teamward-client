@@ -17,8 +17,8 @@ import fr.neamar.lolgamedata.pojo.Team;
  * one of the sections/tabs/pages.
  */
 public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
-    public ArrayList<Team> teams = new ArrayList<>();
     public final Context context;
+    public ArrayList<Team> teams = new ArrayList<>();
 
     public SectionsPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -61,7 +61,7 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         // even if notifyDatasetChanged() was called.
         // So when new data is sent, ensure old fragments are removed.
         TeamFragment teamFragment = (TeamFragment) item;
-        if(teams.indexOf(teamFragment.getTeam()) == -1) {
+        if (teams.indexOf(teamFragment.getTeam()) == -1) {
             return POSITION_NONE;
         }
 

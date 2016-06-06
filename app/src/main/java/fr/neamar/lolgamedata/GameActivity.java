@@ -48,26 +48,6 @@ public class GameActivity extends SnackBarActivity {
     public static final int UI_MODE_LOADING = 0;
     public static final int UI_MODE_IN_GAME = 1;
     public static final int UI_MODE_NOT_IN_GAME = 2;
-
-    public Account account;
-    public Game game = null;
-    public String summonerName;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private ViewPager mViewPager;
-
-    private View mEmptyView;
-
-    private FloatingActionButton mFab;
-
-    private TabLayout mTabLayout;
-
-    private SectionsPagerAdapter sectionsPagerAdapter;
-
-    private Date lastLoaded = null;
-
     @StringRes
     private static final Map<Integer, Integer> MAP_NAMES;
 
@@ -86,7 +66,24 @@ public class GameActivity extends SnackBarActivity {
         MAP_NAMES = Collections.unmodifiableMap(mapNames);
     }
 
+    public Account account;
+    public Game game = null;
+    public String summonerName;
+    /**
+     * The {@link ViewPager} that will host the section contents.
+     */
+    private ViewPager mViewPager;
+    private View mEmptyView;
+    private FloatingActionButton mFab;
+    private TabLayout mTabLayout;
+    private SectionsPagerAdapter sectionsPagerAdapter;
+    private Date lastLoaded = null;
     private DrawerLayout mDrawerLayout;
+
+    @NonNull
+    public static Integer getMapName(int mapId) {
+        return MAP_NAMES.containsKey(mapId) ? MAP_NAMES.get(mapId) : R.string.unknown_map;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -263,8 +260,7 @@ public class GameActivity extends SnackBarActivity {
                                 j.putOpt("game_id", game.gameId);
                                 if (getIntent() != null && !getIntent().getStringExtra("source").isEmpty()) {
                                     j.putOpt("source", getIntent().getStringExtra("source"));
-                                }
-                                else {
+                                } else {
                                     j.putOpt("source", "unknown");
                                 }
 
@@ -347,10 +343,5 @@ public class GameActivity extends SnackBarActivity {
             game = (Game) savedInstanceState.getSerializable("game");
             displayGame(summonerName, game);
         }
-    }
-
-    @NonNull
-    public static Integer getMapName(int mapId) {
-        return MAP_NAMES.containsKey(mapId) ? MAP_NAMES.get(mapId) : R.string.unknown_map;
     }
 }

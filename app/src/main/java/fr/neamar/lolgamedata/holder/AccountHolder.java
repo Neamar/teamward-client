@@ -15,10 +15,9 @@ import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Account;
 
 public class AccountHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-    private Account account;
-
     private final ImageView summonerImage;
     private final TextView summonerName;
+    private Account account;
 
     public AccountHolder(View view) {
         super(view);

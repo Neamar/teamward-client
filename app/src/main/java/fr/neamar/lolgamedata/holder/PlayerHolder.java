@@ -36,6 +36,13 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     };
 
     private static final Map<String, Integer> rankingTierResources;
+    @StringRes
+    private static final int[] mainChampionResources = new int[]{
+            0,
+            R.string.first_main,
+            R.string.second_main,
+            R.string.third_main
+    };
 
     static {
         Map<String, Integer> map = new HashMap<>();
@@ -50,16 +57,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         rankingTierResources = Collections.unmodifiableMap(map);
     }
 
-    @StringRes
-    private static final int[] mainChampionResources = new int[]{
-            0,
-            R.string.first_main,
-            R.string.second_main,
-            R.string.third_main
-    };
-
-    private Player player;
-
     private final ImageView championImage;
     private final ImageView championMastery;
     private final TextView championName;
@@ -71,6 +68,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     private final ImageView spellFImage;
     private final TextView mainChampionText;
     private final AdApView adApView;
+    private Player player;
 
     public PlayerHolder(View view) {
         super(view);

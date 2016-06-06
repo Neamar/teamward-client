@@ -38,7 +38,7 @@ public class MyGcmListenerService extends GcmListenerService {
         String region = data.getString("region");
         int mapId = Integer.parseInt(data.getString("mapId"));
 
-        Account account = new Account(summonerName,region, "");
+        Account account = new Account(summonerName, region, "");
 
         Log.d(TAG, "From: " + from);
         Log.d(TAG, "Game mode: " + gameMode);
@@ -62,7 +62,6 @@ public class MyGcmListenerService extends GcmListenerService {
 
     /**
      * Create and show a simple notification containing the received GCM message.
-     *
      */
     private void displayNotification(Account account, int mapId, String gameMode) {
         Intent intent = new Intent(this, GameActivity.class);

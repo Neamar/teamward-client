@@ -44,31 +44,29 @@ public class AdApView extends View {
         adPaint.setStrokeWidth(getWidth());
         int halfWidth = getWidth() / 2;
 
-        if(!isAp() && !isAd()) {
-            canvas.drawLine(halfWidth, 0, halfWidth , getHeight() / 2, apPaint);
-            canvas.drawLine(halfWidth , getHeight() / 2, halfWidth , getHeight(), adPaint);
-        }
-        else if(isAd()) {
-            canvas.drawLine(halfWidth, 0, halfWidth , getHeight(), adPaint);
-        }
-        else if(isAp()) {
+        if (!isAp() && !isAd()) {
+            canvas.drawLine(halfWidth, 0, halfWidth, getHeight() / 2, apPaint);
+            canvas.drawLine(halfWidth, getHeight() / 2, halfWidth, getHeight(), adPaint);
+        } else if (isAd()) {
+            canvas.drawLine(halfWidth, 0, halfWidth, getHeight(), adPaint);
+        } else if (isAp()) {
             canvas.drawLine(halfWidth, 0, halfWidth, getHeight(), apPaint);
         }
-    }
-
-    public void setAp(int ap) {
-        this.ap = ap;
-    }
-
-    public void setAd(int ad) {
-        this.ad = ad;
     }
 
     public boolean isAp() {
         return ap * .75 > ad;
     }
 
+    public void setAp(int ap) {
+        this.ap = ap;
+    }
+
     public boolean isAd() {
         return ad * .75 > ap;
+    }
+
+    public void setAd(int ad) {
+        this.ad = ad;
     }
 }

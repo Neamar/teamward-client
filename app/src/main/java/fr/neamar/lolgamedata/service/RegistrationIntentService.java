@@ -72,7 +72,7 @@ public class RegistrationIntentService extends IntentService {
 
             AccountManager accountManager = new AccountManager(this);
             ArrayList<Account> accounts = accountManager.getAccounts();
-            if(!accounts.isEmpty()) {
+            if (!accounts.isEmpty()) {
                 sendTokenToServer(token, accounts.get(0));
             }
             // [END register_for_gcm]
