@@ -22,7 +22,7 @@
         <activity
             android:name=".AccountsActivity"
             android:label="@string/add_account"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".GameActivity"
             android:label="@string/app_name"
@@ -32,7 +32,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <receiver
@@ -44,7 +43,6 @@
 
                 <category android:name="com.example.gcm" />
             </intent-filter>
-
         </receiver>
 
         <service
@@ -56,7 +54,7 @@
         </service>
         <service
             android:name=".service.RegistrationIntentService"
-            android:exported="false"/>
+            android:exported="false" />
         <service
             android:name=".service.UpdateInstanceIDListenerService"
             android:exported="false">
@@ -66,13 +64,20 @@
         </service>
 
         <activity android:name="com.mixpanel.android.surveys.SurveyActivity" />
-
         <activity
             android:name=".AddAccountActivity"
             android:excludeFromRecents="true"
             android:label="@string/title_activity_add_account"
             android:parentActivityName=".GameActivity"
             android:theme="@android:style/Theme.Holo.Light.Dialog">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fr.neamar.lolgamedata.GameActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".GameActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.neamar.lolgamedata.GameActivity" />
