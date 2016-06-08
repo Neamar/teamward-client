@@ -48,7 +48,7 @@
         </receiver>
 
         <service
-            android:name=".service.MyGcmListenerService"
+            android:name=".service.NotificationService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -58,7 +58,7 @@
             android:name=".service.RegistrationIntentService"
             android:exported="false"/>
         <service
-            android:name=".service.MyInstanceIDListenerService"
+            android:name=".service.UpdateInstanceIDListenerService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />

@@ -19,9 +19,9 @@ import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Account;
 
-public class MyGcmListenerService extends GcmListenerService {
+public class NotificationService extends GcmListenerService {
 
-    private static final String TAG = "MyGcmListenerService";
+    private static final String TAG = "NotificationService";
 
     /**
      * Called when message is received.
@@ -30,35 +30,23 @@ public class MyGcmListenerService extends GcmListenerService {
      * @param data Data bundle containing message data as key/value pairs.
      *             For Set of keys use data.keySet().
      */
-    // [START receive_message]
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        String gameMode = data.getString("gameMode");
-        String summonerName = data.getString("summonerName");
-        String region = data.getString("region");
-        int mapId = Integer.parseInt(data.getString("mapId"));
+        if(data.containsKey("gameId")) {
+            String gameMode = data.getString("gameMode");
+            String summonerName = data.getString("summonerName");
+            String region = data.getString("region");
+            int mapId = Integer.parseInt(data.getString("mapId"));
 
-        Account account = new Account(summonerName, region, "");
+            Account account = new Account(summonerName, region, "");
 
-        Log.d(TAG, "From: " + from);
-        Log.d(TAG, "Game mode: " + gameMode);
+            Log.d(TAG, "From: " + from);
+            Log.d(TAG, "Game mode: " + gameMode);
 
-        // [START_EXCLUDE]
-        /**
-         * Production applications would usually process the message here.
-         * Eg: - Syncing with server.
-         *     - Store message in local database.
-         *     - Update UI.
-         */
+            displayNotification(account, mapId, gameMode);
+        }
 
-        /**
-         * In some cases it may be useful to show a notification indicating to the user
-         * that a message was received.
-         */
-        displayNotification(account, mapId, gameMode);
-        // [END_EXCLUDE]
     }
-    // [END receive_message]
 
     /**
      * Create and show a simple notification containing the received GCM message.

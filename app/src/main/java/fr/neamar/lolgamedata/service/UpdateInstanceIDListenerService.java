@@ -4,7 +4,7 @@ import android.content.Intent;
 
 import com.google.android.gms.iid.InstanceIDListenerService;
 
-public class MyInstanceIDListenerService extends InstanceIDListenerService {
+public class UpdateInstanceIDListenerService extends InstanceIDListenerService {
 
     private static final String TAG = "MyInstanceIDLS";
 
