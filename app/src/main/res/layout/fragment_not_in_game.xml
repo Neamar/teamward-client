@@ -22,7 +22,7 @@
         android:contentDescription="@string/app_name"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_launcher_transparent" />
+        android:src="@drawable/loading_screen" />
 
     <TextView
         android:id="@+id/textView2"

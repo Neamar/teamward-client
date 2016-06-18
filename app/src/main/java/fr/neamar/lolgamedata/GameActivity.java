@@ -195,9 +195,6 @@ public class GameActivity extends SnackBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == android.R.id.home) {
             mDrawerLayout.openDrawer(GravityCompat.START);
-        }
-        if (id == R.id.action_settings) {
-            return true;
         } else if (id == R.id.action_about) {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.action_about)

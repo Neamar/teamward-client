@@ -57,7 +57,7 @@
     <string name="account_removed">Account removed.</string>
     <string name="reload">Reload</string>
     <string name="stale_data">Stale data?</string>
-    <string name="no_game_2">TeamWard only gets data from Riot once you are in the game loading screen.</string>
+    <string name="no_game_2">TeamWard only gets data once you are in the game loading screen.</string>
     <string name="no_game_3">If you\'re still in the lobby, wait and press refresh.</string>
     <string name="title_activity_settings">Settings</string>
 
