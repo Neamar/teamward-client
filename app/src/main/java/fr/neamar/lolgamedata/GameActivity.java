@@ -169,7 +169,7 @@ public class GameActivity extends SnackBarActivity {
                     @Override
                     public void onClick(View v) {
                         loadCurrentGame(account.summonerName, account.region);
-                        ((LolApplication) getApplication()).getMixpanel().track("Relaod stale game");
+                        ((LolApplication) getApplication()).getMixpanel().track("Reload stale game");
                     }
                 });
             }
