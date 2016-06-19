@@ -2,6 +2,7 @@ package fr.neamar.lolgamedata;
 
 import android.app.Application;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 
@@ -10,6 +11,9 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import java.util.List;
+
+import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.service.RegistrationIntentService;
 
 /**
@@ -52,8 +56,30 @@ public class LolApplication extends Application {
 
         // Register for push notifications, send token again in case it changed
         Intent intent = new Intent(this, RegistrationIntentService.class);
-        Log.e(TAG, "Starting Service");
+        Log.i(TAG, "Starting Service");
         startService(intent);
+
+
+        // Tracking initialization
+        final Runnable r = new Runnable() {
+            public void run() {
+                AccountManager accountManager = new AccountManager(getApplicationContext());
+                List<Account> accounts = accountManager.getAccounts();
+                Log.i(TAG, "Current size for accounts is " + accounts.size());
+
+                if(!accountManager.getAccounts().isEmpty()) {
+                    Log.i(TAG, "Identifying as " + accounts.get(0).summonerName);
+                    getMixpanel().getPeople().set("$username", accounts.get(0).summonerName);
+                    getMixpanel().getPeople().set("$name", accounts.get(0).summonerName);
+                    getMixpanel().getPeople().set("region", accounts.get(0).region);
+                }
+            }
+        };
+
+        Handler handler = new Handler();
+        handler.post(r);
+
+
     }
 
     public MixpanelAPI getMixpanel() {
