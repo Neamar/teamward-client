@@ -48,12 +48,6 @@ public class AccountsActivity extends SnackBarActivity {
             e.printStackTrace();
         }
 
-        if (accounts.size() > 0) {
-            ((LolApplication) getApplication()).getMixpanel().getPeople().set("$username", accounts.get(0).summonerName);
-            ((LolApplication) getApplication()).getMixpanel().getPeople().set("$name", accounts.get(0).summonerName);
-            ((LolApplication) getApplication()).getMixpanel().getPeople().set("region", accounts.get(0).region);
-        }
-
         if (!accounts.isEmpty()) {
             Account mainAccount = accounts.get(0);
             Intent i = new Intent(this, GameActivity.class);
@@ -102,11 +96,6 @@ public class AccountsActivity extends SnackBarActivity {
             Account newAccount = (Account) data.getSerializableExtra("account");
 
             displaySnack(String.format("Added account %s", newAccount.summonerName));
-
-            ArrayList<Account> newAccounts = accountManager.getAccounts();
-            JSONObject j = newAccount.toJsonObject();
-            ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
-            ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", newAccounts.size());
 
             Intent i = new Intent(this, GameActivity.class);
             i.putExtra("account", newAccount);

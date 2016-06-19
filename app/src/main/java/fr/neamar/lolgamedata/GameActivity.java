@@ -150,6 +150,8 @@ public class GameActivity extends SnackBarActivity {
         setUiMode(UI_MODE_LOADING);
 
         ((LolApplication) getApplication()).getMixpanel().getPeople().increment("games_viewed_count", 1);
+        ((LolApplication) getApplication()).getMixpanel().getPeople().set("last_viewed_game", new Date());
+
         ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
 
 
@@ -163,7 +165,7 @@ public class GameActivity extends SnackBarActivity {
         if (lastLoaded != null) {
             long timeSinceLastView = new Date().getTime() - lastLoaded.getTime();
             long timeSinceGameStart = new Date().getTime() - game.startTime.getTime();
-            Log.i(TAG, "Game started since " + Math.floor(timeSinceGameStart / 1000 / 60));
+            Log.i(TAG, "Game started since " + Math.floor(timeSinceGameStart / 1000 / 60) + " minutes.");
             if (timeSinceLastView > 30000 && timeSinceGameStart > 60000 * 15) {
                 displaySnack(getString(R.string.stale_data), getString(R.string.reload), new View.OnClickListener() {
                     @Override

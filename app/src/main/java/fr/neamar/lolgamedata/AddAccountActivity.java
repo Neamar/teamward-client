@@ -89,9 +89,11 @@ public class AddAccountActivity extends Activity {
                             intent.putExtra("account", newAccount);
                             setResult(RESULT_OK, intent);
 
-                            (new AccountManager(AddAccountActivity.this)).addAccount(newAccount);
+                            AccountManager accountManager = new AccountManager(AddAccountActivity.this);
+                            accountManager.addAccount(newAccount);
 
                             ((LolApplication) getApplication()).getMixpanel().track("Account added", newAccount.toJsonObject());
+                            ((LolApplication) getApplication()).getMixpanel().getPeople().set("accounts_length", accountManager.getAccounts().size());
 
                             queue.stop();
                             finish();
