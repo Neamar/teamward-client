@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -65,6 +66,13 @@ public class DrawerFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), AddAccountActivity.class);
                 startActivity(i);
+            }
+        });
+
+        getView().findViewById(R.id.settingsLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Settings will be there soon! Check back next update...", Toast.LENGTH_SHORT).show();
             }
         });
 
