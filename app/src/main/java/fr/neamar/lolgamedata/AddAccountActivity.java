@@ -52,6 +52,11 @@ public class AddAccountActivity extends Activity {
                 String name = nameText.getText().toString();
                 String region = regionSpinner.getSelectedItem().toString().replaceAll(" .+$", "");
 
+                if(name.isEmpty()) {
+                    nameText.setError("Please enter your summoner name!");
+                    nameText.requestFocus();
+                    return;
+                }
                 Log.i(TAG, "Adding new account: " + name + " (" + region + ")");
 
                 saveAccount(name, region);
@@ -59,7 +64,7 @@ public class AddAccountActivity extends Activity {
         });
     }
 
-    private Account saveAccount(String name, String region) {
+    private Account saveAccount(final String name, final String region) {
         final Account newAccount = new Account(name, region, "");
 
         final ProgressDialog dialog = ProgressDialog.show(this, "",
@@ -109,6 +114,8 @@ public class AddAccountActivity extends Activity {
 
                         JSONObject j = newAccount.toJsonObject();
                         j.putOpt("error", errorMessage);
+                        j.putOpt("name", name);
+                        j.putOpt("region", region);
                         ((LolApplication) getApplication()).getMixpanel().track("Error adding account", j);
 
                     } catch (UnsupportedEncodingException | JSONException e) {
@@ -117,7 +124,9 @@ public class AddAccountActivity extends Activity {
                     }
 
                     queue.stop();
-                    finish();
+
+                    final TextView nameText = (TextView) findViewById(R.id.summonerText);
+                    nameText.setError("Error adding account. Please double check your summoner name and region!");
                 }
             });
 
