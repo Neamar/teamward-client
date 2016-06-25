@@ -1,16 +1,15 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 17
-        versionName "2.0.1"
+        targetSdkVersion 24
+        versionCode 18
+        versionName "2.0.2"
     }
     buildTypes {
         release {
@@ -23,12 +22,14 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.google.android.gms:play-services-gcm:9.0.0'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
+    compile 'com.google.android.gms:play-services-gcm:9.0.2'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:design:24.0.0'
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.mixpanel.android:mixpanel-android:4.8.5'
-    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:support-v4:24.0.0'
     compile 'de.hdodenhof:circleimageview:2.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
