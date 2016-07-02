@@ -257,7 +257,7 @@ public class GameActivity extends SnackBarActivity {
                                 j.putOpt("game_mode", game.gameMode);
                                 j.putOpt("game_type", game.gameType);
                                 j.putOpt("game_id", game.gameId);
-                                if (getIntent() != null && !getIntent().getStringExtra("source").isEmpty()) {
+                                if (getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty()) {
                                     j.putOpt("source", getIntent().getStringExtra("source"));
                                 } else {
                                     j.putOpt("source", "unknown");
