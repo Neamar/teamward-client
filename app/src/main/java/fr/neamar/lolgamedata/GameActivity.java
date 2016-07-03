@@ -1,6 +1,8 @@
 package fr.neamar.lolgamedata;
 
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -175,6 +177,10 @@ public class GameActivity extends SnackBarActivity {
                     }
                 });
             }
+
+            NotificationManager notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.cancel(game.gameId);
         }
 
         super.onResume();
