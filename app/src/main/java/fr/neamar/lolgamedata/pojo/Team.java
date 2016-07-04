@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Team implements Serializable {
     public int teamId;
     public ArrayList<Player> players;
+    public JSONArray premades;
 
     public Team(JSONObject team) throws JSONException {
         teamId = team.getInt("team_id");
@@ -26,5 +27,7 @@ public class Team implements Serializable {
                 e.printStackTrace();
             }
         }
+
+        premades = team.getJSONArray("premades");
     }
 }
