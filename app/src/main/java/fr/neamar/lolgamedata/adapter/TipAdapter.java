@@ -1,40 +1,47 @@
 package fr.neamar.lolgamedata.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
-import fr.neamar.lolgamedata.R;
+import java.util.ArrayList;
+
+import fr.neamar.lolgamedata.tips.PremadeTip;
+import fr.neamar.lolgamedata.tips.builder.PremadeTipBuilder;
+import fr.neamar.lolgamedata.tips.Tip;
 import fr.neamar.lolgamedata.holder.TipHolder;
 import fr.neamar.lolgamedata.pojo.Game;
-import fr.neamar.lolgamedata.cards.tips.Tip;
 
 /**
  * Created by neamar on 04/07/16.
  */
 public class TipAdapter extends RecyclerView.Adapter<TipHolder> {
-
+    public ArrayList<Tip> tips;
     public TipAdapter(Game game) {
+        tips = Tip.getTips(game);
     }
 
     @Override
     public TipHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        if(viewType == PremadeTip.class.getName().hashCode()) {
+            return PremadeTipBuilder.onCreateViewHolder(parent);
+        }
 
-        View view = inflater.inflate(R.layout.item_tip_premade, parent, false);
-
-        return new TipHolder(view);
+        throw new RuntimeException("Unknown tip class!");
     }
 
     @Override
     public void onBindViewHolder(TipHolder holder, int position) {
-        holder.bindTip(new Tip());
+        holder.bindTip(tips.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return 12;
+        return tips.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return tips.get(position).getClass().getName().hashCode();
     }
 }

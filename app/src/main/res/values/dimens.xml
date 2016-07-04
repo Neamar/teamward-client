@@ -10,6 +10,6 @@
     <dimen name="player_pod_height">90dp</dimen>
     <dimen name="champion_mastery_size">40dp</dimen>
     <dimen name="champion_mastery_half_size">-20dp</dimen>
-    <dimen name="tip_champion_thumbnail">20dp</dimen>
+    <dimen name="tip_champion_thumbnail">25dp</dimen>
 
 </resources>

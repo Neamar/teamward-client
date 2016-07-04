@@ -32,6 +32,7 @@
 
             <include
                 layout="@layout/item_tip_premade_team"
+                android:id="@+id/blueTeam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></include>
         </FrameLayout>
@@ -45,6 +46,7 @@
 
             <include
                 layout="@layout/item_tip_premade_team"
+                android:id="@+id/redTeam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></include>
         </FrameLayout>

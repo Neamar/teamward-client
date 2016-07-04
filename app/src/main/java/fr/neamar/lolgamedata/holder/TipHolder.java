@@ -3,7 +3,7 @@ package fr.neamar.lolgamedata.holder;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import fr.neamar.lolgamedata.cards.tips.Tip;
+import fr.neamar.lolgamedata.tips.Tip;
 
 /**
  * Created by neamar on 04/07/16.
