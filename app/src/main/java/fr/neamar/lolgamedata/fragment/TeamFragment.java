@@ -46,6 +46,7 @@ public class TeamFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_team, container, false);
 
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
         team = (Team) getArguments().getSerializable(ARG_SECTION_TEAM);

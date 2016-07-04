@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by neamar on 25/03/16.
  */
 public class Game implements Serializable {
-    public int gameId;
+    public long gameId;
     public int mapId;
     public Date startTime;
     public String gameMode;
@@ -20,7 +20,7 @@ public class Game implements Serializable {
     public ArrayList<Team> teams;
 
     public Game(JSONObject game) throws JSONException {
-        gameId = game.getInt("game_id");
+        gameId = game.getLong("game_id");
         mapId = game.getInt("map_id");
         gameMode = game.getString("game_mode");
         gameType = game.getString("game_type");

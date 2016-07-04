@@ -51,7 +51,6 @@ public class AccountManager {
         // TODO: can we start a service automatically from the manifest on a BroadcastManager
         // Start IntentService to register this application with GCM.
         Intent intent = new Intent(context, RegistrationIntentService.class);
-        Log.e(TAG, "Starting Service");
         context.startService(intent);
 
     }

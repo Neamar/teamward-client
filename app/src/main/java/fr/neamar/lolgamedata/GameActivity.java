@@ -180,7 +180,7 @@ public class GameActivity extends SnackBarActivity {
 
             NotificationManager notificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.cancel(game.gameId);
+            notificationManager.cancel(Long.hashCode(game.gameId));
         }
 
         super.onResume();

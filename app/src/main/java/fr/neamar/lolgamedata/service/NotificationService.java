@@ -33,7 +33,7 @@ public class NotificationService extends GcmListenerService {
     @Override
     public void onMessageReceived(String from, Bundle data) {
         if(data.containsKey("gameId")) {
-            int gameId = data.getInt("gameId");
+            long gameId = data.getLong("gameId");
             String gameMode = data.getString("gameMode");
             String summonerName = data.getString("summonerName");
             String region = data.getString("region");
@@ -52,7 +52,7 @@ public class NotificationService extends GcmListenerService {
     /**
      * Create and show a simple notification containing the received GCM message.
      */
-    private void displayNotification(Account account, int gameId, int mapId) {
+    private void displayNotification(Account account, long gameId, int mapId) {
         Intent intent = new Intent(this, GameActivity.class);
         intent.putExtra("account", account);
         intent.putExtra("source", "notification");
@@ -74,7 +74,7 @@ public class NotificationService extends GcmListenerService {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(gameId, notificationBuilder.build());
+        notificationManager.notify(Long.hashCode(gameId), notificationBuilder.build());
 
         MixpanelAPI.getInstance(this, LolApplication.MIXPANEL_TOKEN).track("Notification displayed", account.toJsonObject());
     }
