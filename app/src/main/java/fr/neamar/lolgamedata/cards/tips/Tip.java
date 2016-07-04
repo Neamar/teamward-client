@@ -1,4 +1,4 @@
-package fr.neamar.lolgamedata.pojo.tips;
+package fr.neamar.lolgamedata.cards.tips;
 
 /**
  * Created by neamar on 04/07/16.

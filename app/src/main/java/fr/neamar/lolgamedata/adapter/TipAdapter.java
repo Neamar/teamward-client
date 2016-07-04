@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.TipHolder;
 import fr.neamar.lolgamedata.pojo.Game;
-import fr.neamar.lolgamedata.pojo.tips.Tip;
+import fr.neamar.lolgamedata.cards.tips.Tip;
 
 /**
  * Created by neamar on 04/07/16.
