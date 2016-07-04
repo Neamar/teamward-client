@@ -326,7 +326,7 @@ public class GameActivity extends SnackBarActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
 
-        sectionsPagerAdapter.setTeams(game.teams);
+        sectionsPagerAdapter.setGame(game);
 
         setUiMode(UI_MODE_IN_GAME);
     }
