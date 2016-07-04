@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="4dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/premadeChampion1"
+        android:layout_width="@dimen/tip_champion_thumbnail"
+        android:layout_height="@dimen/tip_champion_thumbnail"
+        android:src="@drawable/default_champion" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:text="—"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/premadeChampion2"
+        android:layout_width="@dimen/tip_champion_thumbnail"
+        android:layout_height="@dimen/tip_champion_thumbnail"
+        android:src="@drawable/default_champion" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:minWidth="16dp"
+        android:text="—"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/premadeChampion3"
+        android:layout_width="@dimen/tip_champion_thumbnail"
+        android:layout_height="@dimen/tip_champion_thumbnail"
+        android:src="@drawable/default_champion" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:minWidth="16dp"
+        android:text="—"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/premadeChampion4"
+        android:layout_width="@dimen/tip_champion_thumbnail"
+        android:layout_height="@dimen/tip_champion_thumbnail"
+        android:src="@drawable/default_champion" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:minWidth="16dp"
+        android:text="—"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/premadeChampion5"
+        android:layout_width="@dimen/tip_champion_thumbnail"
+        android:layout_height="@dimen/tip_champion_thumbnail"
+        android:src="@drawable/default_champion" />
+</LinearLayout>
