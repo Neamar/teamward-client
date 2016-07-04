@@ -20,7 +20,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Premade information"
+            android:text="@string/premade_information"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <FrameLayout
@@ -34,7 +34,7 @@
                 layout="@layout/item_tip_premade_team"
                 android:id="@+id/blueTeam"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></include>
+                android:layout_height="wrap_content"/>
         </FrameLayout>
 
         <FrameLayout
@@ -48,15 +48,15 @@
                 layout="@layout/item_tip_premade_team"
                 android:id="@+id/redTeam"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></include>
+                android:layout_height="wrap_content"/>
         </FrameLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:textSize="8dp"
-            android:text="(may be inaccurate)"
+            android:textSize="8sp"
+            android:text="@string/may_be_inaccurate"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

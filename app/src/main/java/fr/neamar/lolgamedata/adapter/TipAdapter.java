@@ -5,7 +5,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import fr.neamar.lolgamedata.tips.HotStreakTip;
 import fr.neamar.lolgamedata.tips.PremadeTip;
+import fr.neamar.lolgamedata.tips.builder.HotStreakTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.PremadeTipBuilder;
 import fr.neamar.lolgamedata.tips.Tip;
 import fr.neamar.lolgamedata.holder.TipHolder;
@@ -24,6 +26,9 @@ public class TipAdapter extends RecyclerView.Adapter<TipHolder> {
     public TipHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if(viewType == PremadeTip.class.getName().hashCode()) {
             return PremadeTipBuilder.onCreateViewHolder(parent);
+        }
+        else if(viewType == HotStreakTip.class.getName().hashCode()) {
+            return HotStreakTipBuilder.onCreateViewHolder(parent);
         }
 
         throw new RuntimeException("Unknown tip class!");

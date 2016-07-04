@@ -118,5 +118,9 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s is on a hot streak! (%2$s wins in %3$s last games)</string>
+    <string name="hot_streak">Hot streak!</string>
+    <string name="may_be_inaccurate">(may be inaccurate)</string>
+    <string name="premade_information">Premade information</string>
 
 </resources>

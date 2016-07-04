@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.neamar.lolgamedata.pojo.Game;
+import fr.neamar.lolgamedata.tips.builder.HotStreakTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.PremadeTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.TipBuilder;
 
@@ -12,7 +13,7 @@ import fr.neamar.lolgamedata.tips.builder.TipBuilder;
  * Created by neamar on 04/07/16.
  */
 public class Tip {
-    public static final List<TipBuilder> tipsBuilders = new ArrayList<>(Arrays.asList(new TipBuilder(), new PremadeTipBuilder()));
+    public static final List<TipBuilder> tipsBuilders = new ArrayList<>(Arrays.asList(new TipBuilder(), new PremadeTipBuilder(), new HotStreakTipBuilder()));
 
     public static ArrayList<Tip> getTips(Game game) {
         ArrayList<Tip> tips = new ArrayList<>();
