@@ -1,11 +1,13 @@
 package fr.neamar.lolgamedata.tips.holder;
 
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.neamar.lolgamedata.R;
@@ -21,29 +23,13 @@ import fr.neamar.lolgamedata.tips.Tip;
  * Created by neamar on 04/07/16.
  */
 public class PremadeTipHolder extends TipHolder {
-    View redTeamLayout;
-    View blueTeamLayout;
-    List<ImageView> redTeamChampionsImages = new ArrayList<>(5);
-    List<View> redTeamChampionsSeparator = new ArrayList<>(4);
-    List<ImageView> blueTeamChampionsImages = new ArrayList<>(5);
-    List<View> blueTeamChampionsSeparator = new ArrayList<>(4);
+    LinearLayout redTeamLayout;
+    LinearLayout blueTeamLayout;
 
     public PremadeTipHolder(View itemView) {
         super(itemView);
-        redTeamLayout = itemView.findViewById(R.id.redTeam);
-        blueTeamLayout = itemView.findViewById(R.id.blueTeam);
-
-        int[] premadeChampionsIds = new int[]{R.id.premadeChampion1, R.id.premadeChampion2, R.id.premadeChampion3, R.id.premadeChampion4, R.id.premadeChampion5};
-        for (int premadeChampionsId : premadeChampionsIds) {
-            redTeamChampionsImages.add((ImageView) redTeamLayout.findViewById(premadeChampionsId));
-            blueTeamChampionsImages.add((ImageView) blueTeamLayout.findViewById(premadeChampionsId));
-        }
-
-        int[] premadeSeparatorsIds = new int[]{R.id.premadeSeparator1, R.id.premadeSeparator2, R.id.premadeSeparator3, R.id.premadeSeparator4};
-        for (int premadeSeparatorsId : premadeSeparatorsIds) {
-            redTeamChampionsSeparator.add(redTeamLayout.findViewById(premadeSeparatorsId));
-            blueTeamChampionsSeparator.add(blueTeamLayout.findViewById(premadeSeparatorsId));
-        }
+        redTeamLayout = (LinearLayout) itemView.findViewById(R.id.redTeam);
+        blueTeamLayout = (LinearLayout) itemView.findViewById(R.id.blueTeam);
     }
 
     public void bindTip(Tip tip) {
@@ -55,23 +41,31 @@ public class PremadeTipHolder extends TipHolder {
     }
 
     public void drawChampions(Team team) {
-        List<ImageView> teamChampionsImages = team.teamId == 100 ? blueTeamChampionsImages : redTeamChampionsImages;
-        List<View> teamChampionsSeparators = team.teamId == 100 ? blueTeamChampionsSeparator : redTeamChampionsSeparator;
+        LinearLayout linearLayout = team.teamId == 100 ? blueTeamLayout : redTeamLayout;
+        int dpConversion = (int) itemView.getResources().getDimension(R.dimen.tip_champion_thumbnail);
+        int spConversion = (int) itemView.getResources().getDimension(R.dimen.tip_champion_text_separator);
 
-        int championCounter = 0;
+
+        redTeamLayout.removeAllViews();
         for (List<Integer> subPremade : team.premades) {
             for(int summonerId: subPremade) {
                 Champion champion = findPlayerById(team, summonerId).champion;
-                ImageView championImage = teamChampionsImages.get(championCounter);
-                ImageLoader.getInstance().displayImage(champion.imageUrl, championImage);
-                championImage.setContentDescription(champion.name);
-                if (championCounter < 4) {
-                    teamChampionsSeparators.get(championCounter).setVisibility(View.GONE);
-                }
-                championCounter++;
+
+                ImageView imageview = new ImageView(itemView.getContext());
+                imageview.setImageResource(R.drawable.default_champion);
+                imageview.setLayoutParams(new LinearLayout.LayoutParams(dpConversion, dpConversion));
+                linearLayout.addView(imageview);
+
+                ImageLoader.getInstance().displayImage(champion.imageUrl, imageview);
+                imageview.setContentDescription(champion.name);
             }
-            if (championCounter < 5) {
-                teamChampionsSeparators.get(championCounter - 1).setVisibility(View.VISIBLE);
+
+            if(subPremade != team.premades.get(team.premades.size() - 1)) {
+                TextView textView = new TextView(itemView.getContext());
+                textView.setText("—");
+                textView.setGravity(Gravity.CENTER);
+                textView.setTextSize(spConversion);
+                linearLayout.addView(textView);
             }
         }
     }
