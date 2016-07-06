@@ -66,7 +66,7 @@ public class PremadeTipHolder extends TipHolder {
                 ImageLoader.getInstance().displayImage(champion.imageUrl, championImage);
                 championImage.setContentDescription(champion.name);
                 if (championCounter < 4) {
-                    teamChampionsSeparators.get(championCounter).setVisibility(View.INVISIBLE);
+                    teamChampionsSeparators.get(championCounter).setVisibility(View.GONE);
                 }
                 championCounter++;
             }
