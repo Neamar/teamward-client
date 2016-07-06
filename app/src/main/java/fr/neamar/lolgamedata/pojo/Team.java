@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by neamar on 25/03/16.
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class Team implements Serializable {
     public int teamId;
     public ArrayList<Player> players;
-    public JSONArray premades;
+    public List<List<Integer>> premades = new ArrayList<>();
 
     public Team(JSONObject team) throws JSONException {
         teamId = team.getInt("team_id");
@@ -28,6 +29,14 @@ public class Team implements Serializable {
             }
         }
 
-        premades = team.getJSONArray("premades");
+        JSONArray premadesJson = team.getJSONArray("premades");
+        for(int i = 0; i < premadesJson.length(); i++) {
+            List<Integer> subPremade = new ArrayList<>();
+            JSONArray subPremadeJson = premadesJson.getJSONArray(i);
+            for(int j = 0; j < subPremadeJson.length(); j++) {
+                subPremade.add(subPremadeJson.getInt(j));
+            }
+            premades.add(subPremade);
+        }
     }
 }
