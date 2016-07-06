@@ -1,7 +1,9 @@
 package fr.neamar.lolgamedata.tips.holder;
 
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -78,5 +80,13 @@ public class PremadeTipHolder extends TipHolder {
         }
 
         throw new RuntimeException("Non existing player in premade?");
+    }
+
+    public static TipHolder onCreateViewHolder(ViewGroup parent) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+        View view = inflater.inflate(R.layout.item_tip_premade, parent, false);
+
+        return new PremadeTipHolder(view);
     }
 }

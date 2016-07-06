@@ -53,7 +53,7 @@ public class TipFragment extends Fragment {
         game = (Game) getArguments().getSerializable(ARG_SECTION_GAME);
         assert game != null;
 
-        TipAdapter adapter = new TipAdapter(game);
+        TipAdapter adapter = new TipAdapter(game, getContext());
         recyclerView.setAdapter(adapter);
         return rootView;
     }
