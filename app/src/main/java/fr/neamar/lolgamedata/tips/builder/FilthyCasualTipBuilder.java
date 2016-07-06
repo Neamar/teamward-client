@@ -14,17 +14,17 @@ import fr.neamar.lolgamedata.tips.Tip;
 /**
  * Created by neamar on 06/07/16.
  */
-public class HardcoreGamerTipBuilder extends TipBuilder {
+public class FilthyCasualTipBuilder extends TipBuilder {
     @Override
     public ArrayList<Tip> getTips(Game game, Context context) {
         ArrayList<Tip> tips = new ArrayList<>();
 
         for (Team team : game.teams) {
             for (Player player : team.players) {
-                if(player.averageTimeBetweenGames < 3600 * 4) {
-                    String descriptionTemplate = context.getString(R.string.hardcore_gamer_description);
+                if(player.averageTimeBetweenGames > 3600 * 24 * 4) {
+                    String descriptionTemplate = context.getString(R.string.filthy_casual_description);
                     String description = String.format(descriptionTemplate, player.summoner.name);
-                    tips.add(new PlayerStandardTip(game, player, player.champion.imageUrl, context.getString(R.string.hardcore_gamer), description));
+                    tips.add(new PlayerStandardTip(game, player, player.champion.imageUrl, context.getString(R.string.filthy_casual), description));
                 }
             }
         }
