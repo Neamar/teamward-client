@@ -27,11 +27,13 @@ import fr.neamar.lolgamedata.tips.Tip;
 public class PremadeTipHolder extends TipHolder {
     LinearLayout redTeamLayout;
     LinearLayout blueTeamLayout;
+    View disclaimer;
 
     public PremadeTipHolder(View itemView) {
         super(itemView);
         redTeamLayout = (LinearLayout) itemView.findViewById(R.id.redTeam);
         blueTeamLayout = (LinearLayout) itemView.findViewById(R.id.blueTeam);
+        disclaimer = itemView.findViewById(R.id.disclaimer);
     }
 
     public void bindTip(Tip tip) {
@@ -40,6 +42,15 @@ public class PremadeTipHolder extends TipHolder {
 
         drawChampions(game.teams.get(0));
         drawChampions(game.teams.get(1));
+
+        if(game.teams.get(0).premades.size() == 1 && game.teams.get(1).premades.size() == 1) {
+            // One big premade on both teams, we can't really be wrong...
+            disclaimer.setVisibility(View.GONE);
+        }
+        else {
+            // Never forget that this is no exact science
+            disclaimer.setVisibility(View.VISIBLE);
+        }
     }
 
     public void drawChampions(Team team) {
@@ -70,6 +81,8 @@ public class PremadeTipHolder extends TipHolder {
                 linearLayout.addView(textView);
             }
         }
+
+
     }
 
     public Player findPlayerById(Team team, int summonerId) {
