@@ -10,11 +10,19 @@ android {
         targetSdkVersion 24
         versionCode 18
         versionName "2.0.2"
+
+        // Staging mixpanel token
+        resValue "string", "MIXPANEL_TOKEN", "6871a7de8eb71082f3397bb1be7ded58"
+        resValue "string", "API_URL", "https://teamward-dev.herokuapp.com"
+        resValue "string", "app_name", "Team Ward (DEV)"
     }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "MIXPANEL_TOKEN", "1a7075d95ff6db6d08714db52edb706a"
+            resValue "string", "API_URL", "https://teamward.herokuapp.com"
+            resValue "string", "app_name", "Team Ward"
         }
     }
 }
