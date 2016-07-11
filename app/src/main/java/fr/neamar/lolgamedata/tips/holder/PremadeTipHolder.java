@@ -55,8 +55,8 @@ public class PremadeTipHolder extends TipHolder {
 
     public void drawChampions(Team team) {
         LinearLayout linearLayout = team.teamId == 100 ? blueTeamLayout : redTeamLayout;
-        int dpConversion = (int) itemView.getResources().getDimension(R.dimen.tip_champion_thumbnail);
-        int spConversion = (int) itemView.getResources().getDimension(R.dimen.tip_champion_text_separator);
+        int dpConversion = (int) itemView.getResources().getDimension(R.dimen.tip_premade_champion_thumbnail);
+        int spConversion = (int) itemView.getResources().getDimension(R.dimen.tip_premade_champion_text_separator);
 
 
         redTeamLayout.removeAllViews();
