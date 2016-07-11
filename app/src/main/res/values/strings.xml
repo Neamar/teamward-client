@@ -125,7 +125,7 @@
     <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s is on a cold streak! (%2$s loss in %3$s last games)</string>
     <string name="cold_streak">Cold streak!</string>
     <string name="hardcore_gamer">Hardcore gamer!</string>
-    <string name="hardcore_gamer_description">%s has played more than 10 games in the last 36 hours.</string>
-    <string name="filthy_casual_description">%s plays less than one game every 4 days! What a casual!</string>
+    <string name="hardcore_gamer_description">%s has played more than 10 games in the last 24 hours.</string>
+    <string name="filthy_casual_description">%s plays less than one game a week! What a casual!</string>
     <string name="filthy_casual">Filthy casual...</string>
 </resources>
