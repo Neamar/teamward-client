@@ -81,8 +81,6 @@ public class PremadeTipHolder extends TipHolder {
                 linearLayout.addView(textView);
             }
         }
-
-
     }
 
     public Player findPlayerById(Team team, int summonerId) {

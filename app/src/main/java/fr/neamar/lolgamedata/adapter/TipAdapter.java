@@ -8,9 +8,11 @@ import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.holder.TipHolder;
 import fr.neamar.lolgamedata.pojo.Game;
+import fr.neamar.lolgamedata.tips.MatchupsTip;
 import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.PremadeTip;
 import fr.neamar.lolgamedata.tips.Tip;
+import fr.neamar.lolgamedata.tips.holder.MatchupsTipHolder;
 import fr.neamar.lolgamedata.tips.holder.PlayerStandardTipHolder;
 import fr.neamar.lolgamedata.tips.holder.PremadeTipHolder;
 
@@ -30,6 +32,9 @@ public class TipAdapter extends RecyclerView.Adapter<TipHolder> {
         }
         else if(viewType == PlayerStandardTip.class.getName().hashCode()) {
             return PlayerStandardTipHolder.onCreateViewHolder(parent);
+        }
+        else if(viewType == MatchupsTip.class.getName().hashCode()) {
+            return MatchupsTipHolder.onCreateViewHolder(parent);
         }
 
         throw new RuntimeException("Unknown tip class!");

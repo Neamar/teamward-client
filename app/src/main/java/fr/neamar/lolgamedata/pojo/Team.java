@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class Team implements Serializable {
     public int teamId;
+    public boolean isPlayerOwnTeam;
     public ArrayList<Player> players;
     public List<List<Integer>> premades = new ArrayList<>();
 
@@ -28,6 +29,8 @@ public class Team implements Serializable {
                 e.printStackTrace();
             }
         }
+
+        isPlayerOwnTeam = team.getBoolean("own_team");
 
         JSONArray premadesJson = team.getJSONArray("premades");
         for(int i = 0; i < premadesJson.length(); i++) {

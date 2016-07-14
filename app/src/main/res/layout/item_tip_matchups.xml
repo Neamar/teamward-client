@@ -24,14 +24,16 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <LinearLayout
-                android:id="@+id/redTeam"
+                android:id="@+id/matchups"
                 android:layout_width="255dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="4dp">
 
                 <include layout="@layout/item_tip_matchups_matchup" />
+                <include layout="@layout/item_tip_matchups_matchup" />
+
             </LinearLayout>
 
         <TextView
