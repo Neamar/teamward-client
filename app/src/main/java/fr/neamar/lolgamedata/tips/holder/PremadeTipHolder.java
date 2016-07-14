@@ -58,8 +58,8 @@ public class PremadeTipHolder extends TipHolder {
         int dpConversion = (int) itemView.getResources().getDimension(R.dimen.tip_premade_champion_thumbnail);
         int spConversion = (int) itemView.getResources().getDimension(R.dimen.tip_premade_champion_text_separator);
 
-
-        redTeamLayout.removeAllViews();
+        // Clean up old views
+        linearLayout.removeAllViews();
         for (List<Integer> subPremade : team.premades) {
             for(int summonerId: subPremade) {
                 Champion champion = findPlayerById(team, summonerId).champion;
