@@ -223,14 +223,17 @@ public class GameActivity extends SnackBarActivity {
 
         if (uiMode == UI_MODE_LOADING) {
             mTabLayout.setVisibility(View.GONE);
+            mViewPager.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.GONE);
             mFab.setVisibility(View.GONE);
         } else if (uiMode == UI_MODE_NOT_IN_GAME) {
             mTabLayout.setVisibility(View.GONE);
+            mViewPager.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.VISIBLE);
             mFab.setVisibility(View.VISIBLE);
         } else if (uiMode == UI_MODE_IN_GAME) {
             mTabLayout.setVisibility(View.VISIBLE);
+            mViewPager.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
             mFab.setVisibility(View.GONE);
         }
