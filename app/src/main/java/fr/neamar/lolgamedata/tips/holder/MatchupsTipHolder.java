@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -48,7 +49,21 @@ public class MatchupsTipHolder extends TipHolder {
             ImageLoader.getInstance().displayImage(matchup.ennemyPlayer.champion.imageUrl, ennemyChampionImageView);
             ennemyChampionImageView.setContentDescription(matchup.ennemyPlayer.champion.name);
 
-            Log.e("WTF", "Adding new view");
+            TextView matchupTextView = (TextView) view.findViewById(R.id.matchupStats);
+
+            if(matchup.ownPlayer.champion.winRate >= 0) {
+                matchupTextView.setText(String.format("%d%%", matchup.ownPlayer.champion.winRate));
+                if(matchup.ownPlayer.champion.winRate > 50) {
+                    matchupTextView.setTextColor(matchupsLayout.getContext().getResources().getColor(R.color.colorGoodMatchup));
+                }
+                else if(matchup.ownPlayer.champion.winRate < 50) {
+                    matchupTextView.setTextColor(matchupsLayout.getContext().getResources().getColor(R.color.colorBadMatchup));
+                }
+            }
+            else {
+                matchupTextView.setText("?");
+                matchupTextView.setTextColor(matchupsLayout.getContext().getResources().getColor(R.color.colorUnknownMatchup));
+            }
             matchupsLayout.addView(view);
         }
     }
