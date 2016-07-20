@@ -127,4 +127,6 @@
     <string name="hardcore_gamer_description">%s has played more than 10 games in the last 24 hours.</string>
     <string name="filthy_casual_description">%s plays less than one game a week! What a casual!</string>
     <string name="filthy_casual">Filthy casual...</string>
+    <string name="s_has_no_flash">%1$s uses %2$s and %3$s.</string>
+    <string name="no_flash">Flashless!</string>
 </resources>

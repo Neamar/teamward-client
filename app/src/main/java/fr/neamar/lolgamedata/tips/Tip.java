@@ -12,6 +12,7 @@ import fr.neamar.lolgamedata.tips.builder.FilthyCasualTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.HardcoreGamerTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.HotStreakTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.MatchupsBuilder;
+import fr.neamar.lolgamedata.tips.builder.NoFlashTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.PremadeTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.TipBuilder;
 
@@ -23,6 +24,7 @@ public class Tip {
             new TipBuilder(),
             new PremadeTipBuilder(),
             new MatchupsBuilder(),
+            new NoFlashTipBuilder(),
             new HotStreakTipBuilder(),
             new ColdStreakTipBuilder(),
             new HardcoreGamerTipBuilder(),

@@ -1,6 +1,5 @@
 package fr.neamar.lolgamedata.tips.holder;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +31,6 @@ public class MatchupsTipHolder extends TipHolder {
     public void bindTip(Tip tip) {
         MatchupsTip matchupsTip = (MatchupsTip) tip;
         Game game = matchupsTip.game;
-
-        Log.e("WTF", "SIZE:" + matchupsTip.matchups.size());
 
         matchupsLayout.removeAllViews();
 
