@@ -55,18 +55,10 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if(position == teams.size()) {
-            return "Tips";
+            return context.getString(R.string.tips);
         }
 
-        int teamId = teams.get(position).teamId;
-
-        if (teamId == 100) {
-            return context.getString(R.string.blue_team);
-        } else if (teamId == 200) {
-            return context.getString(R.string.red_team);
-        }
-
-        return context.getString(R.string.unknown_team);
+        return teams.get(position).getName(context);
     }
 
     public int getItemPosition(Object item) {

@@ -1,5 +1,7 @@
 package fr.neamar.lolgamedata.pojo;
 
+import android.content.Context;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,6 +9,8 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.neamar.lolgamedata.R;
 
 /**
  * Created by neamar on 25/03/16.
@@ -41,5 +45,15 @@ public class Team implements Serializable {
             }
             premades.add(subPremade);
         }
+    }
+
+    public String getName(Context context) {
+        if (teamId == 100) {
+            return context.getString(R.string.blue_team);
+        } else if (teamId == 200) {
+            return context.getString(R.string.red_team);
+        }
+
+        return context.getString(R.string.unknown_team);
     }
 }
