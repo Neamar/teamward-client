@@ -33,8 +33,10 @@ public class MatchupsBuilder extends TipBuilder {
             if(!player.champion.role.equals(Champion.UNKNOWN_ROLE)) {
                 // Does the other team have someone with this role too?
                 Player otherPlayer = getPlayerWithRole(otherTeam, player.champion.role);
-                MatchupsTip.Matchup matchup = new MatchupsTip.Matchup(player, otherPlayer);
-                matchups.add(matchup);
+                if(otherPlayer != null) {
+                    MatchupsTip.Matchup matchup = new MatchupsTip.Matchup(player, otherPlayer);
+                    matchups.add(matchup);
+                }
             }
         }
 
