@@ -20,8 +20,6 @@ import fr.neamar.lolgamedata.service.RegistrationIntentService;
  * Created by neamar on 29/03/16.
  */
 public class LolApplication extends Application {
-    public static final String API_URL = "https://teamward.herokuapp.com";
-    public static final String MIXPANEL_TOKEN = "1a7075d95ff6db6d08714db52edb706a";
     private static final String TAG = "LolApplication";
 
     private MixpanelAPI mixpanel = null;
@@ -75,7 +73,7 @@ public class LolApplication extends Application {
 
     public MixpanelAPI getMixpanel() {
         if (mixpanel == null) {
-            mixpanel = MixpanelAPI.getInstance(this, MIXPANEL_TOKEN);
+            mixpanel = MixpanelAPI.getInstance(this, getString(R.string.MIXPANEL_TOKEN));
             mixpanel.getPeople().identify(mixpanel.getDistinctId());
         }
 
@@ -94,5 +92,9 @@ public class LolApplication extends Application {
             getMixpanel().getPeople().set("$name", accounts.get(0).summonerName);
             getMixpanel().getPeople().set("region", accounts.get(0).region);
         }
+    }
+
+    public String getApiUrl() {
+        return getString(R.string.API_URL);
     }
 }

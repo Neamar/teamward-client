@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorAd">#FF0000</color>
     <color name="colorAp">#7D26CD</color>
+
+    <color name="colorGoodMatchup">#388E3C</color>
+    <color name="colorBadMatchup">#FF5252</color>
+    <color name="colorUnknownMatchup">#727272</color>
 </resources>

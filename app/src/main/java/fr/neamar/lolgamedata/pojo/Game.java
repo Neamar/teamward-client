@@ -36,4 +36,14 @@ public class Game implements Serializable {
             }
         }
     }
+
+    public Team getPlayerOwnTeam() {
+        for(Team team: teams) {
+            if(team.isPlayerOwnTeam) {
+                return team;
+            }
+        }
+
+        throw new RuntimeException("Required player is part of no team?!");
+    }
 }

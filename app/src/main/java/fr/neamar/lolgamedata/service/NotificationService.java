@@ -15,7 +15,6 @@ import com.google.android.gms.gcm.GcmListenerService;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import fr.neamar.lolgamedata.GameActivity;
-import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Account;
 
@@ -76,6 +75,7 @@ public class NotificationService extends GcmListenerService {
 
         notificationManager.notify(Long.hashCode(gameId), notificationBuilder.build());
 
-        MixpanelAPI.getInstance(this, LolApplication.MIXPANEL_TOKEN).track("Notification displayed", account.toJsonObject());
+        // Build a new Mixpanel instance, to make sure we don't update the user profile
+        MixpanelAPI.getInstance(this, getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", account.toJsonObject());
     }
 }

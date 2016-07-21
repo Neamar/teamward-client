@@ -18,6 +18,11 @@ public class Player implements Serializable {
 
     public int knownChampionsCount;
 
+    public int totalRecentGames;
+    public int winRecentGames;
+    public int lossRecentGames;
+    public int averageTimeBetweenGames;
+
     public Player(JSONObject player) throws JSONException {
         this.summoner = new Summoner(player.getJSONObject("summoner"));
         this.champion = new Champion(player.getJSONObject("champion"));
@@ -27,5 +32,12 @@ public class Player implements Serializable {
         this.knownChampionsCount = player.getInt("known_champions");
 
         this.rank = new Rank(player.getJSONObject("current_season_rank"));
+
+        JSONObject recentGames = player.getJSONObject("recent_games");
+        this.totalRecentGames = recentGames.getInt("total");
+        this.winRecentGames = recentGames.getInt("win");
+        this.lossRecentGames = recentGames.getInt("loss");
+        this.averageTimeBetweenGames = recentGames.getInt("average_time_between_games");
+
     }
 }

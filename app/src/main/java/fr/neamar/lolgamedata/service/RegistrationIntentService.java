@@ -89,7 +89,7 @@ public class RegistrationIntentService extends IntentService {
         final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/push?token=" + token + "&summoner=" + URLEncoder.encode(account.summonerName, "UTF-8") + "&region=" + account.region,
+            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/push?token=" + token + "&summoner=" + URLEncoder.encode(account.summonerName, "UTF-8") + "&region=" + account.region,
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override

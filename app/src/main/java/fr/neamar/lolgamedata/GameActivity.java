@@ -223,14 +223,17 @@ public class GameActivity extends SnackBarActivity {
 
         if (uiMode == UI_MODE_LOADING) {
             mTabLayout.setVisibility(View.GONE);
+            mViewPager.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.GONE);
             mFab.setVisibility(View.GONE);
         } else if (uiMode == UI_MODE_NOT_IN_GAME) {
             mTabLayout.setVisibility(View.GONE);
+            mViewPager.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.VISIBLE);
             mFab.setVisibility(View.VISIBLE);
         } else if (uiMode == UI_MODE_IN_GAME) {
             mTabLayout.setVisibility(View.VISIBLE);
+            mViewPager.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
             mFab.setVisibility(View.GONE);
         }
@@ -245,7 +248,7 @@ public class GameActivity extends SnackBarActivity {
         final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, LolApplication.API_URL + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region, null,
+            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -326,7 +329,7 @@ public class GameActivity extends SnackBarActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
 
-        sectionsPagerAdapter.setTeams(game.teams);
+        sectionsPagerAdapter.setGame(game);
 
         setUiMode(UI_MODE_IN_GAME);
     }

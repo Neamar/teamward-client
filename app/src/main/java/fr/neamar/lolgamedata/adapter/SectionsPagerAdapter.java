@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.fragment.TeamFragment;
+import fr.neamar.lolgamedata.fragment.TipFragment;
+import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Team;
 
 /**
@@ -18,6 +20,7 @@ import fr.neamar.lolgamedata.pojo.Team;
  */
 public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
     public final Context context;
+    public Game game;
     public ArrayList<Team> teams = new ArrayList<>();
 
     public SectionsPagerAdapter(FragmentManager fm, Context context) {
@@ -25,33 +28,37 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         this.context = context;
     }
 
-    public void setTeams(ArrayList<Team> teams) {
-        this.teams = teams;
+    public void setGame(Game game) {
+        this.game = game;
+        this.teams = game.teams;
         notifyDataSetChanged();
     }
 
     @Override
     public Fragment getItem(int position) {
+        if(position == teams.size()) {
+            return TipFragment.newInstance(position + 1, game);
+        }
+
         // getItem is called to instantiate the fragment for the given page.
         return TeamFragment.newInstance(position + 1, teams.get(position));
     }
 
     @Override
     public int getCount() {
-        return teams.size();
+        if(teams.size() == 0) {
+            return 0;
+        }
+        return teams.size() + 1;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        int teamId = teams.get(position).teamId;
-
-        if (teamId == 100) {
-            return context.getString(R.string.blue_team);
-        } else if (teamId == 200) {
-            return context.getString(R.string.red_team);
+        if(position == teams.size()) {
+            return context.getString(R.string.tips);
         }
 
-        return context.getString(R.string.unknown_team);
+        return teams.get(position).getName(context);
     }
 
     public int getItemPosition(Object item) {
@@ -60,9 +67,11 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         // FragmentAdapter will not refresh its content unless forced to do so
         // even if notifyDatasetChanged() was called.
         // So when new data is sent, ensure old fragments are removed.
-        TeamFragment teamFragment = (TeamFragment) item;
-        if (teams.indexOf(teamFragment.getTeam()) == -1) {
-            return POSITION_NONE;
+        if(item instanceof TeamFragment) {
+            TeamFragment teamFragment = (TeamFragment) item;
+            if (teams.indexOf(teamFragment.getTeam()) == -1) {
+                return POSITION_NONE;
+            }
         }
 
         return super.getItemPosition(item);
