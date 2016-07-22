@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import fr.neamar.lolgamedata.GameActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
@@ -21,10 +22,15 @@ public class NoSmiteTipBuilder extends TipBuilder {
     public ArrayList<Tip> getTips(Game game, Context context) {
         ArrayList<Tip> tips = new ArrayList<>();
 
+        // Only apply on Summoner's Rift
+        if(GameActivity.getMapName(game.mapId) != R.string.summoners_rift) {
+            return  tips;
+        }
+
         for(Team team: game.teams) {
             Boolean teamHasSmite = false;
             for(Player player: team.players) {
-                if(player.spellD.name.equals("Smite") && !player.spellF.name.equals("Smite")) {
+                if(player.spellD.name.equals("Smite") || player.spellF.name.equals("Smite")) {
                     teamHasSmite = true;
                     break;
                 }
