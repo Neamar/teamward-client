@@ -46,4 +46,8 @@ public class Game implements Serializable {
 
         throw new RuntimeException("Required player is part of no team?!");
     }
+
+    public int getNotificationId() {
+        return Long.toString(gameId).hashCode();
+    }
 }
