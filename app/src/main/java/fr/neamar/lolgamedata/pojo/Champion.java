@@ -33,4 +33,13 @@ public class Champion implements Serializable {
         JSONObject matchup = champion.getJSONObject("matchup");
         winRate = matchup.has("win_rate") ? matchup.getLong("win_rate") : -1;
     }
+
+    public boolean isAp() {
+        return ap * .75 > ad;
+    }
+
+    public boolean isAd() {
+        return ad * .75 > ap;
+    }
+
 }

@@ -132,4 +132,8 @@
     <string name="no_smite">The lion sleeps tonight</string>
     <string name="no_smite_desc">%s has no jungler</string>
     <string name="tips">Tips</string>
+    <string name="such_ability">Such ability power!</string>
+    <string name="full_ap">%s is mostly made of AP champions.</string>
+    <string name="full_ad">%s is mostly made of AD champions.</string>
+    <string name="much_damage">Much damage!</string>
 </resources>

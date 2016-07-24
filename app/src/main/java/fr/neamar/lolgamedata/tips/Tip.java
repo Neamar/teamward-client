@@ -9,6 +9,7 @@ import java.util.List;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.tips.builder.ColdStreakTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.FilthyCasualTipBuilder;
+import fr.neamar.lolgamedata.tips.builder.FullAPDTeamTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.HardcoreGamerTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.HotStreakTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.MatchupsBuilder;
@@ -24,6 +25,7 @@ public class Tip {
     public static final List<TipBuilder> tipsBuilders = new ArrayList<>(Arrays.asList(
             new TipBuilder(),
             new PremadeTipBuilder(),
+            new FullAPDTeamTipBuilder(),
             new MatchupsBuilder(),
             new NoSmiteTipBuilder(),
             new NoFlashTipBuilder(),
