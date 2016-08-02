@@ -24,10 +24,10 @@ import fr.neamar.lolgamedata.tips.builder.TipBuilder;
 public class Tip {
     public static final List<TipBuilder> tipsBuilders = new ArrayList<>(Arrays.asList(
             new TipBuilder(),
-            new PremadeTipBuilder(),
-            new FullAPDTeamTipBuilder(),
-            new MatchupsBuilder(),
             new NoSmiteTipBuilder(),
+            new FullAPDTeamTipBuilder(),
+            new PremadeTipBuilder(),
+            new MatchupsBuilder(),
             new NoFlashTipBuilder(),
             new HotStreakTipBuilder(),
             new ColdStreakTipBuilder(),
