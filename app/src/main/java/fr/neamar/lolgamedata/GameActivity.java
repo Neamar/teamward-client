@@ -178,7 +178,7 @@ public class GameActivity extends SnackBarActivity {
                 });
             }
 
-            if(game != null) {
+            if (game != null) {
                 NotificationManager notificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 notificationManager.cancel(game.getNotificationId());
@@ -288,7 +288,9 @@ public class GameActivity extends SnackBarActivity {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    dialog.dismiss();
+                    if (dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
                     Log.e(TAG, error.toString());
 
                     setUiMode(UI_MODE_NOT_IN_GAME);
