@@ -135,4 +135,5 @@
     <string name="full_ap">%s is mostly made of AP champions.</string>
     <string name="full_ad">%s is mostly made of AD champions.</string>
     <string name="much_damage">Much damage!</string>
+    <string name="no_internet_connection">Please check your network connection.</string>
 </resources>
