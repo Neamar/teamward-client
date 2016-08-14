@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -50,6 +51,8 @@ public class GameActivity extends SnackBarActivity {
     public static final int UI_MODE_LOADING = 0;
     public static final int UI_MODE_IN_GAME = 1;
     public static final int UI_MODE_NOT_IN_GAME = 2;
+    public static final int UI_MODE_NO_INTERNET = 3;
+
     @StringRes
     private static final Map<Integer, Integer> MAP_NAMES;
 
@@ -238,6 +241,11 @@ public class GameActivity extends SnackBarActivity {
             mViewPager.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
             mFab.setVisibility(View.GONE);
+        } else if(uiMode == UI_MODE_NO_INTERNET) {
+            mTabLayout.setVisibility(View.GONE);
+            mViewPager.setVisibility(View.GONE);
+            mEmptyView.setVisibility(View.GONE);
+            mFab.setVisibility(View.VISIBLE);
         }
     }
 
@@ -293,7 +301,16 @@ public class GameActivity extends SnackBarActivity {
                     }
                     Log.e(TAG, error.toString());
 
-                    setUiMode(UI_MODE_NOT_IN_GAME);
+                    queue.stop();
+
+                    setUiMode(UI_MODE_NO_INTERNET);
+
+                    if(error instanceof NoConnectionError) {
+                        displaySnack(getString(R.string.no_internet_connection));
+                        return;
+                    }
+
+
                     try {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
@@ -304,13 +321,15 @@ public class GameActivity extends SnackBarActivity {
                             j.put("error", responseBody.replace("Error:", ""));
                             ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
                         }
+                        else {
+                            setUiMode(UI_MODE_NOT_IN_GAME);
+                        }
                     } catch (UnsupportedEncodingException | JSONException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
                     }
 
-                    queue.stop();
                 }
             });
 
