@@ -23,7 +23,7 @@ public class TipFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static final String ARG_SECTION_GAME = "section_game";
 
-    private Game game;
+    public Game game;
 
     public TipFragment() {
     }

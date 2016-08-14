@@ -73,6 +73,12 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
                 return POSITION_NONE;
             }
         }
+        else if(item instanceof TipFragment) {
+            TipFragment tipFragment = (TipFragment) item;
+            if(tipFragment.game != game) {
+                return POSITION_NONE;
+            }
+        }
 
         return super.getItemPosition(item);
     }
