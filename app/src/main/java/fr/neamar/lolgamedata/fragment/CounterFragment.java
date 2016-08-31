@@ -31,10 +31,10 @@ public class CounterFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static CounterFragment newInstance(int sectionNumber, Account user) {
+    public static CounterFragment newInstance(String role, Account user) {
         CounterFragment fragment = new CounterFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_ROLE, sectionNumber);
+        args.putString(ARG_ROLE, role);
         args.putSerializable(ARG_SUMMONER, user);
         fragment.setArguments(args);
         return fragment;
@@ -48,7 +48,7 @@ public class CounterFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_counter, container, false);
         TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-        textView.setText(user.summonerName);
+        textView.setText(user.summonerName + " " + role);
         return rootView;
     }
 }

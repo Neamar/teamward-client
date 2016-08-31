@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+
 public class RoleAdapter extends ArrayAdapter<String> implements ThemedSpinnerAdapter {
     private final ThemedSpinnerAdapter.Helper mDropDownHelper;
 

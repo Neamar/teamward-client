@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="2dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="@dimen/champion_size"
+        android:layout_height="@dimen/champion_size"
+        android:src="@drawable/default_champion"
+        android:id="@+id/champion" />
+
+    <ImageView
+        android:layout_width="@dimen/champion_size"
+        android:layout_height="@dimen/champion_size"
+        android:src="@drawable/default_champion"
+        android:id="@+id/counter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/champion"
+        android:layout_toEndOf="@+id/champion"
+        android:layout_toLeftOf="@+id/matchupStats"
+        android:layout_toStartOf="@+id/matchupStats" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="50%"
+        android:id="@+id/matchupStats"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/matchupStats"
+        android:layout_toEndOf="@+id/matchupStats"
+        android:layout_toLeftOf="@+id/counter"
+        android:layout_toStartOf="@+id/counter" />
+</RelativeLayout>

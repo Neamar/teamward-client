@@ -1,8 +1,6 @@
 package fr.neamar.lolgamedata;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -17,6 +15,13 @@ import fr.neamar.lolgamedata.fragment.CounterFragment;
 import fr.neamar.lolgamedata.pojo.Account;
 
 public class CounterActivity extends AppCompatActivity {
+    public static final String[] ROLES = new String[]{
+            "Top",
+            "Jungle",
+            "Mid",
+            "Bot",
+            "Support"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +37,7 @@ public class CounterActivity extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setAdapter(new RoleAdapter(
                 toolbar.getContext(),
-                new String[]{
-                        "Top",
-                        "Jungle",
-                        "Mid",
-                        "Bot",
-                        "Support"
-                }));
+                ROLES));
 
         AccountManager accountManager = new AccountManager(this);
         final Account user = accountManager.getAccounts().get(0);
@@ -49,21 +48,12 @@ public class CounterActivity extends AppCompatActivity {
                 // When the given dropdown item is selected, show its contents in the
                 // container view.
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, CounterFragment.newInstance(position + 1, user))
+                        .replace(R.id.container, CounterFragment.newInstance(ROLES[position], user))
                         .commit();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
 
