@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -39,8 +40,11 @@ public class CounterActivity extends AppCompatActivity {
                 toolbar.getContext(),
                 ROLES));
 
-        AccountManager accountManager = new AccountManager(this);
-        final Account user = accountManager.getAccounts().get(0);
+        final Account account = (Account) getIntent().getSerializableExtra("account");
+
+        final SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+
+        spinner.setSelection(prefs.getInt("lastUsedPosition", 0));
 
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
@@ -48,8 +52,10 @@ public class CounterActivity extends AppCompatActivity {
                 // When the given dropdown item is selected, show its contents in the
                 // container view.
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, CounterFragment.newInstance(ROLES[position], user))
+                        .replace(R.id.container, CounterFragment.newInstance(ROLES[position], account))
                         .commit();
+
+                prefs.edit().putInt("lastUsedPosition", position).apply();
             }
 
             @Override

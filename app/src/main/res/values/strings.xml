@@ -138,4 +138,5 @@
     <string name="no_internet_connection">Please check your network connection.</string>
     <string name="title_activity_counter">Find your counter!</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="action_counter">View your counters</string>
 </resources>

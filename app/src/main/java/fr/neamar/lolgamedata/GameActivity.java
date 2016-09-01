@@ -194,7 +194,7 @@ public class GameActivity extends SnackBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home, menu);
+        getMenuInflater().inflate(R.menu.menu_game, menu);
         return true;
     }
 
@@ -217,6 +217,13 @@ public class GameActivity extends SnackBarActivity {
                             dialog.dismiss();
                         }
                     }).show();
+
+            return true;
+        } else if (id == R.id.action_counter) {
+            Intent counterIntent = new Intent(GameActivity.this, CounterActivity.class);
+            counterIntent.putExtra("account", account);
+            startActivity(counterIntent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -241,7 +248,7 @@ public class GameActivity extends SnackBarActivity {
             mViewPager.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
             mFab.setVisibility(View.GONE);
-        } else if(uiMode == UI_MODE_NO_INTERNET) {
+        } else if (uiMode == UI_MODE_NO_INTERNET) {
             mTabLayout.setVisibility(View.GONE);
             mViewPager.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.GONE);
@@ -305,7 +312,7 @@ public class GameActivity extends SnackBarActivity {
 
                     setUiMode(UI_MODE_NO_INTERNET);
 
-                    if(error instanceof NoConnectionError) {
+                    if (error instanceof NoConnectionError) {
                         displaySnack(getString(R.string.no_internet_connection));
                         return;
                     }
@@ -320,8 +327,7 @@ public class GameActivity extends SnackBarActivity {
                             JSONObject j = account.toJsonObject();
                             j.put("error", responseBody.replace("Error:", ""));
                             ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
-                        }
-                        else {
+                        } else {
                             setUiMode(UI_MODE_NOT_IN_GAME);
                         }
                     } catch (UnsupportedEncodingException | JSONException e) {
