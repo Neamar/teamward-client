@@ -36,9 +36,20 @@ public class CounterHolder extends RecyclerView.ViewHolder implements View.OnCli
         if (counter.counterImage != null) {
             ImageLoader.getInstance().displayImage(counter.counterImage, counterImage);
             counterImage.setContentDescription(counter.counterName);
-        }
+            winRateText.setText(String.format("%d%%", counter.winRate));
+            if(counter.winRate < 50) {
+                winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorBadMatchup));
+            }
+            else {
+                winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorGoodMatchup));
+            }
 
-        winRateText.setText(String.format("%d%%", counter.winRate));
+        }
+        else {
+            counterImage.setImageResource(R.drawable.default_champion);
+            winRateText.setText(String.format("?", counter.winRate));
+            winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorUnknownMatchup));
+        }
     }
 
     @Override
