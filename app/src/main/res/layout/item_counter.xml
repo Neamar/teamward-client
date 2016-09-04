@@ -8,13 +8,13 @@
         android:layout_width="@dimen/champion_size"
         android:layout_height="@dimen/champion_size"
         android:src="@drawable/default_champion"
-        android:id="@+id/champion" />
+        android:id="@+id/counter" />
 
     <ImageView
         android:layout_width="@dimen/champion_size"
         android:layout_height="@dimen/champion_size"
         android:src="@drawable/default_champion"
-        android:id="@+id/counter"
+        android:id="@+id/champion"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -26,8 +26,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_toRightOf="@+id/champion"
-        android:layout_toEndOf="@+id/champion"
+        android:layout_toRightOf="@+id/counter"
+        android:layout_toEndOf="@+id/counter"
         android:layout_toLeftOf="@+id/matchupStats"
         android:layout_toStartOf="@+id/matchupStats" />
 
@@ -51,6 +51,6 @@
         android:layout_marginRight="20dp"
         android:layout_toRightOf="@+id/matchupStats"
         android:layout_toEndOf="@+id/matchupStats"
-        android:layout_toLeftOf="@+id/counter"
-        android:layout_toStartOf="@+id/counter" />
+        android:layout_toLeftOf="@+id/champion"
+        android:layout_toStartOf="@+id/champion" />
 </RelativeLayout>
