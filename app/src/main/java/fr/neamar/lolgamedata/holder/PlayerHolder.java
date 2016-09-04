@@ -25,7 +25,7 @@ import fr.neamar.lolgamedata.view.AdApView;
 public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     @DrawableRes
-    private static final int[] championMasteriesResources = new int[]{
+    public static final int[] CHAMPION_MASTERIES_RESOURCES = new int[]{
             0,
             R.drawable.champion_mastery_1,
             R.drawable.champion_mastery_2,
@@ -108,7 +108,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         spellFImage.setContentDescription(player.spellF.name);
 
         @DrawableRes
-        int championMasteryResource = championMasteriesResources[player.champion.mastery];
+        int championMasteryResource = CHAMPION_MASTERIES_RESOURCES[player.champion.mastery];
 
         if (championMasteryResource == 0) {
             championMastery.setVisibility(View.GONE);

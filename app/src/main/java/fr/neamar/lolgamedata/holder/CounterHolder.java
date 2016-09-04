@@ -14,6 +14,7 @@ public class CounterHolder extends RecyclerView.ViewHolder implements View.OnCli
     private final ImageView championImage;
     private final ImageView counterImage;
     private final TextView winRateText;
+    private final ImageView masteryImage;
 
     private Counter counter;
 
@@ -23,6 +24,7 @@ public class CounterHolder extends RecyclerView.ViewHolder implements View.OnCli
         championImage = (ImageView) view.findViewById(R.id.champion);
         counterImage = (ImageView) view.findViewById(R.id.counter);
         winRateText = (TextView) view.findViewById(R.id.matchupStats);
+        masteryImage = (ImageView) view.findViewById(R.id.counterMastery);
 
         view.setOnClickListener(this);
     }
@@ -44,11 +46,13 @@ public class CounterHolder extends RecyclerView.ViewHolder implements View.OnCli
                 winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorGoodMatchup));
             }
 
+            masteryImage.setImageResource(PlayerHolder.CHAMPION_MASTERIES_RESOURCES[counter.counterMastery]);
         }
         else {
             counterImage.setImageResource(R.drawable.default_champion);
             winRateText.setText(String.format("?", counter.winRate));
             winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorUnknownMatchup));
+            masteryImage.setImageResource(0);
         }
     }
 

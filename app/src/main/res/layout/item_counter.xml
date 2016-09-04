@@ -19,6 +19,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <ImageView
+        android:id="@+id/counterMastery"
+        android:layout_width="@dimen/champion_mastery_size_counter"
+        android:layout_height="@dimen/champion_mastery_size_counter"
+        android:layout_alignRight="@+id/counter"
+        android:layout_alignEnd="@+id/counter"
+        android:layout_alignBottom="@+id/counter"
+        android:contentDescription="@string/champion_mastery"
+        android:src="@drawable/champion_mastery_4" />
+
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"

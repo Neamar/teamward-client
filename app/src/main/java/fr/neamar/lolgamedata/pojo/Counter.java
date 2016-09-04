@@ -14,6 +14,7 @@ public class Counter implements Serializable {
 
     public String counterImage = null;
     public String counterName;
+    public int counterMastery;
 
     public int winRate = 0;
 
@@ -24,6 +25,7 @@ public class Counter implements Serializable {
         if(counter.has("counter") && counter.get("counter") != JSONObject.NULL) {
             counterImage = counter.getJSONObject("counter").getString("image");
             counterName = counter.getJSONObject("counter").getString("name");
+            counterMastery = counter.getJSONObject("counter").getInt("mastery");
             winRate = counter.getInt("winRate");
         }
     }
