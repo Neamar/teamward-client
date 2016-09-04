@@ -62,26 +62,18 @@
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
-
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_header_general">Game data</string>
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
+    <string-array name="pref_game_data_tabs_titles">
+        <item>My team</item>
+        <item>Ennemy team</item>
+        <item>Tips</item>
     </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
+    <string-array name="pref_game_data_tabs_values">
+        <item>own</item>
+        <item>ennemy</item>
+        <item>-tips</item>
     </string-array>
 
     <!-- Example settings for Data & Sync -->
@@ -139,4 +131,5 @@
     <string name="title_activity_counter">Find your counter!</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="action_counter">View your counters</string>
+    <string name="display_champion_name">Display champion name</string>
 </resources>

@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata.holder;
 
+import android.preference.PreferenceManager;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
@@ -91,9 +92,14 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     public void bindAdvert(Player player) {
         this.player = player;
 
-        this.championName.setText(player.champion.name);
-        this.summonerName.setText(player.summoner.name);
-
+        if (PreferenceManager.getDefaultSharedPreferences(championName.getContext()).getBoolean("display_champion_name", true)) {
+            this.championName.setText(player.champion.name);
+            this.summonerName.setText(player.summoner.name);
+        } else {
+            this.championName.setText(player.summoner.name);
+            this.summonerName.setText("");
+        }
+        
         ImageLoader.getInstance().displayImage(player.champion.imageUrl, championImage);
         championImage.setContentDescription(player.champion.name);
         ImageLoader.getInstance().displayImage(player.spellD.imageUrl, spellDImage);
