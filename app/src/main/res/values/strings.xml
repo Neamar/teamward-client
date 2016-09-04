@@ -67,13 +67,13 @@
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
     <string-array name="pref_game_data_tabs_titles">
         <item>My team</item>
-        <item>Ennemy team</item>
+        <item>Enemy team</item>
         <item>Tips</item>
     </string-array>
     <string-array name="pref_game_data_tabs_values">
         <item>own</item>
-        <item>ennemy</item>
-        <item>-tips</item>
+        <item>enemy</item>
+        <item>tips</item>
     </string-array>
 
     <!-- Example settings for Data & Sync -->

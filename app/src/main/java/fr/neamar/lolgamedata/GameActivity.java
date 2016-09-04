@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
@@ -359,6 +360,30 @@ public class GameActivity extends SnackBarActivity {
         // primary sections of the activity.
 
         sectionsPagerAdapter.setGame(game);
+
+        String defaultTabName = PreferenceManager.getDefaultSharedPreferences(this).getString("default_game_data_tab", "enemy");
+
+        Log.e(TAG, defaultTabName);
+
+        TabLayout.Tab selectedTab;
+
+        if(defaultTabName.equals("tips")) {
+            selectedTab = mTabLayout.getTabAt(2);
+        }
+        else {
+            int myTeamIndex = game.teams.get(0) == game.getPlayerOwnTeam() ? 0 : 1;
+            int enemyTeamIndex = game.teams.get(0) == game.getPlayerOwnTeam() ? 1 : 0;
+            if(defaultTabName.equals("enemy")) {
+                selectedTab = mTabLayout.getTabAt(enemyTeamIndex);
+            }
+            else {
+                selectedTab = mTabLayout.getTabAt(myTeamIndex);
+            }
+        }
+
+        if(selectedTab != null) {
+            selectedTab.select();
+        }
 
         setUiMode(UI_MODE_IN_GAME);
     }

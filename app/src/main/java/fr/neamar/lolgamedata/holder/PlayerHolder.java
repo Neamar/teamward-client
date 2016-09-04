@@ -99,7 +99,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             this.championName.setText(player.summoner.name);
             this.summonerName.setText("");
         }
-        
+
         ImageLoader.getInstance().displayImage(player.champion.imageUrl, championImage);
         championImage.setContentDescription(player.champion.name);
         ImageLoader.getInstance().displayImage(player.spellD.imageUrl, spellDImage);

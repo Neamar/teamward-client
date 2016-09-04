@@ -11,7 +11,7 @@
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
     <ListPreference
-        android:defaultValue="-1"
+        android:defaultValue="enemy"
         android:entries="@array/pref_game_data_tabs_titles"
         android:entryValues="@array/pref_game_data_tabs_values"
         android:key="default_game_data_tab"
