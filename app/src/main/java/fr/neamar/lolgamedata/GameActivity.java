@@ -367,21 +367,19 @@ public class GameActivity extends SnackBarActivity {
 
         TabLayout.Tab selectedTab;
 
-        if(defaultTabName.equals("tips")) {
+        if (defaultTabName.equals("tips")) {
             selectedTab = mTabLayout.getTabAt(2);
-        }
-        else {
+        } else {
             int myTeamIndex = game.teams.get(0) == game.getPlayerOwnTeam() ? 0 : 1;
             int enemyTeamIndex = game.teams.get(0) == game.getPlayerOwnTeam() ? 1 : 0;
-            if(defaultTabName.equals("enemy")) {
+            if (defaultTabName.equals("enemy")) {
                 selectedTab = mTabLayout.getTabAt(enemyTeamIndex);
-            }
-            else {
+            } else {
                 selectedTab = mTabLayout.getTabAt(myTeamIndex);
             }
         }
 
-        if(selectedTab != null) {
+        if (selectedTab != null) {
             selectedTab.select();
         }
 
