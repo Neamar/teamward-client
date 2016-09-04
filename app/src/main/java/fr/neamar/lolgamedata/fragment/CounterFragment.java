@@ -1,6 +1,8 @@
 package fr.neamar.lolgamedata.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -80,8 +82,11 @@ public class CounterFragment extends Fragment {
         final String summonerName = account.summonerName;
         String region = account.region;
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        int requiredChampionMastery = Integer.parseInt(prefs.getString("counter_required_mastery", "3"));
+
         try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getActivity().getApplication()).getApiUrl() + "/summoner/counter?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region.toLowerCase() + "&role=" + role.toLowerCase() + "&level=3", null,
+            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getActivity().getApplication()).getApiUrl() + "/summoner/counter?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region.toLowerCase() + "&role=" + role.toLowerCase() + "&level=" + requiredChampionMastery, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
