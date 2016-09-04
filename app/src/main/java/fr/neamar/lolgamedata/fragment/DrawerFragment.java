@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import fr.neamar.lolgamedata.AccountManager;
 import fr.neamar.lolgamedata.AddAccountActivity;
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.SettingsActivity;
 import fr.neamar.lolgamedata.adapter.AccountAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 
@@ -48,7 +49,7 @@ public class DrawerFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onActivityCreated(savedInstanceState);
 
         accountManager = new AccountManager(getActivity());
 
@@ -72,7 +73,8 @@ public class DrawerFragment extends Fragment {
         getView().findViewById(R.id.settingsLayout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Settings will be there soon! Check back next update...", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(i);
             }
         });
 
@@ -92,6 +94,6 @@ public class DrawerFragment extends Fragment {
         Log.i(TAG, "Stopping account change receiver");
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mBroadcastReceiver);
 
-        super.onStop();
+        super.onDestroy();
     }
 }
