@@ -48,7 +48,7 @@ public class AccountsActivity extends SnackBarActivity {
             e.printStackTrace();
         }
 
-        if (false && !accounts.isEmpty()) {
+        if (!accounts.isEmpty()) {
             Account mainAccount = accounts.get(0);
             Intent i = new Intent(this, GameActivity.class);
             i.putExtra("account", mainAccount);
