@@ -83,9 +83,10 @@ public class NotificationService extends GcmListenerService {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
-
-        // Build a new Mixpanel instance, to make sure we don't update the user profile
-        MixpanelAPI.getInstance(this, getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", account.toJsonObject());
+        if(prefs.getBoolean("notifications_new_game", true)) {
+            notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
+            // Build a new Mixpanel instance, to make sure we don't update the user profile
+            MixpanelAPI.getInstance(this, getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", account.toJsonObject());
+        }
     }
 }

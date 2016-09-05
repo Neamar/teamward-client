@@ -76,14 +76,16 @@ public class CounterFragment extends Fragment {
         return rootView;
     }
 
-    private void loadCounters(final RecyclerView recyclerView, final Account account, String role) {
+    private void loadCounters(final RecyclerView recyclerView, final Account account, final String role) {
+        ((LolApplication) getActivity().getApplication()).getMixpanel().timeEvent("View counters");
+
         // Instantiate the RequestQueue.
         final RequestQueue queue = Volley.newRequestQueue(getActivity());
         final String summonerName = account.summonerName;
         String region = account.region;
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        int requiredChampionMastery = Integer.parseInt(prefs.getString("counter_required_mastery", "3"));
+        final int requiredChampionMastery = Integer.parseInt(prefs.getString("counter_required_mastery", "3"));
 
         try {
             JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getActivity().getApplication()).getApiUrl() + "/summoner/counter?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region.toLowerCase() + "&role=" + role.toLowerCase() + "&level=" + requiredChampionMastery, null,
@@ -97,6 +99,19 @@ public class CounterFragment extends Fragment {
                                 recyclerView.setAdapter(adapter);
 
                                 Log.i(TAG, "Loaded counters!");
+
+                                JSONObject j = account.toJsonObject();
+                                try {
+                                    j.put("role", role);
+                                    j.put("mastery", requiredChampionMastery);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                // Timing automatically added
+                                ((LolApplication) getActivity().getApplication()).getMixpanel().track("View counters", j);
+
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

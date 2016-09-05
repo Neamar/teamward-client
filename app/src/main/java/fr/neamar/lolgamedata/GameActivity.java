@@ -158,9 +158,6 @@ public class GameActivity extends SnackBarActivity {
         ((LolApplication) getApplication()).getMixpanel().getPeople().increment("games_viewed_count", 1);
         ((LolApplication) getApplication()).getMixpanel().getPeople().set("last_viewed_game", new Date());
 
-        ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
-
-
         if (savedInstanceState == null || !savedInstanceState.containsKey("game")) {
             loadCurrentGame(account.summonerName, account.region);
         }
@@ -258,6 +255,8 @@ public class GameActivity extends SnackBarActivity {
     }
 
     public void loadCurrentGame(final String summonerName, final String region) {
+        ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
+
         final ProgressDialog dialog = ProgressDialog.show(this, "",
                 String.format(getString(R.string.loading_game_data), summonerName), true);
         dialog.show();
