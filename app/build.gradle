@@ -39,6 +39,7 @@ dependencies {
     compile 'com.mixpanel.android:mixpanel-android:4.8.5'
     compile 'com.android.support:support-v4:24.0.0'
     compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.simplecityapps:recyclerview-fastscroll:1.0.9'
 }
 
 apply plugin: 'com.google.gms.google-services'

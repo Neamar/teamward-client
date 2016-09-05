@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
@@ -194,7 +195,7 @@ public class GameActivity extends SnackBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home, menu);
+        getMenuInflater().inflate(R.menu.menu_game, menu);
         return true;
     }
 
@@ -217,6 +218,13 @@ public class GameActivity extends SnackBarActivity {
                             dialog.dismiss();
                         }
                     }).show();
+
+            return true;
+        } else if (id == R.id.action_counter) {
+            Intent counterIntent = new Intent(GameActivity.this, CounterActivity.class);
+            counterIntent.putExtra("account", account);
+            startActivity(counterIntent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -241,7 +249,7 @@ public class GameActivity extends SnackBarActivity {
             mViewPager.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
             mFab.setVisibility(View.GONE);
-        } else if(uiMode == UI_MODE_NO_INTERNET) {
+        } else if (uiMode == UI_MODE_NO_INTERNET) {
             mTabLayout.setVisibility(View.GONE);
             mViewPager.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.GONE);
@@ -305,7 +313,7 @@ public class GameActivity extends SnackBarActivity {
 
                     setUiMode(UI_MODE_NO_INTERNET);
 
-                    if(error instanceof NoConnectionError) {
+                    if (error instanceof NoConnectionError) {
                         displaySnack(getString(R.string.no_internet_connection));
                         return;
                     }
@@ -320,8 +328,7 @@ public class GameActivity extends SnackBarActivity {
                             JSONObject j = account.toJsonObject();
                             j.put("error", responseBody.replace("Error:", ""));
                             ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
-                        }
-                        else {
+                        } else {
                             setUiMode(UI_MODE_NOT_IN_GAME);
                         }
                     } catch (UnsupportedEncodingException | JSONException e) {
@@ -353,6 +360,26 @@ public class GameActivity extends SnackBarActivity {
         // primary sections of the activity.
 
         sectionsPagerAdapter.setGame(game);
+
+        String defaultTabName = PreferenceManager.getDefaultSharedPreferences(this).getString("default_game_data_tab", "enemy");
+
+        TabLayout.Tab selectedTab;
+
+        if (defaultTabName.equals("tips")) {
+            selectedTab = mTabLayout.getTabAt(2);
+        } else {
+            int myTeamIndex = game.teams.get(0) == game.getPlayerOwnTeam() ? 0 : 1;
+            int enemyTeamIndex = game.teams.get(0) == game.getPlayerOwnTeam() ? 1 : 0;
+            if (defaultTabName.equals("enemy")) {
+                selectedTab = mTabLayout.getTabAt(enemyTeamIndex);
+            } else {
+                selectedTab = mTabLayout.getTabAt(myTeamIndex);
+            }
+        }
+
+        if (selectedTab != null) {
+            selectedTab.select();
+        }
 
         setUiMode(UI_MODE_IN_GAME);
     }
