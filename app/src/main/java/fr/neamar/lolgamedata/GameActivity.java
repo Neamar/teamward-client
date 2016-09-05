@@ -363,8 +363,6 @@ public class GameActivity extends SnackBarActivity {
 
         String defaultTabName = PreferenceManager.getDefaultSharedPreferences(this).getString("default_game_data_tab", "enemy");
 
-        Log.e(TAG, defaultTabName);
-
         TabLayout.Tab selectedTab;
 
         if (defaultTabName.equals("tips")) {

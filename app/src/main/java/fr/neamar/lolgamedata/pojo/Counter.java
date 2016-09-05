@@ -5,9 +5,6 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-/**
- * Created by neamar on 31/08/16.
- */
 public class Counter implements Serializable {
     public String championImage;
     public String championName;
