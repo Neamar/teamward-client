@@ -34,6 +34,11 @@ public class Tip {
             new HardcoreGamerTipBuilder(),
             new FilthyCasualTipBuilder()
     ));
+    public Game game;
+
+    public Tip(Game game) {
+        this.game = game;
+    }
 
     public static ArrayList<Tip> getTips(Game game, Context context) {
         ArrayList<Tip> tips = new ArrayList<>();
@@ -46,11 +51,5 @@ public class Tip {
         }
 
         return tips;
-    }
-
-    public Game game;
-
-    public Tip(Game game) {
-        this.game = game;
     }
 }

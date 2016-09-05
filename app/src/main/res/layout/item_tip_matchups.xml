@@ -23,22 +23,23 @@
             android:text="Expected matchups"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <LinearLayout
-                android:id="@+id/matchups"
-                android:layout_width="255dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:padding="4dp">
+        <LinearLayout
+            android:id="@+id/matchups"
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="4dp">
 
-                <include layout="@layout/item_tip_matchups_matchup" />
-                <include layout="@layout/item_tip_matchups_matchup" />
+            <include layout="@layout/item_tip_matchups_matchup" />
 
-            </LinearLayout>
+            <include layout="@layout/item_tip_matchups_matchup" />
+
+        </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
             android:id="@+id/disclaimer"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="(data: http://champion.gg)"

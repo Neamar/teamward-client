@@ -85,7 +85,7 @@ public class LolApplication extends Application {
         List<Account> accounts = accountManager.getAccounts();
         Log.i(TAG, "Current size for accounts is " + accounts.size());
 
-        if(!accountManager.getAccounts().isEmpty()) {
+        if (!accountManager.getAccounts().isEmpty()) {
             Log.i(TAG, "Identifying as " + accounts.get(0).summonerName);
             getMixpanel().getPeople().set("accounts_length", accounts.size());
             getMixpanel().getPeople().set("$username", accounts.get(0).summonerName);

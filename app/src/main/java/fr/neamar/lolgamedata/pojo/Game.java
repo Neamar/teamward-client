@@ -38,8 +38,8 @@ public class Game implements Serializable {
     }
 
     public Team getPlayerOwnTeam() {
-        for(Team team: teams) {
-            if(team.isPlayerOwnTeam) {
+        for (Team team : teams) {
+            if (team.isPlayerOwnTeam) {
                 return team;
             }
         }

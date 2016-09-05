@@ -33,7 +33,7 @@ public class NotificationService extends GcmListenerService {
      */
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        if(data.containsKey("gameId")) {
+        if (data.containsKey("gameId")) {
             long gameId = data.getLong("gameId");
             String gameMode = data.getString("gameMode");
             String summonerName = data.getString("summonerName");
@@ -72,8 +72,8 @@ public class NotificationService extends GcmListenerService {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        if(prefs.getBoolean("notifications_new_game_vibrate", true)) {
-            notificationBuilder.setVibrate(new long[] { 1000, 1000});
+        if (prefs.getBoolean("notifications_new_game_vibrate", true)) {
+            notificationBuilder.setVibrate(new long[]{1000, 1000});
         }
 
         Uri notificationUri = Uri.parse(prefs.getString("notifications_new_game_ringtone", Settings.System.DEFAULT_NOTIFICATION_URI.toString()));

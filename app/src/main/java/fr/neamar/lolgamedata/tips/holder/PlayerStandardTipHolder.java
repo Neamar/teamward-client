@@ -29,19 +29,19 @@ public class PlayerStandardTipHolder extends TipHolder {
         descriptionText = (TextView) itemView.findViewById(R.id.hotStreakDescription);
     }
 
-    public void bindTip(Tip tip) {
-        PlayerStandardTip playerStandardTip = (PlayerStandardTip) tip;
-
-        ImageLoader.getInstance().displayImage(playerStandardTip.image, championImage);
-        titleText.setText(playerStandardTip.text);
-        descriptionText.setText(playerStandardTip.description);
-    }
-
     public static TipHolder onCreateViewHolder(ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.item_tip_text_description_image, parent, false);
 
         return new PlayerStandardTipHolder(view);
+    }
+
+    public void bindTip(Tip tip) {
+        PlayerStandardTip playerStandardTip = (PlayerStandardTip) tip;
+
+        ImageLoader.getInstance().displayImage(playerStandardTip.image, championImage);
+        titleText.setText(playerStandardTip.text);
+        descriptionText.setText(playerStandardTip.description);
     }
 }

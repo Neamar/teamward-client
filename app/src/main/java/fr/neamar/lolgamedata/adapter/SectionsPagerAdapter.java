@@ -36,7 +36,7 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if(position == teams.size()) {
+        if (position == teams.size()) {
             return TipFragment.newInstance(position + 1, game);
         }
 
@@ -46,7 +46,7 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        if(teams.size() == 0) {
+        if (teams.size() == 0) {
             return 0;
         }
         return teams.size() + 1;
@@ -54,7 +54,7 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        if(position == teams.size()) {
+        if (position == teams.size()) {
             return context.getString(R.string.tips);
         }
 
@@ -67,15 +67,14 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         // FragmentAdapter will not refresh its content unless forced to do so
         // even if notifyDatasetChanged() was called.
         // So when new data is sent, ensure old fragments are removed.
-        if(item instanceof TeamFragment) {
+        if (item instanceof TeamFragment) {
             TeamFragment teamFragment = (TeamFragment) item;
             if (teams.indexOf(teamFragment.getTeam()) == -1) {
                 return POSITION_NONE;
             }
-        }
-        else if(item instanceof TipFragment) {
+        } else if (item instanceof TipFragment) {
             TipFragment tipFragment = (TipFragment) item;
-            if(tipFragment.game != game) {
+            if (tipFragment.game != game) {
                 return POSITION_NONE;
             }
         }

@@ -19,7 +19,7 @@ public class Counter implements Serializable {
         championImage = counter.getJSONObject("champion").getString("image");
         championName = counter.getJSONObject("champion").getString("name");
 
-        if(counter.has("counter") && counter.get("counter") != JSONObject.NULL) {
+        if (counter.has("counter") && counter.get("counter") != JSONObject.NULL) {
             counterImage = counter.getJSONObject("counter").getString("image");
             counterName = counter.getJSONObject("counter").getString("name");
             counterMastery = counter.getJSONObject("counter").getInt("mastery");

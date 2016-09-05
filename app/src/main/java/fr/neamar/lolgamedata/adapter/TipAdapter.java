@@ -21,19 +21,18 @@ import fr.neamar.lolgamedata.tips.holder.PremadeTipHolder;
  */
 public class TipAdapter extends RecyclerView.Adapter<TipHolder> {
     public ArrayList<Tip> tips;
+
     public TipAdapter(Game game, Context context) {
         tips = Tip.getTips(game, context);
     }
 
     @Override
     public TipHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType == PremadeTip.class.getName().hashCode()) {
+        if (viewType == PremadeTip.class.getName().hashCode()) {
             return PremadeTipHolder.onCreateViewHolder(parent);
-        }
-        else if(viewType == PlayerStandardTip.class.getName().hashCode()) {
+        } else if (viewType == PlayerStandardTip.class.getName().hashCode()) {
             return PlayerStandardTipHolder.onCreateViewHolder(parent);
-        }
-        else if(viewType == MatchupsTip.class.getName().hashCode()) {
+        } else if (viewType == MatchupsTip.class.getName().hashCode()) {
             return MatchupsTipHolder.onCreateViewHolder(parent);
         }
 

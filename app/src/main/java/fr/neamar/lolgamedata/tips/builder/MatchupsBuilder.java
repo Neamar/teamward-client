@@ -20,7 +20,7 @@ public class MatchupsBuilder extends TipBuilder {
     public ArrayList<Tip> getTips(Game game, Context context) {
         ArrayList<Tip> tips = new ArrayList<>();
 
-        if(game.teams.size() != 2) {
+        if (game.teams.size() != 2) {
             return tips;
         }
 
@@ -29,18 +29,18 @@ public class MatchupsBuilder extends TipBuilder {
 
         ArrayList<MatchupsTip.Matchup> matchups = new ArrayList<>();
 
-        for (Player player: playerTeam.players) {
-            if(!player.champion.role.equals(Champion.UNKNOWN_ROLE)) {
+        for (Player player : playerTeam.players) {
+            if (!player.champion.role.equals(Champion.UNKNOWN_ROLE)) {
                 // Does the other team have someone with this role too?
                 Player otherPlayer = getPlayerWithRole(otherTeam, player.champion.role);
-                if(otherPlayer != null) {
+                if (otherPlayer != null) {
                     MatchupsTip.Matchup matchup = new MatchupsTip.Matchup(player, otherPlayer);
                     matchups.add(matchup);
                 }
             }
         }
 
-        if(matchups.size() > 0) {
+        if (matchups.size() > 0) {
             MatchupsTip tip = new MatchupsTip(game, matchups);
             tips.add(tip);
         }
@@ -50,8 +50,8 @@ public class MatchupsBuilder extends TipBuilder {
 
     @Nullable
     public Player getPlayerWithRole(Team team, String role) {
-        for(Player player: team.players) {
-            if(player.champion.role.equals(role)) {
+        for (Player player : team.players) {
+            if (player.champion.role.equals(role)) {
                 return player;
             }
         }

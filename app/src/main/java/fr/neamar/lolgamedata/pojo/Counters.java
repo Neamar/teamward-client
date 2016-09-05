@@ -16,7 +16,7 @@ public class Counters implements Serializable {
     public Counters(JSONObject jsonCounterRequest) throws JSONException {
         JSONArray jsonCounters = jsonCounterRequest.getJSONArray("counters");
 
-        for(int i = 0; i < jsonCounters.length(); i++) {
+        for (int i = 0; i < jsonCounters.length(); i++) {
             counters.add(new Counter(jsonCounters.getJSONObject(i)));
         }
     }

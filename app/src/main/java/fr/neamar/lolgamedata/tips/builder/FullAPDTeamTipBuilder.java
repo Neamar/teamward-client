@@ -26,13 +26,13 @@ public class FullAPDTeamTipBuilder extends TipBuilder {
         for (Team team : game.teams) {
             Boolean fullAP = true;
             for (Player player : team.players) {
-                if(!player.champion.isAp()) {
+                if (!player.champion.isAp()) {
                     fullAP = false;
                     break;
                 }
             }
 
-            if(fullAP) {
+            if (fullAP) {
                 String description = context.getString(R.string.full_ap);
                 description = String.format(description, team.getName(context));
                 tips.add(new PlayerStandardTip(game, null, MAGIC_MANTLE_URL, context.getString(R.string.such_ability), description));
@@ -43,13 +43,13 @@ public class FullAPDTeamTipBuilder extends TipBuilder {
         for (Team team : game.teams) {
             Boolean fullAD = true;
             for (Player player : team.players) {
-                if(!player.champion.isAd() && !player.champion.role.equals("SUPPORT")) {
+                if (!player.champion.isAd() && !player.champion.role.equals("SUPPORT")) {
                     fullAD = false;
                     break;
                 }
             }
 
-            if(fullAD) {
+            if (fullAD) {
                 String description = context.getString(R.string.full_ad);
                 description = String.format(description, team.getName(context));
                 tips.add(new PlayerStandardTip(game, null, CLOTH_ARMOR, context.getString(R.string.much_damage), description));

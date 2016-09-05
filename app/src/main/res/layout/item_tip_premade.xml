@@ -36,8 +36,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="4dp">
-            </LinearLayout>
+                android:padding="4dp"></LinearLayout>
         </FrameLayout>
 
         <FrameLayout
@@ -53,14 +52,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="4dp">
-            </LinearLayout>
+                android:padding="4dp"></LinearLayout>
 
         </FrameLayout>
 
         <TextView
-            android:layout_width="wrap_content"
             android:id="@+id/disclaimer"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="@string/may_be_inaccurate"

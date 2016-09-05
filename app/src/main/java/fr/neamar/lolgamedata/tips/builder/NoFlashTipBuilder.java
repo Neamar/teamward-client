@@ -19,9 +19,9 @@ public class NoFlashTipBuilder extends TipBuilder {
     public ArrayList<Tip> getTips(Game game, Context context) {
         ArrayList<Tip> tips = new ArrayList<>();
 
-        for(Team team: game.teams) {
-            for(Player player: team.players) {
-                if(!player.spellD.name.equals("Flash") && !player.spellF.name.equals("Flash")) {
+        for (Team team : game.teams) {
+            for (Player player : team.players) {
+                if (!player.spellD.name.equals("Flash") && !player.spellF.name.equals("Flash")) {
                     String descriptionTemplate = context.getString(R.string.s_has_no_flash);
                     String description = String.format(descriptionTemplate, player.summoner.name, player.spellD.name, player.spellF.name);
                     tips.add(new PlayerStandardTip(game, player, player.champion.imageUrl, context.getString(R.string.no_flash), description));

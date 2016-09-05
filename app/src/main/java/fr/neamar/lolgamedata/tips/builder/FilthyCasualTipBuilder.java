@@ -21,7 +21,7 @@ public class FilthyCasualTipBuilder extends TipBuilder {
 
         for (Team team : game.teams) {
             for (Player player : team.players) {
-                if(player.averageTimeBetweenGames > 3600 * 24 * 7) {
+                if (player.averageTimeBetweenGames > 3600 * 24 * 7) {
                     String descriptionTemplate = context.getString(R.string.filthy_casual_description);
                     String description = String.format(descriptionTemplate, player.summoner.name);
                     tips.add(new PlayerStandardTip(game, player, player.champion.imageUrl, context.getString(R.string.filthy_casual), description));

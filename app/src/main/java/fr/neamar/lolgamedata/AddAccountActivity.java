@@ -52,7 +52,7 @@ public class AddAccountActivity extends Activity {
                 String name = nameText.getText().toString();
                 String region = regionSpinner.getSelectedItem().toString().replaceAll(" .+$", "");
 
-                if(name.isEmpty()) {
+                if (name.isEmpty()) {
                     nameText.setError("Please enter your summoner name!");
                     nameText.requestFocus();
                     return;

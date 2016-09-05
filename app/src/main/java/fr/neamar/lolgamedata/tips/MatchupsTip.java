@@ -9,6 +9,13 @@ import fr.neamar.lolgamedata.pojo.Player;
  * Created by neamar on 14/07/16.
  */
 public class MatchupsTip extends Tip {
+    public ArrayList<Matchup> matchups;
+
+    public MatchupsTip(Game game, ArrayList<Matchup> matchups) {
+        super(game);
+        this.matchups = matchups;
+    }
+
     public static class Matchup {
         public Player ownPlayer;
         public Player ennemyPlayer;
@@ -17,12 +24,5 @@ public class MatchupsTip extends Tip {
             this.ownPlayer = ownPlayer;
             this.ennemyPlayer = ennemyPlayer;
         }
-    }
-
-    public ArrayList<Matchup> matchups;
-
-    public MatchupsTip(Game game, ArrayList<Matchup> matchups) {
-        super(game);
-        this.matchups = matchups;
     }
 }

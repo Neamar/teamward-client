@@ -22,7 +22,7 @@ public class HardcoreGamerTipBuilder extends TipBuilder {
         for (Team team : game.teams) {
             for (Player player : team.players) {
                 // 9000 is roughly 24*3600 / 10
-                if(player.averageTimeBetweenGames < 9000) {
+                if (player.averageTimeBetweenGames < 9000) {
                     String descriptionTemplate = context.getString(R.string.hardcore_gamer_description);
                     String description = String.format(descriptionTemplate, player.summoner.name);
                     tips.add(new PlayerStandardTip(game, player, player.champion.imageUrl, context.getString(R.string.hardcore_gamer), description));

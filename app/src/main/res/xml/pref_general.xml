@@ -4,8 +4,7 @@
         android:defaultValue="true"
         android:key="display_champion_name"
         android:summary="@string/displayu_champion_name_summary"
-        android:title="@string/display_champion_name"
-    />
+        android:title="@string/display_champion_name" />
 
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->

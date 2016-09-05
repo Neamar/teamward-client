@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/coordinatorLayout"
     tools:context=".AccountsActivity">
 
     <TextView
+        android:id="@android:id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@android:id/empty"
-        android:text="@string/home_empty"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="@string/home_empty" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

@@ -36,6 +36,14 @@ public class PremadeTipHolder extends TipHolder {
         disclaimer = itemView.findViewById(R.id.disclaimer);
     }
 
+    public static TipHolder onCreateViewHolder(ViewGroup parent) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+        View view = inflater.inflate(R.layout.item_tip_premade, parent, false);
+
+        return new PremadeTipHolder(view);
+    }
+
     public void bindTip(Tip tip) {
         PremadeTip premadeTip = (PremadeTip) tip;
         Game game = premadeTip.game;
@@ -43,11 +51,10 @@ public class PremadeTipHolder extends TipHolder {
         drawChampions(game.teams.get(0));
         drawChampions(game.teams.get(1));
 
-        if(game.teams.get(0).premades.size() == 1 && game.teams.get(1).premades.size() == 1) {
+        if (game.teams.get(0).premades.size() == 1 && game.teams.get(1).premades.size() == 1) {
             // One big premade on both teams, we can't really be wrong...
             disclaimer.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             // Never forget that this is no exact science
             disclaimer.setVisibility(View.VISIBLE);
         }
@@ -61,7 +68,7 @@ public class PremadeTipHolder extends TipHolder {
         // Clean up old views
         linearLayout.removeAllViews();
         for (List<Integer> subPremade : team.premades) {
-            for(int summonerId: subPremade) {
+            for (int summonerId : subPremade) {
                 Champion champion = findPlayerById(team, summonerId).champion;
 
                 ImageView imageview = new ImageView(itemView.getContext());
@@ -73,7 +80,7 @@ public class PremadeTipHolder extends TipHolder {
                 imageview.setContentDescription(champion.name);
             }
 
-            if(subPremade != team.premades.get(team.premades.size() - 1)) {
+            if (subPremade != team.premades.get(team.premades.size() - 1)) {
                 TextView textView = new TextView(itemView.getContext());
                 textView.setText("—");
                 textView.setGravity(Gravity.CENTER);
@@ -91,13 +98,5 @@ public class PremadeTipHolder extends TipHolder {
         }
 
         throw new RuntimeException("Non existing player in premade?");
-    }
-
-    public static TipHolder onCreateViewHolder(ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-
-        View view = inflater.inflate(R.layout.item_tip_premade, parent, false);
-
-        return new PremadeTipHolder(view);
     }
 }

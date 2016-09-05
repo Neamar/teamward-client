@@ -27,6 +27,13 @@ public class MatchupsTipHolder extends TipHolder {
         matchupsLayout = (LinearLayout) itemView.findViewById(R.id.matchups);
     }
 
+    public static TipHolder onCreateViewHolder(ViewGroup parent) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+        View view = inflater.inflate(R.layout.item_tip_matchups, parent, false);
+
+        return new MatchupsTipHolder(view);
+    }
 
     public void bindTip(Tip tip) {
         MatchupsTip matchupsTip = (MatchupsTip) tip;
@@ -35,7 +42,7 @@ public class MatchupsTipHolder extends TipHolder {
         matchupsLayout.removeAllViews();
 
         LayoutInflater inflater = LayoutInflater.from(matchupsLayout.getContext());
-        for(MatchupsTip.Matchup matchup: matchupsTip.matchups) {
+        for (MatchupsTip.Matchup matchup : matchupsTip.matchups) {
             View view = inflater.inflate(R.layout.item_tip_matchups_matchup, null, false);
 
             ImageView ownChampionImageView = (ImageView) view.findViewById(R.id.ownChampion);
@@ -48,29 +55,18 @@ public class MatchupsTipHolder extends TipHolder {
 
             TextView matchupTextView = (TextView) view.findViewById(R.id.matchupStats);
 
-            if(matchup.ownPlayer.champion.winRate >= 0) {
+            if (matchup.ownPlayer.champion.winRate >= 0) {
                 matchupTextView.setText(String.format("%d%%", matchup.ownPlayer.champion.winRate));
-                if(matchup.ownPlayer.champion.winRate > 50) {
+                if (matchup.ownPlayer.champion.winRate > 50) {
                     matchupTextView.setTextColor(matchupsLayout.getContext().getResources().getColor(R.color.colorGoodMatchup));
-                }
-                else if(matchup.ownPlayer.champion.winRate < 50) {
+                } else if (matchup.ownPlayer.champion.winRate < 50) {
                     matchupTextView.setTextColor(matchupsLayout.getContext().getResources().getColor(R.color.colorBadMatchup));
                 }
-            }
-            else {
+            } else {
                 matchupTextView.setText("?");
                 matchupTextView.setTextColor(matchupsLayout.getContext().getResources().getColor(R.color.colorUnknownMatchup));
             }
             matchupsLayout.addView(view);
         }
-    }
-
-
-    public static TipHolder onCreateViewHolder(ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-
-        View view = inflater.inflate(R.layout.item_tip_matchups, parent, false);
-
-        return new MatchupsTipHolder(view);
     }
 }

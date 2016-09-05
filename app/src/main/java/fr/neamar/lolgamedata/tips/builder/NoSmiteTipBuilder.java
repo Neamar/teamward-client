@@ -23,20 +23,20 @@ public class NoSmiteTipBuilder extends TipBuilder {
         ArrayList<Tip> tips = new ArrayList<>();
 
         // Only apply on Summoner's Rift
-        if(GameActivity.getMapName(game.mapId) != R.string.summoners_rift) {
-            return  tips;
+        if (GameActivity.getMapName(game.mapId) != R.string.summoners_rift) {
+            return tips;
         }
 
-        for(Team team: game.teams) {
+        for (Team team : game.teams) {
             Boolean teamHasSmite = false;
-            for(Player player: team.players) {
-                if(player.spellD.name.equals("Smite") || player.spellF.name.equals("Smite")) {
+            for (Player player : team.players) {
+                if (player.spellD.name.equals("Smite") || player.spellF.name.equals("Smite")) {
                     teamHasSmite = true;
                     break;
                 }
             }
 
-            if(!teamHasSmite) {
+            if (!teamHasSmite) {
                 String description = context.getString(R.string.no_smite_desc);
                 description = String.format(description, team.getName(context));
                 tips.add(new PlayerStandardTip(game, null, SMITE_URL, context.getString(R.string.no_smite), description));

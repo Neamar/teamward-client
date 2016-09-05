@@ -9,48 +9,48 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
         android:layout_alignParentTop="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
         android:src="@drawable/banner" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/view"
         android:layout_below="@+id/imageView2"
-        tools:listitem="@layout/item_account"
-        android:layout_above="@+id/view"/>
+        tools:listitem="@layout/item_account" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#f6f6f6"
         android:layout_above="@+id/addLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/view" />
+        android:background="#f6f6f6" />
 
     <LinearLayout
+        android:id="@+id/addLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/settingsLayout"
 
+        android:layout_above="@+id/settingsLayout"
         android:background="?attr/selectableItemBackground"
         android:elevation="8dp"
         android:gravity="center_vertical"
         android:paddingBottom="4dp"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="4dp"
-        android:id="@+id/addLayout">
+        android:paddingTop="4dp">
 
         <ImageView
             android:layout_width="@dimen/champion_mastery_size"
             android:layout_height="@dimen/champion_mastery_size"
-            android:scaleType="center"
             android:contentDescription="@string/add_account"
+            android:scaleType="center"
             android:src="@drawable/ic_add_black_24dp" />
 
         <TextView
@@ -66,6 +66,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/settingsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -75,14 +76,13 @@
         android:paddingBottom="4dp"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="4dp"
-        android:id="@+id/settingsLayout">
+        android:paddingTop="4dp">
 
         <ImageView
             android:layout_width="@dimen/champion_mastery_size"
             android:layout_height="@dimen/champion_mastery_size"
-            android:scaleType="center"
             android:contentDescription="@string/action_settings"
+            android:scaleType="center"
             android:src="@drawable/ic_settings_black_24dp" />
 
         <TextView

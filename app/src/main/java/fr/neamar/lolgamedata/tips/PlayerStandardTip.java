@@ -14,6 +14,7 @@ public class PlayerStandardTip extends Tip {
     public String image;
     public String text;
     public String description;
+
     public PlayerStandardTip(Game game, Player player, String image, String text, String description) {
         super(game);
         this.player = player;
