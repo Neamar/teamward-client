@@ -136,4 +136,6 @@
     <string name="action_counter">View your counters</string>
     <string name="display_champion_name">Display champion name</string>
     <string name="displayu_champion_name_summary">Champion picture will always be displayed</string>
+    <string name="title_activity_counter_counters">CounterCountersActivity</string>
+    <string name="counter_counters_activity_title">Your %s counters</string>
 </resources>

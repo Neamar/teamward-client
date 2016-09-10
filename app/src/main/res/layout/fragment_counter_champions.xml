@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.neamar.lolgamedata.fragment.CounterFragment">
+    tools:context=".fragment.CounterChampionsFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        tools:listitem="@layout/item_counter_counters">
+        tools:listitem="@layout/item_counter_champion">
 
     </android.support.v7.widget.RecyclerView>
 

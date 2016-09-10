@@ -13,10 +13,10 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Spinner;
 
 import fr.neamar.lolgamedata.adapter.RoleAdapter;
-import fr.neamar.lolgamedata.fragment.CounterFragment;
+import fr.neamar.lolgamedata.fragment.CounterChampionsFragment;
 import fr.neamar.lolgamedata.pojo.Account;
 
-public class CounterActivity extends AppCompatActivity {
+public class CounterChampionsActivity extends AppCompatActivity {
     public static final String[] ROLES = new String[]{
             "Top",
             "Jungle",
@@ -28,7 +28,7 @@ public class CounterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_counter);
+        setContentView(R.layout.activity_counter_champions);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,7 +53,7 @@ public class CounterActivity extends AppCompatActivity {
                 // When the given dropdown item is selected, show its contents in the
                 // container view.
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, CounterFragment.newInstance(ROLES[position], account))
+                        .replace(R.id.container, CounterChampionsFragment.newInstance(ROLES[position], account))
                         .commit();
 
                 prefs.edit().putInt("lastUsedPosition", position).apply();

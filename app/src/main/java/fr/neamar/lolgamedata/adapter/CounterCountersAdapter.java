@@ -6,35 +6,35 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.neamar.lolgamedata.R;
-import fr.neamar.lolgamedata.holder.CounterHolder;
-import fr.neamar.lolgamedata.pojo.Counters;
+import fr.neamar.lolgamedata.holder.CounterCountersHolder;
+import fr.neamar.lolgamedata.pojo.Counter;
 
 /**
  * Created by neamar on 14/08/16.
  */
-public class CounterCountersAdapter extends RecyclerView.Adapter<CounterHolder> {
-    public final Counters counters;
+public class CounterCountersAdapter extends RecyclerView.Adapter<CounterCountersHolder> {
+    public final Counter counter;
 
-    public CounterCountersAdapter(Counters counters) {
-        this.counters = counters;
+    public CounterCountersAdapter(Counter counter) {
+        this.counter = counter;
     }
 
     @Override
-    public CounterHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CounterCountersHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View view = inflater.inflate(R.layout.item_counter_counters, parent, false);
+        View view = inflater.inflate(R.layout.item_counter_counter, parent, false);
 
-        return new CounterHolder(view);
+        return new CounterCountersHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CounterHolder holder, int position) {
-        holder.bindAdvert(counters.counters.get(position));
+    public void onBindViewHolder(CounterCountersHolder holder, int position) {
+        holder.bindAdvert(counter.counters.get(position), counter);
     }
 
     @Override
     public int getItemCount() {
-        return counters.counters.size();
+        return counter.counters.size();
     }
 }

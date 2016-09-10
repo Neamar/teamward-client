@@ -16,7 +16,8 @@ public class Counter implements Serializable {
 
         JSONArray jsonCounters = counter.getJSONArray("counters");
         for(int i = 0; i < jsonCounters.length(); i++) {
-            counters.add(new ChampionCounter(jsonCounters.getJSONObject(i), true));
+            ChampionCounter championCounter = new ChampionCounter(jsonCounters.getJSONObject(i), true);
+            counters.add(championCounter);
         }
     }
 }

@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +27,7 @@ import java.net.URLEncoder;
 
 import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
-import fr.neamar.lolgamedata.adapter.CounterCountersAdapter;
+import fr.neamar.lolgamedata.adapter.CounterChampionAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Counter;
 import fr.neamar.lolgamedata.pojo.Counters;
@@ -35,8 +35,8 @@ import fr.neamar.lolgamedata.pojo.Counters;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class CounterFragment extends Fragment {
-    public static final String TAG = "CounterFragment";
+public class CounterChampionsFragment extends Fragment {
+    public static final String TAG = "CounterChampionFragment";
 
     private static final String ARG_ROLE = "role";
     private static final String ARG_SUMMONER = "summoner";
@@ -45,15 +45,15 @@ public class CounterFragment extends Fragment {
     public Account user;
     public Counter counter;
 
-    public CounterFragment() {
+    public CounterChampionsFragment() {
     }
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static CounterFragment newInstance(String role, Account user) {
-        CounterFragment fragment = new CounterFragment();
+    public static CounterChampionsFragment newInstance(String role, Account user) {
+        CounterChampionsFragment fragment = new CounterChampionsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_ROLE, role);
         args.putSerializable(ARG_SUMMONER, user);
@@ -67,10 +67,10 @@ public class CounterFragment extends Fragment {
         role = getArguments().getString(ARG_ROLE);
         user = (Account) getArguments().getSerializable(ARG_SUMMONER);
 
-        View rootView = inflater.inflate(R.layout.fragment_counter, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_counter_champions, container, false);
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), 3));
 
         loadCounters(recyclerView, user, role);
         return rootView;
@@ -95,7 +95,7 @@ public class CounterFragment extends Fragment {
                             try {
                                 Counters counters = new Counters(response);
 
-                                CounterCountersAdapter adapter = new CounterCountersAdapter(counters);
+                                CounterChampionAdapter adapter = new CounterChampionAdapter(counters);
                                 recyclerView.setAdapter(adapter);
 
                                 Log.i(TAG, "Loaded counters!");

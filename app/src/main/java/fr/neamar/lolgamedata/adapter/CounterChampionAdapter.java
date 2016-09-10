@@ -6,13 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.neamar.lolgamedata.R;
-import fr.neamar.lolgamedata.holder.CounterHolder;
+import fr.neamar.lolgamedata.holder.CounterChampionHolder;
 import fr.neamar.lolgamedata.pojo.Counters;
 
-/**
- * Created by neamar on 14/08/16.
- */
-public class CounterChampionAdapter extends RecyclerView.Adapter<CounterHolder> {
+public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampionHolder> {
     public final Counters counters;
 
     public CounterChampionAdapter(Counters counters) {
@@ -20,16 +17,16 @@ public class CounterChampionAdapter extends RecyclerView.Adapter<CounterHolder> 
     }
 
     @Override
-    public CounterHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CounterChampionHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View view = inflater.inflate(R.layout.item_counter_counters, parent, false);
+        View view = inflater.inflate(R.layout.item_counter_champion, parent, false);
 
-        return new CounterHolder(view);
+        return new CounterChampionHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CounterHolder holder, int position) {
+    public void onBindViewHolder(CounterChampionHolder holder, int position) {
         holder.bindAdvert(counters.counters.get(position));
     }
 
