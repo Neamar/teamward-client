@@ -1,7 +1,6 @@
 package fr.neamar.lolgamedata;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +9,7 @@ import android.view.MenuItem;
 import fr.neamar.lolgamedata.adapter.CounterCountersAdapter;
 import fr.neamar.lolgamedata.pojo.Counter;
 
-public class CounterCountersActivity extends AppCompatActivity {
+public class CounterCountersActivity extends SnackBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +30,10 @@ public class CounterCountersActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         getSupportActionBar().setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.champion.name));
+
+        if(counter.counters.size() == 0) {
+            displaySnack(String.format("You don't play a single counter to %s. Go play more champions!", counter.champion.name));
+        }
     }
 
     @Override

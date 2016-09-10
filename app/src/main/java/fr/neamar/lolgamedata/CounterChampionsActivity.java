@@ -3,7 +3,6 @@ package fr.neamar.lolgamedata;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -18,7 +17,7 @@ import fr.neamar.lolgamedata.adapter.RoleAdapter;
 import fr.neamar.lolgamedata.fragment.CounterChampionsFragment;
 import fr.neamar.lolgamedata.pojo.Account;
 
-public class CounterChampionsActivity extends AppCompatActivity {
+public class CounterChampionsActivity extends SnackBarActivity {
     public static final String[] ROLES = new String[]{
             "Top",
             "Jungle",
@@ -76,23 +75,24 @@ public class CounterChampionsActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_counter, menu);
 
-        final MenuItem searchMenuItem = menu.findItem( R.id.action_search);
+        final MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) searchMenuItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Log.e(TAG, "SearchOnQueryTextSubmit: " + query);
-                if( ! searchView.isIconified()) {
+                if (!searchView.isIconified()) {
                     searchView.setIconified(true);
                 }
                 searchMenuItem.collapseActionView();
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String s) {
                 Log.e(TAG, "Filtering: " + s);
 
-                if(currentFragment != null) {
+                if (currentFragment != null) {
                     currentFragment.filterChampions(s);
                 }
                 return false;

@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,6 +29,7 @@ import java.net.URLEncoder;
 
 import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.SnackBarActivity;
 import fr.neamar.lolgamedata.adapter.CounterChampionAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Counter;
@@ -44,6 +47,8 @@ public class CounterChampionsFragment extends Fragment {
     public String role;
     public Account user;
     public Counter counter;
+
+    public ProgressBar loadIndicator;
 
     private CounterChampionAdapter adapter = null;
 
@@ -84,8 +89,12 @@ public class CounterChampionsFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), numItems));
 
                 loadCounters(recyclerView, user, role);
+
+                loadIndicator.setVisibility(View.VISIBLE);
             }
         });
+
+        loadIndicator = (ProgressBar) rootView.findViewById(R.id.loadIndicator);
 
         return rootView;
     }
@@ -106,6 +115,8 @@ public class CounterChampionsFragment extends Fragment {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
+                            loadIndicator.setVisibility(View.GONE);
+
                             try {
                                 Counters counters = new Counters(response);
 
@@ -126,8 +137,6 @@ public class CounterChampionsFragment extends Fragment {
                                 if(getActivity() != null) {
                                     ((LolApplication) getActivity().getApplication()).getMixpanel().track("View counters", j);
                                 }
-
-
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -137,12 +146,14 @@ public class CounterChampionsFragment extends Fragment {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    loadIndicator.setVisibility(View.GONE);
+
                     Log.e(TAG, error.toString());
 
                     queue.stop();
 
                     error.printStackTrace();
-/*
+
                     if (error instanceof NoConnectionError) {
                         displaySnack(getString(R.string.no_internet_connection));
                         return;
@@ -157,7 +168,10 @@ public class CounterChampionsFragment extends Fragment {
                             displaySnack(responseBody);
                             JSONObject j = account.toJsonObject();
                             j.put("error", responseBody.replace("Error:", ""));
-                            ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
+
+                            if(getActivity() != null) {
+                                ((LolApplication) getActivity().getApplication()).getMixpanel().track("Error viewing game", j);
+                            }
                         }
                         else {
                         }
@@ -166,7 +180,7 @@ public class CounterChampionsFragment extends Fragment {
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
                     }
-*/
+
                 }
             });
 
@@ -183,6 +197,14 @@ public class CounterChampionsFragment extends Fragment {
     public void filterChampions(String filter) {
         if(adapter != null) {
             adapter.filter(filter);
+        }
+    }
+
+    public void displaySnack(String message) {
+        Log.e(TAG, message);
+        Log.e(TAG, getActivity().getClass().getName());
+        if(getActivity() != null && getActivity() instanceof SnackBarActivity) {
+            ((SnackBarActivity) getActivity()).displaySnack(message);
         }
     }
 }
