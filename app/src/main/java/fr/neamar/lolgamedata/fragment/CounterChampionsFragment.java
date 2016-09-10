@@ -62,17 +62,29 @@ public class CounterChampionsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         role = getArguments().getString(ARG_ROLE);
         user = (Account) getArguments().getSerializable(ARG_SUMMONER);
 
-        View rootView = inflater.inflate(R.layout.fragment_counter_champions, container, false);
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        final View rootView = inflater.inflate(R.layout.fragment_counter_champions, container, false);
+        final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), 3));
 
-        loadCounters(recyclerView, user, role);
+        container.post(new Runnable() {
+            @Override
+            public void run() {
+                // How many champions can we fit per row?
+                float totalWidth = container.getWidth();
+                float itemWidth = getResources().getDimension(R.dimen.champion_size) + 2 * getResources().getDimension(R.dimen.counter_champion_padding);
+
+                int numItems = (int) Math.floor(totalWidth / itemWidth);
+                recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), numItems));
+
+                loadCounters(recyclerView, user, role);
+            }
+        });
+
         return rootView;
     }
 
@@ -109,7 +121,9 @@ public class CounterChampionsFragment extends Fragment {
                                     e.printStackTrace();
                                 }
                                 // Timing automatically added
-                                ((LolApplication) getActivity().getApplication()).getMixpanel().track("View counters", j);
+                                if(getActivity() != null) {
+                                    ((LolApplication) getActivity().getApplication()).getMixpanel().track("View counters", j);
+                                }
 
 
                             } catch (JSONException e) {

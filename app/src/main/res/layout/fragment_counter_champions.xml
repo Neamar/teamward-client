@@ -11,6 +11,8 @@
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
+        app:layoutManager="android.support.v7.widget.GridLayoutManager"
+        app:spanCount="5"
         tools:listitem="@layout/item_counter_champion">
 
     </android.support.v7.widget.RecyclerView>
