@@ -78,7 +78,7 @@ public class CounterChampionsFragment extends Fragment {
                 float totalWidth = container.getWidth();
                 float itemWidth = getResources().getDimension(R.dimen.champion_size) + 2 * getResources().getDimension(R.dimen.counter_champion_padding);
 
-                int numItems = (int) Math.floor(totalWidth / itemWidth);
+                int numItems = (int) Math.max(1, Math.floor(totalWidth / itemWidth));
                 recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), numItems));
 
                 loadCounters(recyclerView, user, role);
