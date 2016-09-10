@@ -27,7 +27,7 @@ import java.net.URLEncoder;
 
 import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
-import fr.neamar.lolgamedata.adapter.CounterAdapter;
+import fr.neamar.lolgamedata.adapter.CounterCountersAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Counter;
 import fr.neamar.lolgamedata.pojo.Counters;
@@ -95,7 +95,7 @@ public class CounterFragment extends Fragment {
                             try {
                                 Counters counters = new Counters(response);
 
-                                CounterAdapter adapter = new CounterAdapter(counters);
+                                CounterCountersAdapter adapter = new CounterCountersAdapter(counters);
                                 recyclerView.setAdapter(adapter);
 
                                 Log.i(TAG, "Loaded counters!");
