@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +26,8 @@ public class CounterChampionsActivity extends AppCompatActivity {
             "Bot",
             "Support"
     };
+    private static final String TAG = "CounterChampionActivity";
+    private CounterChampionsFragment currentFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +54,10 @@ public class CounterChampionsActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // When the given dropdown item is selected, show its contents in the
-                // container view.
+                currentFragment = CounterChampionsFragment.newInstance(ROLES[position], account);
+
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, CounterChampionsFragment.newInstance(ROLES[position], account))
+                        .replace(R.id.container, currentFragment)
                         .commit();
 
                 prefs.edit().putInt("lastUsedPosition", position).apply();
@@ -71,6 +75,29 @@ public class CounterChampionsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_counter, menu);
+
+        final MenuItem searchMenuItem = menu.findItem( R.id.action_search);
+        final SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.e(TAG, "SearchOnQueryTextSubmit: " + query);
+                if( ! searchView.isIconified()) {
+                    searchView.setIconified(true);
+                }
+                searchMenuItem.collapseActionView();
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                Log.e(TAG, "Filtering: " + s);
+
+                if(currentFragment != null) {
+                    currentFragment.filterChampions(s);
+                }
+                return false;
+            }
+        });
         return true;
     }
 

@@ -45,6 +45,8 @@ public class CounterChampionsFragment extends Fragment {
     public Account user;
     public Counter counter;
 
+    private CounterChampionAdapter adapter = null;
+
     public CounterChampionsFragment() {
     }
 
@@ -107,7 +109,7 @@ public class CounterChampionsFragment extends Fragment {
                             try {
                                 Counters counters = new Counters(response);
 
-                                CounterChampionAdapter adapter = new CounterChampionAdapter(counters);
+                                adapter = new CounterChampionAdapter(counters);
                                 recyclerView.setAdapter(adapter);
 
                                 Log.i(TAG, "Loaded counters!");
@@ -175,6 +177,12 @@ public class CounterChampionsFragment extends Fragment {
             queue.add(jsonRequest);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void filterChampions(String filter) {
+        if(adapter != null) {
+            adapter.filter(filter);
         }
     }
 }

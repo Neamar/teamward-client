@@ -95,7 +95,12 @@
         <activity
             android:name=".CounterCountersActivity"
             android:label="@string/title_activity_counter_counters"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".CounterChampionsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fr.neamar.lolgamedata.CounterChampionsActivity" />
+        </activity>
     </application>
 
 </manifest>

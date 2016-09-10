@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import fr.neamar.lolgamedata.adapter.CounterCountersAdapter;
 import fr.neamar.lolgamedata.pojo.Counter;
@@ -15,8 +16,10 @@ public class CounterCountersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter_counters);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -27,7 +30,18 @@ public class CounterCountersActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
 
-        setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.champion.name));
+        getSupportActionBar().setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.champion.name));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == android.R.id.home) {
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

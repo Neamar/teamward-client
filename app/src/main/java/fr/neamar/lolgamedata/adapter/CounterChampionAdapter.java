@@ -10,10 +10,14 @@ import fr.neamar.lolgamedata.holder.CounterChampionHolder;
 import fr.neamar.lolgamedata.pojo.Counters;
 
 public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampionHolder> {
-    public final Counters counters;
+    public final Counters allCounters;
+    public Counters counters;
 
     public CounterChampionAdapter(Counters counters) {
-        this.counters = counters;
+        this.allCounters = counters;
+        this.counters = this.allCounters;
+
+        setHasStableIds(true);
     }
 
     @Override
@@ -33,5 +37,21 @@ public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampion
     @Override
     public int getItemCount() {
         return counters.counters.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return counters.counters.get(position).champion.name.hashCode();
+    }
+
+    public void filter(String filter) {
+        counters = new Counters();
+        for(int i = 0; i < allCounters.counters.size(); i++) {
+            if(allCounters.counters.get(i).champion.name.toLowerCase().startsWith(filter.toLowerCase())) {
+                counters.counters.add(allCounters.counters.get(i));
+            }
+        }
+
+        notifyDataSetChanged();
     }
 }
