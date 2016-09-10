@@ -44,6 +44,6 @@ public class CounterAdapter extends RecyclerView.Adapter<CounterHolder> implemen
     @NonNull
     @Override
     public String getSectionName(int position) {
-        return counters.counters.get(position).championName.substring(0, 1).toUpperCase();
+        return counters.counters.get(position).champion.name.substring(0, 1).toUpperCase();
     }
 }

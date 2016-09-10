@@ -32,23 +32,25 @@ public class CounterHolder extends RecyclerView.ViewHolder implements View.OnCli
     public void bindAdvert(Counter counter) {
         this.counter = counter;
 
-        ImageLoader.getInstance().displayImage(counter.championImage, championImage);
-        championImage.setContentDescription(counter.championName);
+        ImageLoader.getInstance().displayImage(counter.champion.image, championImage);
+        championImage.setContentDescription(counter.champion.name);
 
-        if (counter.counterImage != null) {
-            ImageLoader.getInstance().displayImage(counter.counterImage, counterImage);
-            counterImage.setContentDescription(counter.counterName);
-            winRateText.setText(String.format("%d%%", counter.winRate));
-            if (counter.winRate < 50) {
+        if (counter.counters.size() > 0) {
+            ImageLoader.getInstance().displayImage(counter.counters.get(0).image, counterImage);
+            counterImage.setContentDescription(counter.counters.get(0).name);
+
+            int winRate = counter.counters.get(0).winRate;
+            winRateText.setText(String.format("%d%%", winRate));
+            if (winRate < 50) {
                 winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorBadMatchup));
             } else {
                 winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorGoodMatchup));
             }
 
-            masteryImage.setImageResource(PlayerHolder.CHAMPION_MASTERIES_RESOURCES[counter.counterMastery]);
+            masteryImage.setImageResource(PlayerHolder.CHAMPION_MASTERIES_RESOURCES[counter.counters.get(0).mastery]);
         } else {
             counterImage.setImageResource(R.drawable.default_champion);
-            winRateText.setText(String.format("?", counter.winRate));
+            winRateText.setText("?");
             winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorUnknownMatchup));
             masteryImage.setImageResource(0);
         }
