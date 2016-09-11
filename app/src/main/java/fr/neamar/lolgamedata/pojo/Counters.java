@@ -20,4 +20,8 @@ public class Counters implements Serializable {
             counters.add(new Counter(jsonCounters.getJSONObject(i)));
         }
     }
+
+    public Counters() {
+
+    }
 }

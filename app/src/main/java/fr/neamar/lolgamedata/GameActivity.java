@@ -218,7 +218,7 @@ public class GameActivity extends SnackBarActivity {
 
             return true;
         } else if (id == R.id.action_counter) {
-            Intent counterIntent = new Intent(GameActivity.this, CounterActivity.class);
+            Intent counterIntent = new Intent(GameActivity.this, CounterChampionsActivity.class);
             counterIntent.putExtra("account", account);
             startActivity(counterIntent);
             return true;

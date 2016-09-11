@@ -14,5 +14,6 @@
     <dimen name="tip_premade_champion_thumbnail">30dp</dimen>
     <dimen name="tip_premade_champion_text_separator">10sp</dimen>
     <dimen name="tip_matchup_champion_thumbnail">30dp</dimen>
+    <dimen name="counter_champion_padding">4dp</dimen>
 
 </resources>

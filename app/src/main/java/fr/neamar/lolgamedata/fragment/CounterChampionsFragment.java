@@ -4,14 +4,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,7 +29,8 @@ import java.net.URLEncoder;
 
 import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
-import fr.neamar.lolgamedata.adapter.CounterAdapter;
+import fr.neamar.lolgamedata.SnackBarActivity;
+import fr.neamar.lolgamedata.adapter.CounterChampionAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Counter;
 import fr.neamar.lolgamedata.pojo.Counters;
@@ -35,8 +38,8 @@ import fr.neamar.lolgamedata.pojo.Counters;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class CounterFragment extends Fragment {
-    public static final String TAG = "CounterFragment";
+public class CounterChampionsFragment extends Fragment {
+    public static final String TAG = "CounterChampionFragment";
 
     private static final String ARG_ROLE = "role";
     private static final String ARG_SUMMONER = "summoner";
@@ -45,15 +48,19 @@ public class CounterFragment extends Fragment {
     public Account user;
     public Counter counter;
 
-    public CounterFragment() {
+    public ProgressBar loadIndicator;
+
+    private CounterChampionAdapter adapter = null;
+
+    public CounterChampionsFragment() {
     }
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static CounterFragment newInstance(String role, Account user) {
-        CounterFragment fragment = new CounterFragment();
+    public static CounterChampionsFragment newInstance(String role, Account user) {
+        CounterChampionsFragment fragment = new CounterChampionsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_ROLE, role);
         args.putSerializable(ARG_SUMMONER, user);
@@ -62,17 +69,33 @@ public class CounterFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         role = getArguments().getString(ARG_ROLE);
         user = (Account) getArguments().getSerializable(ARG_SUMMONER);
 
-        View rootView = inflater.inflate(R.layout.fragment_counter, container, false);
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        final View rootView = inflater.inflate(R.layout.fragment_counter_champions, container, false);
+        final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
-        loadCounters(recyclerView, user, role);
+        container.post(new Runnable() {
+            @Override
+            public void run() {
+                // How many champions can we fit per row?
+                float totalWidth = container.getWidth();
+                float itemWidth = getResources().getDimension(R.dimen.champion_size) + 2 * getResources().getDimension(R.dimen.counter_champion_padding);
+
+                int numItems = (int) Math.max(1, Math.floor(totalWidth / itemWidth));
+                recyclerView.setLayoutManager(new GridLayoutManager(rootView.getContext(), numItems));
+
+                loadCounters(recyclerView, user, role);
+
+                loadIndicator.setVisibility(View.VISIBLE);
+            }
+        });
+
+        loadIndicator = (ProgressBar) rootView.findViewById(R.id.loadIndicator);
+
         return rootView;
     }
 
@@ -92,10 +115,12 @@ public class CounterFragment extends Fragment {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
+                            loadIndicator.setVisibility(View.GONE);
+
                             try {
                                 Counters counters = new Counters(response);
 
-                                CounterAdapter adapter = new CounterAdapter(counters);
+                                adapter = new CounterChampionAdapter(counters);
                                 recyclerView.setAdapter(adapter);
 
                                 Log.i(TAG, "Loaded counters!");
@@ -109,9 +134,9 @@ public class CounterFragment extends Fragment {
                                     e.printStackTrace();
                                 }
                                 // Timing automatically added
-                                ((LolApplication) getActivity().getApplication()).getMixpanel().track("View counters", j);
-
-
+                                if(getActivity() != null) {
+                                    ((LolApplication) getActivity().getApplication()).getMixpanel().track("View counters", j);
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -121,12 +146,14 @@ public class CounterFragment extends Fragment {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    loadIndicator.setVisibility(View.GONE);
+
                     Log.e(TAG, error.toString());
 
                     queue.stop();
 
                     error.printStackTrace();
-/*
+
                     if (error instanceof NoConnectionError) {
                         displaySnack(getString(R.string.no_internet_connection));
                         return;
@@ -141,7 +168,10 @@ public class CounterFragment extends Fragment {
                             displaySnack(responseBody);
                             JSONObject j = account.toJsonObject();
                             j.put("error", responseBody.replace("Error:", ""));
-                            ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
+
+                            if(getActivity() != null) {
+                                ((LolApplication) getActivity().getApplication()).getMixpanel().track("Error viewing game", j);
+                            }
                         }
                         else {
                         }
@@ -150,7 +180,7 @@ public class CounterFragment extends Fragment {
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
                     }
-*/
+
                 }
             });
 
@@ -161,6 +191,20 @@ public class CounterFragment extends Fragment {
             queue.add(jsonRequest);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void filterChampions(String filter) {
+        if(adapter != null) {
+            adapter.filter(filter);
+        }
+    }
+
+    public void displaySnack(String message) {
+        Log.e(TAG, message);
+        Log.e(TAG, getActivity().getClass().getName());
+        if(getActivity() != null && getActivity() instanceof SnackBarActivity) {
+            ((SnackBarActivity) getActivity()).displaySnack(message);
         }
     }
 }
