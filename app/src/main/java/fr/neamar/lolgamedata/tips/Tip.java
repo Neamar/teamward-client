@@ -8,6 +8,7 @@ import java.util.List;
 
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.tips.builder.ColdStreakTipBuilder;
+import fr.neamar.lolgamedata.tips.builder.DoubleSmiteTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.FilthyCasualTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.FullAPDTeamTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.HardcoreGamerTipBuilder;
@@ -17,6 +18,7 @@ import fr.neamar.lolgamedata.tips.builder.NoFlashTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.NoSmiteTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.PremadeTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.TipBuilder;
+import fr.neamar.lolgamedata.tips.builder.TryHarderTipBuilder;
 
 /**
  * Created by neamar on 04/07/16.
@@ -25,6 +27,8 @@ public class Tip {
     public static final List<TipBuilder> tipsBuilders = new ArrayList<>(Arrays.asList(
             new TipBuilder(),
             new NoSmiteTipBuilder(),
+            new DoubleSmiteTipBuilder(),
+            new TryHarderTipBuilder(),
             new FullAPDTeamTipBuilder(),
             new PremadeTipBuilder(),
             new MatchupsBuilder(),

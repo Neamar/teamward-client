@@ -139,4 +139,8 @@
     <string name="title_activity_counter_counters">CounterCountersActivity</string>
     <string name="counter_counters_activity_title">Your %s counters</string>
     <string name="search">Search</string>
+    <string name="double_smite_desc">%s plays with more than one Smite!</string>
+    <string name="double_smite">Double double animal style</string>
+    <string name="try_harder_desc">Everyone in %s plays a champion with mastery 4+</string>
+    <string name="try_harder">tryhard i pwn u next tim</string>
 </resources>

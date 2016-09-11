@@ -40,7 +40,13 @@ public class PlayerStandardTipHolder extends TipHolder {
     public void bindTip(Tip tip) {
         PlayerStandardTip playerStandardTip = (PlayerStandardTip) tip;
 
-        ImageLoader.getInstance().displayImage(playerStandardTip.image, championImage);
+        if(!playerStandardTip.image.isEmpty()) {
+            ImageLoader.getInstance().displayImage(playerStandardTip.image, championImage);
+        }
+        else {
+            championImage.setImageResource(playerStandardTip.imageId);
+        }
+
         titleText.setText(playerStandardTip.text);
         descriptionText.setText(playerStandardTip.description);
     }
