@@ -32,24 +32,19 @@ public class CounterCountersHolder extends RecyclerView.ViewHolder implements Vi
         ImageLoader.getInstance().displayImage(counter.champion.image, championImage);
         championImage.setContentDescription(counter.champion.name);
 
-            ImageLoader.getInstance().displayImage(championCounter.image, counterImage);
-            counterImage.setContentDescription(championCounter.name);
+        ImageLoader.getInstance().displayImage(championCounter.image, counterImage);
+        counterImage.setContentDescription(championCounter.name);
 
-            int winRate = championCounter.winRate;
-            winRateText.setText(String.format("%d%%", winRate));
-            if (winRate < 50) {
-                winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorBadMatchup));
-            } else {
-                winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorGoodMatchup));
-            }
+        int winRate = championCounter.winRate;
+        winRateText.setText(String.format("%d%%", winRate));
+        if (winRate < 50) {
+            winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorBadMatchup));
+        } else {
+            winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorGoodMatchup));
+        }
 
-            masteryImage.setImageResource(PlayerHolder.CHAMPION_MASTERIES_RESOURCES[championCounter.mastery]);
-//        } else {
-//            counterImage.setImageResource(R.drawable.default_champion);
-//            winRateText.setText("?");
-//            winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorUnknownMatchup));
-//            masteryImage.setImageResource(0);
-//        }
+        masteryImage.setImageResource(PlayerHolder.CHAMPION_MASTERIES_RESOURCES[championCounter.mastery]);
+
     }
 
     @Override
