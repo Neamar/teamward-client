@@ -121,7 +121,7 @@
     <string name="hardcore_gamer">Hardcore gamer!</string>
     <string name="hardcore_gamer_description">%s has played more than 10 games in the last 24 hours.</string>
     <string name="filthy_casual_description">%s plays less than one game a week! What a casual!</string>
-    <string name="filthy_casual">Filthy casual...</string>
+    <string name="filthy_casual">Filthy casual…</string>
     <string name="s_has_no_flash">%1$s uses %2$s and %3$s.</string>
     <string name="no_flash">Flashless!</string>
     <string name="no_smite">The lion sleeps tonight</string>
@@ -133,7 +133,7 @@
     <string name="much_damage">Much damage!</string>
     <string name="no_internet_connection">Please check your network connection.</string>
     <string name="title_activity_counter">Find your counter!</string>
-    <string name="action_counter">View your counters</string>
+    <string name="action_counter">Help me draft!</string>
     <string name="display_champion_name">Display champion name</string>
     <string name="displayu_champion_name_summary">Champion picture will always be displayed</string>
     <string name="title_activity_counter_counters">CounterCountersActivity</string>
@@ -143,4 +143,5 @@
     <string name="double_smite">Double double animal style</string>
     <string name="try_harder_desc">Everyone in %s plays a champion with mastery 4+</string>
     <string name="try_harder">tryhard i pwn u next tim</string>
+    <string name="select_champion_playing_against">Select the champion you\'re playing against</string>
 </resources>

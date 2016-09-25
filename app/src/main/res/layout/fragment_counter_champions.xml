@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context=".fragment.CounterChampionsFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         app:layoutManager="android.support.v7.widget.GridLayoutManager"
         app:spanCount="5"
-        tools:listitem="@layout/item_counter_champion">
+        tools:listitem="@layout/item_counter_champion"
+        android:layout_below="@+id/textView4">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -25,5 +26,16 @@
         android:layout_centerVertical="true"
         android:indeterminate="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/select_champion_playing_against"
+        android:textAlignment="center"
+        android:id="@+id/textView4"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
