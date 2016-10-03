@@ -31,7 +31,7 @@ public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampion
 
     @Override
     public void onBindViewHolder(CounterChampionHolder holder, int position) {
-        holder.bindAdvert(counters.counters.get(position));
+        holder.bind(counters.counters.get(position));
     }
 
     @Override

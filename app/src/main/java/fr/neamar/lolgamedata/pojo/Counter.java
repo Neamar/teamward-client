@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Counter implements Serializable {
     public ChampionCounter champion;
     public ArrayList<ChampionCounter> counters = new ArrayList<>();
+    public int goodCountersThreshold = 0;
 
     public Counter(JSONObject counter) throws JSONException {
         champion = new ChampionCounter(counter.getJSONObject("champion"), false);
@@ -17,6 +18,10 @@ public class Counter implements Serializable {
         JSONArray jsonCounters = counter.getJSONArray("counters");
         for(int i = 0; i < jsonCounters.length(); i++) {
             ChampionCounter championCounter = new ChampionCounter(jsonCounters.getJSONObject(i), true);
+
+            if(championCounter.winRate >= 50) {
+                goodCountersThreshold++;
+            }
             counters.add(championCounter);
         }
     }

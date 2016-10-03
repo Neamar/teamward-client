@@ -44,7 +44,7 @@ public class PremadeTipHolder extends TipHolder {
         return new PremadeTipHolder(view);
     }
 
-    public void bindTip(Tip tip) {
+    public void bind(Tip tip) {
         PremadeTip premadeTip = (PremadeTip) tip;
         Game game = premadeTip.game;
 

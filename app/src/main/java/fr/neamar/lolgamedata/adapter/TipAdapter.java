@@ -41,7 +41,7 @@ public class TipAdapter extends RecyclerView.Adapter<TipHolder> {
 
     @Override
     public void onBindViewHolder(TipHolder holder, int position) {
-        holder.bindTip(tips.get(position));
+        holder.bind(tips.get(position));
     }
 
     @Override

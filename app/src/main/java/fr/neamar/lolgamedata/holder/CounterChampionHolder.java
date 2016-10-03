@@ -24,7 +24,7 @@ public class CounterChampionHolder extends RecyclerView.ViewHolder implements Vi
         view.setOnClickListener(this);
     }
 
-    public void bindAdvert(Counter counter) {
+    public void bind(Counter counter) {
         this.counter = counter;
 
         championImage.setImageResource(R.drawable.default_champion);

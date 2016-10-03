@@ -29,7 +29,7 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
         view.setOnLongClickListener(this);
     }
 
-    public void bindAdvert(Account account) {
+    public void bind(Account account) {
         this.account = account;
 
         this.summonerName.setText(account.summonerName);

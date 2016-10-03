@@ -13,6 +13,6 @@ public class TipHolder extends RecyclerView.ViewHolder {
         super(itemView);
     }
 
-    public void bindTip(Tip tip) {
+    public void bind(Tip tip) {
     }
 }

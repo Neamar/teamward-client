@@ -1,6 +1,5 @@
 package fr.neamar.lolgamedata.holder;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,7 +10,7 @@ import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.ChampionCounter;
 import fr.neamar.lolgamedata.pojo.Counter;
 
-public class CounterCountersHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class CounterCountersHolder extends DummyHolder implements View.OnClickListener {
     private final ImageView championImage;
     private final ImageView counterImage;
     private final TextView winRateText;
@@ -28,7 +27,7 @@ public class CounterCountersHolder extends RecyclerView.ViewHolder implements Vi
         view.setOnClickListener(this);
     }
 
-    public void bindAdvert(ChampionCounter championCounter, Counter counter) {
+    public void bind(ChampionCounter championCounter, Counter counter) {
         ImageLoader.getInstance().displayImage(counter.champion.image, championImage);
         championImage.setContentDescription(counter.champion.name);
 

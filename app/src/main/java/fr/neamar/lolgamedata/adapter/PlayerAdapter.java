@@ -32,7 +32,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerHolder> {
 
     @Override
     public void onBindViewHolder(PlayerHolder holder, int position) {
-        holder.bindAdvert(players.get(position));
+        holder.bind(players.get(position));
     }
 
     @Override

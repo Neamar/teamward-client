@@ -37,7 +37,7 @@ public class PlayerStandardTipHolder extends TipHolder {
         return new PlayerStandardTipHolder(view);
     }
 
-    public void bindTip(Tip tip) {
+    public void bind(Tip tip) {
         PlayerStandardTip playerStandardTip = (PlayerStandardTip) tip;
 
         if(!playerStandardTip.image.isEmpty()) {

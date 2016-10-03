@@ -89,7 +89,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         view.setOnClickListener(this);
     }
 
-    public void bindAdvert(Player player) {
+    public void bind(Player player) {
         this.player = player;
 
         if (PreferenceManager.getDefaultSharedPreferences(championName.getContext()).getBoolean("display_champion_name", true)) {

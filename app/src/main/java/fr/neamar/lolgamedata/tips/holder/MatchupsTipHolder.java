@@ -35,7 +35,7 @@ public class MatchupsTipHolder extends TipHolder {
         return new MatchupsTipHolder(view);
     }
 
-    public void bindTip(Tip tip) {
+    public void bind(Tip tip) {
         MatchupsTip matchupsTip = (MatchupsTip) tip;
         Game game = matchupsTip.game;
 
