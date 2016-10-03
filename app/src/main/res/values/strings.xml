@@ -143,7 +143,8 @@
     <string name="double_smite">Double double animal style</string>
     <string name="try_harder_desc">Everyone in %s plays a champion with mastery 4+</string>
     <string name="try_harder">tryhard i pwn u next tim</string>
-    <string name="select_champion_playing_against">Select the champion you\'re playing against</string>
+    <string name="select_champion_playing_against">Select the champion you\'re drafting against</string>
     <string name="good_counters">Good counters that you play</string>
     <string name="bad_counters">Bad counters that you play</string>
+    <string name="no_counters">Not enough data on %s against the champions you\'re playing :(</string>
 </resources>

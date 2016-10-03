@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/select_champion_playing_against"
         android:textAlignment="center"
         android:id="@+id/textView4"

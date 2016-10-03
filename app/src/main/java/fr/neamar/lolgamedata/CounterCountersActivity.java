@@ -32,7 +32,7 @@ public class CounterCountersActivity extends SnackBarActivity {
         getSupportActionBar().setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.champion.name));
 
         if(counter.counters.size() == 0) {
-            displaySnack(String.format("You don't play a single counter to %s. Go play more champions!", counter.champion.name));
+            displaySnack(String.format(getString(R.string.no_counters), counter.champion.name));
         }
     }
 
