@@ -13,11 +13,10 @@
         android:layout_marginTop="10dp"
         android:id="@+id/sectionTitle" />
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="50sp"
-        android:text="🙈"
+        android:src="@drawable/teemo"
         android:id="@+id/noCounters" />
 </LinearLayout>

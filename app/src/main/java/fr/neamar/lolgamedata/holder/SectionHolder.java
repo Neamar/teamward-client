@@ -2,18 +2,19 @@ package fr.neamar.lolgamedata.holder;
 
 import android.support.annotation.StringRes;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import fr.neamar.lolgamedata.R;
 
 public class SectionHolder extends DummyHolder {
     public TextView textView;
-    public TextView noCountersView;
+    public ImageView noCountersView;
 
     public SectionHolder(View itemView) {
         super(itemView);
         textView = (TextView) itemView.findViewById(R.id.sectionTitle);
-        noCountersView = (TextView) itemView.findViewById(R.id.noCounters);
+        noCountersView = (ImageView) itemView.findViewById(R.id.noCounters);
     }
 
     public void bindSection(@StringRes int textId, int itemsInSection) {
