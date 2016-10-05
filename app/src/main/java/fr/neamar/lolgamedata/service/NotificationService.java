@@ -47,7 +47,12 @@ public class NotificationService extends GcmListenerService {
 
             displayNotification(account, gameId, mapId);
         }
+        else if(data.containsKey("removeGameId")) {
+            long gameId = data.getLong("removeGameId");
 
+            Log.i(TAG, "End of game, hiding notification.");
+            getNotificationManager().cancel(Long.toString(gameId).hashCode());
+        }
     }
 
     /**
@@ -79,14 +84,15 @@ public class NotificationService extends GcmListenerService {
         Uri notificationUri = Uri.parse(prefs.getString("notifications_new_game_ringtone", Settings.System.DEFAULT_NOTIFICATION_URI.toString()));
         notificationBuilder.setSound(notificationUri);
 
-
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
+        NotificationManager notificationManager = getNotificationManager();
         if(prefs.getBoolean("notifications_new_game", true)) {
             notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
             // Build a new Mixpanel instance, to make sure we don't update the user profile
             MixpanelAPI.getInstance(this, getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", account.toJsonObject());
         }
+    }
+
+    private NotificationManager getNotificationManager() {
+        return (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
     }
 }
