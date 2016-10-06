@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,7 +25,11 @@ public class ChampionDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champion_detail);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -36,6 +41,7 @@ public class ChampionDetailActivity extends AppCompatActivity {
             }
         });
 
+        setTitle("Kled");
         final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
         ImageLoader.getInstance().loadImage("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kled_0.jpg", new SimpleImageLoadingListener() {
             @Override
@@ -61,5 +67,16 @@ public class ChampionDetailActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == android.R.id.home) {
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
