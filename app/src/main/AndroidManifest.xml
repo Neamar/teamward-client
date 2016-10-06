@@ -28,11 +28,7 @@
             android:name=".GameActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <receiver
@@ -100,6 +96,20 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.neamar.lolgamedata.CounterChampionsActivity" />
+        </activity>
+        <activity
+            android:name=".ChampionDetailActivity"
+            android:label="@string/title_activity_champion_detail"
+            android:parentActivityName=".GameActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fr.neamar.lolgamedata.GameActivity" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
