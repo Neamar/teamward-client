@@ -134,7 +134,7 @@ public class CounterChampionsFragment extends Fragment {
                                     e.printStackTrace();
                                 }
                                 // Timing automatically added
-                                if(getActivity() != null) {
+                                if (getActivity() != null) {
                                     ((LolApplication) getActivity().getApplication()).getMixpanel().track("View counters", j);
                                 }
                             } catch (JSONException e) {
@@ -164,16 +164,12 @@ public class CounterChampionsFragment extends Fragment {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
 
-                        if (!responseBody.contains("ummoner not in game")) {
-                            displaySnack(responseBody);
-                            JSONObject j = account.toJsonObject();
-                            j.put("error", responseBody.replace("Error:", ""));
+                        displaySnack(responseBody);
+                        JSONObject j = account.toJsonObject();
+                        j.put("error", responseBody.replace("Error:", ""));
 
-                            if(getActivity() != null) {
-                                ((LolApplication) getActivity().getApplication()).getMixpanel().track("Error viewing game", j);
-                            }
-                        }
-                        else {
+                        if (getActivity() != null) {
+                            ((LolApplication) getActivity().getApplication()).getMixpanel().track("Error viewing counters", j);
                         }
                     } catch (UnsupportedEncodingException | JSONException e) {
                         e.printStackTrace();
@@ -195,7 +191,7 @@ public class CounterChampionsFragment extends Fragment {
     }
 
     public void filterChampions(String filter) {
-        if(adapter != null) {
+        if (adapter != null) {
             adapter.filter(filter);
         }
     }
@@ -203,7 +199,7 @@ public class CounterChampionsFragment extends Fragment {
     public void displaySnack(String message) {
         Log.e(TAG, message);
         Log.e(TAG, getActivity().getClass().getName());
-        if(getActivity() != null && getActivity() instanceof SnackBarActivity) {
+        if (getActivity() != null && getActivity() instanceof SnackBarActivity) {
             ((SnackBarActivity) getActivity()).displaySnack(message);
         }
     }
