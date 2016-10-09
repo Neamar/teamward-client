@@ -72,7 +72,7 @@ public class CounterChampionsActivity extends SnackBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_counter, menu);
+        getMenuInflater().inflate(R.menu.menu_counter_champions, menu);
 
         final MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) searchMenuItem.getActionView();

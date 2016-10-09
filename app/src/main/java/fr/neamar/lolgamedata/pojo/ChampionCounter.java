@@ -13,10 +13,12 @@ public class ChampionCounter implements Serializable {
     public String image;
     public int mastery = -1;
     public int winRate = -1;
+    public String ggURL;
 
     public ChampionCounter(JSONObject champion, boolean isCounter) throws JSONException {
         image = champion.getString("image");
         name = champion.getString("name");
+        ggURL = champion.getString("gg");
         if(isCounter) {
             mastery = champion.getInt("mastery");
             winRate = champion.getInt("winRate");

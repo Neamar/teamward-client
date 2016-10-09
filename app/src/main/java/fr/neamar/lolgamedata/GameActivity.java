@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -389,6 +390,7 @@ public class GameActivity extends SnackBarActivity {
         if (game != null) {
             outState.putSerializable("summonerName", summonerName);
             outState.putSerializable("game", game);
+            outState.putSerializable("lastLoaded", lastLoaded);
         }
     }
 
@@ -398,6 +400,7 @@ public class GameActivity extends SnackBarActivity {
         if (savedInstanceState.containsKey("game")) {
             summonerName = savedInstanceState.getString("summonerName");
             game = (Game) savedInstanceState.getSerializable("game");
+            lastLoaded = (Date) savedInstanceState.getSerializable("lastLoaded");
             displayGame(summonerName, game);
         }
     }
