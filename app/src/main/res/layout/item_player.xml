@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/player_pod_height"
     android:orientation="vertical"
+    android:background="?android:attr/selectableItemBackground"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 

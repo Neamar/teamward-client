@@ -13,6 +13,8 @@ public class Champion implements Serializable {
 
     public String name;
     public String imageUrl;
+    public String splashUrl;
+    public String ggUrl;
     public int mastery;
     public int championRank;
     public int ad;
@@ -24,6 +26,8 @@ public class Champion implements Serializable {
     public Champion(JSONObject champion) throws JSONException {
         name = champion.getString("name");
         imageUrl = champion.getString("image");
+        splashUrl = champion.getString("splash");
+        ggUrl = champion.getString("gg");
         mastery = champion.getInt("mastery");
         ap = champion.getInt("ap");
         ad = champion.getInt("ad");
