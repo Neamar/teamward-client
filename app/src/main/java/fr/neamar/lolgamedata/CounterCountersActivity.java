@@ -1,15 +1,22 @@
 package fr.neamar.lolgamedata;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import fr.neamar.lolgamedata.adapter.CounterCountersAdapter;
 import fr.neamar.lolgamedata.pojo.Counter;
 
 public class CounterCountersActivity extends SnackBarActivity {
+    private Counter counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +31,7 @@ public class CounterCountersActivity extends SnackBarActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Counter counter = (Counter) getIntent().getSerializableExtra("counter");
+        counter = (Counter) getIntent().getSerializableExtra("counter");
         CounterCountersAdapter adapter = new CounterCountersAdapter(counter);
 
         recyclerView.setAdapter(adapter);
@@ -34,6 +41,17 @@ public class CounterCountersActivity extends SnackBarActivity {
         if(counter.counters.size() == 0) {
             displaySnack(String.format(getString(R.string.no_counters), counter.champion.name));
         }
+
+        JSONObject j = new JSONObject();
+        try {
+            j.put("champion", counter.champion);
+            j.put("counters", counter.counters.size());
+            j.put("goodCountersThreshold", counter.goodCountersThreshold);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ((LolApplication) getApplication()).getMixpanel().track("View champion counters", j);
     }
 
     @Override
@@ -43,8 +61,20 @@ public class CounterCountersActivity extends SnackBarActivity {
             finish();
             return true;
         }
+        else if(id == R.id.action_gg) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(counter.champion.ggURL));
+            startActivity(browserIntent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_counter_counters, menu);
+
+        return true;
+    }
 }
