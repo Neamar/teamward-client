@@ -1,0 +1,151 @@
+<resources>
+    <string name="action_settings">Paramètres</string>
+    <string name="title_activity_game">Détails de la partie</string>
+    <string name="blue_team">Équipe bleue</string>
+    <string name="red_team">Équipe rouge</string>
+    <string name="unknown_team">équipe \?</string>
+    <string name="summoner_level">niveau %s</string>
+    <string name="champion_image">Image du champion</string>
+    <string name="summoner_spell_d">Summoner spell D</string>
+    <string name="summoner_spell_f">Summoner spell F</string>
+    <string name="stub_champion_name">Aatrox</string>
+    <string name="stub_summoner_name">Graphistos</string>
+    <string name="stub_previous_ranking">niveau 27</string>
+    <string name="current_ranking_tier">Classement actuel</string>
+    <string name="stub_ranking_division">IV</string>
+    <string name="champion_mastery">Champion mastery</string>
+    <string name="champion_mastery_level">Niveau de champion mastery %s</string>
+    <string name="loading_game_data">Chargement des données pour %s</string>
+    <string name="game_data_title">%2$s (%1$s)</string>
+    <string name="stub_account">Neamar</string>
+    <string name="loading_summoner_data">Loading summoner information for %s</string>
+    <string name="summoners_rift">Summoner\'s Rift</string>
+    <string name="proving_grounds">The proving grounds</string>
+    <string name="twisted_treeline">Twisted Treeline</string>
+    <string name="crystal_scar">The Crystal Scar</string>
+    <string name="howling_abyss">Howling Abyss</string>
+    <string name="butchers_bridge">Butcher\'s Bridge</string>
+    <string name="unknown_map">LoL</string>
+    <string name="home_empty">Add your main League of Legends\naccount to get started.</string>
+    <string name="action_about">About</string>
+    <string name="about_text">https://github.com/Neamar/teamward-client\n\nTeamWard isn\'t endorsed by Riot Games and doesn\'t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="rammus_ok">Rammus</string>
+    <string name="first_main">MAIN</string>
+    <string name="second_main">2ⁿᵈ MAIN</string>
+    <string name="third_main">3ʳᵈ MAIN</string>
+    <string name="summoner_icon">Summoner icon</string>
+    <string name="summoner_name">Summoner name</string>
+    <string name="add_account">Add account</string>
+
+    <string-array name="regions">
+        <item>EUW [EU West]</item>
+        <item>BR [Brazil]</item>
+        <item>EUNE [EU Nordic &amp; East]</item>
+        <item>KR [Republic of Korea]</item>
+        <item>LAN [Latin America North]</item>
+        <item>LAS [Latin America South]</item>
+        <item>NA [North America]</item>
+        <item>OCE [Oceania]</item>
+        <item>RU [Russia]</item>
+        <item>TR [Turkey]</item>
+    </string-array>
+    <string name="title_activity_add_account">Add new account</string>
+    <string name="s_is_not_in_game_right_now">%s is not in game right now!</string>
+
+    <string name="account_removed">Account removed.</string>
+    <string name="reload">Reload</string>
+    <string name="stale_data">Stale data?</string>
+    <string name="no_game_2">TeamWard only gets data once you are in the game loading screen.</string>
+    <string name="no_game_3">If you\'re still in the lobby, wait and press refresh.</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">Game data</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_game_data_tabs_titles">
+        <item>My team</item>
+        <item>Enemy team</item>
+        <item>Tips</item>
+    </string-array>
+    <string-array name="pref_game_data_tabs_values">
+        <item>own</item>
+        <item>enemy</item>
+        <item>tips</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_counters">Counters</string>
+
+    <string name="pref_counter_champion_mastery_name">Required champion mastery</string>
+    <string-array name="pref_counter_champion_mastery_titles">
+        <item>Played champion at least once</item>
+        <item>Champion mastery 1+</item>
+        <item>Champion mastery 2+</item>
+        <item>Champion mastery 3+</item>
+        <item>Champion mastery 4+</item>
+        <item>Champion mastery 5+</item>
+        <item>Champion mastery 6+</item>
+        <item>Champion mastery 7 only</item>
+    </string-array>
+    <string-array name="pref_counter_champion_mastery_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s is on a hot streak! (%2$s wins in %3$s last games)</string>
+    <string name="hot_streak">Hot streak!</string>
+    <string name="may_be_inaccurate">(may be inaccurate)</string>
+    <string name="premade_information">Premade information</string>
+    <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s is on a cold streak! (%2$s loss in %3$s last games)</string>
+    <string name="cold_streak">Cold streak!</string>
+    <string name="hardcore_gamer">Hardcore gamer!</string>
+    <string name="hardcore_gamer_description">%s has played more than 10 games in the last 24 hours.</string>
+    <string name="filthy_casual_description">%s plays less than one game a week! What a casual!</string>
+    <string name="filthy_casual">Filthy casual…</string>
+    <string name="s_has_no_flash">%1$s uses %2$s and %3$s.</string>
+    <string name="no_flash">Flashless!</string>
+    <string name="no_smite">The lion sleeps tonight</string>
+    <string name="no_smite_desc">%s has no jungler</string>
+    <string name="tips">Tips</string>
+    <string name="such_ability">Such ability power!</string>
+    <string name="full_ap">%s is mostly made of AP champions.</string>
+    <string name="full_ad">%s is mostly made of AD champions.</string>
+    <string name="much_damage">Much damage!</string>
+    <string name="no_internet_connection">Please check your network connection.</string>
+    <string name="title_activity_counter">Find your counter!</string>
+    <string name="action_counter">Help me draft!</string>
+    <string name="display_champion_name">Display champion name</string>
+    <string name="displayu_champion_name_summary">Champion picture will always be displayed</string>
+    <string name="title_activity_counter_counters">CounterCountersActivity</string>
+    <string name="counter_counters_activity_title">Your %s counters</string>
+    <string name="search">Search</string>
+    <string name="double_smite_desc">%s plays with more than one Smite!</string>
+    <string name="double_smite">Double double animal style</string>
+    <string name="try_harder_desc">Everyone in %s plays a champion with mastery 4+</string>
+    <string name="try_harder">tryhard i pwn u next tim</string>
+    <string name="select_champion_playing_against">Select the champion you\'re drafting against</string>
+    <string name="good_counters">Good counters that you play</string>
+    <string name="bad_counters">Bad counters that you play</string>
+    <string name="no_counters">Not enough data on %s against the champions you\'re playing :(</string>
+    <string name="title_activity_champion_detail">Game details</string>
+</resources>
