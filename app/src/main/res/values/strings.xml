@@ -64,7 +64,6 @@
     <!-- Example General settings -->
     <string name="pref_header_general">Game data</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
     <string-array name="pref_game_data_tabs_titles">
         <item>My team</item>
         <item>Enemy team</item>
@@ -101,12 +100,7 @@
         <item>7</item>
     </string-array>
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_new_message_notifications">New message notifications</string>
 
     <string name="pref_title_ringtone">Ringtone</string>
     <string name="pref_ringtone_silent">Silent</string>
@@ -135,8 +129,7 @@
     <string name="title_activity_counter">Find your counter!</string>
     <string name="action_counter">Help me draft!</string>
     <string name="display_champion_name">Display champion name</string>
-    <string name="displayu_champion_name_summary">Champion picture will always be displayed</string>
-    <string name="title_activity_counter_counters">CounterCountersActivity</string>
+    <string name="display_champion_name_summary">Champion picture will always be displayed</string>
     <string name="counter_counters_activity_title">Your %s counters</string>
     <string name="search">Search</string>
     <string name="double_smite_desc">%s plays with more than one Smite!</string>
@@ -148,4 +141,7 @@
     <string name="bad_counters">Bad counters that you play</string>
     <string name="no_counters">Not enough data on %s against the champions you\'re playing :(</string>
     <string name="title_activity_champion_detail">Game details</string>
+    <string name="pref_title_new_game_notifications">New game notifications</string>
+    <string name="title_activity_counter_counters">Counters details</string>
+    <string name="default_tab">Default tab</string>
 </resources>

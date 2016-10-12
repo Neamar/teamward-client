@@ -1,0 +1,149 @@
+<resources>
+    <string name="action_settings">Paramètres</string>
+    <string name="title_activity_game">Détails de la partie</string>
+    <string name="blue_team">Équipe bleue</string>
+    <string name="red_team">Équipe rouge</string>
+    <string name="unknown_team">équipe \?</string>
+    <string name="summoner_level">niveau %s</string>
+    <string name="champion_image">Image du champion</string>
+    <string name="summoner_spell_d">Summoner spell D</string>
+    <string name="summoner_spell_f">Summoner spell F</string>
+    <string name="stub_champion_name">Aatrox</string>
+    <string name="stub_summoner_name">Graphistos</string>
+    <string name="stub_previous_ranking">niveau 27</string>
+    <string name="current_ranking_tier">Classement actuel</string>
+    <string name="stub_ranking_division">IV</string>
+    <string name="champion_mastery">Champion mastery</string>
+    <string name="champion_mastery_level">Niveau de champion mastery %s</string>
+    <string name="loading_game_data">Chargement des données pour %s</string>
+    <string name="game_data_title">%2$s (%1$s)</string>
+    <string name="stub_account">Neamar</string>
+    <string name="loading_summoner_data">Chargement des données d\'invocateur pour %s</string>
+    <string name="summoners_rift">Faille de l\'invocateur</string>
+    <string name="proving_grounds">The proving grounds</string>
+    <string name="twisted_treeline">La forêt torturée</string>
+    <string name="crystal_scar">Brèche de Cristal</string>
+    <string name="howling_abyss">Abîme hurlant</string>
+    <string name="butchers_bridge">Pont du boucher</string>
+    <string name="unknown_map">LoL</string>
+    <string name="home_empty">Ajoutez votre compte main\nLeague of Legends.</string>
+    <string name="action_about">À propos</string>
+    <string name="about_text">https://github.com/Neamar/teamward-client\n\nTeamWard isn\'t endorsed by Riot Games and doesn\'t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="rammus_ok">Rammus</string>
+    <string name="first_main">MAIN</string>
+    <string name="second_main">MAIN #2</string>
+    <string name="third_main">MAIN #3</string>
+    <string name="summoner_icon">Icone d\'invocateur</string>
+    <string name="summoner_name">Nom d\'invocateur</string>
+    <string name="add_account">Ajouter un compte</string>
+
+    <string-array name="regions">
+        <item>EUW [EU West]</item>
+        <item>BR [Brazil]</item>
+        <item>EUNE [EU Nordic &amp; East]</item>
+        <item>KR [Republic of Korea]</item>
+        <item>LAN [Latin America North]</item>
+        <item>LAS [Latin America South]</item>
+        <item>NA [North America]</item>
+        <item>OCE [Oceania]</item>
+        <item>RU [Russia]</item>
+        <item>TR [Turkey]</item>
+    </string-array>
+    <string name="title_activity_add_account">Ajouter un nouveau compte</string>
+    <string name="s_is_not_in_game_right_now">%s n\'est pas en jeu pour l\'instant !</string>
+
+    <string name="account_removed">Compte supprimé.</string>
+    <string name="reload">Recharger</string>
+    <string name="stale_data">Dans une nouvelle partie?</string>
+    <string name="no_game_2">TeamWard ne peut afficher des données qu\'une fois l\'écran de chargement affiché.</string>
+    <string name="no_game_3">Si vous êtes dans le lobby, attendez le chargement puis rechargez.</string>
+    <string name="title_activity_settings">Paramètres</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">Données de jeu</string>
+
+    <string-array name="pref_game_data_tabs_titles">
+        <item>Mon équipe</item>
+        <item>Équipe ennemie</item>
+        <item>Aides</item>
+    </string-array>
+    <string-array name="pref_game_data_tabs_values">
+        <item>own</item>
+        <item>enemy</item>
+        <item>tips</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_counters">Counters</string>
+
+    <string name="pref_counter_champion_mastery_name">Champion mastery requise</string>
+    <string-array name="pref_counter_champion_mastery_titles">
+        <item>Avoir joué le champion au moins une fois</item>
+        <item>Champion mastery 1+</item>
+        <item>Champion mastery 2+</item>
+        <item>Champion mastery 3+</item>
+        <item>Champion mastery 4+</item>
+        <item>Champion mastery 5+</item>
+        <item>Champion mastery 6+</item>
+        <item>Champion mastery 7 uniquement</item>
+    </string-array>
+    <string-array name="pref_counter_champion_mastery_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_ringtone">Sonnerie</string>
+    <string name="pref_ringtone_silent">Silencieux</string>
+
+    <string name="pref_title_vibrate">Vibrer à la réception</string>
+    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s fait une hot streak ! (%2$s victoires sur les %3$s dernières parties)</string>
+    <string name="hot_streak">Hot streak !</string>
+    <string name="may_be_inaccurate">(potentiellement inexact)</string>
+    <string name="premade_information">Information de premade</string>
+    <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s fait une cold streak ! (%2$s défaites sur les %3$s dernières parties)</string>
+    <string name="cold_streak">Cold streak !</string>
+    <string name="hardcore_gamer">Hardcore gamer !</string>
+    <string name="hardcore_gamer_description">%s a joué plus de 10 parties en 24h.</string>
+    <string name="filthy_casual_description">%s joue moins d\'une fois par semaine ! Quel casual !</string>
+    <string name="filthy_casual">Filthy casual…</string>
+    <string name="s_has_no_flash">%1$s utilise %2$s et %3$s.</string>
+    <string name="no_flash">Pas de flash !</string>
+    <string name="no_smite">Le lion est mort ce soir</string>
+    <string name="no_smite_desc">%s n\'a pas de jungler</string>
+    <string name="tips">Aides</string>
+    <string name="such_ability">Such ability power !</string>
+    <string name="full_ap">%s est majoritairement composée de champions AP.</string>
+    <string name="full_ad">%s est majoritairement composée de champions AD.</string>
+    <string name="much_damage">Much damage !</string>
+    <string name="no_internet_connection">Vérifiez votre connexion internet.</string>
+    <string name="title_activity_counter">Découvrez vos counters !</string>
+    <string name="action_counter">Aidez-moi à drafter !</string>
+    <string name="display_champion_name">Afficher le nom des champions</string>
+    <string name="display_champion_name_summary">Les avatars sont toujours affichés</string>
+    <string name="counter_counters_activity_title">Vos counters contre %s</string>
+    <string name="search">Rechercher</string>
+    <string name="double_smite_desc">%s a plus d\'un Smite ! WTF.</string>
+    <string name="double_smite">Double double animal style</string>
+    <string name="try_harder_desc">Tout le monde dans %s a une champion mastery 4+</string>
+    <string name="try_harder">tryhard i pwn u next tim</string>
+    <string name="select_champion_playing_against">Sélectionnez le champion contre lequel vous draftez</string>
+    <string name="good_counters">Vos bons counters</string>
+    <string name="bad_counters">Vos mauvais counters</string>
+    <string name="no_counters">Pas d\'information pour les matchups %s / vos champions :(</string>
+    <string name="title_activity_champion_detail">Informations de jeu</string>
+    <string name="pref_title_new_game_notifications">Notifier en début de partie</string>
+    <string name="title_activity_counter_counters">Détails de counters</string>
+    <string name="default_tab">Onglet par défaut</string>
+</resources>
