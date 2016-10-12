@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_gg"
         app:showAsAction="ifRoom"
-        android:title="GG"/>
+        android:title="@string/gg"/>
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

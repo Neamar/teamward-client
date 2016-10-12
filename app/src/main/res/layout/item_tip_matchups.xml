@@ -17,10 +17,9 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expected matchups"
+            android:text="@string/expected_matchups"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <LinearLayout
@@ -42,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="(data: http://champion.gg)"
+            android:text="@string/matchup_stats_source"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="8sp" />
     </LinearLayout>

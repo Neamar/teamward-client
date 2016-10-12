@@ -25,9 +25,9 @@ import fr.neamar.lolgamedata.tips.Tip;
  * Created by neamar on 04/07/16.
  */
 public class PremadeTipHolder extends TipHolder {
-    LinearLayout redTeamLayout;
-    LinearLayout blueTeamLayout;
-    View disclaimer;
+    final LinearLayout redTeamLayout;
+    final LinearLayout blueTeamLayout;
+    final View disclaimer;
 
     public PremadeTipHolder(View itemView) {
         super(itemView);

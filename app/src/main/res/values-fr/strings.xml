@@ -14,7 +14,7 @@
     <string name="current_ranking_tier">Classement actuel</string>
     <string name="stub_ranking_division">IV</string>
     <string name="champion_mastery">Champion mastery</string>
-    <string name="champion_mastery_level">Niveau de champion mastery %s</string>
+    <string name="champion_mastery_level">Niveau de champion mastery %d</string>
     <string name="loading_game_data">Chargement des données pour %s</string>
     <string name="game_data_title">%2$s (%1$s)</string>
     <string name="stub_account">Neamar</string>
@@ -108,11 +108,11 @@
     <string name="pref_ringtone_silent">Silencieux</string>
 
     <string name="pref_title_vibrate">Vibrer à la réception</string>
-    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s fait une hot streak ! (%2$s victoires sur les %3$s dernières parties)</string>
+    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s fait une hot streak ! (%2$d victoires sur les %3$d dernières parties)</string>
     <string name="hot_streak">Hot streak !</string>
     <string name="may_be_inaccurate">(potentiellement inexact)</string>
     <string name="premade_information">Information de premade</string>
-    <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s fait une cold streak ! (%2$s défaites sur les %3$s dernières parties)</string>
+    <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s fait une cold streak ! (%2$d défaites sur les %3$d dernières parties)</string>
     <string name="cold_streak">Cold streak !</string>
     <string name="hardcore_gamer">Hardcore gamer !</string>
     <string name="hardcore_gamer_description">%s a joué plus de 10 parties en 24h.</string>

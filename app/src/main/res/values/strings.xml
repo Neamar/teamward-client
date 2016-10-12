@@ -9,12 +9,12 @@
     <string name="summoner_spell_d">Summoner spell D</string>
     <string name="summoner_spell_f">Summoner spell F</string>
     <string name="stub_champion_name">Aatrox</string>
-    <string name="stub_summoner_name">Acarys</string>
+    <string name="stub_summoner_name">Graphistos</string>
     <string name="stub_previous_ranking">level 27</string>
     <string name="current_ranking_tier">Current ranking tier</string>
     <string name="stub_ranking_division">IV</string>
     <string name="champion_mastery">Champion mastery</string>
-    <string name="champion_mastery_level">Champion mastery level %s</string>
+    <string name="champion_mastery_level">Champion mastery level %d</string>
     <string name="loading_game_data">Loading game data for %s</string>
     <string name="game_data_title">%2$s (%1$s)</string>
     <string name="stub_account">Neamar</string>
@@ -106,11 +106,11 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s is on a hot streak! (%2$s wins in %3$s last games)</string>
+    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s is on a hot streak! (%2$d wins in %3$d last games)</string>
     <string name="hot_streak">Hot streak!</string>
     <string name="may_be_inaccurate">(may be inaccurate)</string>
     <string name="premade_information">Premade information</string>
-    <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s is on a cold streak! (%2$s loss in %3$s last games)</string>
+    <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s is on a cold streak! (%2$d loss in %3$d last games)</string>
     <string name="cold_streak">Cold streak!</string>
     <string name="hardcore_gamer">Hardcore gamer!</string>
     <string name="hardcore_gamer_description">%s has played more than 10 games in the last 24 hours.</string>
@@ -144,4 +144,8 @@
     <string name="pref_title_new_game_notifications">New game notifications</string>
     <string name="title_activity_counter_counters">Counters details</string>
     <string name="default_tab">Default tab</string>
+    <string name="matchup_stub">50%</string>
+    <string name="expected_matchups">Expected matchups</string>
+    <string name="matchup_stats_source">(data: http://champion.gg)</string>
+    <string name="gg">GG</string>
 </resources>

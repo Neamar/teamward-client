@@ -11,7 +11,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.TipHolder;
-import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.tips.MatchupsTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
@@ -19,7 +18,7 @@ import fr.neamar.lolgamedata.tips.Tip;
  * Created by neamar on 14/07/16.
  */
 public class MatchupsTipHolder extends TipHolder {
-    public LinearLayout matchupsLayout;
+    public final LinearLayout matchupsLayout;
 
     public MatchupsTipHolder(View itemView) {
         super(itemView);
@@ -37,13 +36,12 @@ public class MatchupsTipHolder extends TipHolder {
 
     public void bind(Tip tip) {
         MatchupsTip matchupsTip = (MatchupsTip) tip;
-        Game game = matchupsTip.game;
 
         matchupsLayout.removeAllViews();
 
         LayoutInflater inflater = LayoutInflater.from(matchupsLayout.getContext());
         for (MatchupsTip.Matchup matchup : matchupsTip.matchups) {
-            View view = inflater.inflate(R.layout.item_tip_matchups_matchup, null, false);
+            View view = inflater.inflate(R.layout.item_tip_matchups_matchup, matchupsLayout, false);
 
             ImageView ownChampionImageView = (ImageView) view.findViewById(R.id.ownChampion);
             ImageLoader.getInstance().displayImage(matchup.ownPlayer.champion.imageUrl, ownChampionImageView);

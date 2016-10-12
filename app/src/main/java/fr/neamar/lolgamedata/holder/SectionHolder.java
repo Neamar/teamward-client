@@ -8,8 +8,8 @@ import android.widget.TextView;
 import fr.neamar.lolgamedata.R;
 
 public class SectionHolder extends DummyHolder {
-    public TextView textView;
-    public ImageView noCountersView;
+    public final TextView textView;
+    public final ImageView noCountersView;
 
     public SectionHolder(View itemView) {
         super(itemView);

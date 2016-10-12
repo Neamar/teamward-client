@@ -19,7 +19,7 @@ public class Team implements Serializable {
     public int teamId;
     public boolean isPlayerOwnTeam;
     public ArrayList<Player> players;
-    public List<List<Integer>> premades = new ArrayList<>();
+    public final List<List<Integer>> premades = new ArrayList<>();
 
     public Team(JSONObject team) throws JSONException {
         teamId = team.getInt("team_id");
