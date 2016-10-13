@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -55,7 +54,6 @@ public class GameActivity extends SnackBarActivity {
     public static final int UI_MODE_NOT_IN_GAME = 2;
     public static final int UI_MODE_NO_INTERNET = 3;
 
-    @StringRes
     private static final Map<Integer, Integer> MAP_NAMES;
 
     static {

@@ -38,7 +38,7 @@ public class Tip {
             new HardcoreGamerTipBuilder(),
             new FilthyCasualTipBuilder()
     ));
-    public Game game;
+    public final Game game;
 
     public Tip(Game game) {
         this.game = game;

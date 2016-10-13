@@ -20,7 +20,7 @@ import fr.neamar.lolgamedata.tips.holder.PremadeTipHolder;
  * Created by neamar on 04/07/16.
  */
 public class TipAdapter extends RecyclerView.Adapter<TipHolder> {
-    public ArrayList<Tip> tips;
+    public final ArrayList<Tip> tips;
 
     public TipAdapter(Game game, Context context) {
         tips = Tip.getTips(game, context);

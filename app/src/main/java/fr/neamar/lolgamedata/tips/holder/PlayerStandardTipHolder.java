@@ -17,9 +17,9 @@ import fr.neamar.lolgamedata.tips.Tip;
  * Created by neamar on 06/07/16.
  */
 public class PlayerStandardTipHolder extends TipHolder {
-    public ImageView championImage;
-    public TextView descriptionText;
-    public TextView titleText;
+    public final ImageView championImage;
+    public final TextView descriptionText;
+    public final TextView titleText;
 
     public PlayerStandardTipHolder(View itemView) {
         super(itemView);

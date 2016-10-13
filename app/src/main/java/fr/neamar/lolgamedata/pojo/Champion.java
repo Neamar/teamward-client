@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by neamar on 25/03/16.
  */
 public class Champion implements Serializable {
-    public static String UNKNOWN_ROLE = "?";
+    public static final String UNKNOWN_ROLE = "?";
 
     public String name;
     public String imageUrl;

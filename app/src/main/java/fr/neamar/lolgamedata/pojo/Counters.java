@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Created by neamar on 31/08/16.
  */
 public class Counters implements Serializable {
-    public ArrayList<Counter> counters = new ArrayList<Counter>();
+    public final ArrayList<Counter> counters = new ArrayList<>();
 
     public Counters(JSONObject jsonCounterRequest) throws JSONException {
         JSONArray jsonCounters = jsonCounterRequest.getJSONArray("counters");

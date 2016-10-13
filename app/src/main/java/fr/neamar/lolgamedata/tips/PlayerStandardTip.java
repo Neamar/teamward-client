@@ -11,14 +11,14 @@ import fr.neamar.lolgamedata.pojo.Player;
  */
 public class PlayerStandardTip extends Tip {
     @Nullable
-    public Player player;
+    public final Player player;
     public String image = "";
 
     @DrawableRes
     public int imageId = 0;
 
-    public String text;
-    public String description;
+    public final String text;
+    public final String description;
 
     public PlayerStandardTip(Game game, Player player, String image, String text, String description) {
         super(game);
