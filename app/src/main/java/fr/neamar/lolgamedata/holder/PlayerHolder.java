@@ -1,6 +1,5 @@
 package fr.neamar.lolgamedata.holder;
 
-import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
@@ -9,6 +8,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.neamar.lolgamedata.ChampionDetailActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.view.AdApView;
@@ -159,8 +158,9 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             return;
         }
 
-        Intent i = new Intent(v.getContext(), ChampionDetailActivity.class);
-        i.putExtra("player", player);
-        v.getContext().startActivity(i);
+//        Intent i = new Intent(v.getContext(), ChampionDetailActivity.class);
+//        i.putExtra("player", player);
+//        v.getContext().startActivity(i);
+        Toast.makeText(v.getContext(), "Player details coming soon... stay tuned!", Toast.LENGTH_SHORT).show();
     }
 }

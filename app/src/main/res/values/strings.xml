@@ -148,4 +148,6 @@
     <string name="expected_matchups">Expected matchups</string>
     <string name="matchup_stats_source">(data: http://champion.gg)</string>
     <string name="gg">GG</string>
+    <string name="welcome_to">Welcome to %s!</string>
+    <string name="player_is_in_game">%s is in game. Touch for information</string>
 </resources>

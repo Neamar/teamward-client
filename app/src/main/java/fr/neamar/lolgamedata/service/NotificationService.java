@@ -70,8 +70,8 @@ public class NotificationService extends GcmListenerService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_launcher_transparent)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_transparent))
-                .setContentTitle(String.format("Welcome to %s!", getString(GameActivity.getMapName(mapId))))
-                .setContentText(String.format("%s is in game. Touch for information", account.summonerName))
+                .setContentTitle(String.format(getString(R.string.welcome_to), getString(GameActivity.getMapName(mapId))))
+                .setContentText(String.format(getString(R.string.player_is_in_game), account.summonerName))
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
 
