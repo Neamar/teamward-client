@@ -58,10 +58,7 @@
     <string name="no_game_2">TeamWard ne peut afficher des données qu\'une fois l\'écran de chargement affiché.</string>
     <string name="no_game_3">Si vous êtes dans le lobby, attendez le chargement puis rechargez.</string>
     <string name="title_activity_settings">Paramètres</string>
-
-    <!-- Strings related to Settings -->
-
-    <!-- Example General settings -->
+    
     <string name="pref_header_general">Données de jeu</string>
 
     <string-array name="pref_game_data_tabs_titles">
@@ -69,13 +66,6 @@
         <item>Équipe ennemie</item>
         <item>Aides</item>
     </string-array>
-    <string-array name="pref_game_data_tabs_values">
-        <item>own</item>
-        <item>enemy</item>
-        <item>tips</item>
-    </string-array>
-
-    <!-- Example settings for Data & Sync -->
     <string name="pref_header_counters">Counters</string>
 
     <string name="pref_counter_champion_mastery_name">Champion mastery requise</string>
@@ -89,19 +79,7 @@
         <item>Champion mastery 6+</item>
         <item>Champion mastery 7 uniquement</item>
     </string-array>
-    <string-array name="pref_counter_champion_mastery_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-    </string-array>
 
-
-    <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
 
     <string name="pref_title_ringtone">Sonnerie</string>
