@@ -59,9 +59,6 @@
     <string name="no_game_3">If you\'re still in the lobby, wait and press refresh.</string>
     <string name="title_activity_settings">Settings</string>
 
-    <!-- Strings related to Settings -->
-
-    <!-- Example General settings -->
     <string name="pref_header_general">Game data</string>
 
     <string-array name="pref_game_data_tabs_titles">
@@ -75,7 +72,6 @@
         <item>tips</item>
     </string-array>
 
-    <!-- Example settings for Data & Sync -->
     <string name="pref_header_counters">Counters</string>
 
     <string name="pref_counter_champion_mastery_name">Required champion mastery</string>
