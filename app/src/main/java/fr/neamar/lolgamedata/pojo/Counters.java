@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public class Counters implements Serializable {
     public final ArrayList<Counter> counters = new ArrayList<>();
 
-    public Counters(JSONObject jsonCounterRequest) throws JSONException {
+    public Counters(String role, JSONObject jsonCounterRequest) throws JSONException {
         JSONArray jsonCounters = jsonCounterRequest.getJSONArray("counters");
 
         for (int i = 0; i < jsonCounters.length(); i++) {
-            counters.add(new Counter(jsonCounters.getJSONObject(i)));
+            counters.add(new Counter(role, jsonCounters.getJSONObject(i)));
         }
     }
 
