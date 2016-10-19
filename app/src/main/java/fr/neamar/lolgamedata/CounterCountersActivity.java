@@ -44,7 +44,7 @@ public class CounterCountersActivity extends SnackBarActivity {
 
         JSONObject j = new JSONObject();
         try {
-            j.put("champion", counter.champion);
+            j.put("champion", counter.champion.name);
             j.put("counters", counter.counters.size());
             j.put("goodCountersThreshold", counter.goodCountersThreshold);
 
