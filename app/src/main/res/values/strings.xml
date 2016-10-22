@@ -66,7 +66,7 @@
         <item>Enemy team</item>
         <item>Tips</item>
     </string-array>
-    <string-array name="pref_game_data_tabs_values">
+    <string-array name="pref_game_data_tabs_values" translatable="false">
         <item>own</item>
         <item>enemy</item>
         <item>tips</item>
@@ -85,7 +85,7 @@
         <item>Champion mastery 6+</item>
         <item>Champion mastery 7 only</item>
     </string-array>
-    <string-array name="pref_counter_champion_mastery_values">
+    <string-array name="pref_counter_champion_mastery_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
