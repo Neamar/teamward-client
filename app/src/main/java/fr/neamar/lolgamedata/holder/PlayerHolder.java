@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata.holder;
 
+import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
@@ -127,6 +128,8 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             previousRanking.setVisibility(View.VISIBLE);
             String summonerLevelTemplate = previousRanking.getContext().getString(R.string.summoner_level);
             previousRanking.setText(summonerLevelTemplate.replace("%s", Integer.toString(player.summoner.level)));
+
+            previousRanking.setTypeface(null, player.summoner.level < 30 ? Typeface.BOLD : Typeface.NORMAL);
         } else {
             rankingDivision.setVisibility(View.VISIBLE);
             rankingDivision.setText(player.rank.division);
