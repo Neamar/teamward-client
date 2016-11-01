@@ -47,7 +47,7 @@ public class CounterChampionsActivity extends SnackBarActivity {
 
         final SharedPreferences prefs = getPreferences(MODE_PRIVATE);
 
-        spinner.setSelection(prefs.getInt("lastUsedPosition", 0));
+        spinner.setSelection(prefs.getInt("lastUsedPosition", 2));
 
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
