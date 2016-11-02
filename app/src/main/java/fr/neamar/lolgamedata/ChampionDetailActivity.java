@@ -16,10 +16,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
+import fr.neamar.lolgamedata.holder.PlayerHolder;
 import fr.neamar.lolgamedata.pojo.Player;
 
 public class ChampionDetailActivity extends AppCompatActivity {
@@ -39,6 +41,7 @@ public class ChampionDetailActivity extends AppCompatActivity {
 
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         setTitle(player.champion.name);
+
         final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
         ImageLoader.getInstance().loadImage(player.champion.splashUrl, new SimpleImageLoadingListener() {
             @Override
@@ -64,6 +67,12 @@ public class ChampionDetailActivity extends AppCompatActivity {
                 });
             }
         });
+
+        ImageView championMasteryImage = (ImageView) findViewById(R.id.championMasteryImage);
+        TextView championMasteryText = (TextView) findViewById(R.id.championMasteryText);
+
+        championMasteryImage.setImageResource(PlayerHolder.CHAMPION_MASTERIES_RESOURCES[player.champion.mastery]);
+        championMasteryText.setText(String.format(getString(R.string.champion_mastery_lvl), player.champion.mastery));
     }
 
     @Override

@@ -8,10 +8,50 @@
     tools:context="fr.neamar.lolgamedata.ChampionDetailActivity"
     tools:showIn="@layout/activity_champion_detail">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="Nothing." />
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/championMasteryImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/champion_mastery_5" />
+
+            <TextView
+                android:id="@+id/championMasteryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:text="Level 5" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar4"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_counter_counter">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

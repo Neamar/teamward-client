@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
+        app:srcCompat="@drawable/champion_mastery_7"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/item1" />
+
+    <ImageView
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
+        app:srcCompat="@drawable/champion_mastery_7"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/item1"
+        android:layout_toEndOf="@+id/item1"
+        android:id="@+id/item2" />
+
+    <ImageView
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
+        app:srcCompat="@drawable/champion_mastery_7"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/item2"
+        android:layout_toEndOf="@+id/item2"
+        android:id="@+id/item3" />
+
+    <ImageView
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
+        app:srcCompat="@drawable/champion_mastery_7"
+        android:layout_below="@+id/item1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/item4" />
+
+    <ImageView
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
+        app:srcCompat="@drawable/champion_mastery_7"
+        android:layout_alignTop="@+id/item4"
+        android:layout_toRightOf="@+id/item4"
+        android:layout_toEndOf="@+id/item4"
+        android:id="@+id/item5" />
+
+    <ImageView
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
+        app:srcCompat="@drawable/champion_mastery_7"
+        android:layout_alignTop="@+id/item5"
+        android:layout_toRightOf="@+id/item5"
+        android:layout_toEndOf="@+id/item5"
+        android:id="@+id/item6" />
+
+    <ImageView
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
+        app:srcCompat="@drawable/champion_mastery_7"
+        android:layout_alignBottom="@+id/item6"
+        android:layout_toRightOf="@+id/item3"
+        android:layout_toEndOf="@+id/item3"
+        android:layout_marginBottom="@dimen/item_half_size"
+        android:id="@+id/itemWard" />
+
+    <TextView
+        android:text="K/D/A"
+        android:paddingLeft="@dimen/item_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/itemWard"
+        android:layout_toRightOf="@+id/itemWard"
+        android:layout_toEndOf="@+id/itemWard"
+        android:gravity="center_vertical"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/itemWard" />
+</RelativeLayout>

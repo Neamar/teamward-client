@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -380,6 +381,15 @@ public class GameActivity extends SnackBarActivity {
         }
 
         setUiMode(UI_MODE_IN_GAME);
+
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        int counter = prefs.getInt("game_counter", 0);
+
+        prefs.edit().putInt("game_counter", counter + 1).apply();
+
+        if(counter == 5 || counter == 10) {
+            displaySnack(getString(R.string.ap_ad_hint));
+        }
     }
 
     @Override
