@@ -149,4 +149,6 @@
     <string name="ap_ad_hint">Hint! Notice the frame around the champion picture. Red is AD, purple is AP.</string>
     <string name="champion_mastery_lvl">Champion mastery %d</string>
     <string name="ranking">%1$s %2$s</string>
+    <string name="noobs_noobs_everywhere">isok, I saw this champ at DreamHack</string>
+    <string name="is_playing_for_first_time">%1$s is playing %2$s for the first time.</string>
 </resources>
