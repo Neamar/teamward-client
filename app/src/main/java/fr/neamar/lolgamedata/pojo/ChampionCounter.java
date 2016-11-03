@@ -23,6 +23,19 @@ public class ChampionCounter implements Serializable {
             mastery = champion.getInt("mastery");
             winRate = champion.getInt("winRate");
         }
+    }
 
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof ChampionCounter)) {
+            return false;
+        }
+
+        return name.equals(((ChampionCounter) obj).name);
     }
 }

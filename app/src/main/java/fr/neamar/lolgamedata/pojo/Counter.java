@@ -11,6 +11,8 @@ public class Counter implements Serializable {
     public String role;
     public ChampionCounter champion;
     public final ArrayList<ChampionCounter> counters = new ArrayList<>();
+    public final ArrayList<ChampionCounter> noData = new ArrayList<>();
+
     public int goodCountersThreshold = 0;
 
     public Counter(String role, JSONObject counter) throws JSONException {

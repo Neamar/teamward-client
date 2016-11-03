@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -32,6 +33,7 @@ public class CounterCountersActivity extends SnackBarActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         counter = (Counter) getIntent().getSerializableExtra("counter");
+
         CounterCountersAdapter adapter = new CounterCountersAdapter(counter);
 
         recyclerView.setAdapter(adapter);
