@@ -148,4 +148,5 @@
     <string name="player_is_in_game">%s is in game. Touch for information</string>
     <string name="ap_ad_hint">Hint! Notice the frame around the champion picture. Red is AD, purple is AP.</string>
     <string name="champion_mastery_lvl">Champion mastery %d</string>
+    <string name="ranking">%1$s %2$s</string>
 </resources>

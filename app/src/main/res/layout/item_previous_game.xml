@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/champion_mastery_7"
+        app:srcCompat="@drawable/item_emtpy"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -16,7 +16,7 @@
     <ImageView
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/champion_mastery_7"
+        app:srcCompat="@drawable/item_emtpy"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/item1"
         android:layout_toEndOf="@+id/item1"
@@ -25,7 +25,7 @@
     <ImageView
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/champion_mastery_7"
+        app:srcCompat="@drawable/item_emtpy"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/item2"
         android:layout_toEndOf="@+id/item2"
@@ -34,7 +34,7 @@
     <ImageView
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/champion_mastery_7"
+        app:srcCompat="@drawable/item_emtpy"
         android:layout_below="@+id/item1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -43,7 +43,7 @@
     <ImageView
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/champion_mastery_7"
+        app:srcCompat="@drawable/item_emtpy"
         android:layout_alignTop="@+id/item4"
         android:layout_toRightOf="@+id/item4"
         android:layout_toEndOf="@+id/item4"
@@ -52,7 +52,7 @@
     <ImageView
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/champion_mastery_7"
+        app:srcCompat="@drawable/item_emtpy"
         android:layout_alignTop="@+id/item5"
         android:layout_toRightOf="@+id/item5"
         android:layout_toEndOf="@+id/item5"
@@ -61,7 +61,7 @@
     <ImageView
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/champion_mastery_7"
+        app:srcCompat="@drawable/item_emtpy"
         android:layout_alignBottom="@+id/item6"
         android:layout_toRightOf="@+id/item3"
         android:layout_toEndOf="@+id/item3"

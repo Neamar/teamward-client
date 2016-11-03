@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
@@ -21,8 +22,10 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
-import fr.neamar.lolgamedata.holder.PlayerHolder;
 import fr.neamar.lolgamedata.pojo.Player;
+
+import static fr.neamar.lolgamedata.holder.PlayerHolder.CHAMPION_MASTERIES_RESOURCES;
+import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
 
 public class ChampionDetailActivity extends AppCompatActivity {
     private Player player;
@@ -70,9 +73,30 @@ public class ChampionDetailActivity extends AppCompatActivity {
 
         ImageView championMasteryImage = (ImageView) findViewById(R.id.championMasteryImage);
         TextView championMasteryText = (TextView) findViewById(R.id.championMasteryText);
+        View masteryHolder = findViewById(R.id.masteryHolder);
 
-        championMasteryImage.setImageResource(PlayerHolder.CHAMPION_MASTERIES_RESOURCES[player.champion.mastery]);
-        championMasteryText.setText(String.format(getString(R.string.champion_mastery_lvl), player.champion.mastery));
+        @DrawableRes
+        int championMasteryResource = CHAMPION_MASTERIES_RESOURCES[player.champion.mastery];
+        if(championMasteryResource == 0) {
+            masteryHolder.setVisibility(View.INVISIBLE);
+        }
+        else {
+            championMasteryImage.setImageResource(CHAMPION_MASTERIES_RESOURCES[player.champion.mastery]);
+            championMasteryText.setText(String.format(getString(R.string.champion_mastery_lvl), player.champion.mastery));
+            masteryHolder.setVisibility(View.VISIBLE);
+        }
+
+        ImageView rankingTierImage = (ImageView) findViewById(R.id.rankingTierImage);
+        TextView rankingText = (TextView) findViewById(R.id.rankingText);
+        View rankingHolder = findViewById(R.id.rankingHolder);
+        if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
+            rankingHolder.setVisibility(View.INVISIBLE);
+        }
+        else {
+            rankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase()));
+            rankingText.setText(String.format(getString(R.string.ranking), player.rank.tier.toUpperCase(), player.rank.division));
+            rankingHolder.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
