@@ -151,4 +151,7 @@
     <string name="ranking">%1$s %2$s</string>
     <string name="noobs_noobs_everywhere">isok, I saw this champ at DreamHack</string>
     <string name="is_playing_for_first_time">%1$s is playing %2$s for the first time.</string>
+    <string name="no_data_for_this_champion">No data for this champion.</string>
+    <string name="no_data">No data:</string>
+    <string name="not_enough_information">Although you play %s, we don\'t have enough data to say if it is a good matchup.</string>
 </resources>

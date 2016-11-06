@@ -6,14 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import fr.neamar.lolgamedata.adapter.CounterCountersAdapter;
+import fr.neamar.lolgamedata.adapter.CounterCountersNoDataAdapter;
 import fr.neamar.lolgamedata.pojo.Counter;
 
 public class CounterCountersActivity extends SnackBarActivity {
@@ -35,8 +36,15 @@ public class CounterCountersActivity extends SnackBarActivity {
         counter = (Counter) getIntent().getSerializableExtra("counter");
 
         CounterCountersAdapter adapter = new CounterCountersAdapter(counter);
-
         recyclerView.setAdapter(adapter);
+
+        CounterCountersNoDataAdapter noDataAdapter = new CounterCountersNoDataAdapter(counter);
+        RecyclerView noDataRecyclerView = (RecyclerView) findViewById(R.id.noData);
+        noDataRecyclerView.setAdapter(noDataAdapter);
+
+        if(counter.noData.size() == 0) {
+            findViewById(R.id.noDataHolder).setVisibility(View.INVISIBLE);
+        }
 
         getSupportActionBar().setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.champion.name));
 
