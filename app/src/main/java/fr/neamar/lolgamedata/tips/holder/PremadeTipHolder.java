@@ -49,6 +49,12 @@ public class PremadeTipHolder extends TipHolder {
         Game game = premadeTip.game;
 
         drawChampions(game.teams.get(0));
+
+        // Custom game
+        if(game.teams.size() != 2) {
+            return;
+        }
+
         drawChampions(game.teams.get(1));
 
         if (game.teams.get(0).premades.size() == 1 && game.teams.get(1).premades.size() == 1) {
