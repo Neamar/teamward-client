@@ -6,19 +6,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Created by neamar on 08/11/16.
- */
-
 public class Match {
     public int k;
     public int d;
     public int a;
     public int cs;
+    public int duration;
 
     public boolean victory;
 
     public String ward;
+    public String matchUrl;
 
     public ArrayList<String> items = new ArrayList<>();
 
@@ -28,6 +26,8 @@ public class Match {
         d = match.getInt("d");
         a = match.getInt("a");
         cs = match.getInt("cs");
+        duration = match.getInt("duration");
+        matchUrl = match.getString("match_url");
 
 
         if(match.has("ward")) {

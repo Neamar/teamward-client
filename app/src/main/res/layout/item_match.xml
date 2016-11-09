@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
     android:padding="4dp">
 
@@ -10,12 +11,12 @@
         android:id="@+id/winOrLossBanner"
         android:layout_width="5dp"
         android:layout_height="wrap_content"
-        android:background="#00FF00"
-        android:layout_marginRight="@dimen/item_margin"
         android:layout_alignBottom="@+id/item4"
-        android:layout_alignTop="@+id/item1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/item1"
+        android:layout_marginRight="@dimen/item_margin"
+        android:background="#00FF00" />
 
     <ImageView
         android:id="@+id/item1"
@@ -87,14 +88,41 @@
         app:srcCompat="@drawable/item_emtpy" />
 
     <TextView
-        android:id="@+id/kda"
+        android:id="@+id/gameLengthText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/itemWard"
-        android:layout_alignTop="@+id/itemWard"
+        android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/itemWard"
         android:layout_toRightOf="@+id/itemWard"
         android:gravity="center_vertical"
+        android:maxLines="1"
         android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:text="@string/game_length_template" />
+
+    <TextView
+        android:id="@+id/kdaText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gameLengthText"
+        android:layout_toEndOf="@+id/itemWard"
+        android:layout_toRightOf="@+id/itemWard"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
         android:text="@string/kda_template" />
+
+    <TextView
+        android:id="@+id/csText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kdaText"
+        android:layout_toEndOf="@+id/itemWard"
+        android:layout_toRightOf="@+id/itemWard"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:text="@string/cs_template" />
 </RelativeLayout>
