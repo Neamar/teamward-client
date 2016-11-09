@@ -154,5 +154,5 @@
     <string name="no_data_for_this_champion">No data for this champion.</string>
     <string name="no_data">No data:</string>
     <string name="not_enough_information">Although you play %s, we don\'t have enough data to say if it is a good matchup.</string>
-    <string name="kda_template" translatable="false">"%1$d / %2$d / %3$d "</string>
+    <string name="kda_template" translatable="false">%1$d / &lt;font color="#FF5252"&gt;%2$d&lt;/font&gt; / %3$d</string>
 </resources>

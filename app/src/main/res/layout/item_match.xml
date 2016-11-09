@@ -1,90 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:padding="4dp"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="4dp">
 
-    <ImageView
-        android:layout_width="@dimen/item_size"
-        android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/item_emtpy"
-        android:layout_margin="@dimen/item_margin"
-        android:layout_alignParentTop="true"
+    <View
+        android:id="@+id/winOrLossBanner"
+        android:layout_width="5dp"
+        android:layout_height="wrap_content"
+        android:background="#00FF00"
+        android:layout_marginRight="@dimen/item_margin"
+        android:layout_alignBottom="@+id/item4"
+        android:layout_alignTop="@+id/item1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/item1" />
+        android:layout_alignParentStart="true" />
 
     <ImageView
-        android:layout_margin="@dimen/item_margin"
+        android:id="@+id/item1"
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/item_emtpy"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/item1"
+        android:layout_margin="@dimen/item_margin"
+        android:layout_toRightOf="@id/winOrLossBanner"
+        app:srcCompat="@drawable/item_emtpy" />
+
+    <ImageView
+        android:id="@+id/item2"
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item1"
-        android:id="@+id/item2" />
+        android:layout_toRightOf="@+id/item1"
+        app:srcCompat="@drawable/item_emtpy" />
 
     <ImageView
+        android:id="@+id/item3"
         android:layout_width="@dimen/item_size"
-        android:layout_margin="@dimen/item_margin"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/item_emtpy"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/item2"
+        android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item2"
-        android:id="@+id/item3" />
+        android:layout_toRightOf="@+id/item2"
+        app:srcCompat="@drawable/item_emtpy" />
 
     <ImageView
+        android:id="@+id/item4"
         android:layout_width="@dimen/item_size"
-        android:layout_margin="@dimen/item_margin"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/item_emtpy"
         android:layout_below="@+id/item1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/item4" />
+        android:layout_margin="@dimen/item_margin"
+        android:layout_toRightOf="@id/winOrLossBanner"
+        app:srcCompat="@drawable/item_emtpy" />
 
     <ImageView
+        android:id="@+id/item5"
         android:layout_width="@dimen/item_size"
-        android:layout_margin="@dimen/item_margin"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/item_emtpy"
         android:layout_below="@+id/item2"
-        android:layout_toRightOf="@+id/item4"
-        android:layout_toEndOf="@+id/item4"
-        android:id="@+id/item5" />
-
-    <ImageView
-        android:layout_width="@dimen/item_size"
         android:layout_margin="@dimen/item_margin"
-        android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/item_emtpy"
-        android:layout_below="@+id/item3"
-        android:layout_toRightOf="@+id/item5"
-        android:layout_toEndOf="@+id/item5"
-        android:id="@+id/item6" />
+        android:layout_toEndOf="@+id/item4"
+        android:layout_toRightOf="@+id/item4"
+        app:srcCompat="@drawable/item_emtpy" />
 
     <ImageView
+        android:id="@+id/item6"
         android:layout_width="@dimen/item_size"
-        android:layout_marginLeft="@dimen/item_margin"
         android:layout_height="@dimen/item_size"
-        app:srcCompat="@drawable/item_emtpy"
+        android:layout_below="@+id/item3"
+        android:layout_margin="@dimen/item_margin"
+        android:layout_toEndOf="@+id/item5"
+        android:layout_toRightOf="@+id/item5"
+        app:srcCompat="@drawable/item_emtpy" />
+
+    <ImageView
+        android:id="@+id/itemWard"
+        android:layout_width="@dimen/item_size"
+        android:layout_height="@dimen/item_size"
         android:layout_alignBottom="@+id/item6"
-        android:layout_toRightOf="@+id/item3"
-        android:layout_toEndOf="@+id/item3"
         android:layout_marginBottom="@dimen/item_half_size"
-        android:id="@+id/itemWard" />
+        android:layout_marginLeft="@dimen/item_margin"
+        android:layout_toEndOf="@+id/item3"
+        android:layout_toRightOf="@+id/item3"
+        app:srcCompat="@drawable/item_emtpy" />
 
     <TextView
-        android:text="@string/kda_template"
-        android:paddingLeft="@dimen/item_size"
+        android:id="@+id/kda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/itemWard"
         android:layout_alignTop="@+id/itemWard"
-        android:layout_toRightOf="@+id/itemWard"
         android:layout_toEndOf="@+id/itemWard"
+        android:layout_toRightOf="@+id/itemWard"
         android:gravity="center_vertical"
-        android:id="@+id/kda"
-        android:layout_alignBottom="@+id/itemWard" />
+        android:paddingLeft="8dp"
+        android:text="@string/kda_template" />
 </RelativeLayout>
