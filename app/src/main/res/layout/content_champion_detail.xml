@@ -69,10 +69,19 @@
                 android:layout_toEndOf="@+id/rankingTierImage" />
         </RelativeLayout>
         <ProgressBar
-            android:id="@+id/progressBar4"
+            android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_match"></android.support.v7.widget.RecyclerView>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

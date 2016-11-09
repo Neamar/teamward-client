@@ -20,5 +20,6 @@
     <dimen name="item_half_size">15dp</dimen>
     <dimen name="app_bar_height">300dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="item_margin">2dp</dimen>
 
 </resources>
