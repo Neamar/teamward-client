@@ -21,14 +21,14 @@ public class Team implements Serializable {
     public ArrayList<Player> players;
     public final List<List<Integer>> premades = new ArrayList<>();
 
-    public Team(JSONObject team) throws JSONException {
+    public Team(JSONObject team, String region) throws JSONException {
         teamId = team.getInt("team_id");
 
         JSONArray playersJson = team.getJSONArray("players");
         players = new ArrayList<>();
         for (int i = 0; i < playersJson.length(); i++) {
             try {
-                players.add(new Player(playersJson.getJSONObject(i)));
+                players.add(new Player(playersJson.getJSONObject(i), region));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

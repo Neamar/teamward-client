@@ -19,7 +19,7 @@ public class Game implements Serializable {
     public String gameType;
     public ArrayList<Team> teams;
 
-    public Game(JSONObject game) throws JSONException {
+    public Game(JSONObject game, String region) throws JSONException {
         gameId = game.getLong("game_id");
         mapId = game.getInt("map_id");
         gameMode = game.getString("game_mode");
@@ -30,7 +30,7 @@ public class Game implements Serializable {
         teams = new ArrayList<>();
         for (int i = 0; i < teamsJson.length(); i++) {
             try {
-                teams.add(new Team(teamsJson.getJSONObject(i)));
+                teams.add(new Team(teamsJson.getJSONObject(i), region));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

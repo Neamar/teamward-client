@@ -23,7 +23,9 @@ public class Player implements Serializable {
     public int lossRecentGames;
     public int averageTimeBetweenGames;
 
-    public Player(JSONObject player) throws JSONException {
+    public String region;
+
+    public Player(JSONObject player, String region) throws JSONException {
         this.summoner = new Summoner(player.getJSONObject("summoner"));
         this.champion = new Champion(player.getJSONObject("champion"));
         this.spellD = new Spell(player.getJSONObject("spell_d"));
@@ -39,5 +41,6 @@ public class Player implements Serializable {
         this.lossRecentGames = recentGames.getInt("loss");
         this.averageTimeBetweenGames = recentGames.getInt("average_time_between_games");
 
+        this.region = region;
     }
 }

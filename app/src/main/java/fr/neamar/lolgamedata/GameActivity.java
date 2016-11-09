@@ -270,7 +270,7 @@ public class GameActivity extends SnackBarActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                game = new Game(response);
+                                game = new Game(response, region);
                                 GameActivity.this.summonerName = summonerName;
                                 displayGame(summonerName, game);
 
