@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/counter_champion_padding">
+
+    <ImageView
+        android:id="@+id/champion"
+        android:layout_width="@dimen/counter_champion_no_data"
+        android:layout_height="@dimen/counter_champion_no_data"
+        android:contentDescription="@string/no_data_for_this_champion"
+        android:src="@drawable/default_champion" />
+</FrameLayout>

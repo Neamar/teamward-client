@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata.holder;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.annotation.DrawableRes;
@@ -9,7 +10,6 @@ import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import fr.neamar.lolgamedata.ChampionDetailActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.view.AdApView;
@@ -38,7 +39,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             R.drawable.champion_mastery_7,
     };
 
-    private static final Map<String, Integer> rankingTierResources;
     @StringRes
     private static final int[] mainChampionResources = new int[]{
             0,
@@ -46,6 +46,8 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             R.string.second_main,
             R.string.third_main
     };
+
+    public static final Map<String, Integer> RANKING_TIER_RESOURCES;
 
     static {
         Map<String, Integer> map = new HashMap<>();
@@ -57,7 +59,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         map.put("master", R.drawable.tier_master);
         map.put("challenger", R.drawable.tier_challenger);
 
-        rankingTierResources = Collections.unmodifiableMap(map);
+        RANKING_TIER_RESOURCES = Collections.unmodifiableMap(map);
     }
 
     private final ImageView championImage;
@@ -121,7 +123,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             championMastery.setContentDescription(String.format(chammpionMasteryTemplate, player.champion.mastery));
         }
 
-        if (player.rank.tier.isEmpty() || !rankingTierResources.containsKey(player.rank.tier.toLowerCase())) {
+        if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
             rankingDivision.setVisibility(View.INVISIBLE);
             rankingTier.setVisibility(View.INVISIBLE);
 
@@ -134,7 +136,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             rankingDivision.setVisibility(View.VISIBLE);
             rankingDivision.setText(player.rank.division);
             rankingTier.setVisibility(View.VISIBLE);
-            rankingTier.setImageResource(rankingTierResources.get(player.rank.tier.toLowerCase()));
+            rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase()));
             rankingTier.setContentDescription(player.rank.tier);
             previousRanking.setVisibility(View.GONE);
         }
@@ -161,9 +163,8 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             return;
         }
 
-//        Intent i = new Intent(v.getContext(), ChampionDetailActivity.class);
-//        i.putExtra("player", player);
-//        v.getContext().startActivity(i);
-        Toast.makeText(v.getContext(), "Player details coming soon... stay tuned!", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(v.getContext(), ChampionDetailActivity.class);
+        i.putExtra("player", player);
+        v.getContext().startActivity(i);
     }
 }

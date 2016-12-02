@@ -11,9 +11,6 @@ import fr.neamar.lolgamedata.holder.DummyHolder;
 import fr.neamar.lolgamedata.holder.SectionHolder;
 import fr.neamar.lolgamedata.pojo.Counter;
 
-/**
- * Created by neamar on 14/08/16.
- */
 public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
     public final Counter counter;
 

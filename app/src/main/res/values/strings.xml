@@ -146,4 +146,15 @@
     <string name="gg">GG</string>
     <string name="welcome_to">Welcome to %s!</string>
     <string name="player_is_in_game">%s is in game. Touch for information</string>
+    <string name="ap_ad_hint">Hint! Notice the frame around the champion picture? Red is AD, purple is AP.</string>
+    <string name="champion_mastery_lvl">Champion mastery %d</string>
+    <string name="ranking">%1$s %2$s</string>
+    <string name="noobs_noobs_everywhere">isok, I saw this champ at DreamHack</string>
+    <string name="is_playing_for_first_time">%1$s is playing %2$s for the first time.</string>
+    <string name="no_data_for_this_champion">No data for this champion.</string>
+    <string name="no_data">No data:</string>
+    <string name="not_enough_information">Although you play %s, we don\'t have enough data to say if it is a good matchup.</string>
+    <string name="game_length_template" translatable="false">%1$d:%2$d</string>
+    <string name="kda_template">KDA %1$d / &lt;font color="#FF5252"&gt;%2$d&lt;/font&gt; / %3$d</string>
+    <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f / min)&lt;/font&gt;</string>
 </resources>
