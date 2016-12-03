@@ -130,4 +130,11 @@
     <string name="gg">GG</string>
     <string name="player_is_in_game">%s est en jeu. Touchez pour plus d\'informations</string>
     <string name="welcome_to">Bienvenue dans %s !</string>
+    <string name="noobs_noobs_everywhere">Première fois</string>
+    <string name="no_data">Inconnu:</string>
+    <string name="no_data_for_this_champion">Aucune donnée pour ce champion</string>
+    <string name="not_enough_information">Vous jouez %s, mais il n\'y a pas assez d\'information pour dire s\'il s\'agit d\'un bon matchup</string>
+    <string name="ap_ad_hint">Regardez le carde autour de l\'image du champion : rouge pour AD, violet pour AP.</string>
+    <string name="champion_mastery_lvl">Maîtrise de champion %d</string>
+    <string name="is_playing_for_first_time">%1$s joue %2$s pour la première fois.</string>
 </resources>
