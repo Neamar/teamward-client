@@ -123,7 +123,7 @@
     <string name="much_damage">Much damage!</string>
     <string name="no_internet_connection">Please check your network connection.</string>
     <string name="title_activity_counter">Find your counter!</string>
-    <string name="action_counter">Help me draft!</string>
+    <string name="action_counter">Draft tool</string>
     <string name="display_champion_name">Display champion name</string>
     <string name="display_champion_name_summary">Champion picture will always be displayed</string>
     <string name="counter_counters_activity_title">Your %s counters</string>

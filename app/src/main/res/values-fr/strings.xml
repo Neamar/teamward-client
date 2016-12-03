@@ -107,7 +107,7 @@
     <string name="much_damage">Much damage !</string>
     <string name="no_internet_connection">Vérifiez votre connexion internet.</string>
     <string name="title_activity_counter">Découvrez vos counters !</string>
-    <string name="action_counter">Aidez-moi à drafter !</string>
+    <string name="action_counter">VS.</string>
     <string name="display_champion_name">Afficher le nom des champions</string>
     <string name="display_champion_name_summary">Les avatars sont toujours affichés</string>
     <string name="counter_counters_activity_title">Vos counters contre %s</string>
