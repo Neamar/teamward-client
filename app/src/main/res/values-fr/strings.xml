@@ -137,4 +137,7 @@
     <string name="ap_ad_hint">Regardez le carde autour de l\'image du champion : rouge pour AD, violet pour AP.</string>
     <string name="champion_mastery_lvl">Maîtrise de champion %d</string>
     <string name="is_playing_for_first_time">%1$s joue %2$s pour la première fois.</string>
+    <string name="ranking">%1$s %2$s</string>
+    <string name="cs_template">Farm %1$d &lt;font color=\"#AAAAAA\"&gt;(%2$,.1f / min)&lt;/font&gt;</string>
+    <string name="kda_template">KDA %1$d / &lt;font color=\"#FF5252\"&gt;%2$d&lt;/font&gt; / %3$d</string>
 </resources>

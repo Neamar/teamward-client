@@ -8,8 +8,8 @@ android {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 31
-        versionName "2.3.6"
+        versionCode 32
+        versionName "2.4.0"
 
         // Staging mixpanel token
         resValue "string", "MIXPANEL_TOKEN", "6871a7de8eb71082f3397bb1be7ded58"
@@ -19,6 +19,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             resValue "string", "MIXPANEL_TOKEN", "1a7075d95ff6db6d08714db52edb706a"
             resValue "string", "API_URL", "https://teamward.herokuapp.com"

@@ -20,4 +20,4 @@
 -keep public class com.google.android.gms.* { public *; }
 -keep class android.support.v7.widget.SearchView { *; }
 -dontwarn com.google.android.gms.**
- -dontobfuscate
+-dontobfuscate
