@@ -1,14 +1,24 @@
 package fr.neamar.lolgamedata;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NoConnectionError;
@@ -18,6 +28,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import org.json.JSONObject;
 
@@ -29,10 +41,12 @@ import fr.neamar.lolgamedata.adapter.MatchAdapter;
 import fr.neamar.lolgamedata.pojo.Match;
 import fr.neamar.lolgamedata.pojo.Player;
 
+import static fr.neamar.lolgamedata.holder.PlayerHolder.CHAMPION_MASTERIES_RESOURCES;
+import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
+
 public class ChampionDetailActivity extends SnackBarActivity {
     private static final String TAG = "ChampionDetailActivity";
     private Player player;
-    private String region;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +59,8 @@ public class ChampionDetailActivity extends SnackBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         player = (Player) getIntent().getSerializableExtra("player");
-        region = "euw"; // TODO pass region properly
 
-        /*final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         setTitle(player.champion.name);
 
         final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
@@ -82,10 +95,9 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         @DrawableRes
         int championMasteryResource = CHAMPION_MASTERIES_RESOURCES[player.champion.mastery];
-        if(championMasteryResource == 0) {
+        if (championMasteryResource == 0) {
             masteryHolder.setVisibility(View.INVISIBLE);
-        }
-        else {
+        } else {
             championMasteryImage.setImageResource(CHAMPION_MASTERIES_RESOURCES[player.champion.mastery]);
             championMasteryText.setText(String.format(getString(R.string.champion_mastery_lvl), player.champion.mastery));
             masteryHolder.setVisibility(View.VISIBLE);
@@ -96,12 +108,11 @@ public class ChampionDetailActivity extends SnackBarActivity {
         View rankingHolder = findViewById(R.id.rankingHolder);
         if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
             rankingHolder.setVisibility(View.INVISIBLE);
-        }
-        else {
+        } else {
             rankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase()));
             rankingText.setText(String.format(getString(R.string.ranking), player.rank.tier.toUpperCase(), player.rank.division));
             rankingHolder.setVisibility(View.VISIBLE);
-        }*/
+        }
 
         downloadPerformance();
     }
@@ -138,14 +149,14 @@ public class ChampionDetailActivity extends SnackBarActivity {
         final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/summoner/performance?summoner=" + URLEncoder.encode("Riot neamar", "UTF-8") + "&region=" + region + "&champion=" + URLEncoder.encode("Kled", "UTF-8"), null,
+            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/summoner/performance?summoner=" + URLEncoder.encode(player.summoner.name, "UTF-8") + "&region=" + player.region + "&champion=" + URLEncoder.encode(player.champion.name, "UTF-8"), null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             ArrayList<Match> matches = Match.getMatches(response);
                             displayPerformance(matches);
 
-                            Log.i(TAG, "Displaying performance for " + "Riot Neamar");
+                            Log.i(TAG, "Displaying performance for " + player.summoner.name);
 
 /*                                // Timing automatically added (see timeEvent() call)
                                 JSONObject j = account.toJsonObject();
@@ -170,6 +181,8 @@ public class ChampionDetailActivity extends SnackBarActivity {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    findViewById(R.id.progressBar).setVisibility(View.GONE);
+
                     Log.e(TAG, error.toString());
 
                     queue.stop();
