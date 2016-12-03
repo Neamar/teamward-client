@@ -52,6 +52,7 @@ public class AccountsActivity extends SnackBarActivity {
             Account mainAccount = accounts.get(0);
             Intent i = new Intent(this, GameActivity.class);
             i.putExtra("account", mainAccount);
+            i.putExtra("source", "accounts");
             startActivityForResult(i, GAME_DETAILS);
             finish();
         }
@@ -100,6 +101,7 @@ public class AccountsActivity extends SnackBarActivity {
 
             Intent i = new Intent(this, GameActivity.class);
             i.putExtra("account", newAccount);
+            i.putExtra("source", "account_added");
             startActivityForResult(i, GAME_DETAILS);
             finish();
         } else if (requestCode == ADD_NEW_ACCOUNT && resultCode == AddAccountActivity.RESULT_ERROR) {
