@@ -54,8 +54,12 @@ public class MatchHolder extends RecyclerView.ViewHolder implements View.OnClick
         String kdaTemplate = kdaText.getContext().getString(R.string.kda_template);
         kdaText.setText(Html.fromHtml(String.format(kdaTemplate, match.k, match.d, match.a)));
 
-        ImageLoader.getInstance().displayImage(match.ward, wardImage);
-
+        if(match.ward == null) {
+            wardImage.setImageResource(R.drawable.item_emtpy);
+        }
+        else {
+            ImageLoader.getInstance().displayImage(match.ward, wardImage);
+        }
         for (int i = 0; i < match.items.size(); i++) {
             ImageLoader.getInstance().displayImage(match.items.get(i), itemImages.get(i));
         }

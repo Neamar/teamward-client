@@ -98,6 +98,7 @@
         android:maxLines="1"
         android:paddingLeft="8dp"
         android:paddingStart="8dp"
+        android:textSize="8sp"
         android:text="@string/game_length_template" />
 
     <TextView

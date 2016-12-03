@@ -61,7 +61,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
         player = (Player) getIntent().getSerializableExtra("player");
 
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        setTitle(player.champion.name);
+        setTitle(player.summoner.name);
 
         final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
         ImageLoader.getInstance().loadImage(player.champion.splashUrl, new SimpleImageLoadingListener() {
