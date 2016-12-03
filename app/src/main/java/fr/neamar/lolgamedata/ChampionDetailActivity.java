@@ -114,7 +114,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
             rankingHolder.setVisibility(View.VISIBLE);
         }
 
-        downloadPerformance();
+        // downloadPerformance();
     }
 
     @Override

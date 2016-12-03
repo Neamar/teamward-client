@@ -68,8 +68,16 @@
                 android:layout_toRightOf="@+id/rankingTierImage"
                 android:layout_toEndOf="@+id/rankingTierImage" />
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Coming soon™: previous builds of this summoner with this champion.\nStay tuned!" />
+
         <ProgressBar
             android:id="@+id/progressBar"
+            android:visibility="invisible"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="match_parent"
             android:layout_height="0dp"
