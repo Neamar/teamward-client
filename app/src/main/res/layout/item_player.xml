@@ -4,6 +4,7 @@
     android:layout_height="@dimen/player_pod_height"
     android:orientation="vertical"
     android:background="?android:attr/selectableItemBackground"
+    android:clipToPadding="false"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 
@@ -26,8 +27,8 @@
 
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="@dimen/champion_mastery_half_size"
+        android:layout_marginStart="@dimen/champion_mastery_half_size"
         android:contentDescription="@string/champion_image"
         android:src="@drawable/default_champion" />
 
@@ -128,9 +129,9 @@
         android:layout_alignLeft="@+id/championImage"
         android:layout_alignStart="@+id/championImage"
         android:layout_alignTop="@+id/championImage"
-        android:layout_marginLeft="@dimen/champion_mastery_half_size"
-        android:layout_marginStart="@dimen/champion_mastery_half_size"
-        android:layout_marginTop="@dimen/champion_mastery_half_size"
+        android:layout_marginLeft="@dimen/negative_champion_mastery_half_size"
+        android:layout_marginStart="@dimen/negative_champion_mastery_half_size"
+        android:layout_marginTop="@dimen/negative_champion_mastery_half_size"
         android:contentDescription="@string/champion_mastery"
         android:src="@drawable/champion_mastery_4" />
 
