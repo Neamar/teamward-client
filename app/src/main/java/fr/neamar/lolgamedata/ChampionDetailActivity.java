@@ -31,6 +31,7 @@ import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -126,6 +127,21 @@ public class ChampionDetailActivity extends SnackBarActivity {
         } else if (id == R.id.action_gg) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(player.champion.ggUrl));
             startActivity(browserIntent);
+
+            JSONObject j = new JSONObject();
+            try {
+                j.put("name", player.summoner.name);
+                j.put("region", player.region);
+                j.put("champion", player.champion.name);
+                j.put("tier", player.rank.tier);
+                j.put("division", player.rank.division);
+                j.put("source", "detail view");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            ((LolApplication) getApplication()).getMixpanel().track("Click on GG", j);
+
             return true;
         }
 

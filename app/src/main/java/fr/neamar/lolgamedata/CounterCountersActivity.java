@@ -75,6 +75,20 @@ public class CounterCountersActivity extends SnackBarActivity {
         else if(id == R.id.action_gg) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(counter.champion.ggURL));
             startActivity(browserIntent);
+
+            JSONObject j = new JSONObject();
+            try {
+                j.put("role", counter.role);
+                j.put("champion", counter.champion.name);
+                j.put("counters", counter.counters.size());
+                j.put("source", "counters");
+                j.put("goodCountersThreshold", counter.goodCountersThreshold);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            ((LolApplication) getApplication()).getMixpanel().track("Click on GG", j);
+
             return true;
         }
 
