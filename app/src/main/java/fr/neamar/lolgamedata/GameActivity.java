@@ -283,6 +283,8 @@ public class GameActivity extends SnackBarActivity {
                                 j.putOpt("game_mode", game.gameMode);
                                 j.putOpt("game_type", game.gameType);
                                 j.putOpt("game_id", game.gameId);
+                                j.putOpt("default_tab", getDefaultTabName());
+                                j.putOpt("display_champion_name", PreferenceManager.getDefaultSharedPreferences(GameActivity.this).getBoolean("display_champion_name", true));
                                 if (getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty()) {
                                     j.putOpt("source", getIntent().getStringExtra("source"));
                                 } else {
@@ -360,7 +362,7 @@ public class GameActivity extends SnackBarActivity {
 
         sectionsPagerAdapter.setGame(game);
 
-        String defaultTabName = PreferenceManager.getDefaultSharedPreferences(this).getString("default_game_data_tab", "enemy");
+        String defaultTabName = getDefaultTabName();
 
         TabLayout.Tab selectedTab;
 
@@ -390,6 +392,10 @@ public class GameActivity extends SnackBarActivity {
         if(counter == 5 || counter == 10) {
             displaySnack(getString(R.string.ap_ad_hint));
         }
+    }
+
+    public String getDefaultTabName() {
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("default_game_data_tab", "enemy");
     }
 
     @Override
