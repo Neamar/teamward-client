@@ -30,6 +30,10 @@ public class ChampionCounter implements Serializable {
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof ChampionCounter)) {
+            if(obj instanceof String && obj.equals(name)) {
+                return true;
+            }
+
             return false;
         }
 

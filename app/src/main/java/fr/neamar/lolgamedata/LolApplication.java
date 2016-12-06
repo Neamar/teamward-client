@@ -2,8 +2,10 @@ package fr.neamar.lolgamedata;
 
 import android.app.Application;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
@@ -12,6 +14,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.List;
+import java.util.Map;
 
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.service.RegistrationIntentService;
@@ -91,6 +94,13 @@ public class LolApplication extends Application {
             getMixpanel().getPeople().set("$username", accounts.get(0).summonerName);
             getMixpanel().getPeople().set("$name", accounts.get(0).summonerName);
             getMixpanel().getPeople().set("region", accounts.get(0).region);
+
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+            Map<String, ?> properties = sp.getAll();
+            for (Map.Entry<String, ?> entry : properties.entrySet())
+            {
+                getMixpanel().getPeople().set("settings_" + entry.getKey(), entry.getValue());
+            }
         }
     }
 

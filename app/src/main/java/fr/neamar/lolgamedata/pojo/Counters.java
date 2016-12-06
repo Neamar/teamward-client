@@ -29,6 +29,8 @@ public class Counters implements Serializable {
             c.noData.addAll(new HashSet<>(availableChampions));
             // And remove champions not in first set
             c.noData.removeAll(c.counters);
+            // And remove self
+            c.noData.remove(c.champion);
         }
     }
 
