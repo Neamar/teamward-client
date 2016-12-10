@@ -58,7 +58,7 @@
     <string name="no_game_2">TeamWard ne peut afficher des données qu\'une fois l\'écran de chargement affiché.</string>
     <string name="no_game_3">Si vous êtes dans le lobby, attendez le chargement puis rechargez.</string>
     <string name="title_activity_settings">Paramètres</string>
-    
+
     <string name="pref_header_general">Données de jeu</string>
 
     <string-array name="pref_game_data_tabs_titles">

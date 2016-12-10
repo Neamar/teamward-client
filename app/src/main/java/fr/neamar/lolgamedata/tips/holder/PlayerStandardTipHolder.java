@@ -40,10 +40,9 @@ public class PlayerStandardTipHolder extends TipHolder {
     public void bind(Tip tip) {
         PlayerStandardTip playerStandardTip = (PlayerStandardTip) tip;
 
-        if(!playerStandardTip.image.isEmpty()) {
+        if (!playerStandardTip.image.isEmpty()) {
             ImageLoader.getInstance().displayImage(playerStandardTip.image, championImage);
-        }
-        else {
+        } else {
             championImage.setImageResource(playerStandardTip.imageId);
         }
 

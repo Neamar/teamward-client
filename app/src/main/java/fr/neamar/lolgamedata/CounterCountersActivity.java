@@ -42,13 +42,13 @@ public class CounterCountersActivity extends SnackBarActivity {
         RecyclerView noDataRecyclerView = (RecyclerView) findViewById(R.id.noData);
         noDataRecyclerView.setAdapter(noDataAdapter);
 
-        if(counter.noData.size() == 0) {
+        if (counter.noData.size() == 0) {
             findViewById(R.id.noDataHolder).setVisibility(View.INVISIBLE);
         }
 
         getSupportActionBar().setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.champion.name));
 
-        if(counter.counters.size() == 0) {
+        if (counter.counters.size() == 0) {
             displaySnack(String.format(getString(R.string.no_counters), counter.champion.name));
         }
 
@@ -68,11 +68,10 @@ public class CounterCountersActivity extends SnackBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == android.R.id.home) {
+        if (id == android.R.id.home) {
             finish();
             return true;
-        }
-        else if(id == R.id.action_gg) {
+        } else if (id == R.id.action_gg) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(counter.champion.ggURL));
             startActivity(browserIntent);
 

@@ -33,4 +33,5 @@ public class CounterCountersNoDataAdapter extends RecyclerView.Adapter<CounterCo
     @Override
     public int getItemCount() {
         return counter.noData.size();
-    }}
+    }
+}

@@ -6,7 +6,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- Fix for an Android 4.1 bug where displaying notification require the vibrate permission -->
-    <uses-permission android:name="android.permission.VIBRATE" android:maxSdkVersion="18" />
+    <uses-permission
+        android:name="android.permission.VIBRATE"
+        android:maxSdkVersion="18" />
 
     <permission
         android:name="fr.neamar.lolgamedata.permission.C2D_MESSAGE"

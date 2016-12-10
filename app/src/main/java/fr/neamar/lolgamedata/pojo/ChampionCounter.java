@@ -16,7 +16,7 @@ public class ChampionCounter implements Serializable {
         image = champion.getString("image");
         name = champion.getString("name");
         ggURL = champion.getString("gg");
-        if(isCounter) {
+        if (isCounter) {
             mastery = champion.getInt("mastery");
             winRate = champion.getInt("winRate");
         }
@@ -29,12 +29,9 @@ public class ChampionCounter implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof ChampionCounter)) {
-            if(obj instanceof String && obj.equals(name)) {
-                return true;
-            }
+        if (!(obj instanceof ChampionCounter)) {
+            return obj instanceof String && obj.equals(name);
 
-            return false;
         }
 
         return name.equals(((ChampionCounter) obj).name);

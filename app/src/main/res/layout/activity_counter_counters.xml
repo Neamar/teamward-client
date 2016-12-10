@@ -32,23 +32,23 @@
         tools:showIn="@layout/activity_counter_counters">
 
         <LinearLayout
+            android:id="@+id/noDataHolder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/noDataHolder"
-            android:paddingLeft="4dp"
-            android:paddingStart="4dp"
+            android:layout_alignParentBottom="true"
             android:background="@color/colorPrimaryDark"
-            android:layout_alignParentBottom="true">
+            android:paddingLeft="4dp"
+            android:paddingStart="4dp">
 
             <TextView
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@android:color/white"
+                android:layout_gravity="center_vertical"
                 android:text="@string/no_data"
                 android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:id="@+id/textView4"/>
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/white" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/noData"
@@ -66,13 +66,12 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/noDataHolder"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            tools:listitem="@layout/item_counter_counter"
-            android:layout_above="@+id/noDataHolder">
+            tools:listitem="@layout/item_counter_counter">
 
         </android.support.v7.widget.RecyclerView>
-
 
 
     </RelativeLayout>

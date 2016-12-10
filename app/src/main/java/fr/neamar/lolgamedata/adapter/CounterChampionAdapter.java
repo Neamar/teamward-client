@@ -46,8 +46,8 @@ public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampion
 
     public void filter(String filter) {
         counters = new Counters();
-        for(int i = 0; i < allCounters.counters.size(); i++) {
-            if(allCounters.counters.get(i).champion.name.toLowerCase().startsWith(filter.toLowerCase())) {
+        for (int i = 0; i < allCounters.counters.size(); i++) {
+            if (allCounters.counters.get(i).champion.name.toLowerCase().startsWith(filter.toLowerCase())) {
                 counters.counters.add(allCounters.counters.get(i));
             }
         }

@@ -389,7 +389,7 @@ public class GameActivity extends SnackBarActivity {
 
         prefs.edit().putInt("game_counter", counter + 1).apply();
 
-        if(counter == 5 || counter == 10) {
+        if (counter == 5 || counter == 10) {
             displaySnack(getString(R.string.ap_ad_hint));
         }
     }

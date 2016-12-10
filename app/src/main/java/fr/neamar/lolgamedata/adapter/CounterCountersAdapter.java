@@ -20,14 +20,13 @@ public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
 
     @Override
     public DummyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType == 0) {
+        if (viewType == 0) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
             View view = inflater.inflate(R.layout.item_section, parent, false);
 
             return new SectionHolder(view);
-        }
-        else {
+        } else {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
             View view = inflater.inflate(R.layout.item_counter_counter, parent, false);
@@ -38,13 +37,11 @@ public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
 
     @Override
     public void onBindViewHolder(DummyHolder holder, int position) {
-        if(getItemViewType(position) == 1) {
+        if (getItemViewType(position) == 1) {
             ((CounterCountersHolder) holder).bind(counter.counters.get(getRealPosition(position)), counter);
-        }
-        else if(position == 0) {
+        } else if (position == 0) {
             ((SectionHolder) holder).bindSection(R.string.good_counters, counter.goodCountersThreshold);
-        }
-        else {
+        } else {
             ((SectionHolder) holder).bindSection(R.string.bad_counters, counter.counters.size() - counter.goodCountersThreshold);
         }
     }
@@ -56,17 +53,17 @@ public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if(position == 0 || position == counter.goodCountersThreshold + 1) {
+        if (position == 0 || position == counter.goodCountersThreshold + 1) {
             return 0;
         }
         return 1;
     }
 
     public int getRealPosition(int position) {
-        if(position <= counter.goodCountersThreshold) {
-            return position -1;
+        if (position <= counter.goodCountersThreshold) {
+            return position - 1;
         }
 
-        return position -2;
+        return position - 2;
     }
 }

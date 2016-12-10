@@ -30,12 +30,12 @@ public class Match {
         matchUrl = match.getString("match_url");
 
 
-        if(match.has("ward")) {
+        if (match.has("ward")) {
             ward = match.getJSONObject("ward").getString("image_url");
         }
 
         JSONArray jsonItems = match.getJSONArray("items");
-        for(int i = 0; i < jsonItems.length(); i++) {
+        for (int i = 0; i < jsonItems.length(); i++) {
             JSONObject jsonItem = jsonItems.getJSONObject(i);
             items.add(jsonItem.getString("image_url"));
         }

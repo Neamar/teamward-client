@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/player_pod_height"
-    android:orientation="vertical"
     android:background="?android:attr/selectableItemBackground"
     android:clipToPadding="false"
+    android:orientation="vertical"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 
@@ -144,10 +143,10 @@
         android:id="@+id/previousRankingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/stub_previous_ranking"
-        android:textSize="11sp"
-        android:layout_below="@+id/summonerNameText"
         android:layout_alignLeft="@+id/summonerNameText"
-        android:layout_alignStart="@+id/summonerNameText" />
+        android:layout_alignStart="@+id/summonerNameText"
+        android:layout_below="@+id/summonerNameText"
+        android:text="@string/stub_previous_ranking"
+        android:textSize="11sp" />
 
 </RelativeLayout>

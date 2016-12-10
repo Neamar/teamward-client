@@ -24,7 +24,7 @@ public class Counters implements Serializable {
             availableChampions.addAll(c.counters);
         }
 
-        for(Counter c: counters) {
+        for (Counter c : counters) {
             // First, list all champions
             c.noData.addAll(new HashSet<>(availableChampions));
             // And remove champions not in first set

@@ -38,7 +38,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             R.drawable.champion_mastery_6,
             R.drawable.champion_mastery_7,
     };
-
+    public static final Map<String, Integer> RANKING_TIER_RESOURCES;
     @StringRes
     private static final int[] mainChampionResources = new int[]{
             0,
@@ -46,8 +46,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             R.string.second_main,
             R.string.third_main
     };
-
-    public static final Map<String, Integer> RANKING_TIER_RESOURCES;
 
     static {
         Map<String, Integer> map = new HashMap<>();
@@ -124,7 +122,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         }
 
         if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
-            if(player.rank.oldTier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase())) {
+            if (player.rank.oldTier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase())) {
                 rankingDivision.setVisibility(View.INVISIBLE);
                 rankingTier.setVisibility(View.INVISIBLE);
 
@@ -132,8 +130,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
                 String summonerLevelTemplate = previousRanking.getContext().getString(R.string.summoner_level);
                 previousRanking.setText(summonerLevelTemplate.replace("%s", Integer.toString(player.summoner.level)));
                 previousRanking.setTypeface(null, player.summoner.level < 30 ? Typeface.BOLD : Typeface.NORMAL);
-            }
-            else {
+            } else {
                 rankingDivision.setVisibility(View.GONE);
                 rankingTier.setVisibility(View.VISIBLE);
                 rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase()));

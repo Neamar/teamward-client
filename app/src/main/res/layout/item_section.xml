@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
-        android:text="@string/bad_counters"
-        android:layout_width="match_parent"
-        android:textStyle="bold"
-        android:layout_height="wrap_content"
+        android:id="@+id/sectionTitle"
         style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:id="@+id/sectionTitle" />
+        android:text="@string/bad_counters"
+        android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/noCounters"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:gravity="center"
-        android:src="@drawable/teemo"
-        android:id="@+id/noCounters" />
+        android:src="@drawable/teemo" />
 </LinearLayout>

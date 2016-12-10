@@ -97,8 +97,7 @@ public class LolApplication extends Application {
 
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
             Map<String, ?> properties = sp.getAll();
-            for (Map.Entry<String, ?> entry : properties.entrySet())
-            {
+            for (Map.Entry<String, ?> entry : properties.entrySet()) {
                 getMixpanel().getPeople().set("settings_" + entry.getKey(), entry.getValue());
             }
         }

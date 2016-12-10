@@ -4,8 +4,8 @@
     tools:context="fr.neamar.lolgamedata.ChampionDetailActivity">
     <item
         android:id="@+id/action_gg"
-        app:showAsAction="ifRoom"
-        android:title="@string/gg"/>
+        android:title="@string/gg"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
