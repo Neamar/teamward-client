@@ -124,14 +124,22 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         }
 
         if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
-            rankingDivision.setVisibility(View.INVISIBLE);
-            rankingTier.setVisibility(View.INVISIBLE);
+            if(player.rank.oldTier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase())) {
+                rankingDivision.setVisibility(View.INVISIBLE);
+                rankingTier.setVisibility(View.INVISIBLE);
 
-            previousRanking.setVisibility(View.VISIBLE);
-            String summonerLevelTemplate = previousRanking.getContext().getString(R.string.summoner_level);
-            previousRanking.setText(summonerLevelTemplate.replace("%s", Integer.toString(player.summoner.level)));
-
-            previousRanking.setTypeface(null, player.summoner.level < 30 ? Typeface.BOLD : Typeface.NORMAL);
+                previousRanking.setVisibility(View.VISIBLE);
+                String summonerLevelTemplate = previousRanking.getContext().getString(R.string.summoner_level);
+                previousRanking.setText(summonerLevelTemplate.replace("%s", Integer.toString(player.summoner.level)));
+                previousRanking.setTypeface(null, player.summoner.level < 30 ? Typeface.BOLD : Typeface.NORMAL);
+            }
+            else {
+                rankingDivision.setVisibility(View.GONE);
+                rankingTier.setVisibility(View.VISIBLE);
+                rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase()));
+                rankingTier.setContentDescription(player.rank.oldTier);
+                previousRanking.setVisibility(View.GONE);
+            }
         } else {
             rankingDivision.setVisibility(View.VISIBLE);
             rankingDivision.setText(player.rank.division);
