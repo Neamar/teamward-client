@@ -140,7 +140,7 @@
         android:textSize="8sp" />
 
     <TextView
-        android:id="@+id/previousRankingText"
+        android:id="@+id/summonerLevelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/summonerNameText"

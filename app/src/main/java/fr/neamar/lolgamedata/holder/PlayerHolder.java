@@ -64,7 +64,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     private final ImageView championMastery;
     private final TextView championName;
     private final TextView summonerName;
-    private final TextView previousRanking;
+    private final TextView summonerLevel;
     private final TextView rankingDivision;
     private final ImageView rankingTier;
     private final ImageView spellDImage;
@@ -80,7 +80,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         championMastery = (ImageView) view.findViewById(R.id.championMasteryImage);
         championName = (TextView) view.findViewById(R.id.championNameText);
         summonerName = (TextView) view.findViewById(R.id.summonerNameText);
-        previousRanking = (TextView) view.findViewById(R.id.previousRankingText);
+        summonerLevel = (TextView) view.findViewById(R.id.summonerLevelText);
         rankingDivision = (TextView) view.findViewById(R.id.rankingDivisionText);
         rankingTier = (ImageView) view.findViewById(R.id.rankingTierImage);
         spellDImage = (ImageView) view.findViewById(R.id.spellDImage);
@@ -121,29 +121,35 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             championMastery.setContentDescription(String.format(chammpionMasteryTemplate, player.champion.mastery));
         }
 
+        // Are you playing ranked this season?
         if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
+            // Have you ever played rank?
             if (player.rank.oldTier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase())) {
+                // Never played rank: display summoner level,
+                // Bold level < 30
                 rankingDivision.setVisibility(View.INVISIBLE);
                 rankingTier.setVisibility(View.INVISIBLE);
 
-                previousRanking.setVisibility(View.VISIBLE);
-                String summonerLevelTemplate = previousRanking.getContext().getString(R.string.summoner_level);
-                previousRanking.setText(summonerLevelTemplate.replace("%s", Integer.toString(player.summoner.level)));
-                previousRanking.setTypeface(null, player.summoner.level < 30 ? Typeface.BOLD : Typeface.NORMAL);
+                summonerLevel.setVisibility(View.VISIBLE);
+                String summonerLevelTemplate = summonerLevel.getContext().getString(R.string.summoner_level);
+                summonerLevel.setText(summonerLevelTemplate.replace("%s", Integer.toString(player.summoner.level)));
+                summonerLevel.setTypeface(null, player.summoner.level < 30 ? Typeface.BOLD : Typeface.NORMAL);
             } else {
+                // Played ranked last season
                 rankingDivision.setVisibility(View.GONE);
                 rankingTier.setVisibility(View.VISIBLE);
                 rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase()));
                 rankingTier.setContentDescription(player.rank.oldTier);
-                previousRanking.setVisibility(View.GONE);
+                summonerLevel.setVisibility(View.GONE);
             }
         } else {
+            // Play ranked this seaon
             rankingDivision.setVisibility(View.VISIBLE);
             rankingDivision.setText(player.rank.division);
             rankingTier.setVisibility(View.VISIBLE);
             rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase()));
             rankingTier.setContentDescription(player.rank.tier);
-            previousRanking.setVisibility(View.GONE);
+            summonerLevel.setVisibility(View.GONE);
         }
 
         // To qualify as a main champion, has to be:
