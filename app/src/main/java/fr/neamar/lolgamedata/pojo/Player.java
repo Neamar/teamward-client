@@ -16,6 +16,7 @@ public class Player implements Serializable {
 
     public Rank rank;
 
+    // Can be -1 on error
     public int knownChampionsCount;
 
     public int totalRecentGames;

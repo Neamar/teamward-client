@@ -16,6 +16,8 @@ public class Champion implements Serializable {
     public String splashUrl;
     public String ggUrl;
     public int mastery;
+
+    // Can be -1 on error
     public int championRank;
     public int ad;
     public int ap;

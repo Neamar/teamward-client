@@ -155,7 +155,8 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         // To qualify as a main champion, has to be:
         // * at least champion mastery level 3
         // * be in the top 3 champions played on this account
-        if (player.champion.mastery >= 3 && player.champion.championRank <= 3) {
+        // * championRank should not be -1
+        if (player.champion.mastery >= 3 && player.champion.championRank <= 3 && player.champion.championRank >= 1) {
             // Main champion!
             mainChampionText.setVisibility(View.VISIBLE);
             String mainText = mainChampionText.getContext().getString(mainChampionResources[player.champion.championRank]);
