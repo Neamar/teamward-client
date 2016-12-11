@@ -1,5 +1,7 @@
 package fr.neamar.lolgamedata.pojo;
 
+import android.os.Bundle;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,6 +38,15 @@ public class Account implements Serializable {
         }
 
         return o;
+    }
+
+    public Bundle toBundle() {
+        Bundle b = new Bundle();
+        b.putString("name", summonerImage);
+        b.putString("region", region);
+        b.putString("image", summonerImage);
+
+        return b;
     }
 
     @Override

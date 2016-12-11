@@ -102,7 +102,7 @@ public class GameActivity extends SnackBarActivity {
             Intent i = new Intent(this, AccountsActivity.class);
             startActivity(i);
 
-            ((LolApplication) getApplication()).getMixpanel().track("First time app open");
+            ((LolApplication) getApplication()).track("First time app open");
 
             finish();
             return;
@@ -161,6 +161,8 @@ public class GameActivity extends SnackBarActivity {
         if (savedInstanceState == null || !savedInstanceState.containsKey("game")) {
             loadCurrentGame(account.summonerName, account.region);
         }
+
+        ((LolApplication) getApplication()).getFirebase().logEvent("game_activity_open", account.toBundle());
     }
 
     @Override
@@ -174,7 +176,8 @@ public class GameActivity extends SnackBarActivity {
                     @Override
                     public void onClick(View v) {
                         loadCurrentGame(account.summonerName, account.region);
-                        ((LolApplication) getApplication()).getMixpanel().track("Reload stale game");
+                        ((LolApplication) getApplication()).track("Reload stale game", account.toBundle());
+
                     }
                 });
             }
@@ -255,8 +258,6 @@ public class GameActivity extends SnackBarActivity {
     }
 
     public void loadCurrentGame(final String summonerName, final String region) {
-        ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
-
         final ProgressDialog dialog = ProgressDialog.show(this, "",
                 String.format(getString(R.string.loading_game_data), summonerName), true);
         dialog.show();
@@ -276,22 +277,21 @@ public class GameActivity extends SnackBarActivity {
 
                                 Log.i(TAG, "Displaying game #" + game.gameId);
 
-                                // Timing automatically added (see timeEvent() call)
-                                JSONObject j = account.toJsonObject();
-                                j.putOpt("game_map_id", game.mapId);
-                                j.putOpt("game_map_name", getString(getMapName(game.mapId)));
-                                j.putOpt("game_mode", game.gameMode);
-                                j.putOpt("game_type", game.gameType);
-                                j.putOpt("game_id", game.gameId);
-                                j.putOpt("default_tab", getDefaultTabName());
-                                j.putOpt("display_champion_name", PreferenceManager.getDefaultSharedPreferences(GameActivity.this).getBoolean("display_champion_name", true));
+                                Bundle b = account.toBundle();
+                                b.putInt("game_map_id", game.mapId);
+                                b.putString("game_map_name", getString(getMapName(game.mapId)));
+                                b.putString("game_mode", game.gameMode);
+                                b.putString("game_type", game.gameType);
+                                b.putLong("game_id", game.gameId);
+                                b.putString("default_tab", getDefaultTabName());
+                                b.putBoolean("display_champion_name", PreferenceManager.getDefaultSharedPreferences(GameActivity.this).getBoolean("display_champion_name", true));
                                 if (getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty()) {
-                                    j.putOpt("source", getIntent().getStringExtra("source"));
+                                    b.putString("source", getIntent().getStringExtra("source"));
                                 } else {
-                                    j.putOpt("source", "unknown");
+                                    b.putString("source", "unknown");
                                 }
 
-                                ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
+                                ((LolApplication) getApplication()).track("Game viewed", b);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -326,13 +326,13 @@ public class GameActivity extends SnackBarActivity {
 
                         if (!responseBody.contains("ummoner not in game")) {
                             displaySnack(responseBody);
-                            JSONObject j = account.toJsonObject();
-                            j.put("error", responseBody.replace("Error:", ""));
-                            ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
+                            Bundle b = account.toBundle();
+                            b.putString("error", responseBody.replace("Error:", ""));
+                            ((LolApplication) getApplication()).track("Error viewing game", b);
                         } else {
                             setUiMode(UI_MODE_NOT_IN_GAME);
                         }
-                    } catch (UnsupportedEncodingException | JSONException e) {
+                    } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
@@ -386,6 +386,8 @@ public class GameActivity extends SnackBarActivity {
 
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         int counter = prefs.getInt("game_counter", 0);
+
+        ((LolApplication) getApplication()).getFirebase().setUserProperty("game_counter", Integer.toString(counter + 1));
 
         prefs.edit().putInt("game_counter", counter + 1).apply();
 

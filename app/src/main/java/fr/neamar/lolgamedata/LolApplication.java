@@ -3,18 +3,24 @@ package fr.neamar.lolgamedata;
 import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.service.RegistrationIntentService;
@@ -74,6 +80,26 @@ public class LolApplication extends Application {
 
     }
 
+    public void track(String eventName) {
+        track(eventName, new Bundle());
+    }
+
+    public void track(String eventName, Bundle b) {
+        getFirebase().logEvent(eventName, b);
+
+        JSONObject j = new JSONObject();
+        Set<String> keys = b.keySet();
+        for (String key : keys) {
+            try {
+                j.put(key, b.get(key));
+            } catch(JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        getMixpanel().track(eventName, j);
+    }
+
     public MixpanelAPI getMixpanel() {
         if (mixpanel == null) {
             mixpanel = MixpanelAPI.getInstance(this, getString(R.string.MIXPANEL_TOKEN));
@@ -83,6 +109,9 @@ public class LolApplication extends Application {
         return mixpanel;
     }
 
+    public FirebaseAnalytics getFirebase() {
+        return FirebaseAnalytics.getInstance(this);
+    }
     public void identifyOnMixpanel() {
         AccountManager accountManager = new AccountManager(getApplicationContext());
         List<Account> accounts = accountManager.getAccounts();
@@ -100,6 +129,11 @@ public class LolApplication extends Application {
             for (Map.Entry<String, ?> entry : properties.entrySet()) {
                 getMixpanel().getPeople().set("settings_" + entry.getKey(), entry.getValue());
             }
+
+            getFirebase().setUserProperty("summoner_name", accounts.get(0).summonerName);
+            getFirebase().setUserProperty("region", accounts.get(0).region);
+            getFirebase().setUserProperty("accounts_length", Integer.toString(accounts.size()));
+
         }
     }
 
