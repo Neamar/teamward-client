@@ -159,4 +159,5 @@
     <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f / min)&lt;/font&gt;</string>
     <string name="main_level_7">I\'d be careful with this %1$s. He sure knows his %2$s...</string>
     <string name="otp">One Trick Pony</string>
+    <string name="error_adding_account">Error adding account. Please double check your summoner name and region!</string>
 </resources>
