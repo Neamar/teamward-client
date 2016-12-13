@@ -1,0 +1,15 @@
+machine:
+  java:
+    version: openjdk8
+  environment:
+    GRADLE_OPTS: -Dorg.gradle.daemon=true -Dorg.gradle.jvmargs=-Xmx2048M
+dependencies:
+  pre:
+   - echo y | android update sdk --no-ui --all --filter "android-25","build-tools-25.0.0","extra-android-m2repository"
+test:
+  override:
+    - fb-adb start-server:
+        background: true
+    - ./gradlew test assembleDebug --console=plain
+  post:
+    - cp -r app/build/outputs $CIRCLE_ARTIFACTS
