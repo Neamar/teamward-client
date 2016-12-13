@@ -296,13 +296,22 @@ public class GameActivity extends SnackBarActivity {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            dialog.dismiss();
+
+                            try {
+                                dialog.dismiss();
+                            } catch (IllegalArgumentException e) {
+                                // View is not attached (rotation for instance)
+                            }
 
                             lastLoaded = new Date();
 
                             queue.stop();
                         }
-                    }, new Response.ErrorListener() {
+                    }
+
+                    , new Response.ErrorListener()
+
+            {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     if (dialog.isShowing()) {
@@ -339,12 +348,18 @@ public class GameActivity extends SnackBarActivity {
                     }
 
                 }
-            });
+            }
 
-            jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
+            );
+
+            jsonRequest.setRetryPolicy(new
+
+                    DefaultRetryPolicy(
                     30000,
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+
+            );
             queue.add(jsonRequest);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
