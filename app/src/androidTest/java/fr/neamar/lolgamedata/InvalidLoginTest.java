@@ -1,7 +1,7 @@
 package fr.neamar.lolgamedata;
 
 
-import android.content.res.Resources;
+import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
@@ -38,10 +38,15 @@ import static org.hamcrest.Matchers.allOf;
 public class InvalidLoginTest {
 
     @Rule
-    public ActivityTestRule<GameActivity> mActivityTestRule = new ActivityTestRule<>(GameActivity.class);
+    public ActivityTestRule<GameActivity> mActivityTestRule = new ActivityTestRule<>(GameActivity.class, false, false);
 
     @Test
     public void invalidLoginTest() {
+        InstrumentationRegistry.getTargetContext().getSharedPreferences("accounts", Context.MODE_PRIVATE).edit().clear().commit();
+
+        mActivityTestRule.launchActivity(null);
+
+        String fakeAccount = "riot neamar 404";
         ViewInteraction floatingActionButton = onView(
                 allOf(withId(R.id.fab),
                         withParent(allOf(withId(R.id.coordinatorLayout),
@@ -51,16 +56,14 @@ public class InvalidLoginTest {
 
         ViewInteraction editText = onView(
                 allOf(withId(R.id.summonerText), isDisplayed()));
-        editText.perform(replaceText("riot neamar"), closeSoftKeyboard());
+        editText.perform(replaceText(fakeAccount), closeSoftKeyboard());
 
         ViewInteraction button = onView(
                 allOf(withId(R.id.save), withText("Add account"), isDisplayed()));
         button.perform(click());
 
-        onView(isRoot()).perform(waitFor(15000));
-
         ViewInteraction editText3 = onView(
-                allOf(withId(R.id.summonerText), withText("riot neamar 404"),
+                allOf(withId(R.id.summonerText), withText(fakeAccount),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -68,7 +71,7 @@ public class InvalidLoginTest {
                                 0),
                         isDisplayed()));
 
-        Resources resources = InstrumentationRegistry.getContext().getResources();
+        // Ideally, the string should come from the resource file
         editText3.check(matches(hasErrorText("Error adding account. Please double check your summoner name and region!")));
 
     }
