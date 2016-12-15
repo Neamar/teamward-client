@@ -9,13 +9,13 @@ dependencies:
 test:
   pre:
     # start the emulator
-    - emulator -avd circleci-android25 -no-audio -no-window:
+    - emulator -avd circleci-android23 -no-audio -no-window:
         background: true
         parallel: true
   override:
     - fb-adb start-server:
         background: true
-    # Run robolectric tests, build the apk, and build the test apk for running
+    # Run tests, build the apk, and build the test apk for running
     # the espresso tests
     - ./gradlew test assembleDebug assembleDebugAndroidTest --console=plain
     # wait for the emulator to have booted
