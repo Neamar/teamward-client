@@ -6,6 +6,8 @@ machine:
 dependencies:
   pre:
    - echo y | android update sdk --no-ui --all --filter "android-25","build-tools-25.0.0","extra-android-m2repository"
+   - ./gradlew:
+       background: true
 test:
   pre:
     # start the emulator
