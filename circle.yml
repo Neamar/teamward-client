@@ -15,8 +15,6 @@ test:
         background: true
         parallel: true
   override:
-    - fb-adb start-server:
-        background: true
     # Run tests, build the apk, and build the test apk for running
     # the espresso tests
     - ./gradlew test assembleDebug assembleDebugAndroidTest --console=plain
@@ -24,6 +22,8 @@ test:
     - circle-android wait-for-boot
     # Run espresso tests
     - ./gradlew connectedAndroidTest --console=plain
+    # Screenshot
+    - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
   post:
     - cp -r app/build/outputs $CIRCLE_ARTIFACTS
     # copy the test results to the test results directory.
