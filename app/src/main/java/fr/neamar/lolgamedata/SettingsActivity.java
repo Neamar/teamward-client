@@ -21,6 +21,9 @@ import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**
@@ -43,6 +46,18 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
+
+            JSONObject j = new JSONObject();
+            try {
+                j.put("setting", preference.getKey());
+                j.put("setting_name", preference.getTitle());
+                j.put("value", stringValue);
+            }
+            catch(JSONException e) {
+                e.printStackTrace();
+            }
+
+            ((LolApplication) preference.getContext().getApplicationContext()).getMixpanel().track("Setting updated", j);
 
             if (preference instanceof ListPreference) {
                 // For list preferences, look up the correct display value in
@@ -121,6 +136,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+
+        ((LolApplication) getApplication()).getMixpanel().track("Access settings");
     }
 
     /**

@@ -20,6 +20,7 @@ test:
     - ./gradlew test assembleDebug assembleDebugAndroidTest --console=plain
     # wait for the emulator to have booted
     - circle-android wait-for-boot
+    - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
     # Run espresso tests
     - ./gradlew connectedAndroidTest --console=plain
     # Screenshot
