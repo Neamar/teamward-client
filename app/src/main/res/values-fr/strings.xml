@@ -142,4 +142,5 @@
     <string name="kda_template">KDA %1$d / &lt;font color=\"#FF5252\"&gt;%2$d&lt;/font&gt; / %3$d</string>
     <string name="main_level_7">Attention à %1$s. Il connaît bien %2$s...</string>
     <string name="otp">One Trick Pony</string>
+    <string name="error_adding_account">Impossible d\'ajouter le compte. Vérifiez votre nom d\'invocateur et la région !</string>
 </resources>
