@@ -102,7 +102,13 @@ public class AddAccountActivity extends Activity {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    dialog.dismiss();
+                    try {
+                        dialog.dismiss();
+                    }
+                    catch(IllegalArgumentException e) {
+                        // Window was rotated
+                    }
+
                     Log.e(TAG, error.toString());
 
                     try {
@@ -129,7 +135,7 @@ public class AddAccountActivity extends Activity {
                     queue.stop();
 
                     final TextView nameText = (TextView) findViewById(R.id.summonerText);
-                    nameText.setError("Error adding account. Please double check your summoner name and region!");
+                    nameText.setError(getString(R.string.error_adding_account));
                 }
             });
 

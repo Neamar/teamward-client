@@ -6,10 +6,27 @@ machine:
 dependencies:
   pre:
    - echo y | android update sdk --no-ui --all --filter "android-25","build-tools-25.0.0","extra-android-m2repository"
+   - ./gradlew:
+       background: true
 test:
-  override:
-    - fb-adb start-server:
+  pre:
+    # start the emulator
+    - emulator -avd circleci-android23 -no-audio -no-window:
         background: true
-    - ./gradlew test assembleDebug --console=plain
+        parallel: true
+  override:
+    # Run tests, build the apk, and build the test apk for running
+    # the espresso tests
+    - ./gradlew test assembleDebug assembleDebugAndroidTest --console=plain
+    # wait for the emulator to have booted
+    # - circle-android wait-for-boot
+    # - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
+    # # Run espresso tests
+    # - ./gradlew connectedAndroidTest --console=plain
+    # # Screenshot
+    # - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
   post:
     - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+    # copy the test results to the test results directory.
+    # - find app/build/test-results -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/ \;
+    # - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS

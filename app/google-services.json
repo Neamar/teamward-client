@@ -1,7 +1,9 @@
 {
   "project_info": {
     "project_number": "684742175142",
-    "project_id": "team-ward-4b6b2"
+    "firebase_url": "https://team-ward-4b6b2.firebaseio.com",
+    "project_id": "team-ward-4b6b2",
+    "storage_bucket": "team-ward-4b6b2.appspot.com"
   },
   "client": [
     {
@@ -11,7 +13,12 @@
           "package_name": "fr.neamar.lolgamedata"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "684742175142-stp05nk5c5etjtvrhq0i6tf5737t389r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDjMLLzWJfBjFvT4loothO7CIr_o64k0t8"
@@ -26,7 +33,7 @@
           "other_platform_oauth_client": []
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }
