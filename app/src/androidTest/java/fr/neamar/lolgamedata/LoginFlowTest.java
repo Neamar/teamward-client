@@ -1,6 +1,7 @@
 package fr.neamar.lolgamedata;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
@@ -37,6 +38,7 @@ public class LoginFlowTest {
     @Rule
     public ActivityTestRule<GameActivity> mActivityTestRule = new ActivityTestRule<>(GameActivity.class, false, false);
 
+    @SuppressLint("CommitPrefEdits")
     @Test
     public void loginFlowTest() {
         InstrumentationRegistry.getTargetContext().getSharedPreferences("accounts", Context.MODE_PRIVATE).edit().clear().commit();

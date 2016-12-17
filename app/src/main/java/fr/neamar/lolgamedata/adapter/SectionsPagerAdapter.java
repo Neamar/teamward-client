@@ -19,9 +19,9 @@ import fr.neamar.lolgamedata.pojo.Team;
  * one of the sections/tabs/pages.
  */
 public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
-    public final Context context;
-    public Game game;
-    public ArrayList<Team> teams = new ArrayList<>();
+    private final Context context;
+    private Game game;
+    private ArrayList<Team> teams = new ArrayList<>();
 
     public SectionsPagerAdapter(FragmentManager fm, Context context) {
         super(fm);

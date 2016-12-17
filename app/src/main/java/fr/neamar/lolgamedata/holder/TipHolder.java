@@ -5,11 +5,8 @@ import android.view.View;
 
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 04/07/16.
- */
 public class TipHolder extends RecyclerView.ViewHolder {
-    public TipHolder(View itemView) {
+    protected TipHolder(View itemView) {
         super(itemView);
     }
 

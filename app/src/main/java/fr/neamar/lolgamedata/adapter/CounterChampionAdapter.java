@@ -10,8 +10,8 @@ import fr.neamar.lolgamedata.holder.CounterChampionHolder;
 import fr.neamar.lolgamedata.pojo.Counters;
 
 public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampionHolder> {
-    public final Counters allCounters;
-    public Counters counters;
+    private final Counters allCounters;
+    private Counters counters;
 
     public CounterChampionAdapter(Counters counters) {
         this.allCounters = counters;

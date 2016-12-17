@@ -29,9 +29,6 @@ import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Account;
 
-/**
- * Created by neamar on 16/05/16.
- */
 public class RegistrationIntentService extends IntentService {
     private static final String SENT_TOKEN_TO_SERVER = "SENT_TOKEN_TO_SERVER";
 
@@ -105,9 +102,8 @@ public class RegistrationIntentService extends IntentService {
                     try {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
-                    } catch (UnsupportedEncodingException e) {
+                    } catch (UnsupportedEncodingException | NullPointerException e) {
                         e.printStackTrace();
-                    } catch (NullPointerException e) {
                     }
                 }
             });

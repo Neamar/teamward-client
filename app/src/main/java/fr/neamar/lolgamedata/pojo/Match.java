@@ -18,9 +18,9 @@ public class Match {
     public String ward;
     public String matchUrl;
 
-    public ArrayList<String> items = new ArrayList<>();
+    public final ArrayList<String> items = new ArrayList<>();
 
-    public Match(JSONObject match) throws JSONException {
+    private Match(JSONObject match) throws JSONException {
         victory = match.getBoolean("victory");
         k = match.getInt("k");
         d = match.getInt("d");
@@ -42,7 +42,7 @@ public class Match {
     }
 
     public static ArrayList<Match> getMatches(JSONObject json) {
-        JSONArray jsonMatches = null;
+        JSONArray jsonMatches;
         ArrayList<Match> matches = new ArrayList<>();
 
         try {

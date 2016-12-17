@@ -22,11 +22,8 @@ import fr.neamar.lolgamedata.tips.builder.PremadeTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.TipBuilder;
 import fr.neamar.lolgamedata.tips.builder.TryHarderTipBuilder;
 
-/**
- * Created by neamar on 04/07/16.
- */
 public class Tip {
-    public static final List<TipBuilder> tipsBuilders = new ArrayList<>(Arrays.asList(
+    private static final List<TipBuilder> tipsBuilders = new ArrayList<>(Arrays.asList(
             new TipBuilder(),
             new NoSmiteTipBuilder(),
             new DoubleSmiteTipBuilder(),
@@ -44,7 +41,7 @@ public class Tip {
     ));
     public final Game game;
 
-    public Tip(Game game) {
+    Tip(Game game) {
         this.game = game;
     }
 

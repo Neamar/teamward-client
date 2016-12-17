@@ -11,12 +11,9 @@ import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 24/07/16.
- */
 public class FullAPDTeamTipBuilder extends TipBuilder {
-    public static final String MAGIC_MANTLE_URL = "http://ddragon.leagueoflegends.com/cdn/6.14.2/img/item/1033.png";
-    public static final String CLOTH_ARMOR = "http://ddragon.leagueoflegends.com/cdn/6.14.2/img/item/1029.png";
+    private static final String MAGIC_MANTLE_URL = "http://ddragon.leagueoflegends.com/cdn/6.14.2/img/item/1033.png";
+    private static final String CLOTH_ARMOR = "http://ddragon.leagueoflegends.com/cdn/6.14.2/img/item/1029.png";
 
     @Override
     public ArrayList<Tip> getTips(Game game, Context context) {

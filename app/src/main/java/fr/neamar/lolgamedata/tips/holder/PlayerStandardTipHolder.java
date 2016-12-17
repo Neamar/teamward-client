@@ -13,15 +13,12 @@ import fr.neamar.lolgamedata.holder.TipHolder;
 import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 06/07/16.
- */
 public class PlayerStandardTipHolder extends TipHolder {
-    public final ImageView championImage;
-    public final TextView descriptionText;
-    public final TextView titleText;
+    private final ImageView championImage;
+    private final TextView descriptionText;
+    private final TextView titleText;
 
-    public PlayerStandardTipHolder(View itemView) {
+    private PlayerStandardTipHolder(View itemView) {
         super(itemView);
 
         championImage = (ImageView) itemView.findViewById(R.id.championImage);

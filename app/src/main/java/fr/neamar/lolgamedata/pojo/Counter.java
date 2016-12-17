@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Counter implements Serializable {
     public final ArrayList<ChampionCounter> counters = new ArrayList<>();
     public final ArrayList<ChampionCounter> noData = new ArrayList<>();
-    public String role;
+    public final String role;
     public ChampionCounter champion;
     public int goodCountersThreshold = 0;
 

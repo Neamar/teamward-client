@@ -22,9 +22,6 @@ import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.view.AdApView;
 
-/**
- * Created by neamar on 25/03/16.
- */
 public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     @DrawableRes

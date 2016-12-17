@@ -12,9 +12,6 @@ import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.adapter.TipAdapter;
 import fr.neamar.lolgamedata.pojo.Game;
 
-/**
- * Created by neamar on 04/07/16.
- */
 public class TipFragment extends Fragment {
     /**
      * The fragment argument representing the section number for this

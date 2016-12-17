@@ -12,9 +12,6 @@ import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.tips.MatchupsTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 06/07/16.
- */
 public class MatchupsBuilder extends TipBuilder {
     @Override
     public ArrayList<Tip> getTips(Game game, Context context) {
@@ -49,7 +46,7 @@ public class MatchupsBuilder extends TipBuilder {
     }
 
     @Nullable
-    public Player getPlayerWithRole(Team team, String role) {
+    private Player getPlayerWithRole(Team team, String role) {
         for (Player player : team.players) {
             if (player.champion.role.equals(role)) {
                 return player;

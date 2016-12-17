@@ -10,9 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by neamar on 25/03/16.
- */
 public class Game implements Serializable {
     public long gameId;
     public int mapId;

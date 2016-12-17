@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:drawableLeft="@drawable/support"
+    android:drawableStart="@drawable/support"
     android:drawablePadding="5dp"
     android:gravity="center_vertical"
     android:minHeight="?android:attr/listPreferredItemHeightSmall"
@@ -10,5 +11,5 @@
     android:paddingLeft="5dp"
     android:paddingRight="?android:attr/listPreferredItemPaddingRight"
     android:paddingStart="5dp"
-    android:text="Top"
+    android:text="@string/top"
     android:textAppearance="?android:attr/textAppearanceListItemSmall" />

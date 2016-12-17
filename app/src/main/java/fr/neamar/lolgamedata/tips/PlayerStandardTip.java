@@ -6,19 +6,17 @@ import android.support.annotation.Nullable;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 
-/**
- * Created by neamar on 06/07/16.
- */
 public class PlayerStandardTip extends Tip {
     @Nullable
-    public final Player player;
+    private final Player player;
+
     public final String text;
     public final String description;
     public String image = "";
     @DrawableRes
     public int imageId = 0;
 
-    public PlayerStandardTip(Game game, Player player, String image, String text, String description) {
+    public PlayerStandardTip(Game game, @Nullable Player player, String image, String text, String description) {
         super(game);
         this.player = player;
         this.image = image;
@@ -26,7 +24,7 @@ public class PlayerStandardTip extends Tip {
         this.description = description;
     }
 
-    public PlayerStandardTip(Game game, Player player, int imageId, String text, String description) {
+    public PlayerStandardTip(Game game, @Nullable Player player, int imageId, String text, String description) {
         super(game);
         this.player = player;
         this.imageId = imageId;

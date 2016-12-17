@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.util.Locale;
+
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.ChampionCounter;
 import fr.neamar.lolgamedata.pojo.Counter;
@@ -35,7 +37,7 @@ public class CounterCountersHolder extends DummyHolder implements View.OnClickLi
         counterImage.setContentDescription(championCounter.name);
 
         int winRate = championCounter.winRate;
-        winRateText.setText(String.format("%d%%", winRate));
+        winRateText.setText(String.format(Locale.getDefault(), "%d%%", winRate));
         if (winRate < 50) {
             winRateText.setTextColor(winRateText.getResources().getColor(R.color.colorBadMatchup));
         } else {

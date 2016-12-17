@@ -20,9 +20,9 @@ public class AccountsActivity extends SnackBarActivity {
     public static final String TAG = "AccountsActivity";
     private static final int ADD_NEW_ACCOUNT = 1;
 
-    public final int GAME_DETAILS = 0;
+    private final int GAME_DETAILS = 0;
 
-    public AccountManager accountManager;
+    private AccountManager accountManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

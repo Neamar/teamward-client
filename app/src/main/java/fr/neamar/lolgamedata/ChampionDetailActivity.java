@@ -57,6 +57,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         setSupportActionBar(toolbar);
 
+        assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         player = (Player) getIntent().getSerializableExtra("player");

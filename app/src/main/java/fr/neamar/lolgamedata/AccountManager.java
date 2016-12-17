@@ -14,12 +14,9 @@ import java.util.ArrayList;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.service.RegistrationIntentService;
 
-/**
- * Created by neamar on 03/04/16.
- */
 public class AccountManager {
-    public static final String ACCOUNTS_KEY = "accounts";
-    public static final String DEFAULT_VALUE = "[]";
+    private static final String ACCOUNTS_KEY = "accounts";
+    private static final String DEFAULT_VALUE = "[]";
     public static final String ACCOUNTS_CHANGE = "accounts_change";
     private static final String TAG = "AccountManager";
 

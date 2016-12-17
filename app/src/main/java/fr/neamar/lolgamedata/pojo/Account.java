@@ -5,9 +5,6 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-/**
- * Created by neamar on 28/03/16.
- */
 public class Account implements Serializable {
     public String summonerName;
     public String region;
@@ -45,8 +42,7 @@ public class Account implements Serializable {
 
         Account account = (Account) o;
 
-        if (!summonerName.equals(account.summonerName)) return false;
-        return region.equals(account.region);
+        return summonerName.equals(account.summonerName) && region.equals(account.region);
 
     }
 

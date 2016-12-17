@@ -12,7 +12,7 @@ import fr.neamar.lolgamedata.holder.MatchHolder;
 import fr.neamar.lolgamedata.pojo.Match;
 
 public class MatchAdapter extends RecyclerView.Adapter<MatchHolder> {
-    public ArrayList<Match> matches;
+    private final ArrayList<Match> matches;
 
     public MatchAdapter(ArrayList<Match> matches) {
         this.matches = matches;

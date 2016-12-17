@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_toEndOf="@+id/championImage"
             android:layout_toRightOf="@+id/championImage"
             android:text="@string/hot_streak"
@@ -45,6 +46,8 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/title"
             android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/championImage"
             android:layout_toRightOf="@+id/championImage"
             android:text="@string/s_is_on_a_hot_streak_s_wins_in_s_last_games"
             android:textAppearance="?android:attr/textAppearanceSmall" />

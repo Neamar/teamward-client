@@ -5,9 +5,6 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-/**
- * Created by neamar on 25/03/16.
- */
 public class Player implements Serializable {
     public Summoner summoner;
     public Champion champion;
@@ -17,7 +14,7 @@ public class Player implements Serializable {
     public Rank rank;
 
     // Can be -1 on error
-    public int knownChampionsCount;
+    private int knownChampionsCount;
 
     public int totalRecentGames;
     public int winRecentGames;

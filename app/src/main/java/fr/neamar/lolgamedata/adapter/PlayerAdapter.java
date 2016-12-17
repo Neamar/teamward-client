@@ -11,11 +11,8 @@ import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.PlayerHolder;
 import fr.neamar.lolgamedata.pojo.Player;
 
-/**
- * Created by neamar on 25/03/16.
- */
 public class PlayerAdapter extends RecyclerView.Adapter<PlayerHolder> {
-    public final ArrayList<Player> players;
+    private final ArrayList<Player> players;
 
     public PlayerAdapter(ArrayList<Player> players) {
         this.players = players;

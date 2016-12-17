@@ -11,9 +11,6 @@ import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 11/09/16.
- */
 public class TryHarderTipBuilder extends TipBuilder {
     @Override
     public ArrayList<Tip> getTips(Game game, Context context) {

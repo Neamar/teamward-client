@@ -39,16 +39,16 @@ import fr.neamar.lolgamedata.pojo.Counters;
  * A placeholder fragment containing a simple view.
  */
 public class CounterChampionsFragment extends Fragment {
-    public static final String TAG = "CounterChampionFragment";
+    private static final String TAG = "CounterChampionFragment";
 
     private static final String ARG_ROLE = "role";
     private static final String ARG_SUMMONER = "summoner";
 
-    public String role;
-    public Account user;
+    private String role;
+    private Account user;
     public Counter counter;
 
-    public ProgressBar loadIndicator;
+    private ProgressBar loadIndicator;
 
     private CounterChampionAdapter adapter = null;
 
@@ -196,7 +196,7 @@ public class CounterChampionsFragment extends Fragment {
         }
     }
 
-    public void displaySnack(String message) {
+    private void displaySnack(String message) {
         Log.e(TAG, message);
         Log.e(TAG, getActivity().getClass().getName());
         if (getActivity() != null && getActivity() instanceof SnackBarActivity) {

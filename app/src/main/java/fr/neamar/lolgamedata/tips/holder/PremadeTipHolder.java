@@ -21,15 +21,12 @@ import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.tips.PremadeTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 04/07/16.
- */
 public class PremadeTipHolder extends TipHolder {
-    final LinearLayout redTeamLayout;
-    final LinearLayout blueTeamLayout;
-    final View disclaimer;
+    private final LinearLayout redTeamLayout;
+    private final LinearLayout blueTeamLayout;
+    private final View disclaimer;
 
-    public PremadeTipHolder(View itemView) {
+    private PremadeTipHolder(View itemView) {
         super(itemView);
         redTeamLayout = (LinearLayout) itemView.findViewById(R.id.redTeam);
         blueTeamLayout = (LinearLayout) itemView.findViewById(R.id.blueTeam);
@@ -66,7 +63,7 @@ public class PremadeTipHolder extends TipHolder {
         }
     }
 
-    public void drawChampions(Team team) {
+    private void drawChampions(Team team) {
         LinearLayout linearLayout = team.teamId == 100 ? blueTeamLayout : redTeamLayout;
         int dpConversion = (int) itemView.getResources().getDimension(R.dimen.tip_premade_champion_thumbnail);
         int spConversion = (int) itemView.getResources().getDimension(R.dimen.tip_premade_champion_text_separator);
@@ -96,7 +93,7 @@ public class PremadeTipHolder extends TipHolder {
         }
     }
 
-    public Player findPlayerById(Team team, int summonerId) {
+    private Player findPlayerById(Team team, int summonerId) {
         for (Player player : team.players) {
             if (player.summoner.id == summonerId) {
                 return player;

@@ -7,9 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
-/**
- * Created by neamar on 03/04/16.
- */
 public abstract class SnackBarActivity extends AppCompatActivity {
     public void displaySnack(String snack) {
         CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
@@ -20,7 +17,7 @@ public abstract class SnackBarActivity extends AppCompatActivity {
         snackbar.show();
     }
 
-    public void displaySnack(String snack, String action, View.OnClickListener listener) {
+    void displaySnack(String snack, String action, View.OnClickListener listener) {
         CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
         assert coordinatorLayout != null;

@@ -12,9 +12,6 @@ import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 20/07/16.
- */
 public class NoSmiteTipBuilder extends TipBuilder {
     private static final String SMITE_URL = "http://ddragon.leagueoflegends.com/cdn/6.14.2/img/spell/SummonerSmite.png";
 

@@ -10,7 +10,7 @@ import fr.neamar.lolgamedata.holder.CounterCountersNoDataHolder;
 import fr.neamar.lolgamedata.pojo.Counter;
 
 public class CounterCountersNoDataAdapter extends RecyclerView.Adapter<CounterCountersNoDataHolder> {
-    public final Counter counter;
+    private final Counter counter;
 
     public CounterCountersNoDataAdapter(Counter counter) {
         this.counter = counter;

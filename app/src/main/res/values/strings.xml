@@ -157,7 +157,8 @@
     <string name="game_length_template" translatable="false">%1$d:%2$d</string>
     <string name="kda_template">KDA %1$d / &lt;font color="#FF5252"&gt;%2$d&lt;/font&gt; / %3$d</string>
     <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f / min)&lt;/font&gt;</string>
-    <string name="main_level_7">I\'d be careful with this %1$s. He sure knows his %2$s...</string>
+    <string name="main_level_7">I\'d be careful with this %1$s. He sure knows his %2$s…</string>
     <string name="otp">One Trick Pony</string>
     <string name="error_adding_account">Error adding account. Please double check your summoner name and region!</string>
+    <string name="top" translatable="false">Top</string>
 </resources>

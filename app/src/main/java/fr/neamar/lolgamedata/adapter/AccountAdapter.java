@@ -11,11 +11,8 @@ import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.AccountHolder;
 import fr.neamar.lolgamedata.pojo.Account;
 
-/**
- * Created by neamar on 25/03/16.
- */
 public class AccountAdapter extends RecyclerView.Adapter<AccountHolder> {
-    public ArrayList<Account> accounts;
+    private ArrayList<Account> accounts;
 
     public AccountAdapter(ArrayList<Account> accounts) {
         updateAccounts(accounts);

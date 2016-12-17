@@ -90,6 +90,6 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_match"></android.support.v7.widget.RecyclerView>
+            tools:listitem="@layout/item_match" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

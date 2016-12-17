@@ -27,8 +27,8 @@ import java.net.URLEncoder;
 import fr.neamar.lolgamedata.pojo.Account;
 
 public class AddAccountActivity extends Activity {
-    public static final String TAG = "AddAccountActivity";
-    public static final String NEW_ACCOUNT = "new_account";
+    private static final String TAG = "AddAccountActivity";
+    private static final String NEW_ACCOUNT = "new_account";
     public static final int RESULT_ERROR = 1;
 
     @Override
@@ -64,7 +64,7 @@ public class AddAccountActivity extends Activity {
         });
     }
 
-    private Account saveAccount(final String name, final String region) {
+    private void saveAccount(final String name, final String region) {
         final Account newAccount = new Account(name, region, "");
 
         final ProgressDialog dialog = ProgressDialog.show(this, "",
@@ -134,9 +134,8 @@ public class AddAccountActivity extends Activity {
                         j.putOpt("region", region);
                         ((LolApplication) getApplication()).getMixpanel().track("Error adding account", j);
 
-                    } catch (UnsupportedEncodingException | JSONException e) {
+                    } catch (UnsupportedEncodingException | JSONException | NullPointerException e) {
                         e.printStackTrace();
-                    } catch (NullPointerException e) {
                     }
 
                     queue.stop();
@@ -155,7 +154,5 @@ public class AddAccountActivity extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
-        return newAccount;
     }
 }

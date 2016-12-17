@@ -9,18 +9,17 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.util.Locale;
+
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.TipHolder;
 import fr.neamar.lolgamedata.tips.MatchupsTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 14/07/16.
- */
 public class MatchupsTipHolder extends TipHolder {
-    public final LinearLayout matchupsLayout;
+    private final LinearLayout matchupsLayout;
 
-    public MatchupsTipHolder(View itemView) {
+    private MatchupsTipHolder(View itemView) {
         super(itemView);
 
         matchupsLayout = (LinearLayout) itemView.findViewById(R.id.matchups);
@@ -54,7 +53,7 @@ public class MatchupsTipHolder extends TipHolder {
             TextView matchupTextView = (TextView) view.findViewById(R.id.matchupStats);
 
             if (matchup.ownPlayer.champion.winRate >= 0) {
-                matchupTextView.setText(String.format("%d%%", matchup.ownPlayer.champion.winRate));
+                matchupTextView.setText(String.format(Locale.getDefault(), "%d%%", matchup.ownPlayer.champion.winRate));
                 if (matchup.ownPlayer.champion.winRate > 50) {
                     matchupTextView.setTextColor(matchupsLayout.getContext().getResources().getColor(R.color.colorGoodMatchup));
                 } else if (matchup.ownPlayer.champion.winRate < 50) {

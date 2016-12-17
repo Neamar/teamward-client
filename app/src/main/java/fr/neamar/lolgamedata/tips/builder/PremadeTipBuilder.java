@@ -8,9 +8,6 @@ import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.tips.PremadeTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 04/07/16.
- */
 public class PremadeTipBuilder extends TipBuilder {
     @Override
     public ArrayList<Tip> getTips(Game game, Context context) {

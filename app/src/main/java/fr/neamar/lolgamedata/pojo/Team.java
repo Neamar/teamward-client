@@ -12,9 +12,6 @@ import java.util.List;
 
 import fr.neamar.lolgamedata.R;
 
-/**
- * Created by neamar on 25/03/16.
- */
 public class Team implements Serializable {
     public final List<List<Integer>> premades = new ArrayList<>();
     public int teamId;

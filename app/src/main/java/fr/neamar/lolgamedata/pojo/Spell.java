@@ -5,9 +5,6 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-/**
- * Created by neamar on 25/03/16.
- */
 public class Spell implements Serializable {
     public String id;
     public String name;

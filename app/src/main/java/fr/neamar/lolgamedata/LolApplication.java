@@ -18,9 +18,6 @@ import java.util.Map;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.service.RegistrationIntentService;
 
-/**
- * Created by neamar on 29/03/16.
- */
 public class LolApplication extends Application {
     private static final String TAG = "LolApplication";
 

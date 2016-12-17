@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 
-/**
- * Created by neamar on 14/07/16.
- */
 public class MatchupsTip extends Tip {
     public final ArrayList<Matchup> matchups;
 

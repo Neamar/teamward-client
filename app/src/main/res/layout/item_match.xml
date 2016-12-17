@@ -16,6 +16,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/item1"
         android:layout_marginRight="@dimen/item_margin"
+        android:layout_marginEnd="@dimen/item_margin"
+
         android:background="#00FF00" />
 
     <ImageView
@@ -25,6 +27,7 @@
         android:layout_alignParentTop="true"
         android:layout_margin="@dimen/item_margin"
         android:layout_toRightOf="@id/winOrLossBanner"
+        android:layout_toEndOf="@id/winOrLossBanner"
         app:srcCompat="@drawable/item_emtpy" />
 
     <ImageView
@@ -54,6 +57,7 @@
         android:layout_below="@+id/item1"
         android:layout_margin="@dimen/item_margin"
         android:layout_toRightOf="@id/winOrLossBanner"
+        android:layout_toEndOf="@id/winOrLossBanner"
         app:srcCompat="@drawable/item_emtpy" />
 
     <ImageView
@@ -83,6 +87,7 @@
         android:layout_alignBottom="@+id/item6"
         android:layout_marginBottom="@dimen/item_half_size"
         android:layout_marginLeft="@dimen/item_margin"
+        android:layout_marginStart="@dimen/item_margin"
         android:layout_toEndOf="@+id/item3"
         android:layout_toRightOf="@+id/item3"
         app:srcCompat="@drawable/item_emtpy" />

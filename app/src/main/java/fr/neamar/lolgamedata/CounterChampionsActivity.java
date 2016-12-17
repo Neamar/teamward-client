@@ -17,7 +17,7 @@ import fr.neamar.lolgamedata.fragment.CounterChampionsFragment;
 import fr.neamar.lolgamedata.pojo.Account;
 
 public class CounterChampionsActivity extends SnackBarActivity {
-    public static final String[] ROLES = new String[]{
+    private static final String[] ROLES = new String[]{
             "Top",
             "Jungle",
             "Mid",
@@ -34,6 +34,8 @@ public class CounterChampionsActivity extends SnackBarActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 

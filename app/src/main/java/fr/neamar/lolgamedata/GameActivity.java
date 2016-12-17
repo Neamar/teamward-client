@@ -49,12 +49,12 @@ import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 
 public class GameActivity extends SnackBarActivity {
-    public static final String TAG = "GameActivity";
+    private static final String TAG = "GameActivity";
 
-    public static final int UI_MODE_LOADING = 0;
-    public static final int UI_MODE_IN_GAME = 1;
-    public static final int UI_MODE_NOT_IN_GAME = 2;
-    public static final int UI_MODE_NO_INTERNET = 3;
+    private static final int UI_MODE_LOADING = 0;
+    private static final int UI_MODE_IN_GAME = 1;
+    private static final int UI_MODE_NOT_IN_GAME = 2;
+    private static final int UI_MODE_NO_INTERNET = 3;
 
     private static final Map<Integer, Integer> MAP_NAMES;
 
@@ -73,9 +73,9 @@ public class GameActivity extends SnackBarActivity {
         MAP_NAMES = Collections.unmodifiableMap(mapNames);
     }
 
-    public Account account;
-    public Game game = null;
-    public String summonerName;
+    private Account account;
+    private Game game = null;
+    private String summonerName;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -227,7 +227,7 @@ public class GameActivity extends SnackBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void setUiMode(int uiMode) {
+    private void setUiMode(int uiMode) {
         assert mTabLayout != null;
         assert mEmptyView != null;
         assert mFab != null;
@@ -255,7 +255,7 @@ public class GameActivity extends SnackBarActivity {
         }
     }
 
-    public void loadCurrentGame(final String summonerName, final String region) {
+    private void loadCurrentGame(final String summonerName, final String region) {
         ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
 
         final ProgressDialog dialog = ProgressDialog.show(this, "",
@@ -395,7 +395,7 @@ public class GameActivity extends SnackBarActivity {
         }
     }
 
-    public void displayGame(String summonerName, Game game) {
+    private void displayGame(String summonerName, Game game) {
         String titleTemplate = getString(R.string.game_data_title);
 
         @StringRes Integer stringRes = getMapName(game.mapId);
@@ -438,7 +438,7 @@ public class GameActivity extends SnackBarActivity {
         }
     }
 
-    public String getDefaultTabName() {
+    private String getDefaultTabName() {
         return PreferenceManager.getDefaultSharedPreferences(this).getString("default_game_data_tab", "enemy");
     }
 

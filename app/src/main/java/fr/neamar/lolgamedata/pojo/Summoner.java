@@ -5,9 +5,6 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-/**
- * Created by neamar on 25/03/16.
- */
 public class Summoner implements Serializable {
     public int id;
     public String name;

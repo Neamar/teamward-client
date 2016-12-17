@@ -12,7 +12,7 @@ import fr.neamar.lolgamedata.holder.SectionHolder;
 import fr.neamar.lolgamedata.pojo.Counter;
 
 public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
-    public final Counter counter;
+    private final Counter counter;
 
     public CounterCountersAdapter(Counter counter) {
         this.counter = counter;
@@ -59,7 +59,7 @@ public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
         return 1;
     }
 
-    public int getRealPosition(int position) {
+    private int getRealPosition(int position) {
         if (position <= counter.goodCountersThreshold) {
             return position - 1;
         }

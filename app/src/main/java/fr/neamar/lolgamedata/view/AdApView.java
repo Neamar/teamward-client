@@ -8,12 +8,9 @@ import android.view.View;
 
 import fr.neamar.lolgamedata.R;
 
-/**
- * Created by neamar on 17/04/16.
- */
 public class AdApView extends View {
-    final Paint apPaint = new Paint();
-    final Paint adPaint = new Paint();
+    private final Paint apPaint = new Paint();
+    private final Paint adPaint = new Paint();
 
     private float ap = 5;
     private float ad = 5;
@@ -33,7 +30,7 @@ public class AdApView extends View {
         setPaint();
     }
 
-    public void setPaint() {
+    private void setPaint() {
         apPaint.setColor(getContext().getResources().getColor(R.color.colorAp));
         adPaint.setColor(getContext().getResources().getColor(R.color.colorAd));
     }
@@ -54,7 +51,7 @@ public class AdApView extends View {
         }
     }
 
-    public boolean isAp() {
+    private boolean isAp() {
         return ap * .75 > ad;
     }
 
@@ -62,7 +59,7 @@ public class AdApView extends View {
         this.ap = ap;
     }
 
-    public boolean isAd() {
+    private boolean isAd() {
         return ad * .75 > ap;
     }
 
