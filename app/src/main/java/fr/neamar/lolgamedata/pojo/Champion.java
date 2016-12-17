@@ -11,6 +11,8 @@ import java.io.Serializable;
 public class Champion implements Serializable {
     public static final String UNKNOWN_ROLE = "?";
 
+    public int id;
+
     public String name;
     public String imageUrl;
     public String splashUrl;
@@ -26,6 +28,7 @@ public class Champion implements Serializable {
     public String role;
 
     public Champion(JSONObject champion) throws JSONException {
+        id = champion.getInt("id");
         name = champion.getString("name");
         imageUrl = champion.getString("image");
         splashUrl = champion.getString("splash");

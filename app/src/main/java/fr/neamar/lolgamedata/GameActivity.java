@@ -46,6 +46,7 @@ import java.util.Map;
 import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
+import fr.neamar.lolgamedata.pojo.Player;
 
 public class GameActivity extends SnackBarActivity {
     public static final String TAG = "GameActivity";
@@ -291,21 +292,44 @@ public class GameActivity extends SnackBarActivity {
                                     j.putOpt("source", "unknown");
                                 }
 
+                                // Add metrics related to the current player
+                                Player p = game.getPlayerByAccount(account);
+                                j.putOpt("champion", p.champion.id);
+                                j.putOpt("champion_name", p.champion.name);
+                                j.putOpt("champion_mastery", p.champion.mastery);
+                                j.putOpt("champion_role", p.champion.role);
+
+                                j.putOpt("player_rank", p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
+                                j.putOpt("player_level", p.summoner.level);
+                                j.putOpt("player_champion_index", p.champion.championRank);
+
+                                j.putOpt("spell_d", p.spellD.id);
+                                j.putOpt("spell_d_name", p.spellD.name);
+
+                                j.putOpt("spell_f", p.spellF.id);
+                                j.putOpt("spell_f_name", p.spellF.name);
+
+                                // Is this the first account added to the app?
+                                AccountManager accountManager = new AccountManager(GameActivity.this);
+                                j.putOpt("account_index", accountManager.getAccountIndex(account));
+
                                 ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                            } finally {
+                                try {
+                                    if (dialog.isShowing()) {
+                                        dialog.dismiss();
+                                    }
+                                } catch (IllegalArgumentException e) {
+                                    // View is not attached (rotation for instance)
+                                }
+
+                                lastLoaded = new Date();
+
+                                queue.stop();
                             }
-
-                            try {
-                                dialog.dismiss();
-                            } catch (IllegalArgumentException e) {
-                                // View is not attached (rotation for instance)
-                            }
-
-                            lastLoaded = new Date();
-
-                            queue.stop();
                         }
                     }
 
@@ -314,9 +338,14 @@ public class GameActivity extends SnackBarActivity {
             {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    if (dialog.isShowing()) {
-                        dialog.dismiss();
+                    try {
+                        if (dialog.isShowing()) {
+                            dialog.dismiss();
+                        }
+                    } catch (IllegalArgumentException e) {
+                        // View is not attached (rotation for instance)
                     }
+
                     Log.e(TAG, error.toString());
 
                     queue.stop();

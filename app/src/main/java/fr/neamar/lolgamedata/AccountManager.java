@@ -86,4 +86,8 @@ public class AccountManager {
         accounts.remove(account);
         writeAccounts(accounts);
     }
+
+    public int getAccountIndex(Account account) {
+        return getAccounts().indexOf(account);
+    }
 }

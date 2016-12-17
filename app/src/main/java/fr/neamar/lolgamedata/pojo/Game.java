@@ -1,5 +1,7 @@
 package fr.neamar.lolgamedata.pojo;
 
+import android.support.annotation.NonNull;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,10 +39,23 @@ public class Game implements Serializable {
         }
     }
 
+    @NonNull
     public Team getPlayerOwnTeam() {
         for (Team team : teams) {
             if (team.isPlayerOwnTeam) {
                 return team;
+            }
+        }
+
+        throw new RuntimeException("Required player is part of no team?!");
+    }
+
+    @NonNull
+    public Player getPlayerByAccount(Account account) {
+        for (Team team : teams) {
+            for(Player player: team.players)
+                if(player.summoner.name.equals(account.summonerName)) {
+                    return player;
             }
         }
 

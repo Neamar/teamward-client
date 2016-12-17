@@ -92,7 +92,13 @@ public class AddAccountActivity extends Activity {
                             AccountManager accountManager = new AccountManager(AddAccountActivity.this);
                             accountManager.addAccount(newAccount);
 
-                            ((LolApplication) getApplication()).getMixpanel().track("Account added", newAccount.toJsonObject());
+                            JSONObject j = newAccount.toJsonObject();
+                            try {
+                                j.putOpt("account_index", accountManager.getAccountIndex(newAccount));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
 
                             ((LolApplication) getApplication()).identifyOnMixpanel();
 
@@ -103,10 +109,11 @@ public class AddAccountActivity extends Activity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     try {
-                        dialog.dismiss();
-                    }
-                    catch(IllegalArgumentException e) {
-                        // Window was rotated
+                        if(dialog.isShowing()) {
+                            dialog.dismiss();
+                        }
+                    } catch (IllegalArgumentException e) {
+                        // View is not attached (rotation for instance)
                     }
 
                     Log.e(TAG, error.toString());
