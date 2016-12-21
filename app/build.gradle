@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'newrelic'
 
 android {
     compileSdkVersion 25
@@ -32,6 +33,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+    compile 'com.newrelic.agent.android:android-agent:5.8.4'
     compile 'com.google.android.gms:play-services-gcm:9.6.1'
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support:design:25.0.0'

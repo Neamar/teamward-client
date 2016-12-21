@@ -32,6 +32,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.newrelic.agent.android.NewRelic;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,6 +96,11 @@ public class GameActivity extends SnackBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        NewRelic.withApplicationToken(
+                "AAcab2a6606aca33f2716f49d2c60e68234953a103"
+        ).start(this.getApplication());
+
         setContentView(R.layout.activity_game);
 
         // First run: open accounts activity, finish this one

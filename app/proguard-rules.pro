@@ -21,3 +21,7 @@
 -keep class android.support.v7.widget.SearchView { *; }
 -dontwarn com.google.android.gms.**
 -dontobfuscate
+
+-keep class com.newrelic.** { *; }
+-dontwarn com.newrelic.**
+-keepattributes Exceptions, Signature, InnerClasses, LineNumberTable
