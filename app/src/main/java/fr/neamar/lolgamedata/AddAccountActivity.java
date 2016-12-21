@@ -131,7 +131,7 @@ public class AddAccountActivity extends Activity {
                         JSONObject j = newAccount.toJsonObject();
                         j.putOpt("error", errorMessage);
                         j.putOpt("name", name);
-                        j.putOpt("region", region);
+                        j.putOpt("region", region.toUpperCase());
                         ((LolApplication) getApplication()).getMixpanel().track("Error adding account", j);
 
                     } catch (UnsupportedEncodingException | JSONException | NullPointerException e) {

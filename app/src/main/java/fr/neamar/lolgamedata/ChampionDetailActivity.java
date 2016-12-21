@@ -132,7 +132,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
             JSONObject j = new JSONObject();
             try {
                 j.put("name", player.summoner.name);
-                j.put("region", player.region);
+                j.put("region", player.region.toUpperCase());
                 j.put("champion", player.champion.name);
                 j.put("tier", player.rank.tier);
                 j.put("division", player.rank.division);

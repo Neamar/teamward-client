@@ -13,7 +13,7 @@ public class Account implements Serializable {
     public Account(JSONObject account) throws JSONException {
         this.summonerName = account.getString("name");
         this.summonerImage = account.getString("image");
-        this.region = account.getString("region");
+        this.region = account.getString("region").toUpperCase();
     }
 
     public Account(String summonerName, String region, String summonerImage) {
@@ -26,7 +26,7 @@ public class Account implements Serializable {
         JSONObject o = new JSONObject();
         try {
             o.putOpt("name", summonerName);
-            o.putOpt("region", region);
+            o.putOpt("region", region.toUpperCase());
             o.putOpt("image", summonerImage);
         } catch (JSONException e) {
             e.printStackTrace();
