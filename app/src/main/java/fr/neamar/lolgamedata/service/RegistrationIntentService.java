@@ -49,6 +49,12 @@ public class RegistrationIntentService extends IntentService {
             return;
         }
 
+        if(intent.hasExtra("unregistered")) {
+            Log.i(TAG, "Unregistering current token id for device.");
+            ((LolApplication) getApplication()).getMixpanel().getPeople().clearPushRegistrationId();
+            return;
+        }
+
         try {
             // [START register_for_gcm]
             // Initially this call goes out to the network to retrieve the token, subsequent calls
@@ -71,6 +77,7 @@ public class RegistrationIntentService extends IntentService {
             ArrayList<Account> accounts = accountManager.getAccounts();
             if (!accounts.isEmpty()) {
                 sendTokenToServer(token, accounts.get(0));
+                ((LolApplication) getApplication()).getMixpanel().getPeople().setPushRegistrationId(token);
             }
             // [END register_for_gcm]
         } catch (Exception e) {
@@ -93,8 +100,6 @@ public class RegistrationIntentService extends IntentService {
                         public void onResponse(JSONObject response) {
                             Log.i(TAG, "Token registered with server for user " + account.summonerName);
                             queue.stop();
-
-                            ((LolApplication) getApplication()).getMixpanel().getPeople().setPushRegistrationId(token);
                         }
                     }, new Response.ErrorListener() {
                 @Override

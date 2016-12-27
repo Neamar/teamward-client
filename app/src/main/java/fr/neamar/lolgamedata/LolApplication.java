@@ -12,6 +12,9 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.List;
 import java.util.Map;
 
@@ -78,6 +81,12 @@ public class LolApplication extends Application {
         }
 
         return mixpanel;
+    }
+
+    public JSONArray getJSONArrayFromSingleItem(String item) throws JSONException {
+        JSONArray a = new JSONArray();
+        a.put(item);
+        return a;
     }
 
     public void identifyOnMixpanel() {

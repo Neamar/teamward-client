@@ -32,6 +32,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.newrelic.agent.android.NewRelic;
 
 import org.json.JSONException;
@@ -317,9 +318,22 @@ public class GameActivity extends SnackBarActivity {
 
                                 // Is this the first account added to the app?
                                 AccountManager accountManager = new AccountManager(GameActivity.this);
-                                j.putOpt("account_index", accountManager.getAccountIndex(account));
+                                int accountIndex = accountManager.getAccountIndex(account);
+                                j.putOpt("account_index", accountIndex);
 
-                                ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
+                                LolApplication application = ((LolApplication) getApplication());
+                                application.getMixpanel().track("Game viewed", j);
+
+                                if(accountIndex == 0) {
+                                    // For main user: add data to profile
+                                    MixpanelAPI.People people = application.getMixpanel().getPeople();
+                                    people.union("played_champion_names", application.getJSONArrayFromSingleItem(p.champion.name));
+                                    people.union("played_champion_ids", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.id)));
+                                    people.union("played_roles", application.getJSONArrayFromSingleItem(p.champion.role));
+                                    people.union("played_champions_index", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.championRank)));
+                                    people.union("played_game_ids", application.getJSONArrayFromSingleItem(Long.toString(game.gameId)));
+                                    people.union("played_map_ids", application.getJSONArrayFromSingleItem(Long.toString(game.mapId)));
+                                }
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
