@@ -18,7 +18,7 @@ public class Account implements Serializable {
 
     public Account(String summonerName, String region, String summonerImage) {
         this.summonerName = summonerName;
-        this.region = region;
+        this.region = region.toUpperCase();
         this.summonerImage = summonerImage;
     }
 
@@ -26,7 +26,7 @@ public class Account implements Serializable {
         JSONObject o = new JSONObject();
         try {
             o.putOpt("name", summonerName);
-            o.putOpt("region", region.toUpperCase());
+            o.putOpt("region", region);
             o.putOpt("image", summonerImage);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -42,7 +42,7 @@ public class Account implements Serializable {
 
         Account account = (Account) o;
 
-        return summonerName.equals(account.summonerName) && region.equals(account.region);
+        return summonerName.equalsIgnoreCase(account.summonerName) && region.equalsIgnoreCase(account.region);
 
     }
 

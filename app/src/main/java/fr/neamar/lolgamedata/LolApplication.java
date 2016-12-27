@@ -90,7 +90,7 @@ public class LolApplication extends Application {
             getMixpanel().getPeople().set("accounts_length", accounts.size());
             getMixpanel().getPeople().set("$username", accounts.get(0).summonerName);
             getMixpanel().getPeople().set("$name", accounts.get(0).summonerName);
-            getMixpanel().getPeople().set("region", accounts.get(0).region.toUpperCase());
+            getMixpanel().getPeople().set("region", accounts.get(0).region);
 
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
             Map<String, ?> properties = sp.getAll();
