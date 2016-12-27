@@ -23,6 +23,8 @@ import fr.neamar.lolgamedata.pojo.Account;
 public class NotificationService extends GcmListenerService {
 
     private static final String TAG = "NotificationService";
+    private static final int GAME_NOTIFICATION = 0;
+    private static final int ANALYTICS_NOTIFICATION = 1;
 
     /**
      * Called when message is received.
@@ -51,6 +53,15 @@ public class NotificationService extends GcmListenerService {
 
             Log.i(TAG, "End of game, hiding notification.");
             getNotificationManager().cancel(Long.toString(gameId).hashCode());
+        }
+        else if(data.containsKey("mp_message")) {
+            String title = data.getString("mp_title", getString(R.string.app_name));
+            String message = data.getString("mp_message");
+            String url = data.getString("mp_url", "");
+            displayCustomNotification(title, message, url);
+        }
+        else {
+            Log.i(TAG, "Received unknown notification:" + data.toString());
         }
     }
 
@@ -91,6 +102,30 @@ public class NotificationService extends GcmListenerService {
             MixpanelAPI.getInstance(this, getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", account.toJsonObject());
 
         }
+    }
+
+    private void displayCustomNotification(String title, String message, String url) {
+        Intent intent;
+
+        if(url.isEmpty()) {
+            intent = new Intent(this, GameActivity.class);
+        }
+        else {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+        }
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_launcher_transparent)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_transparent))
+                .setContentTitle(title)
+                .setContentText(message)
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent);
+
+        getNotificationManager().notify(message.hashCode(), notificationBuilder.build());
     }
 
     private NotificationManager getNotificationManager() {

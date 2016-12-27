@@ -401,6 +401,12 @@ public class GameActivity extends SnackBarActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ((LolApplication) getApplication()).getMixpanel().flush();
+    }
+
     private void displayGame(String summonerName, Game game) {
         String titleTemplate = getString(R.string.game_data_title);
 

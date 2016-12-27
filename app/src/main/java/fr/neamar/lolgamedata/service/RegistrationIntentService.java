@@ -45,7 +45,7 @@ public class RegistrationIntentService extends IntentService {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
         if (resultCode != ConnectionResult.SUCCESS) {
-            Log.e(TAG, "DEvine is not eligible for push notification.");
+            Log.e(TAG, "Device is not eligible for push notification.");
             return;
         }
 
@@ -81,7 +81,7 @@ public class RegistrationIntentService extends IntentService {
         }
     }
 
-    private void sendTokenToServer(String token, final Account account) {
+    private void sendTokenToServer(final String token, final Account account) {
         // Instantiate the RequestQueue.
         final RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -93,6 +93,8 @@ public class RegistrationIntentService extends IntentService {
                         public void onResponse(JSONObject response) {
                             Log.i(TAG, "Token registered with server for user " + account.summonerName);
                             queue.stop();
+
+                            ((LolApplication) getApplication()).getMixpanel().getPeople().setPushRegistrationId(token);
                         }
                     }, new Response.ErrorListener() {
                 @Override
