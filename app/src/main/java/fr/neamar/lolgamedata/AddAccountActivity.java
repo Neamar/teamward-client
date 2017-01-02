@@ -80,7 +80,13 @@ public class AddAccountActivity extends Activity {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            dialog.dismiss();
+                            try {
+                                if (dialog.isShowing()) {
+                                    dialog.dismiss();
+                                }
+                            } catch (IllegalArgumentException e) {
+                                // View is not attached (rotation for instance)
+                            }
 
                             newAccount.summonerImage = response.optString("profileIcon", "");
                             newAccount.summonerName = response.optString("name", newAccount.summonerName);

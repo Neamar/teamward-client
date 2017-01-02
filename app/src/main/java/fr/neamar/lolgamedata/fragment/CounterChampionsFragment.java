@@ -155,8 +155,9 @@ public class CounterChampionsFragment extends Fragment {
                     error.printStackTrace();
 
                     if (error instanceof NoConnectionError) {
-                        displaySnack(getString(R.string.no_internet_connection));
-                        return;
+                        if(getActivity() != null) {
+                            displaySnack(getString(R.string.no_internet_connection));
+                        }
                     }
 
 
