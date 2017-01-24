@@ -98,9 +98,12 @@ public class GameActivity extends SnackBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NewRelic.withApplicationToken(
-                "AAcab2a6606aca33f2716f49d2c60e68234953a103"
-        ).start(this.getApplication());
+        if (!BuildConfig.DEBUG) {
+            // Do not use NewRelic on DEBUG.
+            NewRelic.withApplicationToken(
+                    "AAcab2a6606aca33f2716f49d2c60e68234953a103"
+            ).start(this.getApplication());
+        }
 
         setContentView(R.layout.activity_game);
 
@@ -122,6 +125,9 @@ public class GameActivity extends SnackBarActivity {
             account = (Account) getIntent().getSerializableExtra("account");
         } else {
             account = accountManager.getAccounts().get(0);
+            if(getIntent() != null && getIntent().getAction().equals(Intent.ACTION_MAIN)) {
+                getIntent().putExtra("source", "app_open");
+            }
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
