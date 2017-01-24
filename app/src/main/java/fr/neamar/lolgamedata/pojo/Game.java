@@ -56,7 +56,7 @@ public class Game implements Serializable {
             }
         }
 
-        throw new RuntimeException("Required player is part of no team?!");
+        throw new RuntimeException("Required player is not part of the game?!");
     }
 
     public int getNotificationId() {

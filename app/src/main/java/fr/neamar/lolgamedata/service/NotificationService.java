@@ -109,6 +109,7 @@ public class NotificationService extends GcmListenerService {
 
         if(url.isEmpty()) {
             intent = new Intent(this, GameActivity.class);
+            intent.putExtra("source", "custom_notification");
         }
         else {
             intent = new Intent(Intent.ACTION_VIEW);
