@@ -125,7 +125,7 @@ public class GameActivity extends SnackBarActivity {
             account = (Account) getIntent().getSerializableExtra("account");
         } else {
             account = accountManager.getAccounts().get(0);
-            if(getIntent() != null && getIntent().getAction().equals(Intent.ACTION_MAIN)) {
+            if(getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals(Intent.ACTION_MAIN)) {
                 getIntent().putExtra("source", "app_open");
             }
         }
