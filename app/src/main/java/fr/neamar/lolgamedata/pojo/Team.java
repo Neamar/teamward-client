@@ -13,7 +13,7 @@ import java.util.List;
 import fr.neamar.lolgamedata.R;
 
 public class Team implements Serializable {
-    public final List<List<Integer>> premades = new ArrayList<>();
+    public final List<List<Long>> premades = new ArrayList<>();
     public int teamId;
     public boolean isPlayerOwnTeam;
     public ArrayList<Player> players;
@@ -35,10 +35,10 @@ public class Team implements Serializable {
 
         JSONArray premadesJson = team.getJSONArray("premades");
         for (int i = 0; i < premadesJson.length(); i++) {
-            List<Integer> subPremade = new ArrayList<>();
+            List<Long> subPremade = new ArrayList<>();
             JSONArray subPremadeJson = premadesJson.getJSONArray(i);
             for (int j = 0; j < subPremadeJson.length(); j++) {
-                subPremade.add(subPremadeJson.getInt(j));
+                subPremade.add(subPremadeJson.getLong(j));
             }
             premades.add(subPremade);
         }

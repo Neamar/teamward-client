@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata.tips.holder;
 
+import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,9 +71,14 @@ public class PremadeTipHolder extends TipHolder {
 
         // Clean up old views
         linearLayout.removeAllViews();
-        for (List<Integer> subPremade : team.premades) {
-            for (int summonerId : subPremade) {
-                Champion champion = findPlayerById(team, summonerId).champion;
+        for (List<Long> subPremade : team.premades) {
+            for (long summonerId : subPremade) {
+                Player p = findPlayerById(team, summonerId);
+                if (p == null) {
+                    continue;
+                }
+
+                Champion champion = p.champion;
 
                 ImageView imageview = new ImageView(itemView.getContext());
                 imageview.setImageResource(R.drawable.default_champion);
@@ -93,13 +99,14 @@ public class PremadeTipHolder extends TipHolder {
         }
     }
 
-    private Player findPlayerById(Team team, int summonerId) {
+    @Nullable
+    private Player findPlayerById(Team team, long summonerId) {
         for (Player player : team.players) {
             if (player.summoner.id == summonerId) {
                 return player;
             }
         }
 
-        throw new RuntimeException("Non existing player in premade?");
+        return null;
     }
 }
