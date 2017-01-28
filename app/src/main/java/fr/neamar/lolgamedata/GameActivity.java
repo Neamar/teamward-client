@@ -305,6 +305,13 @@ public class GameActivity extends SnackBarActivity {
                                     j.putOpt("source", "unknown");
                                 }
 
+                                LolApplication application = ((LolApplication) getApplication());
+
+                                // Is this the first account added to the app?
+                                AccountManager accountManager = new AccountManager(GameActivity.this);
+                                int accountIndex = accountManager.getAccountIndex(account);
+                                j.putOpt("account_index", accountIndex);
+
                                 // Add metrics related to the current player
                                 Player p = game.getPlayerByAccount(account);
                                 if(p != null) {
@@ -322,27 +329,19 @@ public class GameActivity extends SnackBarActivity {
 
                                     j.putOpt("spell_f", p.spellF.id);
                                     j.putOpt("spell_f_name", p.spellF.name);
+
+                                    if(accountIndex == 0) {
+                                        // For main user: add data to profile
+                                        MixpanelAPI.People people = application.getMixpanel().getPeople();
+                                        people.union("played_champion_names", application.getJSONArrayFromSingleItem(p.champion.name));
+                                        people.union("played_champion_ids", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.id)));
+                                        people.union("played_roles", application.getJSONArrayFromSingleItem(p.champion.role));
+                                        people.union("played_champions_index", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.championRank)));
+                                        people.union("played_game_ids", application.getJSONArrayFromSingleItem(Long.toString(game.gameId)));
+                                        people.union("played_map_ids", application.getJSONArrayFromSingleItem(Long.toString(game.mapId)));
+                                    }
                                 }
-
-                                // Is this the first account added to the app?
-                                AccountManager accountManager = new AccountManager(GameActivity.this);
-                                int accountIndex = accountManager.getAccountIndex(account);
-                                j.putOpt("account_index", accountIndex);
-
-                                LolApplication application = ((LolApplication) getApplication());
                                 application.getMixpanel().track("Game viewed", j);
-
-                                if(accountIndex == 0) {
-                                    // For main user: add data to profile
-                                    MixpanelAPI.People people = application.getMixpanel().getPeople();
-                                    people.union("played_champion_names", application.getJSONArrayFromSingleItem(p.champion.name));
-                                    people.union("played_champion_ids", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.id)));
-                                    people.union("played_roles", application.getJSONArrayFromSingleItem(p.champion.role));
-                                    people.union("played_champions_index", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.championRank)));
-                                    people.union("played_game_ids", application.getJSONArrayFromSingleItem(Long.toString(game.gameId)));
-                                    people.union("played_map_ids", application.getJSONArrayFromSingleItem(Long.toString(game.mapId)));
-                                }
-
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             } finally {
