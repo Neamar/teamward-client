@@ -173,23 +173,16 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
                             Log.i(TAG, "Displaying performance for " + player.summoner.name);
 
-/*                                // Timing automatically added (see timeEvent() call)
-                                JSONObject j = account.toJsonObject();
-                                j.putOpt("game_map_id", game.mapId);
-                                j.putOpt("game_map_name", getString(getMapName(game.mapId)));
-                                j.putOpt("game_mode", game.gameMode);
-                                j.putOpt("game_type", game.gameType);
-                                j.putOpt("game_id", game.gameId);
-                                if (getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty()) {
-                                    j.putOpt("source", getIntent().getStringExtra("source"));
-                                } else {
-                                    j.putOpt("source", "unknown");
-                                }
+                            // Timing automatically added (see timeEvent() call)
+                            try {
+                                JSONObject j = new JSONObject();
+                                j.put("region", player.region);
+                                ((LolApplication) getApplication()).getMixpanel().track("Details viewed", j);
 
-                                ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
                             } catch (JSONException e) {
                                 e.printStackTrace();
-*/
+                            }
+
                             queue.stop();
 
                         }
@@ -211,7 +204,11 @@ public class ChampionDetailActivity extends SnackBarActivity {
                     try {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
-                    } catch (UnsupportedEncodingException e) {
+
+                        JSONObject j = new JSONObject();
+                        j.put("error", responseBody.replace("Error:", ""));
+                        ((LolApplication) getApplication()).getMixpanel().track("Error viewing details", j);
+                    } catch (UnsupportedEncodingException|JSONException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
@@ -238,7 +235,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
         findViewById(R.id.progressBar).setVisibility(View.GONE);
         recyclerView.setAdapter(new MatchAdapter(matches));
 
-        if(matches.size() == 0) {
+        if (matches.size() == 0) {
             findViewById(R.id.matchHistoryHolder).setVisibility(View.INVISIBLE);
         }
     }
