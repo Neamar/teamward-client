@@ -23,43 +23,7 @@
             android:layout_marginTop="4dp"
             card_view:cardUseCompatPadding="true"
             card_view:contentPadding="16dp">
-
-            <LinearLayout
-                android:id="@+id/rankingHolder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/rankingTierImage"
-                    android:layout_width="@dimen/details_ranked_size"
-                    android:layout_height="@dimen/details_ranked_size"
-                    app:srcCompat="@drawable/tier_platinum" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/rankingQueue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ranked_flex_5"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-
-                    <TextView
-                        android:id="@+id/rankingText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/ranking"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-                </LinearLayout>
-            </LinearLayout>
+            <include layout="@layout/card_ranked" />
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -72,37 +36,7 @@
             android:layout_marginTop="4dp"
             card_view:cardUseCompatPadding="true"
             card_view:contentPadding="16dp">
-
-            <RelativeLayout
-                android:id="@+id/masteryHolder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/championMasteryImage"
-                    android:layout_width="@dimen/details_ranked_size"
-                    android:layout_height="@dimen/details_ranked_size"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:contentDescription="@string/champion_mastery"
-                    android:padding="12dp"
-                    app:srcCompat="@drawable/champion_mastery_5" />
-
-                <TextView
-                    android:id="@+id/championMasteryText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_toEndOf="@+id/championMasteryImage"
-                    android:layout_toRightOf="@+id/championMasteryImage"
-                    android:text="@string/champion_mastery_lvl"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-            </RelativeLayout>
+            <include layout="@layout/card_champion_mastery" />
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -115,44 +49,7 @@
             android:layout_marginTop="4dp"
             card_view:cardUseCompatPadding="true"
             card_view:contentPadding="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/recentMatchesTitle"
-                    style="?android:attr/listSeparatorTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/recent_matches" />
-
-                <TextView
-                    android:id="@+id/noRecentGames"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no_games_recently_played_with_this_champion"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:visibility="gone" />
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_match" />
-            </LinearLayout>
+            <include layout="@layout/card_recent_games" />
         </android.support.v7.widget.CardView>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
