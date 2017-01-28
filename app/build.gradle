@@ -9,8 +9,8 @@ android {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 43
-        versionName "2.6.4"
+        versionCode 44
+        versionName "2.7.0"
 
         // Staging mixpanel token
         resValue "string", "MIXPANEL_TOKEN", "6871a7de8eb71082f3397bb1be7ded58"
