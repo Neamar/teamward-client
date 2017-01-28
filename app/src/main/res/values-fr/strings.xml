@@ -144,6 +144,8 @@
     <string name="otp">One Trick Pony</string>
     <string name="error_adding_account">Impossible d\'ajouter le compte. Vérifiez votre nom d\'invocateur et la région !</string>
     <string name="normal">Normal</string>
+    <string name="normal_3">Normal 3v3</string>
+    <string name="aram">ARAM</string>
     <string name="ranked_solo_5">Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>

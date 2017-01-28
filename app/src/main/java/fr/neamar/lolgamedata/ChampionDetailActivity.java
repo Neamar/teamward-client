@@ -51,6 +51,8 @@ public class ChampionDetailActivity extends SnackBarActivity {
     static {
         Map<String, Integer> queueNames = new HashMap<>();
         queueNames.put("NORMAL", R.string.normal);
+        queueNames.put("ARAM_UNRANKED_5x5", R.string.aram);
+        queueNames.put("NORMAL_3x3", R.string.normal_3);
         queueNames.put("RANKED_SOLO_5x5", R.string.ranked_solo_5);
         queueNames.put("RANKED_FLEX_SR", R.string.ranked_flex_5);
         queueNames.put("RANKED_FLEX_TT", R.string.ranked_flex_3);

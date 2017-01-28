@@ -162,6 +162,7 @@
     <string name="error_adding_account">Error adding account. Please double check your summoner name and region!</string>
     <string name="top" translatable="false">Top</string>
     <string name="normal">Normal</string>
+    <string name="normal_3">Normal 3v3</string>
     <string name="ranked_solo_5">Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>
