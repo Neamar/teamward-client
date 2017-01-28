@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +38,9 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.MatchAdapter;
 import fr.neamar.lolgamedata.pojo.Match;
@@ -48,6 +52,22 @@ import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
 public class ChampionDetailActivity extends SnackBarActivity {
     private static final String TAG = "ChampionDetailActivity";
     private Player player;
+
+    private static final Map<String, Integer> QUEUE_NAMES;
+
+    static {
+        Map<String, Integer> queueNames = new HashMap<>();
+        queueNames.put("RANKED_SOLO_5x5", R.string.ranked_solo_5);
+        queueNames.put("RANKED_FLEX_SR", R.string.ranked_flex_5);
+        queueNames.put("RANKED_FLEX_TT", R.string.ranked_flex_3);
+
+        QUEUE_NAMES = Collections.unmodifiableMap(queueNames);
+    }
+
+    @NonNull
+    public static Integer getQueueName(String queue) {
+        return QUEUE_NAMES.containsKey(queue) ? QUEUE_NAMES.get(queue) : R.string.unknown_queue;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +127,8 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         ImageView rankingTierImage = (ImageView) findViewById(R.id.rankingTierImage);
         TextView rankingText = (TextView) findViewById(R.id.rankingText);
+        TextView rankingQueue = (TextView) findViewById(R.id.rankingQueue);
+
         View rankingHolder = findViewById(R.id.rankingHolder);
         if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
             rankingHolder.setVisibility(View.INVISIBLE);
@@ -114,6 +136,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
             rankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase()));
             rankingText.setText(String.format(getString(R.string.ranking), player.rank.tier.toUpperCase(), player.rank.division));
             rankingHolder.setVisibility(View.VISIBLE);
+            rankingQueue.setText(getQueueName(player.rank.queue));
         }
 
         // downloadPerformance();
