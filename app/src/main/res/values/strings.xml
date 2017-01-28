@@ -154,16 +154,22 @@
     <string name="no_data_for_this_champion">No data for this champion.</string>
     <string name="no_data">No data:</string>
     <string name="not_enough_information">Although you play %s, we don\'t have enough data to say if it is a good matchup.</string>
-    <string name="game_length_template" translatable="false">%1$d:%2$d</string>
+    <string name="game_length_template" translatable="false">%1$s:%2$s / %3$s</string>
     <string name="kda_template">KDA %1$d / &lt;font color="#FF5252"&gt;%2$d&lt;/font&gt; / %3$d</string>
-    <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f / min)&lt;/font&gt;</string>
+    <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s knows %2$s quite well, be careful!</string>
     <string name="otp">One Trick Pony</string>
     <string name="error_adding_account">Error adding account. Please double check your summoner name and region!</string>
     <string name="top" translatable="false">Top</string>
+    <string name="normal">Normal</string>
+    <string name="normal_3">Normal 3v3</string>
     <string name="ranked_solo_5">Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>
+    <string name="teambuilder_ranked">Teambuilder ranked</string>
     <string name="unknown_queue">Unknown queue</string>
+    <string name="recent_matches">Recent matches with %1$s</string>
+    <string name="no_games_recently_played_with_this_champion">No games recently played with this champion.</string>
+    <string name="champion_points">%1$s points</string>
 
 </resources>

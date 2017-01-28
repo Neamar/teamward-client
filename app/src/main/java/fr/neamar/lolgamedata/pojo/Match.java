@@ -12,6 +12,7 @@ public class Match {
     public int a;
     public int cs;
     public int duration;
+    public String queue;
 
     public boolean victory;
 
@@ -26,6 +27,7 @@ public class Match {
         d = match.getInt("d");
         a = match.getInt("a");
         cs = match.getInt("cs");
+        queue = match.getString("queue");
         duration = match.getInt("duration");
         matchUrl = match.getString("match_url");
 

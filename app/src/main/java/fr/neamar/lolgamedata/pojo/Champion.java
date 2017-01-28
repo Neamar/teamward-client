@@ -15,6 +15,7 @@ public class Champion implements Serializable {
     public String splashUrl;
     public String ggUrl;
     public int mastery;
+    public int points;
 
     // Can be -1 on error
     public int championRank;
@@ -31,6 +32,7 @@ public class Champion implements Serializable {
         splashUrl = champion.getString("splash");
         ggUrl = champion.getString("gg");
         mastery = champion.getInt("mastery");
+        points = champion.getInt("points");
         ap = champion.getInt("ap");
         ad = champion.getInt("ad");
         championRank = champion.getInt("champion_rank");

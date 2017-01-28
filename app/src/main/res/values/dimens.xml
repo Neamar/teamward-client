@@ -17,7 +17,7 @@
     <dimen name="details_ranked_size">60dp</dimen>
     <dimen name="counter_champion_padding">4dp</dimen>
     <dimen name="counter_champion_no_data">40dp</dimen>
-    <dimen name="item_size">30dp</dimen>
+    <dimen name="item_size">35dp</dimen>
     <dimen name="item_half_size">15dp</dimen>
     <dimen name="app_bar_height">300dp</dimen>
     <dimen name="item_margin">2dp</dimen>

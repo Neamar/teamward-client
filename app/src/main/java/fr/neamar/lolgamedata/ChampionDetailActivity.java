@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -30,6 +29,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -50,9 +50,13 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
     static {
         Map<String, Integer> queueNames = new HashMap<>();
+        queueNames.put("NORMAL", R.string.normal);
+        queueNames.put("ARAM_UNRANKED_5x5", R.string.aram);
+        queueNames.put("NORMAL_3x3", R.string.normal_3);
         queueNames.put("RANKED_SOLO_5x5", R.string.ranked_solo_5);
         queueNames.put("RANKED_FLEX_SR", R.string.ranked_flex_5);
         queueNames.put("RANKED_FLEX_TT", R.string.ranked_flex_3);
+        queueNames.put("TEAM_BUILDER_DRAFT_RANKED_5x5", R.string.teambuilder_ranked);
 
         QUEUE_NAMES = Collections.unmodifiableMap(queueNames);
     }
@@ -75,7 +79,6 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         player = (Player) getIntent().getSerializableExtra("player");
 
-        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
 
         setTitle(player.summoner.name);
@@ -84,15 +87,25 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         ImageView championMasteryImage = (ImageView) findViewById(R.id.championMasteryImage);
         TextView championMasteryText = (TextView) findViewById(R.id.championMasteryText);
+        TextView championPointsText = (TextView) findViewById(R.id.championPointsText);
+
+        TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
+
         View masteryHolder = findViewById(R.id.masteryHolder);
 
         @DrawableRes
         int championMasteryResource = CHAMPION_MASTERIES_RESOURCES[player.champion.mastery];
         if (championMasteryResource == 0) {
-            masteryHolder.setVisibility(View.INVISIBLE);
+            masteryHolder.setVisibility(View.GONE);
         } else {
             championMasteryImage.setImageResource(CHAMPION_MASTERIES_RESOURCES[player.champion.mastery]);
             championMasteryText.setText(String.format(getString(R.string.champion_mastery_lvl), player.champion.mastery));
+            if(player.champion.mastery >=5) {
+                championPointsText.setText(String.format(getString(R.string.champion_points), NumberFormat.getInstance().format(player.champion.points)));
+            }
+            else {
+                championPointsText.setVisibility(View.GONE);
+            }
             masteryHolder.setVisibility(View.VISIBLE);
         }
 
@@ -102,7 +115,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         View rankingHolder = findViewById(R.id.rankingHolder);
         if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
-            rankingHolder.setVisibility(View.INVISIBLE);
+            rankingHolder.setVisibility(View.GONE);
         } else {
             rankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase()));
             rankingText.setText(String.format(getString(R.string.ranking), player.rank.tier.toUpperCase(), player.rank.division));
@@ -110,7 +123,9 @@ public class ChampionDetailActivity extends SnackBarActivity {
             rankingQueue.setText(getQueueName(player.rank.queue));
         }
 
-        // downloadPerformance();
+        recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
+
+        downloadPerformance();
     }
 
     @Override
@@ -169,23 +184,16 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
                             Log.i(TAG, "Displaying performance for " + player.summoner.name);
 
-/*                                // Timing automatically added (see timeEvent() call)
-                                JSONObject j = account.toJsonObject();
-                                j.putOpt("game_map_id", game.mapId);
-                                j.putOpt("game_map_name", getString(getMapName(game.mapId)));
-                                j.putOpt("game_mode", game.gameMode);
-                                j.putOpt("game_type", game.gameType);
-                                j.putOpt("game_id", game.gameId);
-                                if (getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty()) {
-                                    j.putOpt("source", getIntent().getStringExtra("source"));
-                                } else {
-                                    j.putOpt("source", "unknown");
-                                }
+                            // Timing automatically added (see timeEvent() call)
+                            try {
+                                JSONObject j = new JSONObject();
+                                j.put("region", player.region);
+                                ((LolApplication) getApplication()).getMixpanel().track("Details viewed", j);
 
-                                ((LolApplication) getApplication()).getMixpanel().track("Game viewed", j);
                             } catch (JSONException e) {
                                 e.printStackTrace();
-*/
+                            }
+
                             queue.stop();
 
                         }
@@ -207,12 +215,17 @@ public class ChampionDetailActivity extends SnackBarActivity {
                     try {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
-                    } catch (UnsupportedEncodingException e) {
+
+                        JSONObject j = new JSONObject();
+                        j.put("error", responseBody.replace("Error:", ""));
+                        ((LolApplication) getApplication()).getMixpanel().track("Error viewing details", j);
+                    } catch (UnsupportedEncodingException|JSONException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
                     }
 
+                    findViewById(R.id.matchHistoryHolder).setVisibility(View.INVISIBLE);
                 }
             });
 
@@ -221,11 +234,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             queue.add(jsonRequest);
-        } catch (
-                UnsupportedEncodingException e
-                )
-
-        {
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -235,8 +244,11 @@ public class ChampionDetailActivity extends SnackBarActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.VISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.GONE);
-
         recyclerView.setAdapter(new MatchAdapter(matches));
+
+        if (matches.size() == 0) {
+            findViewById(R.id.matchHistoryHolder).setVisibility(View.INVISIBLE);
+        }
     }
 
 }
