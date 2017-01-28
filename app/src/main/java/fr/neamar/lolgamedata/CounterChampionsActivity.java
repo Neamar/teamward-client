@@ -58,7 +58,7 @@ public class CounterChampionsActivity extends SnackBarActivity {
 
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, currentFragment)
-                        .commit();
+                        .commitAllowingStateLoss();
 
                 prefs.edit().putInt("lastUsedPosition", position).apply();
             }
