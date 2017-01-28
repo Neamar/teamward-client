@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -75,13 +74,12 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         // player = (Player) getIntent().getSerializableExtra("player");
         try {
-            player = new Player(new JSONObject("{\"summoner\": {\"id\": 19445791,\"name\": \"Durandal\",\"level\": 30},\"champion\": {\"id\": \"103\",\"name\": \"Ahri\",\"image\": \"https://ddragon.leagueoflegends.com/cdn/7.1.1/img/champion/Ahri.png\",\"splash\": \"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg\",\"gg\": \"https://champion.gg/Ahri\",\"ad\": 3,\"ap\": 8,\"mastery\": 1,\"points\": 167,\"champion_rank\": 107,\"role\": \"?\",\"matchup\": {}},\"known_champions\": 114,\"spell_d\": {\"id\": \"SummonerFlash\",\"name\": \"Flash\",\"image\": \"https://ddragon.leagueoflegends.com/cdn/7.1.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"id\": \"SummonerDot\",\"name\": \"Ignite\",\"image\": \"https://ddragon.leagueoflegends.com/cdn/7.1.1/img/spell/SummonerDot.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"queue\": \"RANKED_FLEX_SR\",\"division\": \"II\"},\"last_season_rank\": null,\"recent_games\": {\"total\": 10,\"win\": 6,\"loss\": 4,\"average_time_between_games\": 15335}},"), "euw");
+            player = new Player(new JSONObject("{\"summoner\": {\"id\": 19445791,\"name\": \"Riot neamar\",\"level\": 30},\"champion\": {\"id\": \"103\",\"name\": \"Kled\",\"image\": \"https://ddragon.leagueoflegends.com/cdn/7.1.1/img/champion/Ahri.png\",\"splash\": \"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg\",\"gg\": \"https://champion.gg/Ahri\",\"ad\": 3,\"ap\": 8,\"mastery\": 1,\"points\": 167,\"champion_rank\": 107,\"role\": \"?\",\"matchup\": {}},\"known_champions\": 114,\"spell_d\": {\"id\": \"SummonerFlash\",\"name\": \"Flash\",\"image\": \"https://ddragon.leagueoflegends.com/cdn/7.1.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"id\": \"SummonerDot\",\"name\": \"Ignite\",\"image\": \"https://ddragon.leagueoflegends.com/cdn/7.1.1/img/spell/SummonerDot.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"queue\": \"RANKED_FLEX_SR\",\"division\": \"II\"},\"last_season_rank\": null,\"recent_games\": {\"total\": 10,\"win\": 6,\"loss\": 4,\"average_time_between_games\": 15335}},"), "euw");
         } catch (JSONException e) {
             e.printStackTrace();
             throw new RuntimeException("FUCK");
         }
 
-        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
 
         setTitle(player.summoner.name);
