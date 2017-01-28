@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,23 +9,34 @@
         android:id="@+id/championMasteryImage"
         android:layout_width="@dimen/details_ranked_size"
         android:layout_height="@dimen/details_ranked_size"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:contentDescription="@string/champion_mastery"
         android:padding="12dp"
         app:srcCompat="@drawable/champion_mastery_5" />
 
-    <TextView
-        android:id="@+id/championMasteryText"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
+        android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_toEndOf="@+id/championMasteryImage"
-        android:layout_toRightOf="@+id/championMasteryImage"
-        android:text="@string/champion_mastery_lvl"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-</RelativeLayout>
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/championMasteryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+
+            android:text="@string/champion_mastery_lvl"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/championPointsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_points"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -149,4 +149,5 @@
     <string name="ranked_flex_3">Flex 3v3</string>
     <string name="teambuilder_ranked">Ranked teambuilder</string>
     <string name="unknown_queue">File inconnue</string>
+    <string name="champion_points">%1$s points</string>
 </resources>

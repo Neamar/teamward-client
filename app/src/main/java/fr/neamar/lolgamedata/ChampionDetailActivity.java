@@ -29,6 +29,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -84,6 +85,8 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         ImageView championMasteryImage = (ImageView) findViewById(R.id.championMasteryImage);
         TextView championMasteryText = (TextView) findViewById(R.id.championMasteryText);
+        TextView championPointsText = (TextView) findViewById(R.id.championPointsText);
+
         TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
 
         View masteryHolder = findViewById(R.id.masteryHolder);
@@ -95,6 +98,12 @@ public class ChampionDetailActivity extends SnackBarActivity {
         } else {
             championMasteryImage.setImageResource(CHAMPION_MASTERIES_RESOURCES[player.champion.mastery]);
             championMasteryText.setText(String.format(getString(R.string.champion_mastery_lvl), player.champion.mastery));
+            if(player.champion.mastery >=5) {
+                championPointsText.setText(String.format(getString(R.string.champion_points), NumberFormat.getInstance().format(player.champion.points)));
+            }
+            else {
+                championPointsText.setVisibility(View.GONE);
+            }
             masteryHolder.setVisibility(View.VISIBLE);
         }
 
