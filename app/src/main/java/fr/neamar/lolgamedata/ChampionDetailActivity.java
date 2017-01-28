@@ -1,23 +1,17 @@
 package fr.neamar.lolgamedata;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +24,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -82,34 +75,12 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         player = (Player) getIntent().getSerializableExtra("player");
 
-        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
+
         setTitle(player.summoner.name);
 
-        final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
-        ImageLoader.getInstance().loadImage(player.champion.splashUrl, new SimpleImageLoadingListener() {
-            @Override
-            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                splashArtImage.setImageBitmap(loadedImage);
-                Palette.from(loadedImage).generate(new Palette.PaletteAsyncListener() {
-                    @Override
-                    public void onGenerated(Palette palette) {
-                        int vibrantColor = palette.getVibrantColor(getResources().getColor(R.color.colorPrimary));
-                        float[] hsv = new float[3];
-                        Color.colorToHSV(vibrantColor, hsv);
-                        hsv[2] *= 0.8f; // value component
-                        int vibrantColorDark = Color.HSVToColor(hsv);
-
-                        collapsingToolbarLayout.setContentScrimColor(vibrantColor);
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            Window window = getWindow();
-                            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                            window.setStatusBarColor(vibrantColorDark);
-                        }
-                    }
-                });
-            }
-        });
+        ImageLoader.getInstance().displayImage(player.champion.splashUrl, splashArtImage);
 
         ImageView championMasteryImage = (ImageView) findViewById(R.id.championMasteryImage);
         TextView championMasteryText = (TextView) findViewById(R.id.championMasteryText);
