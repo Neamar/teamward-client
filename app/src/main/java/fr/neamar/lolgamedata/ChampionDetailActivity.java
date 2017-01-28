@@ -49,9 +49,11 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
     static {
         Map<String, Integer> queueNames = new HashMap<>();
+        queueNames.put("NORMAL", R.string.normal);
         queueNames.put("RANKED_SOLO_5x5", R.string.ranked_solo_5);
         queueNames.put("RANKED_FLEX_SR", R.string.ranked_flex_5);
         queueNames.put("RANKED_FLEX_TT", R.string.ranked_flex_3);
+        queueNames.put("TEAM_BUILDER_DRAFT_RANKED_5x5", R.string.teambuilder_ranked);
 
         QUEUE_NAMES = Collections.unmodifiableMap(queueNames);
     }
@@ -89,7 +91,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
         @DrawableRes
         int championMasteryResource = CHAMPION_MASTERIES_RESOURCES[player.champion.mastery];
         if (championMasteryResource == 0) {
-            masteryHolder.setVisibility(View.INVISIBLE);
+            masteryHolder.setVisibility(View.GONE);
         } else {
             championMasteryImage.setImageResource(CHAMPION_MASTERIES_RESOURCES[player.champion.mastery]);
             championMasteryText.setText(String.format(getString(R.string.champion_mastery_lvl), player.champion.mastery));
@@ -102,7 +104,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         View rankingHolder = findViewById(R.id.rankingHolder);
         if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
-            rankingHolder.setVisibility(View.INVISIBLE);
+            rankingHolder.setVisibility(View.GONE);
         } else {
             rankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase()));
             rankingText.setText(String.format(getString(R.string.ranking), player.rank.tier.toUpperCase(), player.rank.division));
@@ -215,6 +217,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
                         // Do nothing, no text content in the HTTP reply.
                     }
 
+                    findViewById(R.id.matchHistoryHolder).setVisibility(View.INVISIBLE);
                 }
             });
 
@@ -223,11 +226,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             queue.add(jsonRequest);
-        } catch (
-                UnsupportedEncodingException e
-                )
-
-        {
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -237,11 +236,10 @@ public class ChampionDetailActivity extends SnackBarActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.VISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.GONE);
-
         recyclerView.setAdapter(new MatchAdapter(matches));
 
         if(matches.size() == 0) {
-            findViewById(R.id.noRecentGames).setVisibility(View.VISIBLE);
+            findViewById(R.id.matchHistoryHolder).setVisibility(View.INVISIBLE);
         }
     }
 

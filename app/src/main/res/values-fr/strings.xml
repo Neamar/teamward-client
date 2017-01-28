@@ -143,8 +143,10 @@
     <string name="main_level_7">%1$s joue très bien %2$s… soyez prudents !</string>
     <string name="otp">One Trick Pony</string>
     <string name="error_adding_account">Impossible d\'ajouter le compte. Vérifiez votre nom d\'invocateur et la région !</string>
+    <string name="normal">Normal</string>
     <string name="ranked_solo_5">Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>
+    <string name="teambuilder_ranked">Ranked teambuilder</string>
     <string name="unknown_queue">File inconnue</string>
 </resources>
