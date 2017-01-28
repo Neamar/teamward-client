@@ -15,11 +15,11 @@
 
         <LinearLayout
             android:id="@+id/rankingHolder"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:orientation="horizontal">
 
             <ImageView
@@ -65,11 +65,11 @@
                 android:id="@+id/championMasteryImage"
                 android:layout_width="@dimen/details_ranked_size"
                 android:layout_height="@dimen/details_ranked_size"
-                android:padding="12dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/champion_mastery"
+                android:padding="12dp"
                 app:srcCompat="@drawable/champion_mastery_5" />
 
             <TextView
@@ -86,19 +86,12 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Coming soon™: previous builds of this summoner with this champion.\nStay tuned!" />
-
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:visibility="invisible" />
+            android:layout_weight="1" />
 
 
         <android.support.v7.widget.RecyclerView

@@ -73,7 +73,13 @@ public class ChampionDetailActivity extends SnackBarActivity {
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        player = (Player) getIntent().getSerializableExtra("player");
+        // player = (Player) getIntent().getSerializableExtra("player");
+        try {
+            player = new Player(new JSONObject("{\"summoner\": {\"id\": 19445791,\"name\": \"Durandal\",\"level\": 30},\"champion\": {\"id\": \"103\",\"name\": \"Ahri\",\"image\": \"https://ddragon.leagueoflegends.com/cdn/7.1.1/img/champion/Ahri.png\",\"splash\": \"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg\",\"gg\": \"https://champion.gg/Ahri\",\"ad\": 3,\"ap\": 8,\"mastery\": 1,\"points\": 167,\"champion_rank\": 107,\"role\": \"?\",\"matchup\": {}},\"known_champions\": 114,\"spell_d\": {\"id\": \"SummonerFlash\",\"name\": \"Flash\",\"image\": \"https://ddragon.leagueoflegends.com/cdn/7.1.1/img/spell/SummonerFlash.png\"},\"spell_f\": {\"id\": \"SummonerDot\",\"name\": \"Ignite\",\"image\": \"https://ddragon.leagueoflegends.com/cdn/7.1.1/img/spell/SummonerDot.png\"},\"current_season_rank\": {\"tier\": \"PLATINUM\",\"queue\": \"RANKED_FLEX_SR\",\"division\": \"II\"},\"last_season_rank\": null,\"recent_games\": {\"total\": 10,\"win\": 6,\"loss\": 4,\"average_time_between_games\": 15335}},"), "euw");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new RuntimeException("FUCK");
+        }
 
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
@@ -110,7 +116,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
             rankingQueue.setText(getQueueName(player.rank.queue));
         }
 
-        // downloadPerformance();
+        downloadPerformance();
     }
 
     @Override
