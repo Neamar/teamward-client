@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.holder.PlayerHolder;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.pojo.Team;
@@ -16,19 +17,17 @@ public class TryHarderTipBuilder extends TipBuilder {
     public ArrayList<Tip> getTips(Game game, Context context) {
         ArrayList<Tip> tips = new ArrayList<>();
 
+
         for (Team team : game.teams) {
-            boolean areTryHarder = true;
+            int minMastery = 7;
             for (Player player : team.players) {
-                if (player.champion.mastery < 4) {
-                    areTryHarder = false;
-                    break;
-                }
+                minMastery = Math.min(player.champion.mastery, minMastery);
             }
 
-            if (areTryHarder) {
+            if (minMastery >= 4) {
                 String description = context.getString(R.string.try_harder_desc);
-                description = String.format(description, team.getName(context));
-                tips.add(new PlayerStandardTip(game, null, R.drawable.champion_mastery_5, context.getString(R.string.try_harder), description));
+                description = String.format(description, team.getName(context), minMastery);
+                tips.add(new PlayerStandardTip(game, null, PlayerHolder.CHAMPION_MASTERIES_RESOURCES[minMastery], context.getString(R.string.try_harder), description));
 
             }
         }

@@ -50,9 +50,10 @@ public class Game implements Serializable {
     @NonNull
     public Player getPlayerByAccount(Account account) {
         for (Team team : teams) {
-            for(Player player: team.players)
-                if(player.summoner.name.equals(account.summonerName)) {
+            for(Player player: team.players) {
+                if (player.summoner.name.equalsIgnoreCase(account.summonerName)) {
                     return player;
+                }
             }
         }
 

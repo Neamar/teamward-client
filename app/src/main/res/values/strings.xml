@@ -130,7 +130,7 @@
     <string name="search">Search</string>
     <string name="double_smite_desc">%s plays with more than one Smite!</string>
     <string name="double_smite">Double double animal style</string>
-    <string name="try_harder_desc">Everyone in %s plays a champion with mastery 4+</string>
+    <string name="try_harder_desc">Everyone in %1$s plays a champion with mastery %2$d+</string>
     <string name="try_harder">tryharders</string>
     <string name="select_champion_playing_against">Select the champion you\'re drafting against</string>
     <string name="good_counters">Good counters that you play</string>
