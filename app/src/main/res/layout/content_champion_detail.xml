@@ -86,6 +86,29 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+
+        <TextView
+            android:text="@string/recent_matches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:id="@+id/recentMatchesTitle"
+            style="?android:attr/listSeparatorTextViewStyle" />
+
+        <TextView
+            android:text="@string/no_games_recently_played_with_this_champion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/noRecentGames"
+            android:visibility="gone"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleLarge"

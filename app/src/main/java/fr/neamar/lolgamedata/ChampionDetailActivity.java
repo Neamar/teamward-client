@@ -90,6 +90,8 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         ImageView championMasteryImage = (ImageView) findViewById(R.id.championMasteryImage);
         TextView championMasteryText = (TextView) findViewById(R.id.championMasteryText);
+        TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
+
         View masteryHolder = findViewById(R.id.masteryHolder);
 
         @DrawableRes
@@ -115,6 +117,8 @@ public class ChampionDetailActivity extends SnackBarActivity {
             rankingHolder.setVisibility(View.VISIBLE);
             rankingQueue.setText(getQueueName(player.rank.queue));
         }
+
+        recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
 
         downloadPerformance();
     }
@@ -243,6 +247,10 @@ public class ChampionDetailActivity extends SnackBarActivity {
         findViewById(R.id.progressBar).setVisibility(View.GONE);
 
         recyclerView.setAdapter(new MatchAdapter(matches));
+
+        if(matches.size() == 0) {
+            findViewById(R.id.noRecentGames).setVisibility(View.VISIBLE);
+        }
     }
 
 }

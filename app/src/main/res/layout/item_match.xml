@@ -15,23 +15,24 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/item1"
-        android:layout_marginRight="@dimen/item_margin"
         android:layout_marginEnd="@dimen/item_margin"
-
+        android:layout_marginRight="@dimen/item_margin"
         android:background="#00FF00" />
 
     <ImageView
         android:id="@+id/item1"
+        style="@style/goldBorder"
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
         android:layout_alignParentTop="true"
         android:layout_margin="@dimen/item_margin"
-        android:layout_toRightOf="@id/winOrLossBanner"
         android:layout_toEndOf="@id/winOrLossBanner"
+        android:layout_toRightOf="@id/winOrLossBanner"
         app:srcCompat="@drawable/item_emtpy" />
 
     <ImageView
         android:id="@+id/item2"
+        style="@style/goldBorder"
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
         android:layout_alignParentTop="true"
@@ -42,6 +43,7 @@
 
     <ImageView
         android:id="@+id/item3"
+        style="@style/goldBorder"
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
         android:layout_alignParentTop="true"
@@ -52,16 +54,18 @@
 
     <ImageView
         android:id="@+id/item4"
+        style="@style/goldBorder"
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
         android:layout_below="@+id/item1"
         android:layout_margin="@dimen/item_margin"
-        android:layout_toRightOf="@id/winOrLossBanner"
         android:layout_toEndOf="@id/winOrLossBanner"
+        android:layout_toRightOf="@id/winOrLossBanner"
         app:srcCompat="@drawable/item_emtpy" />
 
     <ImageView
         android:id="@+id/item5"
+        style="@style/goldBorder"
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
         android:layout_below="@+id/item2"
@@ -72,6 +76,7 @@
 
     <ImageView
         android:id="@+id/item6"
+        style="@style/goldBorder"
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
         android:layout_below="@+id/item3"
@@ -82,6 +87,7 @@
 
     <ImageView
         android:id="@+id/itemWard"
+        style="@style/goldBorder"
         android:layout_width="@dimen/item_size"
         android:layout_height="@dimen/item_size"
         android:layout_alignBottom="@+id/item6"
@@ -92,43 +98,42 @@
         android:layout_toRightOf="@+id/item3"
         app:srcCompat="@drawable/item_emtpy" />
 
-    <TextView
-        android:id="@+id/gameLengthText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/itemWard"
         android:layout_toRightOf="@+id/itemWard"
-        android:gravity="center_vertical"
-        android:maxLines="1"
+        android:orientation="vertical"
         android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:text="@string/game_length_template"
-        android:textSize="8sp" />
+        android:paddingStart="8dp">
 
-    <TextView
-        android:id="@+id/kdaText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/gameLengthText"
-        android:layout_toEndOf="@+id/itemWard"
-        android:layout_toRightOf="@+id/itemWard"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:text="@string/kda_template" />
+        <TextView
+            android:id="@+id/gameLengthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <TextView
-        android:id="@+id/csText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/kdaText"
-        android:layout_toEndOf="@+id/itemWard"
-        android:layout_toRightOf="@+id/itemWard"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-        android:paddingLeft="8dp"
-        android:paddingStart="8dp"
-        android:text="@string/cs_template" />
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@string/game_length_template"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/kdaText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@string/kda_template"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/csText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@string/cs_template" />
+    </LinearLayout>
+
 </RelativeLayout>

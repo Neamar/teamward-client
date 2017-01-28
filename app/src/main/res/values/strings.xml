@@ -165,5 +165,7 @@
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>
     <string name="unknown_queue">Unknown queue</string>
+    <string name="recent_matches">Recent matches with %1$s</string>
+    <string name="no_games_recently_played_with_this_champion">No games recently played with this champion.</string>
 
 </resources>
