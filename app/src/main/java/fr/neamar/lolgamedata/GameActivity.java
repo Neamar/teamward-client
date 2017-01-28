@@ -307,20 +307,22 @@ public class GameActivity extends SnackBarActivity {
 
                                 // Add metrics related to the current player
                                 Player p = game.getPlayerByAccount(account);
-                                j.putOpt("champion", p.champion.id);
-                                j.putOpt("champion_name", p.champion.name);
-                                j.putOpt("champion_mastery", p.champion.mastery);
-                                j.putOpt("champion_role", p.champion.role);
+                                if(p != null) {
+                                    j.putOpt("champion", p.champion.id);
+                                    j.putOpt("champion_name", p.champion.name);
+                                    j.putOpt("champion_mastery", p.champion.mastery);
+                                    j.putOpt("champion_role", p.champion.role);
 
-                                j.putOpt("player_rank", p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
-                                j.putOpt("player_level", p.summoner.level);
-                                j.putOpt("player_champion_index", p.champion.championRank);
+                                    j.putOpt("player_rank", p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
+                                    j.putOpt("player_level", p.summoner.level);
+                                    j.putOpt("player_champion_index", p.champion.championRank);
 
-                                j.putOpt("spell_d", p.spellD.id);
-                                j.putOpt("spell_d_name", p.spellD.name);
+                                    j.putOpt("spell_d", p.spellD.id);
+                                    j.putOpt("spell_d_name", p.spellD.name);
 
-                                j.putOpt("spell_f", p.spellF.id);
-                                j.putOpt("spell_f_name", p.spellF.name);
+                                    j.putOpt("spell_f", p.spellF.id);
+                                    j.putOpt("spell_f_name", p.spellF.name);
+                                }
 
                                 // Is this the first account added to the app?
                                 AccountManager accountManager = new AccountManager(GameActivity.this);

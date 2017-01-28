@@ -1,6 +1,7 @@
 package fr.neamar.lolgamedata.pojo;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,7 +48,7 @@ public class Game implements Serializable {
         throw new RuntimeException("Required player is part of no team?!");
     }
 
-    @NonNull
+    @Nullable
     public Player getPlayerByAccount(Account account) {
         for (Team team : teams) {
             for(Player player: team.players) {
@@ -57,7 +58,8 @@ public class Game implements Serializable {
             }
         }
 
-        throw new RuntimeException("Required player is not part of the game?!");
+        // This is very uncommon, but can happen after migrating to a new region / new server: the data won't be fully sinced yet, and the player won't be in the list
+        return null;
     }
 
     public int getNotificationId() {
