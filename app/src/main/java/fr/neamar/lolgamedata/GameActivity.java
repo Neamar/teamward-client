@@ -333,6 +333,8 @@ public class GameActivity extends SnackBarActivity {
                                     if(accountIndex == 0) {
                                         // For main user: add data to profile
                                         MixpanelAPI.People people = application.getMixpanel().getPeople();
+                                        people.set("player_rank", p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
+
                                         people.union("played_champion_names", application.getJSONArrayFromSingleItem(p.champion.name));
                                         people.union("played_champion_ids", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.id)));
                                         people.union("played_roles", application.getJSONArrayFromSingleItem(p.champion.role));

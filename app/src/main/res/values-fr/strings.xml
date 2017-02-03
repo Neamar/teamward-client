@@ -152,4 +152,5 @@
     <string name="teambuilder_ranked">Ranked teambuilder</string>
     <string name="unknown_queue">File inconnue</string>
     <string name="champion_points">%1$s points</string>
+    <string name="recent_matches">Parties récentes avec %1$s</string>
 </resources>

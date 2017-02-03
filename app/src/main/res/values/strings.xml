@@ -161,6 +161,7 @@
     <string name="otp">One Trick Pony</string>
     <string name="error_adding_account">Error adding account. Please double check your summoner name and region!</string>
     <string name="top" translatable="false">Top</string>
+    <string name="aram">ARAM</string>
     <string name="normal">Normal</string>
     <string name="normal_3">Normal 3v3</string>
     <string name="ranked_solo_5">Solo/Duo</string>
@@ -169,7 +170,6 @@
     <string name="teambuilder_ranked">Teambuilder ranked</string>
     <string name="unknown_queue">Unknown queue</string>
     <string name="recent_matches">Recent matches with %1$s</string>
-    <string name="no_games_recently_played_with_this_champion">No games recently played with this champion.</string>
     <string name="champion_points">%1$s points</string>
 
 </resources>
