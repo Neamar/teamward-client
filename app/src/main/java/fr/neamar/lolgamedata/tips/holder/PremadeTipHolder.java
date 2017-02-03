@@ -71,8 +71,8 @@ public class PremadeTipHolder extends TipHolder {
 
         // Clean up old views
         linearLayout.removeAllViews();
-        for (List<Long> subPremade : team.premades) {
-            for (long summonerId : subPremade) {
+        for (List<Integer> subPremade : team.premades) {
+            for (int summonerId : subPremade) {
                 Player p = findPlayerById(team, summonerId);
                 if (p == null) {
                     continue;

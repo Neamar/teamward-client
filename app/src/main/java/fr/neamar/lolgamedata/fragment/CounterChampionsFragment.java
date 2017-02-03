@@ -81,6 +81,10 @@ public class CounterChampionsFragment extends Fragment {
         container.post(new Runnable() {
             @Override
             public void run() {
+                if(getActivity() == null) {
+                    return;
+                }
+                
                 // How many champions can we fit per row?
                 float totalWidth = container.getWidth();
                 float itemWidth = getResources().getDimension(R.dimen.champion_size) + 2 * getResources().getDimension(R.dimen.counter_champion_padding);
