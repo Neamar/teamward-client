@@ -37,6 +37,7 @@ public class LolApplication extends Application {
                 .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .defaultDisplayImageOptions(defaultOptions)
+                .diskCacheFileCount(300)
                 .build();
 
 
