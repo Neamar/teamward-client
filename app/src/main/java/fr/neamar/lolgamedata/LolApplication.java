@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -44,7 +45,7 @@ public class LolApplication extends Application {
         ImageLoader.getInstance().init(config);
 
         if (BuildConfig.DEBUG) {
-            /*StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
                     .build());
@@ -53,7 +54,6 @@ public class LolApplication extends Application {
                     .penaltyLog()
                     .penaltyDeath()
                     .build());
-                    */
         }
 
         // Register for push notifications, send token again in case it changed
