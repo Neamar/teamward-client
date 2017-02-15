@@ -22,7 +22,7 @@ public abstract class SnackBarActivity extends AppCompatActivity {
 
         assert coordinatorLayout != null;
 
-        Snackbar snackbar = Snackbar.make(coordinatorLayout, snack, Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, snack, 10000);
         snackbar.setAction(action, listener);
         snackbar.show();
     }
