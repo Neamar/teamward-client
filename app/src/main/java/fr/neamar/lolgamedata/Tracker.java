@@ -1,6 +1,8 @@
 package fr.neamar.lolgamedata;
 
 import android.app.Activity;
+import android.content.Context;
+import android.preference.Preference;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
@@ -28,11 +30,11 @@ public class Tracker {
         return getApplication(activity).getMixpanel();
     }
 
-    public static void flush(Activity activity) {
+    static void flush(Activity activity) {
         getMixpanel(activity).flush();
     }
 
-    public static void trackGameViewed(Activity activity, Account account, Game game, String defaultTab, Boolean shouldDisplayChampionName, String source) {
+    static void trackGameViewed(Activity activity, Account account, Game game, String defaultTab, Boolean shouldDisplayChampionName, String source) {
         JSONObject j = account.toJsonObject();
         LolApplication application = getApplication(activity);
 
@@ -94,7 +96,7 @@ public class Tracker {
         mixpanel.getPeople().set("last_viewed_game", new Date());
     }
 
-    public static void trackErrorViewingGame(Activity activity, Account account, String error) {
+    static void trackErrorViewingGame(Activity activity, Account account, String error) {
         JSONObject j = account.toJsonObject();
         try {
             j.put("error", error);
@@ -104,17 +106,35 @@ public class Tracker {
         getMixpanel(activity).track("Error viewing game", j);
     }
 
-    public static void trackRateTheApp(Activity activity) {
+    static void trackRateTheApp(Activity activity) {
         MixpanelAPI mixpanel = getMixpanel(activity);
         mixpanel.track("Rate the app");
         mixpanel.getPeople().set("app_rated", true);
     }
 
-    public static void trackFirstTimeAppOpen(Activity activity) {
+    static void trackFirstTimeAppOpen(Activity activity) {
         getMixpanel(activity).track("First time app open");
     }
 
-    public static void trackReloadStaleGame(Activity activity, Account account) {
+    static void trackReloadStaleGame(Activity activity, Account account) {
         getMixpanel(activity).track("Reload stale game", account.toJsonObject());
+    }
+
+    static void trackSettingsUpdated(Context context, Preference preference, String value) {
+        JSONObject j = new JSONObject();
+        try {
+            j.put("setting", preference.getKey());
+            j.put("setting_name", preference.getTitle());
+            j.put("value", value);
+        }
+        catch(JSONException e) {
+            e.printStackTrace();
+        }
+
+        ((LolApplication) context.getApplicationContext()).getMixpanel().track("Setting updated", j);
+    }
+
+    static void trackAccessSettings(Activity activity) {
+        getMixpanel(activity).track("Access settings");
     }
 }
