@@ -10,9 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import fr.neamar.lolgamedata.adapter.CounterCountersAdapter;
 import fr.neamar.lolgamedata.adapter.CounterCountersNoDataAdapter;
 import fr.neamar.lolgamedata.pojo.Counter;
@@ -54,17 +51,7 @@ public class CounterCountersActivity extends SnackBarActivity {
             displaySnack(String.format(getString(R.string.no_counters), counter.champion.name));
         }
 
-        JSONObject j = new JSONObject();
-        try {
-            j.put("role", counter.role);
-            j.put("champion", counter.champion.name);
-            j.put("counters", counter.counters.size());
-            j.put("goodCountersThreshold", counter.goodCountersThreshold);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        ((LolApplication) getApplication()).getMixpanel().track("View champion counters", j);
+        Tracker.trackViewChampionCounters(this, counter);
     }
 
     @Override
@@ -77,18 +64,7 @@ public class CounterCountersActivity extends SnackBarActivity {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(counter.champion.ggURL));
             startActivity(browserIntent);
 
-            JSONObject j = new JSONObject();
-            try {
-                j.put("role", counter.role);
-                j.put("champion", counter.champion.name);
-                j.put("counters", counter.counters.size());
-                j.put("source", "counters");
-                j.put("goodCountersThreshold", counter.goodCountersThreshold);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            ((LolApplication) getApplication()).getMixpanel().track("Click on GG", j);
+            Tracker.trackClickOnGG(this, counter);
 
             return true;
         }

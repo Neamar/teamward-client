@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.util.Date;
 
 import fr.neamar.lolgamedata.pojo.Account;
+import fr.neamar.lolgamedata.pojo.Counter;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 
@@ -136,5 +137,36 @@ public class Tracker {
 
     static void trackAccessSettings(Activity activity) {
         getMixpanel(activity).track("Access settings");
+    }
+
+    static void trackViewChampionCounters(Activity activity, Counter counter) {
+
+        JSONObject j = new JSONObject();
+        try {
+            j.put("role", counter.role);
+            j.put("champion", counter.champion.name);
+            j.put("counters", counter.counters.size());
+            j.put("goodCountersThreshold", counter.goodCountersThreshold);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        getMixpanel(activity).track("View champion counters", j);
+    }
+
+    static void trackClickOnGG(Activity activity, Counter counter) {
+        JSONObject j = new JSONObject();
+
+        try {
+            j.put("role", counter.role);
+            j.put("champion", counter.champion.name);
+            j.put("counters", counter.counters.size());
+            j.put("source", "counters");
+            j.put("goodCountersThreshold", counter.goodCountersThreshold);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        getMixpanel(activity).track("Click on GG", j);
     }
 }
