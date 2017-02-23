@@ -169,4 +169,46 @@ public class Tracker {
         }
         getMixpanel(activity).track("Click on GG", j);
     }
+
+    static void trackClickOnGG(Activity activity, Player player) {
+        JSONObject j = new JSONObject();
+        try {
+            j.put("name", player.summoner.name);
+            j.put("region", player.region.toUpperCase());
+            j.put("champion", player.champion.name);
+            j.put("tier", player.rank.tier);
+            j.put("division", player.rank.division);
+            j.put("source", "detail view");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        getMixpanel(activity).track("Click on GG", j);
+    }
+
+    static void trackDetailsViewed(Activity activity, Player player) {
+        JSONObject j = new JSONObject();
+        try {
+            j.put("region", player.region.toUpperCase());
+            j.put("name", player.summoner.name);
+            j.put("champion", player.champion.name);
+            j.put("tier", player.rank.tier);
+            j.put("division", player.rank.division);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        getMixpanel(activity).track("Details viewed", j);
+    }
+
+    static void trackcErrorViewingDetails(Activity activity, String error) {
+        JSONObject j = new JSONObject();
+        try {
+            j.put("error", error);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        getMixpanel(activity).track("Error viewing details", j);
+    }
 }
