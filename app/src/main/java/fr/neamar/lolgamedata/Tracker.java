@@ -3,6 +3,7 @@ package fr.neamar.lolgamedata;
 import android.app.Activity;
 import android.content.Context;
 import android.preference.Preference;
+import android.support.annotation.NonNull;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
@@ -18,16 +19,12 @@ import fr.neamar.lolgamedata.pojo.Player;
 
 import static fr.neamar.lolgamedata.GameActivity.getMapName;
 
-/**
- * Created by neamar on 23/02/17.
- */
-
 public class Tracker {
-    private static LolApplication getApplication(Activity activity) {
+    private static LolApplication getApplication(@NonNull Activity activity) {
         return ((LolApplication) activity.getApplication());
     }
 
-    private static MixpanelAPI getMixpanel(Activity activity) {
+    private static MixpanelAPI getMixpanel(@NonNull Activity activity) {
         return getApplication(activity).getMixpanel();
     }
 
@@ -231,5 +228,27 @@ public class Tracker {
             e.printStackTrace();
         }
         getMixpanel(activity).track("Error adding account", j);
+    }
+
+    public static void trackViewCounters(Activity activity, Account account, String role, int requiredChampionMastery) {
+        JSONObject j = account.toJsonObject();
+        try {
+            j.put("role", role);
+            j.put("mastery", requiredChampionMastery);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        getMixpanel(activity).track("View counters", j);
+    }
+
+    public static void trackErrorViewingCounters(Activity activity, Account account, String error) {
+        JSONObject j = account.toJsonObject();
+        try {
+            j.put("error", error);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        getMixpanel(activity).track("Error viewing counters", j);
     }
 }

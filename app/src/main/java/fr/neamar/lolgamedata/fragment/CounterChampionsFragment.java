@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata.fragment;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -30,6 +31,7 @@ import java.net.URLEncoder;
 import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.SnackBarActivity;
+import fr.neamar.lolgamedata.Tracker;
 import fr.neamar.lolgamedata.adapter.CounterChampionAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Counter;
@@ -104,8 +106,6 @@ public class CounterChampionsFragment extends Fragment {
     }
 
     private void loadCounters(final RecyclerView recyclerView, final Account account, final String role) {
-        ((LolApplication) getActivity().getApplication()).getMixpanel().timeEvent("View counters");
-
         // Instantiate the RequestQueue.
         final RequestQueue queue = Volley.newRequestQueue(getActivity());
         final String summonerName = account.summonerName;
@@ -129,17 +129,9 @@ public class CounterChampionsFragment extends Fragment {
 
                                 Log.i(TAG, "Loaded counters!");
 
-                                JSONObject j = account.toJsonObject();
-                                try {
-                                    j.put("role", role);
-                                    j.put("mastery", requiredChampionMastery);
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                // Timing automatically added
-                                if (getActivity() != null) {
-                                    ((LolApplication) getActivity().getApplication()).getMixpanel().track("View counters", j);
+                                Activity activity = getActivity();
+                                if(activity != null) {
+                                    Tracker.trackViewCounters(activity, account, role, requiredChampionMastery);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -170,13 +162,12 @@ public class CounterChampionsFragment extends Fragment {
                         Log.i(TAG, responseBody);
 
                         displaySnack(responseBody);
-                        JSONObject j = account.toJsonObject();
-                        j.put("error", responseBody.replace("Error:", ""));
 
-                        if (getActivity() != null) {
-                            ((LolApplication) getActivity().getApplication()).getMixpanel().track("Error viewing counters", j);
+                        Activity activity = getActivity();
+                        if(activity != null) {
+                            Tracker.trackErrorViewingCounters(activity, account,  responseBody.replace("Error:", ""));
                         }
-                    } catch (UnsupportedEncodingException | JSONException e) {
+                    } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
