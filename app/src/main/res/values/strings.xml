@@ -171,5 +171,8 @@
     <string name="unknown_queue">Unknown queue</string>
     <string name="recent_matches">Recent matches with %1$s</string>
     <string name="champion_points">%1$s points</string>
+    <string name="love_the_app">Teamward is free and ad-free! If you like it, please rate it on the Play Store :)</string>
+    <string name="rate_app">Rate it!</string>
+    <string name="thank_you">Thank you!</string>
 
 </resources>

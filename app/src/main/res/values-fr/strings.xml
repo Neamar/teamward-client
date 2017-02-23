@@ -153,4 +153,7 @@
     <string name="unknown_queue">File inconnue</string>
     <string name="champion_points">%1$s points</string>
     <string name="recent_matches">Parties récentes avec %1$s</string>
+    <string name="rate_app">Noter l\'app</string>
+    <string name="love_the_app">Teamward est gratuit et sans pub! Si vous aimez l\'appli, notez la sur le Play Store :)</string>
+    <string name="thank_you">Merci !</string>
 </resources>

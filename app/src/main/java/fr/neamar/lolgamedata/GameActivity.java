@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -23,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NoConnectionError;
@@ -463,13 +465,28 @@ public class GameActivity extends SnackBarActivity {
 
         setUiMode(UI_MODE_IN_GAME);
 
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        final SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         int counter = prefs.getInt("game_counter", 0);
 
         prefs.edit().putInt("game_counter", counter + 1).apply();
 
         if (counter == 5 || counter == 10) {
             displaySnack(getString(R.string.ap_ad_hint));
+        }
+        if (counter % 200 == 0 && counter > 0 && !prefs.getBoolean("rated_app", false)) {
+            displaySnack(getString(R.string.love_the_app), getString(R.string.rate_app), new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(GameActivity.this, R.string.thank_you, Toast.LENGTH_SHORT).show();
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=fr.neamar.lolgamedata"));
+                    startActivity(browserIntent);
+
+                    ((LolApplication) getApplication()).getMixpanel().track("Rate the app");
+                    ((LolApplication) getApplication()).getMixpanel().getPeople().set("app_rated", true);
+
+                    prefs.edit().putBoolean("rated_app", true).apply();
+                }
+            });
         }
     }
 
