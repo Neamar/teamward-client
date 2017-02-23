@@ -113,7 +113,7 @@ public class GameActivity extends SnackBarActivity {
             Intent i = new Intent(this, AccountsActivity.class);
             startActivity(i);
 
-            ((LolApplication) getApplication()).getMixpanel().track("First time app open");
+            Tracker.trackFirstTimeAppOpen(GameActivity.this);
 
             finish();
             return;
@@ -169,9 +169,6 @@ public class GameActivity extends SnackBarActivity {
 
         setUiMode(UI_MODE_LOADING);
 
-        ((LolApplication) getApplication()).getMixpanel().getPeople().increment("games_viewed_count", 1);
-        ((LolApplication) getApplication()).getMixpanel().getPeople().set("last_viewed_game", new Date());
-
         if (savedInstanceState == null || !savedInstanceState.containsKey("game")) {
             loadCurrentGame(account.summonerName, account.region);
         }
@@ -188,7 +185,7 @@ public class GameActivity extends SnackBarActivity {
                     @Override
                     public void onClick(View v) {
                         loadCurrentGame(account.summonerName, account.region);
-                        ((LolApplication) getApplication()).getMixpanel().track("Reload stale game");
+                        Tracker.trackReloadStaleGame(GameActivity.this, account);
                     }
                 });
             }
@@ -269,8 +266,6 @@ public class GameActivity extends SnackBarActivity {
     }
 
     private void loadCurrentGame(final String summonerName, final String region) {
-        ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
-
         final ProgressDialog dialog = ProgressDialog.show(this, "",
                 String.format(getString(R.string.loading_game_data), summonerName), true);
         dialog.show();
@@ -341,13 +336,11 @@ public class GameActivity extends SnackBarActivity {
 
                         if (!responseBody.contains("ummoner not in game")) {
                             displaySnack(responseBody);
-                            JSONObject j = account.toJsonObject();
-                            j.put("error", responseBody.replace("Error:", ""));
-                            ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
+                            Tracker.trackErrorViewingGame(GameActivity.this, account, responseBody.replace("Error:", ""));
                         } else {
                             setUiMode(UI_MODE_NOT_IN_GAME);
                         }
-                    } catch (UnsupportedEncodingException | JSONException e) {
+                    } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
@@ -375,7 +368,7 @@ public class GameActivity extends SnackBarActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ((LolApplication) getApplication()).getMixpanel().flush();
+        Tracker.flush(this);
     }
 
     private void displayGame(String summonerName, Game game) {
@@ -427,8 +420,7 @@ public class GameActivity extends SnackBarActivity {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=fr.neamar.lolgamedata"));
                     startActivity(browserIntent);
 
-                    ((LolApplication) getApplication()).getMixpanel().track("Rate the app");
-                    ((LolApplication) getApplication()).getMixpanel().getPeople().set("app_rated", true);
+                    Tracker.trackRateTheApp(GameActivity.this);
 
                     prefs.edit().putBoolean("rated_app", true).apply();
                 }

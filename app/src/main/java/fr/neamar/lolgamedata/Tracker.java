@@ -7,6 +7,8 @@ import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
@@ -18,10 +20,21 @@ import static fr.neamar.lolgamedata.GameActivity.getMapName;
  */
 
 public class Tracker {
+    private static LolApplication getApplication(Activity activity) {
+        return ((LolApplication) activity.getApplication());
+    }
+
+    private static MixpanelAPI getMixpanel(Activity activity) {
+        return getApplication(activity).getMixpanel();
+    }
+
+    public static void flush(Activity activity) {
+        getMixpanel(activity).flush();
+    }
+
     public static void trackGameViewed(Activity activity, Account account, Game game, String defaultTab, Boolean shouldDisplayChampionName, String source) {
-        // Timing automatically added (see timeEvent() call)
         JSONObject j = account.toJsonObject();
-        LolApplication application = ((LolApplication) activity.getApplication());
+        LolApplication application = getApplication(activity);
 
         try {
             j.putOpt("game_map_id", game.mapId);
@@ -73,6 +86,35 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        application.getMixpanel().track("Game viewed", j);
+
+        MixpanelAPI mixpanel = getMixpanel(activity);
+        mixpanel.track("Game viewed", j);
+
+        mixpanel.getPeople().increment("games_viewed_count", 1);
+        mixpanel.getPeople().set("last_viewed_game", new Date());
+    }
+
+    public static void trackErrorViewingGame(Activity activity, Account account, String error) {
+        JSONObject j = account.toJsonObject();
+        try {
+            j.put("error", error);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        getMixpanel(activity).track("Error viewing game", j);
+    }
+
+    public static void trackRateTheApp(Activity activity) {
+        MixpanelAPI mixpanel = getMixpanel(activity);
+        mixpanel.track("Rate the app");
+        mixpanel.getPeople().set("app_rated", true);
+    }
+
+    public static void trackFirstTimeAppOpen(Activity activity) {
+        getMixpanel(activity).track("First time app open");
+    }
+
+    public static void trackReloadStaleGame(Activity activity, Account account) {
+        getMixpanel(activity).track("Reload stale game", account.toJsonObject());
     }
 }
