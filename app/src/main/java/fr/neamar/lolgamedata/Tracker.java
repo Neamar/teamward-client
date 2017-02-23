@@ -211,4 +211,25 @@ public class Tracker {
         }
         getMixpanel(activity).track("Error viewing details", j);
     }
+
+    static void trackAccountAdded(Activity activity, Account account, int index) {
+        JSONObject j = account.toJsonObject();
+        try {
+            j.putOpt("account_index", index);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        getMixpanel(activity).track("Account added", j);
+        getApplication(activity).identifyOnMixpanel();
+    }
+
+    static void trackErrorAddingAccount(Activity activity, Account account, String error) {
+        JSONObject j = account.toJsonObject();
+        try {
+            j.putOpt("error", error);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        getMixpanel(activity).track("Error adding account", j);
+    }
 }

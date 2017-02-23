@@ -98,15 +98,7 @@ public class AddAccountActivity extends Activity {
                             AccountManager accountManager = new AccountManager(AddAccountActivity.this);
                             accountManager.addAccount(newAccount);
 
-                            JSONObject j = newAccount.toJsonObject();
-                            try {
-                                j.putOpt("account_index", accountManager.getAccountIndex(newAccount));
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            ((LolApplication) getApplication()).getMixpanel().track("Account added", j);
-
-                            ((LolApplication) getApplication()).identifyOnMixpanel();
+                            Tracker.trackAccountAdded(AddAccountActivity.this, newAccount, accountManager.getAccountIndex(newAccount));
 
                             queue.stop();
                             finish();
@@ -134,11 +126,8 @@ public class AddAccountActivity extends Activity {
                         intent.putExtra("error", errorMessage);
                         setResult(RESULT_ERROR, intent);
 
-                        JSONObject j = newAccount.toJsonObject();
-                        j.putOpt("error", errorMessage);
-                        ((LolApplication) getApplication()).getMixpanel().track("Error adding account", j);
-
-                    } catch (UnsupportedEncodingException | JSONException | NullPointerException e) {
+                        Tracker.trackErrorAddingAccount(AddAccountActivity.this, newAccount, errorMessage);
+                    } catch (UnsupportedEncodingException | NullPointerException e) {
                         e.printStackTrace();
                     }
 
