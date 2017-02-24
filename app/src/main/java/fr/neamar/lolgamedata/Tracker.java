@@ -2,6 +2,7 @@ package fr.neamar.lolgamedata;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
 
@@ -11,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.Map;
 
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Counter;
@@ -250,5 +252,19 @@ public class Tracker {
             e.printStackTrace();
         }
         getMixpanel(activity).track("Error viewing counters", j);
+    }
+
+    static void trackUserProperties(Context context, Account account, int accountsLength, SharedPreferences sp) {
+        MixpanelAPI.People people = ((LolApplication) context.getApplicationContext()).getMixpanel().getPeople();
+
+        people.set("accounts_length", accountsLength);
+        people.set("$username", account.summonerName);
+        people.set("$name", account.summonerName);
+        people.set("region", account.region);
+
+        Map<String, ?> properties = sp.getAll();
+        for (Map.Entry<String, ?> entry : properties.entrySet()) {
+            people.set("settings_" + entry.getKey(), entry.getValue());
+        }
     }
 }
