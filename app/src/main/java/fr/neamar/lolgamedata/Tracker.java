@@ -108,8 +108,13 @@ public class Tracker {
 
     public static void trackNotificationDisplayed(Context context, Account account, int mapId, String mapName, long gameId) {
         JSONObject j = account.toJsonObject();
-        j.put("game_map_id", mapId);
-        j.put("game_map_name", mapName);
+        try {
+            j.put("game_map_id", mapId);
+            j.put("game_map_name", mapName);
+            j.put("game_id", gameId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         // Build a new Mixpanel instance, to make sure we don't update the user profile
         MixpanelAPI.getInstance(context, context.getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", j);
@@ -135,8 +140,7 @@ public class Tracker {
             j.put("setting", preference.getKey());
             j.put("setting_name", preference.getTitle());
             j.put("value", value);
-        }
-        catch(JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
