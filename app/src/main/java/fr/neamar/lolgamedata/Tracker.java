@@ -106,6 +106,15 @@ public class Tracker {
         getMixpanel(activity).track("Error viewing game", j);
     }
 
+    public static void trackNotificationDisplayed(Context context, Account account, int mapId, String mapName, long gameId) {
+        JSONObject j = account.toJsonObject();
+        j.put("game_map_id", mapId);
+        j.put("game_map_name", mapName);
+
+        // Build a new Mixpanel instance, to make sure we don't update the user profile
+        MixpanelAPI.getInstance(context, context.getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", j);
+    }
+
     static void trackRateTheApp(Activity activity) {
         MixpanelAPI mixpanel = getMixpanel(activity);
         mixpanel.track("Rate the app");

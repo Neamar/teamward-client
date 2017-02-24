@@ -18,6 +18,7 @@ import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import fr.neamar.lolgamedata.GameActivity;
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.Tracker;
 import fr.neamar.lolgamedata.pojo.Account;
 
 public class NotificationService extends GcmListenerService {
@@ -98,9 +99,7 @@ public class NotificationService extends GcmListenerService {
         if (prefs.getBoolean("notifications_new_game", true)) {
             notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
 
-            // Build a new Mixpanel instance, to make sure we don't update the user profile
-            MixpanelAPI.getInstance(this, getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", account.toJsonObject());
-
+            Tracker.trackNotificationDisplayed(this, account, mapId, getString(GameActivity.getMapName(mapId)), gameId);
         }
     }
 
