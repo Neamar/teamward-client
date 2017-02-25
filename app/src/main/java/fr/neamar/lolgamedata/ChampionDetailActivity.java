@@ -24,7 +24,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -138,20 +137,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(player.champion.ggUrl));
             startActivity(browserIntent);
 
-            JSONObject j = new JSONObject();
-            try {
-                j.put("name", player.summoner.name);
-                j.put("region", player.region.toUpperCase());
-                j.put("champion", player.champion.name);
-                j.put("tier", player.rank.tier);
-                j.put("division", player.rank.division);
-                j.put("source", "detail view");
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            ((LolApplication) getApplication()).getMixpanel().track("Click on GG", j);
-
+            Tracker.trackClickOnGG(this, player);
             return true;
         }
 
@@ -168,9 +154,6 @@ public class ChampionDetailActivity extends SnackBarActivity {
     }
 
     public void downloadPerformance() {
-        ((LolApplication) getApplication()).getMixpanel().timeEvent("Details viewed");
-
-
         // Instantiate the RequestQueue.
         final RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -184,15 +167,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
                             Log.i(TAG, "Displaying performance for " + player.summoner.name);
 
-                            // Timing automatically added (see timeEvent() call)
-                            try {
-                                JSONObject j = new JSONObject();
-                                j.put("region", player.region);
-                                ((LolApplication) getApplication()).getMixpanel().track("Details viewed", j);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                            Tracker.trackDetailsViewed(ChampionDetailActivity.this, player);
 
                             queue.stop();
 
@@ -216,10 +191,8 @@ public class ChampionDetailActivity extends SnackBarActivity {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
 
-                        JSONObject j = new JSONObject();
-                        j.put("error", responseBody.replace("Error:", ""));
-                        ((LolApplication) getApplication()).getMixpanel().track("Error viewing details", j);
-                    } catch (UnsupportedEncodingException|JSONException e) {
+                        Tracker.trackcErrorViewingDetails(ChampionDetailActivity.this, responseBody.replace("Error:", ""));
+                    } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.

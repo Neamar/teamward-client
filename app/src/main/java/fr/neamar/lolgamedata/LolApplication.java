@@ -19,7 +19,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.List;
-import java.util.Map;
 
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.service.RegistrationIntentService;
@@ -101,16 +100,8 @@ public class LolApplication extends Application {
 
         if (!accountManager.getAccounts().isEmpty()) {
             Log.i(TAG, "Identifying as " + accounts.get(0).summonerName);
-            getMixpanel().getPeople().set("accounts_length", accounts.size());
-            getMixpanel().getPeople().set("$username", accounts.get(0).summonerName);
-            getMixpanel().getPeople().set("$name", accounts.get(0).summonerName);
-            getMixpanel().getPeople().set("region", accounts.get(0).region);
-
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-            Map<String, ?> properties = sp.getAll();
-            for (Map.Entry<String, ?> entry : properties.entrySet()) {
-                getMixpanel().getPeople().set("settings_" + entry.getKey(), entry.getValue());
-            }
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            Tracker.trackUserProperties(getApplicationContext(), accounts.get(0), accounts.size(), sp);
         }
     }
 

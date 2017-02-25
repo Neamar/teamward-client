@@ -34,7 +34,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.newrelic.agent.android.NewRelic;
 
 import org.json.JSONException;
@@ -50,7 +49,6 @@ import java.util.Map;
 import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
-import fr.neamar.lolgamedata.pojo.Player;
 
 public class GameActivity extends SnackBarActivity {
     private static final String TAG = "GameActivity";
@@ -115,7 +113,7 @@ public class GameActivity extends SnackBarActivity {
             Intent i = new Intent(this, AccountsActivity.class);
             startActivity(i);
 
-            ((LolApplication) getApplication()).getMixpanel().track("First time app open");
+            Tracker.trackFirstTimeAppOpen(GameActivity.this);
 
             finish();
             return;
@@ -127,7 +125,7 @@ public class GameActivity extends SnackBarActivity {
             account = (Account) getIntent().getSerializableExtra("account");
         } else {
             account = accountManager.getAccounts().get(0);
-            if(getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals(Intent.ACTION_MAIN)) {
+            if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals(Intent.ACTION_MAIN)) {
                 getIntent().putExtra("source", "app_open");
             }
         }
@@ -171,9 +169,6 @@ public class GameActivity extends SnackBarActivity {
 
         setUiMode(UI_MODE_LOADING);
 
-        ((LolApplication) getApplication()).getMixpanel().getPeople().increment("games_viewed_count", 1);
-        ((LolApplication) getApplication()).getMixpanel().getPeople().set("last_viewed_game", new Date());
-
         if (savedInstanceState == null || !savedInstanceState.containsKey("game")) {
             loadCurrentGame(account.summonerName, account.region);
         }
@@ -190,7 +185,7 @@ public class GameActivity extends SnackBarActivity {
                     @Override
                     public void onClick(View v) {
                         loadCurrentGame(account.summonerName, account.region);
-                        ((LolApplication) getApplication()).getMixpanel().track("Reload stale game");
+                        Tracker.trackReloadStaleGame(GameActivity.this, account);
                     }
                 });
             }
@@ -271,8 +266,6 @@ public class GameActivity extends SnackBarActivity {
     }
 
     private void loadCurrentGame(final String summonerName, final String region) {
-        ((LolApplication) getApplication()).getMixpanel().timeEvent("Game viewed");
-
         final ProgressDialog dialog = ProgressDialog.show(this, "",
                 String.format(getString(R.string.loading_game_data), summonerName), true);
         dialog.show();
@@ -292,60 +285,8 @@ public class GameActivity extends SnackBarActivity {
 
                                 Log.i(TAG, "Displaying game #" + game.gameId);
 
-                                // Timing automatically added (see timeEvent() call)
-                                JSONObject j = account.toJsonObject();
-                                j.putOpt("game_map_id", game.mapId);
-                                j.putOpt("game_map_name", getString(getMapName(game.mapId)));
-                                j.putOpt("game_mode", game.gameMode);
-                                j.putOpt("game_type", game.gameType);
-                                j.putOpt("game_id", game.gameId);
-                                j.putOpt("default_tab", getDefaultTabName());
-                                j.putOpt("display_champion_name", PreferenceManager.getDefaultSharedPreferences(GameActivity.this).getBoolean("display_champion_name", true));
-                                if (getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty()) {
-                                    j.putOpt("source", getIntent().getStringExtra("source"));
-                                } else {
-                                    j.putOpt("source", "unknown");
-                                }
-
-                                LolApplication application = ((LolApplication) getApplication());
-
-                                // Is this the first account added to the app?
-                                AccountManager accountManager = new AccountManager(GameActivity.this);
-                                int accountIndex = accountManager.getAccountIndex(account);
-                                j.putOpt("account_index", accountIndex);
-
-                                // Add metrics related to the current player
-                                Player p = game.getPlayerByAccount(account);
-                                if(p != null) {
-                                    j.putOpt("champion", p.champion.id);
-                                    j.putOpt("champion_name", p.champion.name);
-                                    j.putOpt("champion_mastery", p.champion.mastery);
-                                    j.putOpt("champion_role", p.champion.role);
-
-                                    j.putOpt("player_rank", p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
-                                    j.putOpt("player_level", p.summoner.level);
-                                    j.putOpt("player_champion_index", p.champion.championRank);
-
-                                    j.putOpt("spell_d", p.spellD.id);
-                                    j.putOpt("spell_d_name", p.spellD.name);
-
-                                    j.putOpt("spell_f", p.spellF.id);
-                                    j.putOpt("spell_f_name", p.spellF.name);
-
-                                    if(accountIndex == 0) {
-                                        // For main user: add data to profile
-                                        MixpanelAPI.People people = application.getMixpanel().getPeople();
-                                        people.set("player_rank", p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
-
-                                        people.union("played_champion_names", application.getJSONArrayFromSingleItem(p.champion.name));
-                                        people.union("played_champion_ids", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.id)));
-                                        people.union("played_roles", application.getJSONArrayFromSingleItem(p.champion.role));
-                                        people.union("played_champions_index", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.championRank)));
-                                        people.union("played_game_ids", application.getJSONArrayFromSingleItem(Long.toString(game.gameId)));
-                                        people.union("played_map_ids", application.getJSONArrayFromSingleItem(Long.toString(game.mapId)));
-                                    }
-                                }
-                                application.getMixpanel().track("Game viewed", j);
+                                String source = getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty() ? getIntent().getStringExtra("source") : "unknown";
+                                Tracker.trackGameViewed(GameActivity.this, account, game, getDefaultTabName(), shouldDisplayChampionName(), source);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             } finally {
@@ -395,13 +336,11 @@ public class GameActivity extends SnackBarActivity {
 
                         if (!responseBody.contains("ummoner not in game")) {
                             displaySnack(responseBody);
-                            JSONObject j = account.toJsonObject();
-                            j.put("error", responseBody.replace("Error:", ""));
-                            ((LolApplication) getApplication()).getMixpanel().track("Error viewing game", j);
+                            Tracker.trackErrorViewingGame(GameActivity.this, account, responseBody.replace("Error:", ""));
                         } else {
                             setUiMode(UI_MODE_NOT_IN_GAME);
                         }
-                    } catch (UnsupportedEncodingException | JSONException e) {
+                    } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
                         // Do nothing, no text content in the HTTP reply.
@@ -429,7 +368,7 @@ public class GameActivity extends SnackBarActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ((LolApplication) getApplication()).getMixpanel().flush();
+        Tracker.flush(this);
     }
 
     private void displayGame(String summonerName, Game game) {
@@ -481,8 +420,7 @@ public class GameActivity extends SnackBarActivity {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=fr.neamar.lolgamedata"));
                     startActivity(browserIntent);
 
-                    ((LolApplication) getApplication()).getMixpanel().track("Rate the app");
-                    ((LolApplication) getApplication()).getMixpanel().getPeople().set("app_rated", true);
+                    Tracker.trackRateTheApp(GameActivity.this);
 
                     prefs.edit().putBoolean("rated_app", true).apply();
                 }
@@ -492,6 +430,10 @@ public class GameActivity extends SnackBarActivity {
 
     private String getDefaultTabName() {
         return PreferenceManager.getDefaultSharedPreferences(this).getString("default_game_data_tab", "enemy");
+    }
+
+    private boolean shouldDisplayChampionName() {
+        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("display_champion_name", true);
     }
 
     @Override
