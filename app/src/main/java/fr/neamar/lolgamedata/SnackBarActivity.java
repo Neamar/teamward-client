@@ -13,8 +13,14 @@ public abstract class SnackBarActivity extends AppCompatActivity {
 
         assert coordinatorLayout != null;
 
-        Snackbar snackbar = Snackbar.make(coordinatorLayout, snack, Snackbar.LENGTH_LONG);
-        snackbar.show();
+        try {
+            Snackbar snackbar = Snackbar.make(coordinatorLayout, snack, Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
+        catch(NullPointerException e) {
+            // If the activity is not visible anymore, this will throw.
+            e.printStackTrace();
+        }
     }
 
     void displaySnack(String snack, String action, View.OnClickListener listener) {
