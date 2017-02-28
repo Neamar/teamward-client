@@ -75,8 +75,14 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     } else {
                         // Set the summary to reflect the new ringtone display
                         // name.
-                        String name = ringtone.getTitle(preference.getContext());
-                        preference.setSummary(name);
+                        try {
+                            String name = ringtone.getTitle(preference.getContext());
+                            preference.setSummary(name);
+                        }
+                        catch(SecurityException e) {
+                            // Trying to get ringtone on external storage -- this app doesn't have External storage permission
+                            e.printStackTrace();
+                        }
                     }
                 }
 
