@@ -214,7 +214,7 @@ public class Tracker {
         getMixpanel(activity).track("Details viewed", j);
     }
 
-    static void trackcErrorViewingDetails(Activity activity, String error) {
+    static void trackErrorViewingDetails(Activity activity, String error) {
         JSONObject j = new JSONObject();
         try {
             j.put("error", error);

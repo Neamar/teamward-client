@@ -15,11 +15,11 @@ public class MatchupsTip extends Tip {
 
     public static class Matchup {
         public final Player ownPlayer;
-        public final Player ennemyPlayer;
+        public final Player enemyPlayer;
 
-        public Matchup(Player ownPlayer, Player ennemyPlayer) {
+        public Matchup(Player ownPlayer, Player enemyPlayer) {
             this.ownPlayer = ownPlayer;
-            this.ennemyPlayer = ennemyPlayer;
+            this.enemyPlayer = enemyPlayer;
         }
     }
 }

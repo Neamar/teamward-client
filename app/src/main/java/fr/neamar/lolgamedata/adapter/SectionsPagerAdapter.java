@@ -41,7 +41,7 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         }
 
         // getItem is called to instantiate the fragment for the given page.
-        return TeamFragment.newInstance(position + 1, teams.get(position));
+        return TeamFragment.newInstance(position + 1, teams.get(position), game);
     }
 
     @Override

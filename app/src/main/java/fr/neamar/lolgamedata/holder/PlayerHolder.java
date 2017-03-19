@@ -19,6 +19,7 @@ import java.util.Map;
 
 import fr.neamar.lolgamedata.ChampionDetailActivity;
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.view.AdApView;
 
@@ -68,6 +69,8 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     private final ImageView spellFImage;
     private final TextView mainChampionText;
     private final AdApView adApView;
+
+    private Game game;
     private Player player;
 
     public PlayerHolder(View view) {
@@ -88,8 +91,9 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         view.setOnClickListener(this);
     }
 
-    public void bind(Player player) {
+    public void bind(Player player, Game game) {
         this.player = player;
+        this.game = game;
 
         if (PreferenceManager.getDefaultSharedPreferences(championName.getContext()).getBoolean("display_champion_name", true)) {
             this.championName.setText(player.champion.name);
@@ -174,6 +178,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
 
         Intent i = new Intent(v.getContext(), ChampionDetailActivity.class);
         i.putExtra("player", player);
+        i.putExtra("game", game);
         v.getContext().startActivity(i);
     }
 }

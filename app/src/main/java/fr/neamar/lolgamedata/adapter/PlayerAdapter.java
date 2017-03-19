@@ -9,13 +9,16 @@ import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.PlayerHolder;
+import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 
 public class PlayerAdapter extends RecyclerView.Adapter<PlayerHolder> {
     private final ArrayList<Player> players;
+    private final Game game;
 
-    public PlayerAdapter(ArrayList<Player> players) {
+    public PlayerAdapter(ArrayList<Player> players, Game game) {
         this.players = players;
+        this.game = game;
     }
 
     @Override
@@ -29,7 +32,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerHolder> {
 
     @Override
     public void onBindViewHolder(PlayerHolder holder, int position) {
-        holder.bind(players.get(position));
+        holder.bind(players.get(position), game);
     }
 
     @Override

@@ -12,7 +12,7 @@
         android:src="@drawable/default_champion" />
 
     <ImageView
-        android:id="@+id/ennemyChampion"
+        android:id="@+id/enemyChampion"
         android:layout_width="@dimen/tip_matchup_champion_thumbnail"
         android:layout_height="@dimen/tip_matchup_champion_thumbnail"
         android:layout_alignParentEnd="true"
@@ -49,8 +49,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_toEndOf="@+id/matchupStats"
-        android:layout_toLeftOf="@+id/ennemyChampion"
+        android:layout_toLeftOf="@+id/enemyChampion"
         android:layout_toRightOf="@+id/matchupStats"
-        android:layout_toStartOf="@+id/ennemyChampion"
+        android:layout_toStartOf="@+id/enemyChampion"
         android:background="@android:color/darker_gray" />
 </RelativeLayout>

@@ -45,7 +45,20 @@ public class Game implements Serializable {
             }
         }
 
-        throw new RuntimeException("Required player is part of no team?!");
+        throw new RuntimeException("Current player is part of no team?!");
+    }
+
+    @Nullable
+    public Team getTeamForPlayer(Player player) {
+        for (Team team : teams) {
+            for (Player tplayer : team.players) {
+                if (tplayer.summoner.name.equalsIgnoreCase(player.summoner.name)) {
+                    return team;
+                }
+            }
+        }
+
+        return null;
     }
 
     @Nullable

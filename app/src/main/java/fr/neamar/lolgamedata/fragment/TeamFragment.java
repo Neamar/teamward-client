@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.adapter.PlayerAdapter;
+import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Team;
 
 
@@ -20,6 +21,7 @@ public class TeamFragment extends Fragment {
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static final String ARG_SECTION_TEAM = "section_team";
+    private static final String ARG_SECTION_GAME = "section_game";
 
     private Team team;
 
@@ -30,11 +32,12 @@ public class TeamFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static TeamFragment newInstance(int sectionNumber, Team team) {
+    public static TeamFragment newInstance(int sectionNumber, Team team, Game game) {
         TeamFragment fragment = new TeamFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         args.putSerializable(ARG_SECTION_TEAM, team);
+        args.putSerializable(ARG_SECTION_GAME, game);
 
         fragment.setArguments(args);
         return fragment;
@@ -51,8 +54,10 @@ public class TeamFragment extends Fragment {
 
         team = (Team) getArguments().getSerializable(ARG_SECTION_TEAM);
         assert team != null;
+        Game game = (Game) getArguments().getSerializable(ARG_SECTION_GAME);
+        assert game != null;
 
-        PlayerAdapter adapter = new PlayerAdapter(team.players);
+        PlayerAdapter adapter = new PlayerAdapter(team.players, game);
         recyclerView.setAdapter(adapter);
         return rootView;
     }

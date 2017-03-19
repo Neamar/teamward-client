@@ -46,9 +46,9 @@ public class MatchupsTipHolder extends TipHolder {
             ImageLoader.getInstance().displayImage(matchup.ownPlayer.champion.imageUrl, ownChampionImageView);
             ownChampionImageView.setContentDescription(matchup.ownPlayer.champion.name);
 
-            ImageView ennemyChampionImageView = (ImageView) view.findViewById(R.id.ennemyChampion);
-            ImageLoader.getInstance().displayImage(matchup.ennemyPlayer.champion.imageUrl, ennemyChampionImageView);
-            ennemyChampionImageView.setContentDescription(matchup.ennemyPlayer.champion.name);
+            ImageView enemyChampionImageView = (ImageView) view.findViewById(R.id.enemyChampion);
+            ImageLoader.getInstance().displayImage(matchup.enemyPlayer.champion.imageUrl, enemyChampionImageView);
+            enemyChampionImageView.setContentDescription(matchup.enemyPlayer.champion.name);
 
             TextView matchupTextView = (TextView) view.findViewById(R.id.matchupStats);
 

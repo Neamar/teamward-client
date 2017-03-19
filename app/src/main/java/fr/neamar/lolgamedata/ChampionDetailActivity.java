@@ -32,11 +32,15 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.MatchAdapter;
+import fr.neamar.lolgamedata.pojo.Champion;
+import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Match;
 import fr.neamar.lolgamedata.pojo.Player;
+import fr.neamar.lolgamedata.pojo.Team;
 
 import static fr.neamar.lolgamedata.holder.PlayerHolder.CHAMPION_MASTERIES_RESOURCES;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
@@ -44,6 +48,7 @@ import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
 public class ChampionDetailActivity extends SnackBarActivity {
     private static final String TAG = "ChampionDetailActivity";
     private Player player;
+    private Game game;
 
     private static final Map<String, Integer> QUEUE_NAMES;
 
@@ -78,6 +83,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        game = (Game) getIntent().getSerializableExtra("game");
         player = (Player) getIntent().getSerializableExtra("player");
 
         // HERO
@@ -121,7 +127,43 @@ public class ChampionDetailActivity extends SnackBarActivity {
             rankingHolder.setVisibility(View.VISIBLE);
             rankingQueue.setText(getQueueName(player.rank.queue));
         }
-        
+
+        // MATCHUP INFORMATION
+        View matchupHolder = findViewById(R.id.matchupHolder);
+        ImageView ownChampion = (ImageView) findViewById(R.id.ownChampion);
+        ImageView enemyChampion = (ImageView) findViewById(R.id.enemyChampion);
+        TextView matchupTextView = (TextView) findViewById(R.id.matchupStats);
+
+        Team playerTeam = game.getTeamForPlayer(player);
+        Team otherTeam = game.teams.get(0) == playerTeam ? game.teams.get(1) : game.teams.get(0);
+        Player oppositePlayer = null;
+        for (Player tplayer : otherTeam.players) {
+            if (player.champion.role.equals(tplayer.champion.role)) {
+                oppositePlayer = tplayer;
+                break;
+            }
+        }
+
+        if(playerTeam == null || player.champion.role.equals(Champion.UNKNOWN_ROLE) || oppositePlayer == null) {
+            matchupHolder.setVisibility(View.GONE);
+        }
+        else {
+            ImageLoader.getInstance().displayImage(player.champion.imageUrl, ownChampion);
+            ImageLoader.getInstance().displayImage(oppositePlayer.champion.imageUrl, enemyChampion);
+
+            if (player.champion.winRate >= 0) {
+                matchupTextView.setText(String.format(Locale.getDefault(), "%d%%", player.champion.winRate));
+                if (player.champion.winRate > 50) {
+                    matchupTextView.setTextColor(getResources().getColor(R.color.colorGoodMatchup));
+                } else if (player.champion.winRate < 50) {
+                    matchupTextView.setTextColor(getResources().getColor(R.color.colorBadMatchup));
+                }
+            } else {
+                matchupTextView.setText("?");
+                matchupTextView.setTextColor(getResources().getColor(R.color.colorUnknownMatchup));
+            }
+        }
+
         // RECENT MATCHES
         TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
         recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
@@ -192,7 +234,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
 
-                        Tracker.trackcErrorViewingDetails(ChampionDetailActivity.this, responseBody.replace("Error:", ""));
+                        Tracker.trackErrorViewingDetails(ChampionDetailActivity.this, responseBody.replace("Error:", ""));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
