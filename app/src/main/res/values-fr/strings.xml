@@ -43,7 +43,7 @@
         <item>EUNE [EU Nordic &amp; East]</item>
         <item>KR [Republic of Korea]</item>
         <item>LAN [Latin America North]</item>
-        <item>LAS [Latin America South]</item>
+        <item>LAS [Latin America South]<Partie personnalisée/item>
         <item>NA [North America]</item>
         <item>OCE [Oceania]</item>
         <item>RU [Russia]</item>
@@ -156,4 +156,5 @@
     <string name="rate_app">Noter l\'app</string>
     <string name="love_the_app">Teamward est gratuit et sans pub! Si vous aimez l\'appli, notez la sur le Play Store :)</string>
     <string name="thank_you">Merci !</string>
+    <string name="custom">Partie personnalisée</string>
 </resources>
