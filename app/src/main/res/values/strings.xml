@@ -164,7 +164,7 @@
     <string name="aram">ARAM</string>
     <string name="normal">Normal</string>
     <string name="normal_3">Normal 3v3</string>
-    <string name="ranked_solo_5">Solo/Duo</string>
+    <string name="ranked_solo_5">Ranked Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>
     <string name="teambuilder_ranked">Teambuilder ranked</string>
@@ -174,5 +174,6 @@
     <string name="love_the_app">Teamward is free and ad-free! If you like it, please rate it on the Play Store :)</string>
     <string name="rate_app">Rate it!</string>
     <string name="thank_you">Thank you!</string>
+    <string name="custom">Custom game</string>
 
 </resources>
