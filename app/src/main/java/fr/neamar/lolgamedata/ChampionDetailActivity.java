@@ -80,19 +80,16 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
         player = (Player) getIntent().getSerializableExtra("player");
 
-        final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
-
+        // HERO
         setTitle(player.summoner.name);
-
+        final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
         ImageLoader.getInstance().displayImage(player.champion.splashUrl, splashArtImage);
 
+        // CHAMPION MASTERY
+        View masteryHolder = findViewById(R.id.masteryHolder);
         ImageView championMasteryImage = (ImageView) findViewById(R.id.championMasteryImage);
         TextView championMasteryText = (TextView) findViewById(R.id.championMasteryText);
         TextView championPointsText = (TextView) findViewById(R.id.championPointsText);
-
-        TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
-
-        View masteryHolder = findViewById(R.id.masteryHolder);
 
         @DrawableRes
         int championMasteryResource = CHAMPION_MASTERIES_RESOURCES[player.champion.mastery];
@@ -110,6 +107,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
             masteryHolder.setVisibility(View.VISIBLE);
         }
 
+        // RANKED INFORMATION
         ImageView rankingTierImage = (ImageView) findViewById(R.id.rankingTierImage);
         TextView rankingText = (TextView) findViewById(R.id.rankingText);
         TextView rankingQueue = (TextView) findViewById(R.id.rankingQueue);
@@ -123,9 +121,10 @@ public class ChampionDetailActivity extends SnackBarActivity {
             rankingHolder.setVisibility(View.VISIBLE);
             rankingQueue.setText(getQueueName(player.rank.queue));
         }
-
+        
+        // RECENT MATCHES
+        TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
         recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
-
         downloadPerformance();
     }
 
