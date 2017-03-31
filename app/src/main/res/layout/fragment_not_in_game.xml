@@ -9,14 +9,14 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:padding="@dimen/activity_margin">
 
         <TextView
             android:id="@+id/summoner_not_in_game_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/dialog_margin"
             android:text="@string/s_is_not_in_game_right_now"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/dialog_margin"
             android:text="@string/no_game_3"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceSmall" />

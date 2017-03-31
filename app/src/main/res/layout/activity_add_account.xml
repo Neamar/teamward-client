@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:layout_margin="@dimen/dialog_margin"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_margin="@dimen/dialog_margin"
         android:ems="10"
         android:hint="@string/summoner_name"
         android:imeOptions="actionNext"
@@ -24,14 +24,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_margin="@dimen/dialog_margin"
         android:entries="@array/regions" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_margin="@dimen/dialog_margin"
         android:text="@string/add_account" />
 
 </LinearLayout>

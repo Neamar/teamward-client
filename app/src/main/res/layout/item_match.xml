@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
-    android:paddingTop="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_horizontal_margin">
+    android:paddingTop="@dimen/activity_margin"
+    android:paddingBottom="@dimen/activity_margin">
 
     <View
         android:id="@+id/winOrLossBanner"
