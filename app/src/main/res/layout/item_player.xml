@@ -5,8 +5,10 @@
     android:background="?android:attr/selectableItemBackground"
     android:clipToPadding="false"
     android:orientation="vertical"
-    android:paddingEnd="@dimen/activity_margin"
-    android:paddingRight="@dimen/activity_margin">
+    android:paddingStart="@dimen/constrained_margin"
+    android:paddingLeft="@dimen/constrained_margin"
+    android:paddingEnd="@dimen/less_constrained_margin"
+    android:paddingRight="@dimen/less_constrained_margin">
 
     <fr.neamar.lolgamedata.view.AdApView
         android:id="@+id/apAd"
@@ -59,8 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/spellDImage"
-        android:layout_marginLeft="@dimen/activity_margin"
-        android:layout_marginStart="@dimen/activity_margin"
+        android:layout_marginLeft="@dimen/dialog_margin"
+        android:layout_marginStart="@dimen/dialog_margin"
         android:layout_marginTop="-5dp"
         android:layout_toEndOf="@+id/spellDImage"
         android:layout_toLeftOf="@+id/rankingLayout"

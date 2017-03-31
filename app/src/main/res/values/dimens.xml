@@ -2,6 +2,8 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_margin">16dp</dimen>
     <dimen name="dialog_margin">16dp</dimen>
+    <dimen name="constrained_margin">0dp</dimen>
+    <dimen name="less_constrained_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="champion_size">60dp</dimen>
     <dimen name="tier_size">50dp</dimen>

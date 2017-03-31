@@ -9,5 +9,9 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingStart="@dimen/constrained_margin"
+        android:paddingLeft="@dimen/constrained_margin"
+        android:paddingEnd="@dimen/constrained_margin"
+        android:paddingRight="@dimen/constrained_margin"
         tools:listitem="@layout/item_tip_text_description_image" />
 </RelativeLayout>

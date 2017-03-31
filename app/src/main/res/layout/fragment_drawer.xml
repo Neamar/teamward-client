@@ -5,7 +5,6 @@
     android:background="@android:color/white"
     tools:context="fr.neamar.lolgamedata.fragment.DrawerFragment">
 
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
@@ -42,8 +41,8 @@
         android:elevation="8dp"
         android:gravity="center_vertical"
         android:paddingBottom="4dp"
-        android:paddingLeft="@dimen/activity_margin"
-        android:paddingRight="@dimen/activity_margin"
+        android:paddingLeft="@dimen/dialog_margin"
+        android:paddingRight="@dimen/dialog_margin"
         android:paddingTop="4dp">
 
         <ImageView
@@ -56,8 +55,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_margin"
-            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginLeft="@dimen/dialog_margin"
+            android:layout_marginStart="@dimen/dialog_margin"
             android:gravity="center_vertical"
             android:text="@string/add_account"
             android:textColor="#dd000000"
@@ -74,8 +73,8 @@
         android:elevation="8dp"
         android:gravity="center_vertical"
         android:paddingBottom="4dp"
-        android:paddingLeft="@dimen/activity_margin"
-        android:paddingRight="@dimen/activity_margin"
+        android:paddingLeft="@dimen/dialog_margin"
+        android:paddingRight="@dimen/dialog_margin"
         android:paddingTop="4dp">
 
         <ImageView
@@ -88,8 +87,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_margin"
-            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginLeft="@dimen/dialog_margin"
+            android:layout_marginStart="@dimen/dialog_margin"
             android:gravity="center_vertical"
             android:text="@string/action_settings"
             android:textColor="#dd000000"
