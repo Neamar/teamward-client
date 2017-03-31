@@ -153,17 +153,25 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             summonerLevel.setVisibility(View.GONE);
         }
 
-        // To qualify as a main champion, has to be:
-        // * at least champion mastery level 3
-        // * be in the top 3 champions played on this account
-        // * championRank should not be -1
-        if (player.champion.mastery >= 3 && player.champion.championRank <= 3 && player.champion.championRank >= 1) {
-            // Main champion!
+        if(player.champion.points > 200000) {
             mainChampionText.setVisibility(View.VISIBLE);
-            String mainText = mainChampionText.getContext().getString(mainChampionResources[player.champion.championRank]);
-            mainChampionText.setText(Html.fromHtml(mainText));
-        } else {
-            mainChampionText.setVisibility(View.GONE);
+            mainChampionText.setText(String.format(mainChampionText.getContext().getString(R.string.champion_points_k), Integer.toString(player.champion.points / 100000)));
+        }
+        else {
+            // Less than 100k points, but can still be his main
+
+            // To qualify as a main champion, has to be:
+            // * at least champion mastery level 3
+            // * be in the top 3 champions played on this account
+            // * championRank should not be -1
+            if (player.champion.mastery >= 3 && player.champion.championRank <= 3 && player.champion.championRank >= 1) {
+                // Main champion!
+                mainChampionText.setVisibility(View.VISIBLE);
+                String mainText = mainChampionText.getContext().getString(mainChampionResources[player.champion.championRank]);
+                mainChampionText.setText(Html.fromHtml(mainText));
+            } else {
+                mainChampionText.setVisibility(View.GONE);
+            }
         }
 
         adApView.setAd(player.champion.ad);
