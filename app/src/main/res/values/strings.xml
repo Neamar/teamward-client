@@ -175,6 +175,6 @@
     <string name="rate_app">Rate it!</string>
     <string name="thank_you">Thank you!</string>
     <string name="custom">Custom game</string>
-    <string name="champion_points_k">%1$s00k+</string>
+    <string name="champion_points_k" translatable="false">%1$s00k+</string>
 
 </resources>
