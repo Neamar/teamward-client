@@ -1,49 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_margin">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/summoner_not_in_game_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dialog_margin"
+        android:text="@string/s_is_not_in_game_right_now"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/loading_screen" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="@string/in_lobby_wait_then_refresh"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dialog_margin"
+        android:text="@string/data_only_on_loading_screen"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_margin">
-
-        <TextView
-            android:id="@+id/summoner_not_in_game_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/dialog_margin"
-            android:text="@string/s_is_not_in_game_right_now"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/loading_screen" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:text="@string/no_game_2"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dialog_margin"
-            android:text="@string/no_game_3"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-    </LinearLayout>
-</ScrollView>
+        android:background="@color/colorAccent"
+        android:text="@string/refresh"
+        android:textColor="@android:color/white" />
+</LinearLayout>
