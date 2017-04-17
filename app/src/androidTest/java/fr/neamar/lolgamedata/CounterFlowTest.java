@@ -58,7 +58,7 @@ public class CounterFlowTest {
         activity.runOnUiThread(wakeUpDevice);
 
         ViewInteraction floatingActionButton = onView(
-                allOf(withId(R.id.fab),
+                allOf(withId(R.id.refresh),
                         withParent(allOf(withId(R.id.coordinatorLayout),
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));

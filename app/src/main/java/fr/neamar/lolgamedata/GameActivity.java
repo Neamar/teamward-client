@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -23,6 +22,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -83,7 +83,7 @@ public class GameActivity extends SnackBarActivity {
      */
     private ViewPager mViewPager;
     private View mEmptyView;
-    private FloatingActionButton mFab;
+    private Button refreshButton;
     private TabLayout mTabLayout;
     private SectionsPagerAdapter sectionsPagerAdapter;
     private Date lastLoaded = null;
@@ -142,7 +142,7 @@ public class GameActivity extends SnackBarActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        refreshButton = (Button) findViewById(R.id.refresh);
         mEmptyView = findViewById(android.R.id.empty);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -154,8 +154,8 @@ public class GameActivity extends SnackBarActivity {
         mViewPager.setAdapter(sectionsPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
-        assert mFab != null;
-        mFab.setOnClickListener(new View.OnClickListener() {
+        assert refreshButton != null;
+        refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setUiMode(UI_MODE_LOADING);
@@ -240,28 +240,23 @@ public class GameActivity extends SnackBarActivity {
     private void setUiMode(int uiMode) {
         assert mTabLayout != null;
         assert mEmptyView != null;
-        assert mFab != null;
 
         if (uiMode == UI_MODE_LOADING) {
             mTabLayout.setVisibility(View.GONE);
             mViewPager.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.GONE);
-            mFab.setVisibility(View.GONE);
         } else if (uiMode == UI_MODE_NOT_IN_GAME) {
             mTabLayout.setVisibility(View.GONE);
             mViewPager.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.VISIBLE);
-            mFab.setVisibility(View.VISIBLE);
         } else if (uiMode == UI_MODE_IN_GAME) {
             mTabLayout.setVisibility(View.VISIBLE);
             mViewPager.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
-            mFab.setVisibility(View.GONE);
         } else if (uiMode == UI_MODE_NO_INTERNET) {
             mTabLayout.setVisibility(View.GONE);
             mViewPager.setVisibility(View.GONE);
             mEmptyView.setVisibility(View.GONE);
-            mFab.setVisibility(View.VISIBLE);
         }
     }
 
