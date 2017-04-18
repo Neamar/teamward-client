@@ -176,7 +176,7 @@ public class GameActivity extends SnackBarActivity {
 
     @Override
     protected void onResume() {
-        if (lastLoaded != null) {
+        if (lastLoaded != null && game != null) {
             long timeSinceLastView = new Date().getTime() - lastLoaded.getTime();
             long timeSinceGameStart = new Date().getTime() - game.startTime.getTime();
             Log.i(TAG, "Game started since " + Math.floor(timeSinceGameStart / 1000 / 60) + " minutes.");
@@ -190,11 +190,9 @@ public class GameActivity extends SnackBarActivity {
                 });
             }
 
-            if (game != null) {
-                NotificationManager notificationManager =
-                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                notificationManager.cancel(game.getNotificationId());
-            }
+            NotificationManager notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.cancel(game.getNotificationId());
         }
 
         super.onResume();
@@ -305,6 +303,9 @@ public class GameActivity extends SnackBarActivity {
             {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    game = null;
+                    lastLoaded = null;
+
                     try {
                         if (dialog.isShowing()) {
                             dialog.dismiss();
