@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.neamar.lolgamedata.ChampionDetailActivity;
+import fr.neamar.lolgamedata.PlayerDetailActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
@@ -184,7 +184,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             return;
         }
 
-        Intent i = new Intent(v.getContext(), ChampionDetailActivity.class);
+        Intent i = new Intent(v.getContext(), PlayerDetailActivity.class);
         i.putExtra("player", player);
         i.putExtra("game", game);
         v.getContext().startActivity(i);

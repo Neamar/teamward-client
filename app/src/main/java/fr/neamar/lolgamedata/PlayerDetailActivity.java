@@ -47,8 +47,8 @@ import fr.neamar.lolgamedata.pojo.Team;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.CHAMPION_MASTERIES_RESOURCES;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
 
-public class ChampionDetailActivity extends SnackBarActivity {
-    private static final String TAG = "ChampionDetailActivity";
+public class PlayerDetailActivity extends SnackBarActivity {
+    private static final String TAG = "PlayerDetailActivity";
     private Player player;
     private Game game;
 
@@ -215,7 +215,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
 
                             Log.i(TAG, "Displaying performance for " + player.summoner.name);
 
-                            Tracker.trackDetailsViewed(ChampionDetailActivity.this, player);
+                            Tracker.trackDetailsViewed(PlayerDetailActivity.this, player);
 
                             queue.stop();
 
@@ -239,7 +239,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
 
-                        Tracker.trackErrorViewingDetails(ChampionDetailActivity.this, responseBody.replace("Error:", ""));
+                        Tracker.trackErrorViewingDetails(PlayerDetailActivity.this, responseBody.replace("Error:", ""));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {

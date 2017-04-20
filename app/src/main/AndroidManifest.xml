@@ -115,7 +115,7 @@
                 android:value="fr.neamar.lolgamedata.CounterChampionsActivity" />
         </activity>
         <activity
-            android:name=".ChampionDetailActivity"
+            android:name=".PlayerDetailActivity"
             android:label="@string/title_activity_champion_detail"
             android:parentActivityName=".GameActivity"
             android:theme="@style/AppTheme.NoActionBar">
