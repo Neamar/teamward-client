@@ -82,6 +82,7 @@
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_marginRight="@dimen/activity_margin"
             android:layout_marginTop="4dp"
+            android:visibility="gone"
             card_view:cardUseCompatPadding="true"
             card_view:contentPadding="16dp">
 

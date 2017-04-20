@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_marginTop="@dimen/activity_margin"
     android:layout_marginBottom="@dimen/activity_margin"
-    android:layout_marginLeft="@dimen/activity_margin"
-    android:layout_marginStart="@dimen/activity_margin"
+    android:layout_marginLeft="8dp"
+    android:layout_marginStart="8dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/spell"
+        android:id="@+id/abilityImage"
         android:layout_width="@dimen/ability_size"
         android:layout_height="match_parent"
         android:src="@drawable/default_spell" />
@@ -32,7 +32,7 @@
 
         <TextView
             android:id="@+id/abilityDescription"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

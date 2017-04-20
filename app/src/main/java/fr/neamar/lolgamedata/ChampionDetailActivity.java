@@ -24,6 +24,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -104,10 +105,9 @@ public class ChampionDetailActivity extends SnackBarActivity {
         } else {
             championMasteryImage.setImageResource(CHAMPION_MASTERIES_RESOURCES[player.champion.mastery]);
             championMasteryText.setText(String.format(getString(R.string.champion_mastery_lvl), player.champion.mastery));
-            if(player.champion.mastery >=5) {
+            if (player.champion.mastery >= 5) {
                 championPointsText.setText(String.format(getString(R.string.champion_points), NumberFormat.getInstance().format(player.champion.points)));
-            }
-            else {
+            } else {
                 championPointsText.setVisibility(View.GONE);
             }
             masteryHolder.setVisibility(View.VISIBLE);
@@ -144,10 +144,9 @@ public class ChampionDetailActivity extends SnackBarActivity {
             }
         }
 
-        if(playerTeam == null || player.champion.role.equals(Champion.UNKNOWN_ROLE) || oppositePlayer == null) {
+        if (playerTeam == null || player.champion.role.equals(Champion.UNKNOWN_ROLE) || oppositePlayer == null) {
             matchupHolder.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             ImageLoader.getInstance().displayImage(player.champion.imageUrl, ownChampion);
             ImageLoader.getInstance().displayImage(oppositePlayer.champion.imageUrl, enemyChampion);
 
@@ -170,6 +169,9 @@ public class ChampionDetailActivity extends SnackBarActivity {
         downloadPerformance();
 
         // CHAMPION INFORMATION
+        TextView abilityTitle = (TextView) findViewById(R.id.abilityTitle);
+        abilityTitle.setText(String.format(getString(R.string.champion_ability), player.champion.name));
+        downloadChampionDetails(player.champion);
     }
 
     @Override
@@ -255,7 +257,6 @@ public class ChampionDetailActivity extends SnackBarActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
     }
 
     private void displayPerformance(ArrayList<Match> matches) {
@@ -269,4 +270,59 @@ public class ChampionDetailActivity extends SnackBarActivity {
         }
     }
 
+    private void downloadChampionDetails(final Champion champion) {
+        // Instantiate the RequestQueue.
+        final RequestQueue queue = Volley.newRequestQueue(this);
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/champion/" + Integer.toString(champion.id) + "&locale=" + Locale.getDefault().toString(), null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        displayChampionDetails(response);
+
+                        Log.i(TAG, "Displaying champion details for " + champion.name);
+                        queue.stop();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, error.toString());
+                queue.stop();
+            }
+        });
+
+        jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
+                30000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(jsonRequest);
+    }
+
+    private void displayChampionDetails(JSONObject champion) {
+        try {
+            displayChampionAbility(getString(R.string.ability_passive), champion.getJSONObject("passive"), findViewById(R.id.abilityP));
+            displayChampionAbility(getString(R.string.ability_q), champion.getJSONArray("spells").getJSONObject(0), findViewById(R.id.abilityQ));
+            displayChampionAbility(getString(R.string.ability_w), champion.getJSONArray("spells").getJSONObject(1), findViewById(R.id.abilityW));
+            displayChampionAbility(getString(R.string.ability_e), champion.getJSONArray("spells").getJSONObject(2), findViewById(R.id.abilityE));
+            displayChampionAbility(getString(R.string.ability_r), champion.getJSONArray("spells").getJSONObject(3), findViewById(R.id.abilityR));
+
+            findViewById(R.id.championAbilityDetails).setVisibility(View.VISIBLE);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displayChampionAbility(String name, JSONObject ability, View holder) throws JSONException {
+        ((TextView) holder.findViewById(R.id.abilityName)).setText(String.format(getString(R.string.ability_name), name, ability.getString("name")));
+        ((TextView) holder.findViewById(R.id.abilityDescription)).setText(ability.getString("description"));
+
+        if(ability.has("cooldowns")) {
+            ((TextView) holder.findViewById(R.id.abilityCooldown)).setText(String.format(getString(R.string.ability_cooldowns), ability.getString("cooldowns")));
+        }
+        else {
+            holder.findViewById(R.id.abilityCooldown).setVisibility(View.GONE);
+        }
+        ImageLoader.getInstance().displayImage(ability.getString("image"), (ImageView) holder.findViewById(R.id.abilityImage));
+    }
 }

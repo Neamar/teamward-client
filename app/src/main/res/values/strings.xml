@@ -179,5 +179,11 @@
     <string name="refresh">Refresh</string>
     <string name="champion_ability">%s abilities</string>
     <string name="ability_name">%1$s — %2$s</string>
+    <string name="ability_passive">Passive</string>
+    <string name="ability_q">Q</string>
+    <string name="ability_w">W</string>
+    <string name="ability_e">E</string>
+    <string name="ability_r">R</string>
+    <string name="ability_cooldowns">%ss</string>
 
 </resources>
