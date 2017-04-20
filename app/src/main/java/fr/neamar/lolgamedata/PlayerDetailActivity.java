@@ -324,7 +324,7 @@ public class ChampionDetailActivity extends SnackBarActivity {
         ((TextView) holder.findViewById(R.id.abilityName)).setText(String.format(getString(R.string.ability_name), name, ability.getString("name")));
         ((TextView) holder.findViewById(R.id.abilityDescription)).setText(Html.fromHtml(ability.getString("description")));
 
-        if(ability.has("cooldowns")) {
+        if(ability.has("cooldowns") && !ability.getString("cooldowns").equals("0")) {
             ((TextView) holder.findViewById(R.id.abilityCooldown)).setText(String.format(getString(R.string.ability_cooldowns), ability.getString("cooldowns")));
         }
         else {
