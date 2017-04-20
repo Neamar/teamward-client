@@ -136,7 +136,7 @@
     <string name="good_counters">Good counters that you play</string>
     <string name="bad_counters">Bad counters that you play</string>
     <string name="no_counters">Not enough data on %s against the champions you\'re playing :(</string>
-    <string name="title_activity_champion_detail">Game details</string>
+    <string name="title_activity_player_detail">Game details</string>
     <string name="pref_title_new_game_notifications">New game notifications</string>
     <string name="title_activity_counter_counters">Counters details</string>
     <string name="default_tab">Default tab</string>
@@ -177,7 +177,7 @@
     <string name="custom">Custom game</string>
     <string name="champion_points_k" translatable="false">%1$s00k+</string>
     <string name="refresh">Refresh</string>
-    <string name="champion_ability">%s abilities</string>
+    <string name="abilities">Abilities</string>
     <string name="ability_name">%1$s — %2$s</string>
     <string name="ability_passive">Passive</string>
     <string name="ability_q">Q</string>
@@ -185,5 +185,8 @@
     <string name="ability_e">E</string>
     <string name="ability_r">R</string>
     <string name="ability_cooldowns">%ss</string>
+    <string name="champion_details">Champion details</string>
+    <string name="title_activity_champion">Champion details</string>
+    <string name="champion_details_short">Details</string>
 
 </resources>

@@ -107,7 +107,16 @@
         </activity>
         <activity
             android:name=".CounterCountersActivity"
-            android:label="@string/title_activity_counter_counters"
+            android:label="@string/title_activity_counter"
+            android:parentActivityName=".GameActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fr.neamar.lolgamedata.GameActivity" />
+        </activity>
+        <activity
+            android:name=".ChampionActivity"
+            android:label="@string/title_activity_champion"
             android:parentActivityName=".CounterChampionsActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -116,7 +125,7 @@
         </activity>
         <activity
             android:name=".PlayerDetailActivity"
-            android:label="@string/title_activity_champion_detail"
+            android:label="@string/title_activity_player_detail"
             android:parentActivityName=".GameActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

@@ -5,11 +5,10 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/abilityTitle"
         style="?android:attr/listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/champion_ability" />
+        android:text="@string/abilities" />
 
     <include
         android:id="@+id/abilityP"
@@ -50,26 +49,4 @@
     <include
         android:id="@+id/abilityR"
         layout="@layout/item_ability" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_margin"
-        android:text="@string/tips"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-    <TextView
-        android:id="@+id/championTips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="8dp"
-        android:text="Tip 1\nTip 2"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
 </LinearLayout>

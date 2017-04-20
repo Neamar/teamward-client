@@ -3,12 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="fr.neamar.lolgamedata.PlayerDetailActivity">
     <item
-        android:id="@+id/action_champion_details"
-        android:title="@string/champion_details"
+        android:id="@+id/action_gg"
+        android:title="@string/gg"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
 </menu>

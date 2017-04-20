@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".CounterChampionsActivity">
     <item
-        android:id="@+id/action_gg"
-        android:title="@string/gg"
+        android:id="@+id/action_champion_details"
+        android:title="@string/champion_details_short"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"

@@ -120,7 +120,7 @@
     <string name="good_counters">Vos bons counters</string>
     <string name="bad_counters">Vos champions plus faibles</string>
     <string name="no_counters">Pas d\'information pour les matchups %s / vos champions :(</string>
-    <string name="title_activity_champion_detail">Informations de jeu</string>
+    <string name="title_activity_player_detail">Informations de jeu</string>
     <string name="pref_title_new_game_notifications">Notifier en début de partie</string>
     <string name="title_activity_counter_counters">Détails de counters</string>
     <string name="default_tab">Onglet par défaut</string>
@@ -164,6 +164,9 @@
     <string name="ability_passive">Passif</string>
     <string name="ability_name">%1$s — %2$s</string>
     <string name="ability_cooldowns">%ss</string>
-    <string name="champion_ability">Sorts de %s</string>
+    <string name="abilities">Sorts de %s</string>
     <string name="refresh">Rafraîchir</string>
+    <string name="champion_details_short">Détails</string>
+    <string name="title_activity_champion">Détails du champion</string>
+    <string name="champion_details">Infos champion</string>
 </resources>
