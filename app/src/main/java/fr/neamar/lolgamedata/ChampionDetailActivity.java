@@ -168,6 +168,8 @@ public class ChampionDetailActivity extends SnackBarActivity {
         TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
         recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
         downloadPerformance();
+
+        // CHAMPION INFORMATION
     }
 
     @Override

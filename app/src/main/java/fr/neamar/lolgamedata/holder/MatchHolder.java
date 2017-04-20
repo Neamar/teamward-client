@@ -56,7 +56,7 @@ public class MatchHolder extends RecyclerView.ViewHolder implements View.OnClick
         kdaText.setText(Html.fromHtml(String.format(kdaTemplate, match.k, match.d, match.a)));
 
         if (match.ward == null) {
-            wardImage.setImageResource(R.drawable.item_emtpy);
+            wardImage.setImageResource(R.drawable.item_empty);
         } else {
             ImageLoader.getInstance().displayImage(match.ward, wardImage);
         }
@@ -65,7 +65,7 @@ public class MatchHolder extends RecyclerView.ViewHolder implements View.OnClick
         }
 
         for (int i = match.items.size(); i < itemImages.size(); i++) {
-            itemImages.get(i).setImageResource(R.drawable.item_emtpy);
+            itemImages.get(i).setImageResource(R.drawable.item_empty);
         }
 
         winOrLossView.setBackgroundColor(winOrLossView.getContext().getResources().getColor(match.victory ? R.color.colorGoodMatchup : R.color.colorBadMatchup));

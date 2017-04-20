@@ -29,7 +29,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@id/winOrLossBanner"
         android:layout_toRightOf="@id/winOrLossBanner"
-        app:srcCompat="@drawable/item_emtpy" />
+        app:srcCompat="@drawable/item_empty" />
 
     <ImageView
         android:id="@+id/item2"
@@ -40,7 +40,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item1"
         android:layout_toRightOf="@+id/item1"
-        app:srcCompat="@drawable/item_emtpy" />
+        app:srcCompat="@drawable/item_empty" />
 
     <ImageView
         android:id="@+id/item3"
@@ -51,7 +51,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item2"
         android:layout_toRightOf="@+id/item2"
-        app:srcCompat="@drawable/item_emtpy" />
+        app:srcCompat="@drawable/item_empty" />
 
     <ImageView
         android:id="@+id/item4"
@@ -62,7 +62,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@id/winOrLossBanner"
         android:layout_toRightOf="@id/winOrLossBanner"
-        app:srcCompat="@drawable/item_emtpy" />
+        app:srcCompat="@drawable/item_empty" />
 
     <ImageView
         android:id="@+id/item5"
@@ -73,7 +73,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item4"
         android:layout_toRightOf="@+id/item4"
-        app:srcCompat="@drawable/item_emtpy" />
+        app:srcCompat="@drawable/item_empty" />
 
     <ImageView
         android:id="@+id/item6"
@@ -84,7 +84,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item5"
         android:layout_toRightOf="@+id/item5"
-        app:srcCompat="@drawable/item_emtpy" />
+        app:srcCompat="@drawable/item_empty" />
 
     <ImageView
         android:id="@+id/itemWard"
@@ -97,7 +97,7 @@
         android:layout_marginStart="@dimen/item_margin"
         android:layout_toEndOf="@+id/item3"
         android:layout_toRightOf="@+id/item3"
-        app:srcCompat="@drawable/item_emtpy" />
+        app:srcCompat="@drawable/item_empty" />
 
     <LinearLayout
         android:layout_width="match_parent"
