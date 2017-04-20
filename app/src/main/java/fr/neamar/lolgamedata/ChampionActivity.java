@@ -48,9 +48,8 @@ public class ChampionActivity extends SnackBarActivity {
         setTitle(championName);
 
         // CONTENT
-        findViewById(R.id.abilityWrapper).setVisibility(View.GONE);
-        TextView abilityTitle = (TextView) findViewById(R.id.abilityTitle);
-        abilityTitle.setText(String.format(getString(R.string.champion_ability), championName));
+        findViewById(R.id.championAbilityDetailsWrapper).setVisibility(View.GONE);
+        findViewById(R.id.championTipsWrapper).setVisibility(View.GONE);
         downloadChampionDetails(getIntent().getIntExtra("championId", 0));
     }
 
@@ -63,6 +62,8 @@ public class ChampionActivity extends SnackBarActivity {
         } else if (id == R.id.action_gg && !ggUrl.isEmpty()) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ggUrl));
             startActivity(browserIntent);
+
+            Tracker.trackClickOnGG(this, championName);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -107,7 +108,8 @@ public class ChampionActivity extends SnackBarActivity {
     }
 
     private void displayChampionDetails(JSONObject champion) {
-        findViewById(R.id.abilityWrapper).setVisibility(View.VISIBLE);
+        findViewById(R.id.championAbilityDetailsWrapper).setVisibility(View.VISIBLE);
+        findViewById(R.id.championTipsWrapper).setVisibility(View.VISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.GONE);
 
         final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
@@ -129,7 +131,6 @@ public class ChampionActivity extends SnackBarActivity {
             }
             ((TextView) findViewById(R.id.championTips)).setText(Html.fromHtml(tips));
 
-            findViewById(R.id.championAbilityDetails).setVisibility(View.VISIBLE);
         } catch (JSONException e) {
             e.printStackTrace();
         }

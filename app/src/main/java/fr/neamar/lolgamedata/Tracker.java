@@ -166,16 +166,12 @@ public class Tracker {
         getMixpanel(activity).track("View champion counters", j);
     }
 
-    static void trackClickOnGG(Activity activity, Counter counter) {
+    static void trackClickOnGG(Activity activity, String championName) {
         JSONObject j = new JSONObject();
 
         try {
-            j.put("role", counter.role);
-            j.put("champion", counter.champion.name);
-            j.put("counters", counter.counters.size());
-            j.put("source", "counters");
-            j.put("goodCountersThreshold", counter.goodCountersThreshold);
-
+            j.put("champion", championName);
+            j.put("source", "details");
         } catch (JSONException e) {
             e.printStackTrace();
         }

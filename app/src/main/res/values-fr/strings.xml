@@ -164,6 +164,6 @@
     <string name="ability_passive">Passif</string>
     <string name="ability_name">%1$s — %2$s</string>
     <string name="ability_cooldowns">%ss</string>
-    <string name="champion_ability">Sorts de %s</string>
+    <string name="abilities">Sorts de %s</string>
     <string name="refresh">Rafraîchir</string>
 </resources>
