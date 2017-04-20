@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 public class ChampionCounter implements Serializable {
     public String name = null;
+    public int id;
     public String image;
     public int mastery = -1;
     public int winRate = -1;
@@ -15,6 +16,7 @@ public class ChampionCounter implements Serializable {
     public ChampionCounter(JSONObject champion, boolean isCounter) throws JSONException {
         image = champion.getString("image");
         name = champion.getString("name");
+        id = champion.getInt("id");
         ggURL = champion.getString("gg");
         if (isCounter) {
             mastery = champion.getInt("mastery");

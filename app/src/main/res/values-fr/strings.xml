@@ -120,7 +120,7 @@
     <string name="good_counters">Vos bons counters</string>
     <string name="bad_counters">Vos champions plus faibles</string>
     <string name="no_counters">Pas d\'information pour les matchups %s / vos champions :(</string>
-    <string name="title_activity_champion_detail">Informations de jeu</string>
+    <string name="title_activity_player_detail">Informations de jeu</string>
     <string name="pref_title_new_game_notifications">Notifier en début de partie</string>
     <string name="title_activity_counter_counters">Détails de counters</string>
     <string name="default_tab">Onglet par défaut</string>

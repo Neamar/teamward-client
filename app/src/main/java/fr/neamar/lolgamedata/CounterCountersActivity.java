@@ -1,7 +1,6 @@
 package fr.neamar.lolgamedata;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -60,11 +59,12 @@ public class CounterCountersActivity extends SnackBarActivity {
         if (id == android.R.id.home) {
             finish();
             return true;
-        } else if (id == R.id.action_gg) {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(counter.champion.ggURL));
-            startActivity(browserIntent);
+        } else if (id == R.id.action_champion_details) {
+            Intent detailIntent = new Intent(this, ChampionActivity.class);
+            detailIntent.putExtra("championName", counter.champion.name);
+            detailIntent.putExtra("championId", counter.champion.id);
 
-            Tracker.trackClickOnGG(this, counter);
+            startActivity(detailIntent);
 
             return true;
         }

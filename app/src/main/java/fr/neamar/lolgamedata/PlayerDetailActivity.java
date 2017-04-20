@@ -7,7 +7,6 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +24,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -50,7 +48,6 @@ import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
 public class PlayerDetailActivity extends SnackBarActivity {
     private static final String TAG = "PlayerDetailActivity";
     private Player player;
-    private Game game;
 
     private static final Map<String, Integer> QUEUE_NAMES;
 
@@ -85,7 +82,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        game = (Game) getIntent().getSerializableExtra("game");
+        Game game = (Game) getIntent().getSerializableExtra("game");
         player = (Player) getIntent().getSerializableExtra("player");
 
         // HERO
@@ -168,11 +165,6 @@ public class PlayerDetailActivity extends SnackBarActivity {
         TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
         recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
         downloadPerformance();
-
-        // CHAMPION INFORMATION
-        TextView abilityTitle = (TextView) findViewById(R.id.abilityTitle);
-        abilityTitle.setText(String.format(getString(R.string.champion_ability), player.champion.name));
-        downloadChampionDetails(player.champion);
     }
 
     @Override
@@ -269,67 +261,5 @@ public class PlayerDetailActivity extends SnackBarActivity {
         if (matches.size() == 0) {
             findViewById(R.id.matchHistoryHolder).setVisibility(View.GONE);
         }
-    }
-
-    private void downloadChampionDetails(final Champion champion) {
-        // Instantiate the RequestQueue.
-        final RequestQueue queue = Volley.newRequestQueue(this);
-
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/champion/" + Integer.toString(champion.id) + "?locale=" + Locale.getDefault().toString(), null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        displayChampionDetails(response);
-
-                        Log.i(TAG, "Displaying champion details for " + champion.name);
-                        queue.stop();
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, error.toString());
-                queue.stop();
-            }
-        });
-
-        jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                30000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        queue.add(jsonRequest);
-    }
-
-    private void displayChampionDetails(JSONObject champion) {
-        try {
-            displayChampionAbility(getString(R.string.ability_passive), champion.getJSONObject("passive"), findViewById(R.id.abilityP));
-            displayChampionAbility(getString(R.string.ability_q), champion.getJSONArray("spells").getJSONObject(0), findViewById(R.id.abilityQ));
-            displayChampionAbility(getString(R.string.ability_w), champion.getJSONArray("spells").getJSONObject(1), findViewById(R.id.abilityW));
-            displayChampionAbility(getString(R.string.ability_e), champion.getJSONArray("spells").getJSONObject(2), findViewById(R.id.abilityE));
-            displayChampionAbility(getString(R.string.ability_r), champion.getJSONArray("spells").getJSONObject(3), findViewById(R.id.abilityR));
-
-            String tips = "";
-            for(int i = 0; i < champion.getJSONArray("tips").length(); i++) {
-                tips += "<li>&nbsp;" + champion.getJSONArray("tips").getString(i) + "\n";
-            }
-            ((TextView) findViewById(R.id.championTips)).setText(Html.fromHtml(tips));
-
-            findViewById(R.id.championAbilityDetails).setVisibility(View.VISIBLE);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void displayChampionAbility(String name, JSONObject ability, View holder) throws JSONException {
-        ((TextView) holder.findViewById(R.id.abilityName)).setText(String.format(getString(R.string.ability_name), name, ability.getString("name")));
-        ((TextView) holder.findViewById(R.id.abilityDescription)).setText(Html.fromHtml(ability.getString("description")));
-
-        if(ability.has("cooldowns") && !ability.getString("cooldowns").equals("0")) {
-            ((TextView) holder.findViewById(R.id.abilityCooldown)).setText(String.format(getString(R.string.ability_cooldowns), ability.getString("cooldowns")));
-        }
-        else {
-            holder.findViewById(R.id.abilityCooldown).setVisibility(View.GONE);
-        }
-        ImageLoader.getInstance().displayImage(ability.getString("image"), (ImageView) holder.findViewById(R.id.abilityImage));
     }
 }
