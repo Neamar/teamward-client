@@ -77,7 +77,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_champion_detail);
+        setContentView(R.layout.activity_player_detail);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -196,7 +196,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_champion_detail, menu);
+        getMenuInflater().inflate(R.menu.menu_player_detail, menu);
 
         return true;
     }

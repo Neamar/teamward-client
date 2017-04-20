@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="fr.neamar.lolgamedata.PlayerDetailActivity"
-    tools:showIn="@layout/activity_champion_detail">
+    tools:showIn="@layout/activity_player_detail">
 
     <LinearLayout
         android:layout_width="match_parent"
