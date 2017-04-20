@@ -187,5 +187,6 @@
     <string name="ability_cooldowns">%ss</string>
     <string name="champion_details">Champion details</string>
     <string name="title_activity_champion">Champion details</string>
+    <string name="champion_details_short">Details</string>
 
 </resources>

@@ -156,7 +156,8 @@ public class Tracker {
         JSONObject j = new JSONObject();
         try {
             j.put("role", counter.role);
-            j.put("champion", counter.champion.name);
+            j.put("champion_name", counter.champion.name);
+            j.put("champion", counter.champion.id);
             j.put("counters", counter.counters.size());
             j.put("goodCountersThreshold", counter.goodCountersThreshold);
 
@@ -166,32 +167,16 @@ public class Tracker {
         getMixpanel(activity).track("View champion counters", j);
     }
 
-    static void trackClickOnGG(Activity activity, String championName) {
+    static void trackClickOnGG(Activity activity, String championName, int championId) {
         JSONObject j = new JSONObject();
 
         try {
-            j.put("champion", championName);
+            j.put("champion_name", championName);
+            j.put("champion", championId);
             j.put("source", "details");
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        getMixpanel(activity).track("Click on GG", j);
-    }
-
-    static void trackClickOnGG(Activity activity, Player player) {
-        JSONObject j = new JSONObject();
-        try {
-            j.put("name", player.summoner.name);
-            j.put("region", player.region.toUpperCase());
-            j.put("champion", player.champion.name);
-            j.put("tier", player.rank.tier);
-            j.put("division", player.rank.division);
-            j.put("source", "detail view");
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
         getMixpanel(activity).track("Click on GG", j);
     }
 
@@ -200,7 +185,8 @@ public class Tracker {
         try {
             j.put("region", player.region.toUpperCase());
             j.put("name", player.summoner.name);
-            j.put("champion", player.champion.name);
+            j.put("champion_name", player.champion.name);
+            j.put("champion", player.champion.id);
             j.put("tier", player.rank.tier);
             j.put("division", player.rank.division);
         } catch (JSONException e) {
@@ -208,6 +194,19 @@ public class Tracker {
         }
 
         getMixpanel(activity).track("Details viewed", j);
+    }
+
+    static void trackChampionViewed(Activity activity, String championName, int championId, String from) {
+        JSONObject j = new JSONObject();
+        try {
+            j.put("champion_name", championName);
+            j.put("champion", championId);
+            j.put("from", from);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        getMixpanel(activity).track("Champion viewed", j);
     }
 
     static void trackErrorViewingDetails(Activity activity, String error) {

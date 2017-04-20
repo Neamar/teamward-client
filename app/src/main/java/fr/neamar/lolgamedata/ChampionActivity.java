@@ -29,6 +29,7 @@ import java.util.Locale;
 public class ChampionActivity extends SnackBarActivity {
     private static final String TAG = "PlayerDetailActivity";
     private String championName;
+    private int championId;
     private String ggUrl = "";
 
     @Override
@@ -43,6 +44,7 @@ public class ChampionActivity extends SnackBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         championName = getIntent().getStringExtra("championName");
+        championId = getIntent().getIntExtra("championId", 0);
 
         // HERO
         setTitle(championName);
@@ -50,7 +52,9 @@ public class ChampionActivity extends SnackBarActivity {
         // CONTENT
         findViewById(R.id.championAbilityDetailsWrapper).setVisibility(View.GONE);
         findViewById(R.id.championTipsWrapper).setVisibility(View.GONE);
-        downloadChampionDetails(getIntent().getIntExtra("championId", 0));
+        downloadChampionDetails(championId);
+
+        Tracker.trackChampionViewed(this, championName, championId, getIntent().getStringExtra("from"));
     }
 
     @Override
@@ -63,7 +67,7 @@ public class ChampionActivity extends SnackBarActivity {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ggUrl));
             startActivity(browserIntent);
 
-            Tracker.trackClickOnGG(this, championName);
+            Tracker.trackClickOnGG(this, championName, championId);
         }
         return super.onOptionsItemSelected(item);
     }

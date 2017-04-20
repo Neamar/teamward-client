@@ -166,4 +166,7 @@
     <string name="ability_cooldowns">%ss</string>
     <string name="abilities">Sorts de %s</string>
     <string name="refresh">Rafraîchir</string>
+    <string name="champion_details_short">Détails</string>
+    <string name="title_activity_champion">Détails du champion</string>
+    <string name="champion_details">Infos champion</string>
 </resources>

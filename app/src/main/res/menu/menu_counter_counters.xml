@@ -5,7 +5,7 @@
     tools:context=".CounterChampionsActivity">
     <item
         android:id="@+id/action_champion_details"
-        android:title="@string/champion_details"
+        android:title="@string/champion_details_short"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"

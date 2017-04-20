@@ -63,6 +63,7 @@ public class CounterCountersActivity extends SnackBarActivity {
             Intent detailIntent = new Intent(this, ChampionActivity.class);
             detailIntent.putExtra("championName", counter.champion.name);
             detailIntent.putExtra("championId", counter.champion.id);
+            detailIntent.putExtra("from", "counter");
 
             startActivity(detailIntent);
 

@@ -86,8 +86,6 @@ public class PlayerDetailActivity extends SnackBarActivity {
 
         // HERO
         setTitle(player.summoner.name);
-        final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
-        ImageLoader.getInstance().displayImage(player.champion.splashUrl, splashArtImage);
 
         // CHAMPION MASTERY
         View masteryHolder = findViewById(R.id.masteryHolder);
@@ -176,6 +174,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
             Intent detailIntent = new Intent(this, ChampionActivity.class);
             detailIntent.putExtra("championName", player.champion.name);
             detailIntent.putExtra("championId", player.champion.id);
+            detailIntent.putExtra("from", "player_details");
 
             startActivity(detailIntent);
 
