@@ -1,7 +1,6 @@
 package fr.neamar.lolgamedata;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -173,11 +172,13 @@ public class PlayerDetailActivity extends SnackBarActivity {
         if (id == android.R.id.home) {
             finish();
             return true;
-        } else if (id == R.id.action_gg) {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(player.champion.ggUrl));
-            startActivity(browserIntent);
+        } else if (id == R.id.action_champion_details) {
+            Intent detailIntent = new Intent(this, ChampionActivity.class);
+            detailIntent.putExtra("championName", player.champion.name);
+            detailIntent.putExtra("championId", player.champion.id);
 
-            Tracker.trackClickOnGG(this, player);
+            startActivity(detailIntent);
+
             return true;
         }
 
