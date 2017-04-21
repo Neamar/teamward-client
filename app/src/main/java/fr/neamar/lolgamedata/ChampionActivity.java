@@ -67,7 +67,7 @@ public class ChampionActivity extends SnackBarActivity {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ggUrl));
             startActivity(browserIntent);
 
-            Tracker.trackClickOnGG(this, championName, championId);
+            Tracker.trackClickOnGG(this, championName, championId, "champion_details");
         }
         return super.onOptionsItemSelected(item);
     }

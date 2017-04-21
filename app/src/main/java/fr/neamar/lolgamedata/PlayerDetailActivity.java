@@ -1,6 +1,7 @@
 package fr.neamar.lolgamedata;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -41,7 +42,6 @@ import fr.neamar.lolgamedata.pojo.Match;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.pojo.Team;
 
-import static fr.neamar.lolgamedata.R.id.teamwardUser;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.CHAMPION_MASTERIES_RESOURCES;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
 
@@ -124,13 +124,28 @@ public class PlayerDetailActivity extends SnackBarActivity {
             rankingQueue.setText(getQueueName(player.rank.queue));
         }
 
+        rankingHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = null;
+                try {
+                    browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + player.region + ".op.gg/summoner/userName=" + URLEncoder.encode(player.summoner.name, "UTF-8")));
+                    startActivity(browserIntent);
+
+                    Tracker.trackClickOnOpGG(PlayerDetailActivity.this, player);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         // MATCHUP INFORMATION
         View matchupHolder = findViewById(R.id.matchupHolder);
         ImageView ownChampion = (ImageView) findViewById(R.id.ownChampion);
         ImageView enemyChampion = (ImageView) findViewById(R.id.enemyChampion);
         TextView matchupTextView = (TextView) findViewById(R.id.matchupStats);
 
-        Team playerTeam = game.getTeamForPlayer(player);
+        final Team playerTeam = game.getTeamForPlayer(player);
         Team otherTeam = game.teams.get(0) == playerTeam ? game.teams.get(1) : game.teams.get(0);
         Player oppositePlayer = null;
         for (Player tplayer : otherTeam.players) {
@@ -159,13 +174,23 @@ public class PlayerDetailActivity extends SnackBarActivity {
             }
         }
 
+        matchupHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(player.champion.ggUrl));
+                startActivity(browserIntent);
+
+                Tracker.trackClickOnGG(PlayerDetailActivity.this, player.champion.name, player.champion.id, "player_details");
+            }
+        });
+
         // RECENT MATCHES
         TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
         recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
         downloadPerformance();
 
         // TEAMARD USER
-        if(player.teamwardUser) {
+        if (player.teamwardUser) {
             findViewById(R.id.teamwardUser).setVisibility(View.VISIBLE);
         }
     }

@@ -167,17 +167,33 @@ public class Tracker {
         getMixpanel(activity).track("View champion counters", j);
     }
 
-    static void trackClickOnGG(Activity activity, String championName, int championId) {
+    static void trackClickOnGG(Activity activity, String championName, int championId, String source) {
         JSONObject j = new JSONObject();
 
         try {
             j.put("champion_name", championName);
             j.put("champion", championId);
-            j.put("source", "details");
+            j.put("source", source);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         getMixpanel(activity).track("Click on GG", j);
+    }
+
+    static void trackClickOnOpGG(Activity activity, Player player) {
+        JSONObject j = new JSONObject();
+        try {
+            j.put("region", player.region.toUpperCase());
+            j.put("name", player.summoner.name);
+            j.put("champion_name", player.champion.name);
+            j.put("champion", player.champion.id);
+            j.put("tier", player.rank.tier);
+            j.put("division", player.rank.division);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        getMixpanel(activity).track("Click on op.gg", j);
     }
 
     static void trackDetailsViewed(Activity activity, Player player) {
