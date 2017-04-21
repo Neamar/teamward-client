@@ -41,6 +41,7 @@ import fr.neamar.lolgamedata.pojo.Match;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.pojo.Team;
 
+import static fr.neamar.lolgamedata.R.id.teamwardUser;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.CHAMPION_MASTERIES_RESOURCES;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
 
@@ -162,6 +163,11 @@ public class PlayerDetailActivity extends SnackBarActivity {
         TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
         recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
         downloadPerformance();
+
+        // TEAMARD USER
+        if(player.teamwardUser) {
+            findViewById(R.id.teamwardUser).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

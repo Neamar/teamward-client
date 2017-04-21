@@ -13,6 +13,8 @@ public class Player implements Serializable {
 
     public Rank rank;
 
+    public Boolean teamwardUser;
+
     // Can be -1 on error
     private int knownChampionsCount;
 
@@ -30,6 +32,8 @@ public class Player implements Serializable {
         this.spellF = new Spell(player.getJSONObject("spell_f"));
 
         this.knownChampionsCount = player.getInt("known_champions");
+
+        this.teamwardUser = player.getBoolean("teamward_user");
 
         this.rank = new Rank(player.getJSONObject("current_season_rank"), player.getString("last_season_rank"));
 

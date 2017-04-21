@@ -188,5 +188,7 @@
     <string name="champion_details">Champion details</string>
     <string name="title_activity_champion">Champion details</string>
     <string name="champion_details_short">Details</string>
+    <string name="teamward_user">A TeamWard user!</string>
+    <string name="hope_he_wins">I hope he wins this game.</string>
 
 </resources>
