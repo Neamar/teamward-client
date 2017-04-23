@@ -12,19 +12,21 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Game implements Serializable {
-    public long gameId;
-    public int mapId;
-    public Date startTime;
-    public String gameMode;
-    public String gameType;
-    public ArrayList<Team> teams;
+    public final long gameId;
+    public final int mapId;
+    public final Date startTime;
+    public final String gameMode;
+    public final String gameType;
+    public final Account associatedAccount;
+    public final ArrayList<Team> teams;
 
-    public Game(JSONObject game, String region) throws JSONException {
+    public Game(JSONObject game, String region, Account associatedAccount) throws JSONException {
         gameId = game.getLong("game_id");
         mapId = game.getInt("map_id");
         gameMode = game.getString("game_mode");
         gameType = game.getString("game_type");
         startTime = new Date(game.optLong("game_start_time", new Date().getTime()));
+        this.associatedAccount = associatedAccount;
 
         JSONArray teamsJson = game.getJSONArray("teams");
         teams = new ArrayList<>();

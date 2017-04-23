@@ -18,6 +18,7 @@ import fr.neamar.lolgamedata.tips.builder.NoFlashTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.NoSmiteTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.NoobTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.OtpTipBuilder;
+import fr.neamar.lolgamedata.tips.builder.PremadeNotUsingTeamwardTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.PremadeTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.TipBuilder;
 import fr.neamar.lolgamedata.tips.builder.TryHarderTipBuilder;
@@ -37,7 +38,8 @@ public class Tip {
             new HotStreakTipBuilder(),
             new ColdStreakTipBuilder(),
             new HardcoreGamerTipBuilder(),
-            new FilthyCasualTipBuilder()
+            new FilthyCasualTipBuilder(),
+            new PremadeNotUsingTeamwardTipBuilder()
     ));
     public final Game game;
 

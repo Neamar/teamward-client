@@ -272,7 +272,7 @@ public class GameActivity extends SnackBarActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                game = new Game(response, region);
+                                game = new Game(response, region, account);
                                 GameActivity.this.summonerName = summonerName;
                                 displayGame(summonerName, game);
 
