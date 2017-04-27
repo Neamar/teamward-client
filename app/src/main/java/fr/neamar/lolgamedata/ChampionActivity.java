@@ -52,9 +52,9 @@ public class ChampionActivity extends SnackBarActivity {
         // CONTENT
         findViewById(R.id.championAbilityDetailsWrapper).setVisibility(View.GONE);
         findViewById(R.id.championTipsWrapper).setVisibility(View.GONE);
-        downloadChampionDetails(championId);
 
         Tracker.trackChampionViewed(this, championName, championId, getIntent().getStringExtra("from"));
+        downloadChampionDetails(championId);
     }
 
     @Override
@@ -88,7 +88,8 @@ public class ChampionActivity extends SnackBarActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        displayChampionDetails(response);
+                        JSONObject championData = response;
+                        displayChampionDetails(championData);
 
                         Log.i(TAG, "Displaying champion details for " + championName);
                         queue.stop();
@@ -111,7 +112,7 @@ public class ChampionActivity extends SnackBarActivity {
         queue.add(jsonRequest);
     }
 
-    private void displayChampionDetails(JSONObject champion) {
+    private void displayChampionDetails(JSONObject championData) {
         findViewById(R.id.championAbilityDetailsWrapper).setVisibility(View.VISIBLE);
         findViewById(R.id.championTipsWrapper).setVisibility(View.VISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.GONE);
@@ -119,19 +120,19 @@ public class ChampionActivity extends SnackBarActivity {
         final ImageView splashArtImage = (ImageView) findViewById(R.id.splashArt);
 
         try {
-            ggUrl = champion.getString("gg_url");
+            ggUrl = championData.getString("gg_url");
 
-            ImageLoader.getInstance().displayImage(champion.getString("splash_url"), splashArtImage);
+            ImageLoader.getInstance().displayImage(championData.getString("splash_url"), splashArtImage);
 
-            displayChampionAbility(getString(R.string.ability_passive), champion.getJSONObject("passive"), findViewById(R.id.abilityP));
-            displayChampionAbility(getString(R.string.ability_q), champion.getJSONArray("spells").getJSONObject(0), findViewById(R.id.abilityQ));
-            displayChampionAbility(getString(R.string.ability_w), champion.getJSONArray("spells").getJSONObject(1), findViewById(R.id.abilityW));
-            displayChampionAbility(getString(R.string.ability_e), champion.getJSONArray("spells").getJSONObject(2), findViewById(R.id.abilityE));
-            displayChampionAbility(getString(R.string.ability_r), champion.getJSONArray("spells").getJSONObject(3), findViewById(R.id.abilityR));
+            displayChampionAbility(getString(R.string.ability_passive), championData.getJSONObject("passive"), findViewById(R.id.abilityP));
+            displayChampionAbility(getString(R.string.ability_q), championData.getJSONArray("spells").getJSONObject(0), findViewById(R.id.abilityQ));
+            displayChampionAbility(getString(R.string.ability_w), championData.getJSONArray("spells").getJSONObject(1), findViewById(R.id.abilityW));
+            displayChampionAbility(getString(R.string.ability_e), championData.getJSONArray("spells").getJSONObject(2), findViewById(R.id.abilityE));
+            displayChampionAbility(getString(R.string.ability_r), championData.getJSONArray("spells").getJSONObject(3), findViewById(R.id.abilityR));
 
             String tips = "";
-            for (int i = 0; i < champion.getJSONArray("tips").length(); i++) {
-                tips += "<li>&nbsp;" + champion.getJSONArray("tips").getString(i) + "\n";
+            for (int i = 0; i < championData.getJSONArray("tips").length(); i++) {
+                tips += "\t•&nbsp;" + championData.getJSONArray("tips").getString(i) + "<br>\n";
             }
             ((TextView) findViewById(R.id.championTips)).setText(Html.fromHtml(tips));
 
