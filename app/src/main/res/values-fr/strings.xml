@@ -164,9 +164,16 @@
     <string name="ability_passive">Passif</string>
     <string name="ability_name">%1$s — %2$s</string>
     <string name="ability_cooldowns">%ss</string>
-    <string name="abilities">Sorts de %s</string>
+    <string name="abilities">Sorts</string>
     <string name="refresh">Rafraîchir</string>
     <string name="champion_details_short">Détails</string>
     <string name="title_activity_champion">Détails du champion</string>
     <string name="champion_details">Infos champion</string>
+    <string name="final_separator">et</string>
+    <string name="not_using_teamward">Shame! Shame!</string>
+    <string name="s_are_not_using_teamward">%s n\'utilisent pas TeamWard. Ça me donne envie de pleurer :(</string>
+    <string name="s_is_not_using_teamward">%s joue avec vous, mais n\'utilise pas Teamward, ce qui est bien triste.</string>
+    <string name="standard_separator">,</string>
+    <string name="teamward_user">Un utilisateur de TeamWard !</string>
+    <string name="hope_he_wins">Je lui souhaite de gagner.</string>
 </resources>
