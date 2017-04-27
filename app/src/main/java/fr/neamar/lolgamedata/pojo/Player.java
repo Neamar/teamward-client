@@ -38,9 +38,9 @@ public class Player implements Serializable {
         this.rank = new Rank(player.getJSONObject("current_season_rank"), player.getString("last_season_rank"));
 
         JSONObject recentGames = player.getJSONObject("recent_games");
-        this.totalRecentGames = recentGames.getInt("total");
-        this.winRecentGames = recentGames.getInt("win");
-        this.lossRecentGames = recentGames.getInt("loss");
+        this.totalRecentGames = recentGames.optInt("total", 10);
+        this.winRecentGames = recentGames.optInt("win", 5);
+        this.lossRecentGames = recentGames.optInt("loss", 5);
         this.averageTimeBetweenGames = recentGames.getInt("average_time_between_games");
 
         this.region = region;
