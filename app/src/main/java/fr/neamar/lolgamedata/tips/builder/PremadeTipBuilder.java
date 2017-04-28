@@ -11,10 +11,13 @@ import fr.neamar.lolgamedata.tips.Tip;
 public class PremadeTipBuilder extends TipBuilder {
     @Override
     public ArrayList<Tip> getTips(Game game, Context context) {
-        PremadeTip premadeTip = new PremadeTip(game);
 
         ArrayList<Tip> tips = new ArrayList<>();
-        tips.add(premadeTip);
+
+        if (game.teams.get(0).premades.size() != 0) {
+            PremadeTip premadeTip = new PremadeTip(game);
+            tips.add(premadeTip);
+        }
         return tips;
     }
 }

@@ -33,14 +33,16 @@ public class Team implements Serializable {
 
         isPlayerOwnTeam = team.getBoolean("own_team");
 
-        JSONArray premadesJson = team.getJSONArray("premades");
-        for (int i = 0; i < premadesJson.length(); i++) {
-            List<Integer> subPremade = new ArrayList<>();
-            JSONArray subPremadeJson = premadesJson.getJSONArray(i);
-            for (int j = 0; j < subPremadeJson.length(); j++) {
-                subPremade.add(subPremadeJson.getInt(j));
+        if(team.has("premades")) {
+            JSONArray premadesJson = team.getJSONArray("premades");
+            for (int i = 0; i < premadesJson.length(); i++) {
+                List<Integer> subPremade = new ArrayList<>();
+                JSONArray subPremadeJson = premadesJson.getJSONArray(i);
+                for (int j = 0; j < subPremadeJson.length(); j++) {
+                    subPremade.add(subPremadeJson.getInt(j));
+                }
+                premades.add(subPremade);
             }
-            premades.add(subPremade);
         }
     }
 
