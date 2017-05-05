@@ -1,0 +1,200 @@
+<resources>
+    <string name="action_settings">Configurações</string>
+    <string name="title_activity_game">Detalhes do jogo</string>
+    <string name="blue_team">Time azul</string>
+    <string name="red_team">Time vermelho</string>
+    <string name="unknown_team">\? time</string>
+    <string name="summoner_level">nível %s</string>
+    <string name="champion_image">Imagem do campeão</string>
+    <string name="summoner_spell_d">Feitiço de invocador D</string>
+    <string name="summoner_spell_f">Feitiço de invocador F</string>
+    <string name="stub_champion_name">Aatrox</string>
+    <string name="stub_summoner_name">Graphistos</string>
+    <string name="stub_previous_ranking">nível 27</string>
+    <string name="current_ranking_tier">Nível de classificação atual</string>
+    <string name="stub_ranking_division">IV</string>
+    <string name="champion_mastery">Maestria de Campeão</string>
+    <string name="champion_mastery_level">Nível de Maestria de Campeão %d</string>
+    <string name="loading_game_data">Carregando dados de jogo para %s</string>
+    <string name="game_data_title">%2$s (%1$s)</string>
+    <string name="stub_account">Neamar</string>
+    <string name="loading_summoner_data">Carregando informações de invocador para %s</string>
+    <string name="summoners_rift">Summoner\'s Rift</string>
+    <string name="proving_grounds">The proving grounds</string>
+    <string name="twisted_treeline">Twisted Treeline</string>
+    <string name="crystal_scar">The Crystal Scar</string>
+    <string name="howling_abyss">Howling Abyss</string>
+    <string name="butchers_bridge">Butcher\'s Bridge</string>
+    <string name="unknown_map">LoL</string>
+    <string name="home_empty">Adicione sua conta principal de League of Legends para começar.</string>
+    <string name="action_about">Sobre</string>
+    <string name="about_text">https://github.com/Neamar/teamward-client\n\nTeamWard não é endossado por Riot Games e não reflete as opiniões ou pontos de vista de Riot Games ou qualquer pessoa oficialmente envolvida na produção ou gestão League of Legends. League of Legends e Riot Games são marcas comerciais ou marcas registradas da Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="rammus_ok">Rammus</string>
+    <string name="first_main">Principal</string>
+    <string name="second_main">2ⁿᵈ Principal</string>
+    <string name="third_main">3ʳᵈ Principal</string>
+    <string name="summoner_icon">Ícone de invocador</string>
+    <string name="summoner_name">Nome de invocador</string>
+    <string name="add_account">Adicionar conta</string>
+
+    <string-array name="regions">
+        <item>EUW [EU Ocidental]</item>
+        <item>BR [Brasil]</item>
+        <item>EUNE [EU Nórdica e Leste]</item>
+        <item>KR [República da Korea]</item>
+        <item>LAN [América Latina Norte]</item>
+        <item>LAS [América Latina Sul]</item>
+        <item>NA [América do Norte]</item>
+        <item>OCE [Oceania]</item>
+        <item>RU [Russia]</item>
+        <item>TR [Turquia]</item>
+        <item>JP [Japão]</item>
+    </string-array>
+    <string name="title_activity_add_account">Adicionar nova conta</string>
+    <string name="s_is_not_in_game_right_now">%s não está em jogo agora!</string>
+
+    <string name="account_removed">Conta removida.</string>
+    <string name="reload">Recarregar</string>
+    <string name="stale_data">Dados obsoletos?</string>
+    <string name="data_only_on_loading_screen">TeamWard apenas consegue dados uma vez que você está ou já passou pela tela de carregamento do jogo.</string>
+    <string name="in_lobby_wait_then_refresh">Se ainda está na seleção de campeões, espere e depois recarregue.</string>
+    <string name="title_activity_settings">Configurações</string>
+
+    <string name="pref_header_general">Dados do jogo</string>
+
+    <string-array name="pref_game_data_tabs_titles">
+        <item>Meu time</item>
+        <item>Time inimigo</item>
+        <item>Dicas</item>
+    </string-array>
+    <string-array name="pref_game_data_tabs_values" translatable="false">
+        <item>Meu</item>
+        <item>Inimigo</item>
+        <item>Dicas</item>
+    </string-array>
+
+    <string name="pref_header_counters">Counters</string>
+
+    <string name="pref_counter_champion_mastery_name">Maestria de campeão exigida</string>
+    <string-array name="pref_counter_champion_mastery_titles">
+        <item>Jogado com o campeão pelo menos uma vez</item>
+        <item>Maestria de campeão 1+</item>
+        <item>Maestria de campeão 2+</item>
+        <item>Maestria de campeão 3+</item>
+        <item>Maestria de campeão 4+</item>
+        <item>Maestria de campeão 5+</item>
+        <item>Maestria de campeão 6+</item>
+        <item>Maestria de campeão 7 apenas</item>
+    </string-array>
+    <string-array name="pref_counter_champion_mastery_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string name="pref_header_notifications">Notificações</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silencioso</string>
+
+    <string name="pref_title_vibrate">Vibração</string>
+    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s está em uma sequência de vitórias! (%2$d vitórias nos %3$d últimos jogos)</string>
+    <string name="hot_streak">Sequência de vitórias!</string>
+    <string name="may_be_inaccurate">(pode ser impreciso)</string>
+    <string name="premade_information">Informação de premade</string>
+    <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s está em uma baixa frequência de vitórias! (%2$d derrotas nos %3$d últimos jogos)</string>
+    <string name="cold_streak">Baixa sequência de vitórias!</string>
+    <string name="hardcore_gamer">Gamer hardcore!</string>
+    <string name="hardcore_gamer_description">%s jogou mais que 10 vezes nas últimas 24horas.</string>
+    <string name="filthy_casual_description">%s joga menos que um jogo por semana! Que casual!</string>
+    <string name="filthy_casual">Casualsinho…</string>
+    <string name="s_has_no_flash">%1$s usa %2$s e %3$s.</string>
+    <string name="no_flash">Sem flash!</string>
+    <string name="no_smite">O leão dorme hoje à noite.</string>
+    <string name="no_smite_desc">%s não tem jungler!</string>
+    <string name="tips">Dicas</string>
+    <string name="such_ability">Quanto AP!</string>
+    <string name="full_ap">%s é básicamente feito de campeões AP.</string>
+    <string name="full_ad">%s é básicamente feito de campeões AD.</string>
+    <string name="much_damage">Quanto dano!</string>
+    <string name="no_internet_connection">Por favor, verifique sua conexão com a internet.</string>
+    <string name="title_activity_counter">Encontre seu counter!</string>
+    <string name="action_counter">Ferramenta de seleção de campeões</string>
+    <string name="display_champion_name">Mostrar nome de campeão</string>
+    <string name="display_champion_name_summary">A imagem do campeão será sempre mostrada</string>
+    <string name="counter_counters_activity_title">Seu %s counters</string>
+    <string name="search">Pesquisar</string>
+    <string name="double_smite_desc">%s joga com mais de um Smite!</string>
+    <string name="double_smite">Smite em dobro</string>
+    <string name="try_harder_desc">Todos de %1$s jogam com campeões com maestria %2$d+</string>
+    <string name="try_harder">Tryhards</string>
+    <string name="select_champion_playing_against">Selecione o campeão que você está selecionando contra</string>
+    <string name="good_counters">Bons counters para você</string>
+    <string name="bad_counters">Counters ruins para você</string>
+    <string name="no_counters">Sem dados suficientes para %s contra os campeões que você está jogando :(</string>
+    <string name="title_activity_player_detail">Detalhes do jogo</string>
+    <string name="pref_title_new_game_notifications">Novas notificações de jogo</string>
+    <string name="title_activity_counter_counters">Detalhes de counter</string>
+    <string name="default_tab">Aba principal</string>
+    <string name="matchup_stub">50%</string>
+    <string name="expected_matchups">Matchups esperados</string>
+    <string name="matchup_stats_source">(dados: http://champion.gg)</string>
+    <string name="gg">GG</string>
+    <string name="welcome_to">Bem-vindo ao %s!</string>
+    <string name="player_is_in_game">%s está em jogo. Toque para mais informações</string>
+    <string name="ap_ad_hint">Dica! Notou a borda em volta da foto do campeão? Vermelho é AD, roxo é AP.</string>
+    <string name="champion_mastery_lvl">Maestria de campeão %d</string>
+    <string name="ranking">%1$s %2$s</string>
+    <string name="noobs_noobs_everywhere">Primeiro timer</string>
+    <string name="is_playing_for_first_time">%1$s está jogando %2$s pela primeira vez.</string>
+    <string name="no_data_for_this_champion">Sem dados para este campeão.</string>
+    <string name="no_data">Sem dados:</string>
+    <string name="not_enough_information">Mesmo que você jogue %s, nós não temos dados suficientes para dizer se é um bom matchup.</string>
+    <string name="game_length_template" translatable="false">%1$s:%2$s / %3$s</string>
+    <string name="kda_template">%1$d / &lt;font color="#FF5252"&gt;%2$d&lt;/font&gt; / %3$d</string>
+    <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
+    <string name="main_level_7">%1$s conhece %2$s bem, tome cuidado!</string>
+    <string name="otp">É espertinho</string>
+    <string name="error_adding_account">Erro ao adicionar conta. Por favor, cheque novamente seu nome de invocador e região!</string>
+    <string name="top" translatable="false">Top</string>
+    <string name="aram">ARAM</string>
+    <string name="normal">Normal</string>
+    <string name="normal_3">Normal 3v3</string>
+    <string name="ranked_solo_5">Ranked Solo/Duo</string>
+    <string name="ranked_flex_5">Flex 5v5</string>
+    <string name="ranked_flex_3">Flex 3v3</string>
+    <string name="teambuilder_ranked">Teambuilder ranked</string>
+    <string name="unknown_queue">Fila desconhecida</string>
+    <string name="recent_matches">Partidas recentes com %1$s</string>
+    <string name="champion_points">%1$s pontos</string>
+    <string name="love_the_app">Teamward é grátis e sem propagandas! Se você gostar, por favor, nos avalie na Play Store :)</string>
+    <string name="rate_app">Avalie!</string>
+    <string name="thank_you">Obrigado!</string>
+    <string name="custom">Partida personalizada</string>
+    <string name="champion_points_k" translatable="false">%1$s00k+</string>
+    <string name="refresh">Atualizar</string>
+    <string name="abilities">Habilidades</string>
+    <string name="ability_name">%1$s — %2$s</string>
+    <string name="ability_passive">Passiva</string>
+    <string name="ability_q">Q</string>
+    <string name="ability_w">W</string>
+    <string name="ability_e">E</string>
+    <string name="ability_r">R</string>
+    <string name="ability_cooldowns">%ss</string>
+    <string name="champion_details">Detalhes do campeão</string>
+    <string name="title_activity_champion">Detalhes do campeão</string>
+    <string name="champion_details_short">Detalhes</string>
+    <string name="teamward_user">Um usuário TeamWard!</string>
+    <string name="hope_he_wins">Eu espero que ele ganhe este jogo.</string>
+    <string name="not_using_teamward">Vergonha! Vergonha!</string>
+    <string name="s_is_not_using_teamward">%s está jogando com você, mas não está usando TeamWard. Triste :(</string>
+    <string name="s_are_not_using_teamward">%s não está usando TeamWard. Badfeels man</string>
+    <string name="standard_separator">,</string>
+    <string name="final_separator">e</string>
+
+</resources>
