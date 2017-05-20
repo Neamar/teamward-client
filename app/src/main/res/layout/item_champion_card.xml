@@ -14,6 +14,7 @@
         android:layout_marginLeft="@dimen/activity_margin"
         android:layout_marginRight="@dimen/activity_margin"
         android:layout_marginTop="4dp"
+        android:foreground="?attr/selectableItemBackground"
         card_view:cardUseCompatPadding="true"
         card_view:contentPadding="16dp">
 
@@ -37,15 +38,15 @@
                 android:id="@+id/championNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/championImage"
+                android:layout_toRightOf="@+id/championImage"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
                 android:text="@string/stub_champion_name"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/championImage"
-                android:layout_toEndOf="@+id/championImage" />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/winrateText"
