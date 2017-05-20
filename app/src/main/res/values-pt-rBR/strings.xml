@@ -119,8 +119,8 @@
     <string name="try_harder_desc">Todos de %1$s jogam com campeões com maestria %2$d+</string>
     <string name="try_harder">Tryhards</string>
     <string name="select_champion_playing_against">Selecione o campeão que você está selecionando contra</string>
-    <string name="good_counters">Bons counters para você</string>
-    <string name="bad_counters">Counters ruins para você</string>
+    <string name="good_counters">Bons counters %s para você</string>
+    <string name="bad_counters">Counters ruins %s para você</string>
     <string name="no_counters">Sem dados suficientes para %s contra os campeões que você está jogando :(</string>
     <string name="title_activity_player_detail">Detalhes do jogo</string>
     <string name="pref_title_new_game_notifications">Novas notificações de jogo</string>

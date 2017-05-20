@@ -17,8 +17,8 @@ public class SectionHolder extends DummyHolder {
         noCountersView = (ImageView) itemView.findViewById(R.id.noCounters);
     }
 
-    public void bindSection(@StringRes int textId, int itemsInSection) {
-        textView.setText(textId);
+    public void bindSection(@StringRes int textId, String role, int itemsInSection) {
+        textView.setText(String.format(textView.getContext().getString(textId), role));
 
         noCountersView.setVisibility(itemsInSection == 0 ? View.VISIBLE : View.GONE);
     }

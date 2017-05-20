@@ -40,9 +40,9 @@ public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
         if (getItemViewType(position) == 1) {
             ((CounterCountersHolder) holder).bind(counter.counters.get(getRealPosition(position)), counter);
         } else if (position == 0) {
-            ((SectionHolder) holder).bindSection(R.string.good_counters, counter.goodCountersThreshold);
+            ((SectionHolder) holder).bindSection(R.string.good_counters, counter.role, counter.goodCountersThreshold);
         } else {
-            ((SectionHolder) holder).bindSection(R.string.bad_counters, counter.counters.size() - counter.goodCountersThreshold);
+            ((SectionHolder) holder).bindSection(R.string.bad_counters, counter.role, counter.counters.size() - counter.goodCountersThreshold);
         }
     }
 
