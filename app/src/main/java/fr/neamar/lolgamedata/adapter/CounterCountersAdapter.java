@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.holder.ChampionCounterCardHolder;
 import fr.neamar.lolgamedata.holder.CounterCountersHolder;
 import fr.neamar.lolgamedata.holder.DummyHolder;
 import fr.neamar.lolgamedata.holder.SectionHolder;
@@ -23,6 +24,12 @@ public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
         if (viewType == 0) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
+            View view = inflater.inflate(R.layout.item_champion_card, parent, false);
+
+            return new ChampionCounterCardHolder(view);
+        } else if (viewType == 1) {
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
             View view = inflater.inflate(R.layout.item_section, parent, false);
 
             return new SectionHolder(view);
@@ -37,9 +44,12 @@ public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
 
     @Override
     public void onBindViewHolder(DummyHolder holder, int position) {
-        if (getItemViewType(position) == 1) {
+        if (position == 0) {
+            ((ChampionCounterCardHolder) holder).bindChampion(counter.champion);
+        }
+        else if (getItemViewType(position) == 2) {
             ((CounterCountersHolder) holder).bind(counter.counters.get(getRealPosition(position)), counter);
-        } else if (position == 0) {
+        } else if (position == 1) {
             ((SectionHolder) holder).bindSection(R.string.good_counters, counter.role, counter.goodCountersThreshold);
         } else {
             ((SectionHolder) holder).bindSection(R.string.bad_counters, counter.role, counter.counters.size() - counter.goodCountersThreshold);
@@ -48,22 +58,25 @@ public class CounterCountersAdapter extends RecyclerView.Adapter<DummyHolder> {
 
     @Override
     public int getItemCount() {
-        return counter.counters.size() + 2;
+        return counter.counters.size() + 3;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0 || position == counter.goodCountersThreshold + 1) {
+        if (position == 0) {
             return 0;
         }
-        return 1;
+        if (position == 1 || position == counter.goodCountersThreshold + 2) {
+            return 1;
+        }
+        return 2;
     }
 
     private int getRealPosition(int position) {
-        if (position <= counter.goodCountersThreshold) {
-            return position - 1;
+        if (position - 1 <= counter.goodCountersThreshold) {
+            return position - 2;
         }
 
-        return position - 2;
+        return position - 3;
     }
 }
