@@ -11,6 +11,7 @@ public class ChampionCounter implements Serializable {
     public String image;
     public int mastery = -1;
     public int winRate = -1;
+    public int gamesCount;
     public String patch;
     public String ggURL;
 
@@ -20,6 +21,7 @@ public class ChampionCounter implements Serializable {
         id = champion.getInt("id");
         ggURL = champion.getString("gg");
         winRate = champion.getInt("winRate");
+        gamesCount = champion.getInt("gamesCount");
 
         if (isCounter) {
             mastery = champion.getInt("mastery");

@@ -177,4 +177,6 @@
     <string name="standard_separator">,</string>
     <string name="teamward_user">Un utilisateur de TeamWard !</string>
     <string name="hope_he_wins">Je lui souhaite de gagner.</string>
+    <string name="patch_s">(basé sur le patch %1$s)</string>
+    <string name="s_winrate">Taux de victoire: %s</string>
 </resources>

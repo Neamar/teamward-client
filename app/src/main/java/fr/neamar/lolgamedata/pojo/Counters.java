@@ -15,20 +15,26 @@ public class Counters implements Serializable {
     public Counters(String role, JSONObject jsonCounterRequest) throws JSONException {
         JSONArray jsonCounters = jsonCounterRequest.getJSONArray("counters");
 
+        Set<ChampionCounter> playedChampions = new HashSet<>();
         Set<ChampionCounter> availableChampions = new HashSet<>();
+
         for (int i = 0; i < jsonCounters.length(); i++) {
             Counter c = new Counter(role, jsonCounters.getJSONObject(i));
 
             counters.add(c);
 
-            availableChampions.addAll(c.counters);
+            playedChampions.addAll(c.counters);
+            availableChampions.add(c.champion);
         }
 
         for (Counter c : counters) {
             // First, list all champions
-            c.noData.addAll(new HashSet<>(availableChampions));
+            c.noData.addAll(new HashSet<>(playedChampions));
             // And remove champions not in first set
             c.noData.removeAll(c.counters);
+            // Also remove champions that aren't common in this position
+            c.noData.retainAll(availableChampions);
+
             // And remove self
             c.noData.remove(c.champion);
         }

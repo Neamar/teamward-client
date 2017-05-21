@@ -178,5 +178,7 @@
     <string name="s_are_not_using_teamward">%s não está usando TeamWard. Badfeels man</string>
     <string name="standard_separator">,</string>
     <string name="final_separator">e</string>
+    <string name="patch_s">(data: patch %1$s)</string>
+    <string name="s_winrate">%s winrate</string>
 
 </resources>
