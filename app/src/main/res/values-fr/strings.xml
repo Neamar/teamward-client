@@ -111,7 +111,7 @@
     <string name="action_counter">VS.</string>
     <string name="display_champion_name">Afficher le nom des champions</string>
     <string name="display_champion_name_summary">Les avatars sont toujours affichés</string>
-    <string name="counter_counters_activity_title">Vos counters contre %s</string>
+    <string name="counter_counters_activity_title">%1$s vs. %1$s %3$s</string>
     <string name="search">Rechercher</string>
     <string name="double_smite_desc">%s a plus d\'un Smite ! WTF.</string>
     <string name="double_smite">Double double animal style</string>

@@ -44,7 +44,7 @@ public class CounterCountersActivity extends SnackBarActivity {
             findViewById(R.id.noDataHolder).setVisibility(View.INVISIBLE);
         }
 
-        getSupportActionBar().setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.champion.name));
+        getSupportActionBar().setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.account.summonerName, counter.champion.name, counter.role.toLowerCase()));
 
         if (counter.counters.size() == 0) {
             displaySnack(String.format(getString(R.string.no_counters), counter.champion.name));

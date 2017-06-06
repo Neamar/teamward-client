@@ -122,7 +122,7 @@ public class CounterChampionsFragment extends Fragment {
                             loadIndicator.setVisibility(View.GONE);
 
                             try {
-                                Counters counters = new Counters(role, response);
+                                Counters counters = new Counters(account, role, response);
 
                                 adapter = new CounterChampionAdapter(counters);
                                 recyclerView.setAdapter(adapter);

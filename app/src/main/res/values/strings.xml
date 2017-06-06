@@ -15,7 +15,7 @@
     <string name="stub_ranking_division">IV</string>
     <string name="champion_mastery">Champion mastery</string>
     <string name="champion_mastery_level">Champion mastery level %d</string>
-    <string name="loading_game_data">Loading game data for %s</string>
+    <string name="loading_game_data">Building game data for %s</string>
     <string name="game_data_title">%2$s (%1$s)</string>
     <string name="stub_account">Neamar</string>
     <string name="loading_summoner_data">Loading summoner information for %s</string>
@@ -127,7 +127,7 @@
     <string name="action_counter">Draft tool</string>
     <string name="display_champion_name">Display champion name</string>
     <string name="display_champion_name_summary">Champion picture will always be displayed</string>
-    <string name="counter_counters_activity_title">%s counters</string>
+    <string name="counter_counters_activity_title">%1$s vs. %2$s %3$s</string>
     <string name="search">Search</string>
     <string name="double_smite_desc">%s plays with more than one Smite!</string>
     <string name="double_smite">Double double animal style</string>

@@ -12,14 +12,14 @@ import java.util.Set;
 public class Counters implements Serializable {
     public final ArrayList<Counter> counters = new ArrayList<>();
 
-    public Counters(String role, JSONObject jsonCounterRequest) throws JSONException {
+    public Counters(Account account, String role, JSONObject jsonCounterRequest) throws JSONException {
         JSONArray jsonCounters = jsonCounterRequest.getJSONArray("counters");
 
         Set<ChampionCounter> playedChampions = new HashSet<>();
         Set<ChampionCounter> availableChampions = new HashSet<>();
 
         for (int i = 0; i < jsonCounters.length(); i++) {
-            Counter c = new Counter(role, jsonCounters.getJSONObject(i));
+            Counter c = new Counter(account, role, jsonCounters.getJSONObject(i));
 
             counters.add(c);
 
