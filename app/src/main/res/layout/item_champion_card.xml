@@ -16,9 +16,15 @@
         android:layout_marginTop="4dp"
         android:foreground="?attr/selectableItemBackground"
         card_view:cardUseCompatPadding="true"
-        card_view:contentPadding="16dp">
+        card_view:contentPaddingTop="16dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
         <RelativeLayout
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -70,5 +76,20 @@
                 android:text="@string/patch_s"
                 android:textSize="11sp" />
         </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spells"
+                android:theme="@style/PrimaryFlatButton" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="champion.gg"
+                android:theme="@style/PrimaryFlatButton" />
+        </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>
