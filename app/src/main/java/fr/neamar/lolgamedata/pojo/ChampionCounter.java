@@ -13,13 +13,13 @@ public class ChampionCounter implements Serializable {
     public int winRate = -1;
     public int gamesCount;
     public String patch;
-    public String ggURL;
+    public String ggUrl;
 
     public ChampionCounter(JSONObject champion, boolean isCounter) throws JSONException {
         image = champion.getString("image");
         name = champion.getString("name");
         id = champion.getInt("id");
-        ggURL = champion.getString("gg");
+        ggUrl = champion.getString("gg");
         winRate = champion.getInt("winRate");
         gamesCount = champion.getInt("gamesCount");
 
