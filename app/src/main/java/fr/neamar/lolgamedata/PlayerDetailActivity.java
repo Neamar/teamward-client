@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NoConnectionError;
@@ -52,6 +54,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
     private static final Map<String, Integer> QUEUE_NAMES;
 
     static {
+        // https://developer.riotgames.com/game-constants.html
         Map<String, Integer> queueNames = new HashMap<>();
         queueNames.put("NORMAL", R.string.normal);
         queueNames.put("CUSTOM_GAME", R.string.custom);
@@ -62,6 +65,17 @@ public class PlayerDetailActivity extends SnackBarActivity {
         queueNames.put("RANKED_FLEX_SR", R.string.ranked_flex_5);
         queueNames.put("RANKED_FLEX_TT", R.string.ranked_flex_3);
         queueNames.put("TEAM_BUILDER_DRAFT_RANKED_5x5", R.string.teambuilder_ranked);
+
+        // Also with ids
+        queueNames.put("400", R.string.normal);
+        queueNames.put("0", R.string.custom);
+        queueNames.put("65", R.string.aram);
+        queueNames.put("8", R.string.normal_3);
+        queueNames.put("4", R.string.ranked_solo_5);
+        queueNames.put("420", R.string.ranked_solo_5);
+        queueNames.put("440", R.string.ranked_flex_5);
+        queueNames.put("9", R.string.ranked_flex_3);
+        queueNames.put("410", R.string.teambuilder_ranked);
 
         QUEUE_NAMES = Collections.unmodifiableMap(queueNames);
     }
@@ -134,6 +148,10 @@ public class PlayerDetailActivity extends SnackBarActivity {
 
                     Tracker.trackClickOnOpGG(PlayerDetailActivity.this, player);
                 } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                catch(ActivityNotFoundException e) {
+                    Toast.makeText(PlayerDetailActivity.this, "No browser", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
