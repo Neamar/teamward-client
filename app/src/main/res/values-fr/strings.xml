@@ -179,4 +179,6 @@
     <string name="hope_he_wins">Je lui souhaite de gagner.</string>
     <string name="patch_s">(basé sur le patch %1$s)</string>
     <string name="s_winrate">Taux de victoire: %s</string>
+    <string name="champion_gg">champion.gg</string>
+    <string name="spells">Sorts</string>
 </resources>
