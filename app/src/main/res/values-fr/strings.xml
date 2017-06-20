@@ -125,7 +125,7 @@
     <string name="pref_title_new_game_notifications">Notifier en début de partie</string>
     <string name="title_activity_counter_counters">Détails de counters</string>
     <string name="default_tab">Onglet par défaut</string>
-    <string name="matchup_stats_source">(source: http://champion.gg)</string>
+    <string name="matchup_stats_source">(source: http://teamward.xyz)</string>
     <string name="matchup_stub">50%</string>
     <string name="expected_matchups">Matchups probables</string>
     <string name="gg">GG</string>

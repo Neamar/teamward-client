@@ -128,7 +128,7 @@
     <string name="default_tab">Aba principal</string>
     <string name="matchup_stub">50%</string>
     <string name="expected_matchups">Matchups esperados</string>
-    <string name="matchup_stats_source">(dados: http://champion.gg)</string>
+    <string name="matchup_stats_source">(dados: http://teamward.xyz)</string>
     <string name="gg">GG</string>
     <string name="welcome_to">Bem-vindo ao %s!</string>
     <string name="player_is_in_game">%s está em jogo. Toque para mais informações</string>

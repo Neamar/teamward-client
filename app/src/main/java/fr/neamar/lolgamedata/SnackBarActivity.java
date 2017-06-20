@@ -17,7 +17,7 @@ public abstract class SnackBarActivity extends AppCompatActivity {
             Snackbar snackbar = Snackbar.make(coordinatorLayout, snack, Snackbar.LENGTH_LONG);
             snackbar.show();
         }
-        catch(NullPointerException e) {
+        catch(NullPointerException|IllegalArgumentException e) {
             // If the activity is not visible anymore, this will throw.
             e.printStackTrace();
         }
