@@ -30,7 +30,6 @@ import fr.neamar.lolgamedata.pojo.Account;
  */
 public class DrawerFragment extends Fragment {
     private static final String TAG = "DrawerFragment";
-    private RecyclerView recyclerView;
     private AccountManager accountManager;
     private BroadcastReceiver mBroadcastReceiver;
 
@@ -53,7 +52,7 @@ public class DrawerFragment extends Fragment {
         accountManager = new AccountManager(getActivity());
 
         assert getView() != null;
-        recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         assert recyclerView != null;
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

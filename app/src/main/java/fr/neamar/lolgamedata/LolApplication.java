@@ -16,7 +16,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.List;
 
@@ -87,7 +86,7 @@ public class LolApplication extends Application {
         return mixpanel;
     }
 
-    public JSONArray getJSONArrayFromSingleItem(String item) throws JSONException {
+    public JSONArray getJSONArrayFromSingleItem(String item) {
         JSONArray a = new JSONArray();
         a.put(item);
         return a;

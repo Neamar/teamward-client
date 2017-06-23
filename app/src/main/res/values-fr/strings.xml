@@ -87,16 +87,8 @@
     <string name="pref_ringtone_silent">Silencieux</string>
 
     <string name="pref_title_vibrate">Vibrer à la réception</string>
-    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s fait une hot streak ! (%2$d victoires sur les %3$d dernières parties)</string>
-    <string name="hot_streak">Hot streak !</string>
     <string name="may_be_inaccurate">(potentiellement inexact)</string>
     <string name="premade_information">Information de premade</string>
-    <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s fait une cold streak ! (%2$d défaites sur les %3$d dernières parties)</string>
-    <string name="cold_streak">Cold streak !</string>
-    <string name="hardcore_gamer">Hardcore gamer !</string>
-    <string name="hardcore_gamer_description">%s a joué plus de 10 parties en 24h.</string>
-    <string name="filthy_casual_description">%s joue moins d\'une fois par semaine ! Quel casual !</string>
-    <string name="filthy_casual">Filthy casual…</string>
     <string name="s_has_no_flash">%1$s utilise %2$s et %3$s.</string>
     <string name="no_flash">Pas de flash !</string>
     <string name="no_smite">Le lion est mort ce soir</string>
@@ -111,7 +103,7 @@
     <string name="action_counter">VS.</string>
     <string name="display_champion_name">Afficher le nom des champions</string>
     <string name="display_champion_name_summary">Les avatars sont toujours affichés</string>
-    <string name="counter_counters_activity_title">%1$s vs. %1$s %3$s</string>
+    <string name="counter_counters_activity_title">%1$s vs. %2$s %3$s</string>
     <string name="search">Rechercher</string>
     <string name="double_smite_desc">%s a plus d\'un Smite ! WTF.</string>
     <string name="double_smite">Double double animal style</string>
@@ -123,7 +115,6 @@
     <string name="no_counters">Pas d\'information pour les matchups %s / vos champions :(</string>
     <string name="title_activity_player_detail">Informations de jeu</string>
     <string name="pref_title_new_game_notifications">Notifier en début de partie</string>
-    <string name="title_activity_counter_counters">Détails de counters</string>
     <string name="default_tab">Onglet par défaut</string>
     <string name="matchup_stats_source">(source: http://teamward.xyz)</string>
     <string name="matchup_stub">50%</string>
@@ -167,7 +158,6 @@
     <string name="ability_cooldowns">%ss</string>
     <string name="abilities">Sorts</string>
     <string name="refresh">Rafraîchir</string>
-    <string name="champion_details_short">Détails</string>
     <string name="title_activity_champion">Détails du champion</string>
     <string name="champion_details">Infos champion</string>
     <string name="final_separator">et</string>

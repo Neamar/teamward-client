@@ -103,16 +103,9 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="s_is_on_a_hot_streak_s_wins_in_s_last_games">%1$s is on a hot streak! (%2$d wins in %3$d last games)</string>
     <string name="hot_streak">Hot streak!</string>
     <string name="may_be_inaccurate">(may be inaccurate)</string>
     <string name="premade_information">Premade information</string>
-    <string name="s_is_on_a_cold_streak_s_loss_in_s_last_games">%1$s is on a cold streak! (%2$d loss in %3$d last games)</string>
-    <string name="cold_streak">Cold streak!</string>
-    <string name="hardcore_gamer">Hardcore gamer!</string>
-    <string name="hardcore_gamer_description">%s has played more than 10 games in the last 24 hours.</string>
-    <string name="filthy_casual_description">%s plays less than one game a week! What a casual!</string>
-    <string name="filthy_casual">Filthy casual…</string>
     <string name="s_has_no_flash">%1$s uses %2$s and %3$s.</string>
     <string name="no_flash">Flashless!</string>
     <string name="no_smite">The lion sleeps tonight</string>
@@ -139,7 +132,6 @@
     <string name="no_counters">Not enough data on %s against the champions you\'re playing :(</string>
     <string name="title_activity_player_detail">Game details</string>
     <string name="pref_title_new_game_notifications">New game notifications</string>
-    <string name="title_activity_counter_counters">Counters details</string>
     <string name="default_tab">Default tab</string>
     <string name="matchup_stub">50%</string>
     <string name="expected_matchups">Expected matchups</string>
@@ -188,7 +180,6 @@
     <string name="ability_cooldowns">%ss</string>
     <string name="champion_details">Champion details</string>
     <string name="title_activity_champion">Champion details</string>
-    <string name="champion_details_short">Details</string>
     <string name="teamward_user">A TeamWard user!</string>
     <string name="hope_he_wins">I hope he wins this game.</string>
     <string name="not_using_teamward">Shame! Shame!</string>

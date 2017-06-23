@@ -22,14 +22,12 @@ public class AccountsActivity extends SnackBarActivity {
 
     private final int GAME_DETAILS = 0;
 
-    private AccountManager accountManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts);
 
-        accountManager = new AccountManager(this);
+        AccountManager accountManager = new AccountManager(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         assert fab != null;

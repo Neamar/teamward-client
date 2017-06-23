@@ -88,8 +88,7 @@ public class ChampionActivity extends SnackBarActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        JSONObject championData = response;
-                        displayChampionDetails(championData);
+                        displayChampionDetails(response);
 
                         Log.i(TAG, "Displaying champion details for " + championName);
                         queue.stop();

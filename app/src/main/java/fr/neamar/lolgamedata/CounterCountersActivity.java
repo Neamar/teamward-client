@@ -11,7 +11,6 @@ import fr.neamar.lolgamedata.adapter.CounterCountersNoDataAdapter;
 import fr.neamar.lolgamedata.pojo.Counter;
 
 public class CounterCountersActivity extends SnackBarActivity {
-    private Counter counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,7 @@ public class CounterCountersActivity extends SnackBarActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        counter = (Counter) getIntent().getSerializableExtra("counter");
+        Counter counter = (Counter) getIntent().getSerializableExtra("counter");
 
         CounterCountersAdapter adapter = new CounterCountersAdapter(counter);
         recyclerView.setAdapter(adapter);

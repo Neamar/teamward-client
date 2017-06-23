@@ -14,7 +14,6 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import fr.neamar.lolgamedata.GameActivity;
 import fr.neamar.lolgamedata.R;

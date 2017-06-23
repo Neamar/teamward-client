@@ -2,6 +2,7 @@ package fr.neamar.lolgamedata.adapter;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.ThemedSpinnerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class RoleAdapter extends ArrayAdapter<String> implements ThemedSpinnerAd
     }
 
     @Override
-    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+    public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
         View view;
 
         if (convertView == null) {

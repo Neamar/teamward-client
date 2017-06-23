@@ -83,7 +83,6 @@ public class GameActivity extends SnackBarActivity {
      */
     private ViewPager mViewPager;
     private View mEmptyView;
-    private Button refreshButton;
     private TabLayout mTabLayout;
     private SectionsPagerAdapter sectionsPagerAdapter;
     private Date lastLoaded = null;
@@ -142,7 +141,7 @@ public class GameActivity extends SnackBarActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        refreshButton = (Button) findViewById(R.id.refresh);
+        Button refreshButton = (Button) findViewById(R.id.refresh);
         mEmptyView = findViewById(android.R.id.empty);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 

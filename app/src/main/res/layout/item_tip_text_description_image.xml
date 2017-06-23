@@ -35,7 +35,7 @@
             android:layout_marginStart="16dp"
             android:layout_toEndOf="@+id/championImage"
             android:layout_toRightOf="@+id/championImage"
-            android:text="@string/hot_streak"
+            android:text="@string/no_flash"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -49,7 +49,7 @@
             android:layout_marginStart="16dp"
             android:layout_toEndOf="@+id/championImage"
             android:layout_toRightOf="@+id/championImage"
-            android:text="@string/s_is_on_a_hot_streak_s_wins_in_s_last_games"
+            android:text="@string/s_has_no_flash"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </RelativeLayout>

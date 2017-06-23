@@ -141,9 +141,8 @@ public class PlayerDetailActivity extends SnackBarActivity {
         rankingHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = null;
                 try {
-                    browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + player.region + ".op.gg/summoner/userName=" + URLEncoder.encode(player.summoner.name, "UTF-8")));
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + player.region + ".op.gg/summoner/userName=" + URLEncoder.encode(player.summoner.name, "UTF-8")));
                     startActivity(browserIntent);
 
                     Tracker.trackClickOnOpGG(PlayerDetailActivity.this, player);

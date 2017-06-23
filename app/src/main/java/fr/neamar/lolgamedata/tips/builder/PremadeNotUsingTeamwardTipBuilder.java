@@ -14,10 +14,6 @@ import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
-/**
- * Created by neamar on 21/04/17.
- */
-
 public class PremadeNotUsingTeamwardTipBuilder extends TipBuilder {
     @Override
     public ArrayList<Tip> getTips(Game game, Context context) {
@@ -34,7 +30,7 @@ public class PremadeNotUsingTeamwardTipBuilder extends TipBuilder {
             return tips;
         }
 
-        List<String> playersNotUsingTeamward = new ArrayList<String>();
+        List<String> playersNotUsingTeamward = new ArrayList<>();
         for (Integer summonerId : premade) {
             Player player = findPlayerById(game, summonerId);
             if (player != null && !player.teamwardUser) {
