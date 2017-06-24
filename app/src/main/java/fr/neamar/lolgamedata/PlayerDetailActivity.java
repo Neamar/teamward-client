@@ -124,11 +124,11 @@ public class PlayerDetailActivity extends SnackBarActivity {
         }
 
         // RANKED INFORMATION
-        ImageView rankingTierImage = (ImageView) findViewById(R.id.rankingTierImage);
-        TextView rankingText = (TextView) findViewById(R.id.rankingText);
-        TextView rankingQueue = (TextView) findViewById(R.id.rankingQueue);
-
         View rankingHolder = findViewById(R.id.rankingHolder);
+        ImageView rankingTierImage = (ImageView) rankingHolder.findViewById(R.id.rankingTierImage);
+        TextView rankingText = (TextView) rankingHolder.findViewById(R.id.rankingText);
+        TextView rankingQueue = (TextView) rankingHolder.findViewById(R.id.rankingQueue);
+
         if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
             rankingHolder.setVisibility(View.GONE);
         } else {
@@ -155,6 +155,20 @@ public class PlayerDetailActivity extends SnackBarActivity {
                 }
             }
         });
+
+        // LAST SEASON RANKED INFORMATION
+        View lastSeasonRankHolder = findViewById(R.id.lastSeasonRankHolder);
+        ImageView lastRankingTierImage = (ImageView) lastSeasonRankHolder.findViewById(R.id.rankingTierImage);
+        TextView lastRankingText = (TextView) lastSeasonRankHolder.findViewById(R.id.rankingText);
+
+        // Do not display unranked, null, or any rank similar to current rank
+        if (player.rank.oldTier.isEmpty() || player.rank.oldTier.equals(player.rank.tier) || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase())) {
+            lastSeasonRankHolder.setVisibility(View.GONE);
+        } else {
+            lastRankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase()));
+            lastRankingText.setText(String.format(getString(R.string.ranking_last_season), player.rank.oldTier.toUpperCase()));
+            lastSeasonRankHolder.setVisibility(View.VISIBLE);
+        }
 
         // MATCHUP INFORMATION
         View matchupHolder = findViewById(R.id.matchupHolder);
