@@ -181,6 +181,8 @@ public class CounterChampionsFragment extends Fragment {
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             queue.add(jsonRequest);
+            jsonRequest.setShouldCache(false);
+
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

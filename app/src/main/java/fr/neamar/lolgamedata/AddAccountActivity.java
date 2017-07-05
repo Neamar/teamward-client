@@ -141,6 +141,7 @@ public class AddAccountActivity extends Activity {
                     30000,
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            jsonRequest.setShouldCache(false);
 
             queue.add(jsonRequest);
         } catch (UnsupportedEncodingException e) {

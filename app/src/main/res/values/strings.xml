@@ -103,7 +103,6 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="hot_streak">Hot streak!</string>
     <string name="may_be_inaccurate">(may be inaccurate)</string>
     <string name="premade_information">Premade information</string>
     <string name="s_has_no_flash">%1$s uses %2$s and %3$s.</string>

@@ -120,6 +120,7 @@ public class RegistrationIntentService extends IntentService {
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
+            jsonRequest.setShouldCache(false);
             queue.add(jsonRequest);
 
         } catch (UnsupportedEncodingException e) {

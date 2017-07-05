@@ -354,6 +354,8 @@ public class GameActivity extends SnackBarActivity {
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
 
             );
+            jsonRequest.setShouldCache(false);
+
             queue.add(jsonRequest);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
