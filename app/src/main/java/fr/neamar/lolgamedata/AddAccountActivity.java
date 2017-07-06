@@ -10,12 +10,10 @@ import android.view.WindowManager;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
@@ -24,6 +22,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import fr.neamar.lolgamedata.pojo.Account;
+import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class AddAccountActivity extends Activity {
     private static final String TAG = "AddAccountActivity";
@@ -74,7 +73,7 @@ public class AddAccountActivity extends Activity {
         final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/summoner/data?summoner=" + URLEncoder.encode(name, "UTF-8") + "&region=" + region,
+            NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/summoner/data?summoner=" + URLEncoder.encode(name, "UTF-8") + "&region=" + region,
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override
@@ -136,12 +135,6 @@ public class AddAccountActivity extends Activity {
                     nameText.setError(getString(R.string.error_adding_account));
                 }
             });
-
-            jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    30000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            jsonRequest.setShouldCache(false);
 
             queue.add(jsonRequest);
         } catch (UnsupportedEncodingException e) {

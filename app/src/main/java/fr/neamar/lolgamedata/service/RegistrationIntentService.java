@@ -6,12 +6,10 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -28,6 +26,7 @@ import fr.neamar.lolgamedata.AccountManager;
 import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Account;
+import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class RegistrationIntentService extends IntentService {
     private static final String SENT_TOKEN_TO_SERVER = "SENT_TOKEN_TO_SERVER";
@@ -93,7 +92,7 @@ public class RegistrationIntentService extends IntentService {
         final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/push?token=" + token + "&summoner=" + URLEncoder.encode(account.summonerName, "UTF-8") + "&region=" + account.region,
+            NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/push?token=" + token + "&summoner=" + URLEncoder.encode(account.summonerName, "UTF-8") + "&region=" + account.region,
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override
@@ -115,12 +114,6 @@ public class RegistrationIntentService extends IntentService {
                 }
             });
 
-            jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    30000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-            jsonRequest.setShouldCache(false);
             queue.add(jsonRequest);
 
         } catch (UnsupportedEncodingException e) {

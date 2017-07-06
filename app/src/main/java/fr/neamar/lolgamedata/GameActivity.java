@@ -26,13 +26,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.newrelic.agent.android.NewRelic;
 
@@ -49,6 +47,7 @@ import java.util.Map;
 import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
+import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class GameActivity extends SnackBarActivity {
     private static final String TAG = "GameActivity";
@@ -266,7 +265,7 @@ public class GameActivity extends SnackBarActivity {
         final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region, null,
+            NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -342,19 +341,7 @@ public class GameActivity extends SnackBarActivity {
                     }
 
                 }
-            }
-
-            );
-
-            jsonRequest.setRetryPolicy(new
-
-                    DefaultRetryPolicy(
-                    30000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
-
-            );
-            jsonRequest.setShouldCache(false);
+            });
 
             queue.add(jsonRequest);
         } catch (UnsupportedEncodingException e) {

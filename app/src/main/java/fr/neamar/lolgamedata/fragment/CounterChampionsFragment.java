@@ -13,13 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -36,6 +34,7 @@ import fr.neamar.lolgamedata.adapter.CounterChampionAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Counter;
 import fr.neamar.lolgamedata.pojo.Counters;
+import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -115,7 +114,7 @@ public class CounterChampionsFragment extends Fragment {
         final int requiredChampionMastery = Integer.parseInt(prefs.getString("counter_required_mastery", "3"));
 
         try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getActivity().getApplication()).getApiUrl() + "/summoner/counter?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region.toLowerCase() + "&role=" + role.toLowerCase() + "&level=" + requiredChampionMastery, null,
+            NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getActivity().getApplication()).getApiUrl() + "/summoner/counter?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region.toLowerCase() + "&role=" + role.toLowerCase() + "&level=" + requiredChampionMastery, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -176,12 +175,7 @@ public class CounterChampionsFragment extends Fragment {
                 }
             });
 
-            jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    5000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             queue.add(jsonRequest);
-            jsonRequest.setShouldCache(false);
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

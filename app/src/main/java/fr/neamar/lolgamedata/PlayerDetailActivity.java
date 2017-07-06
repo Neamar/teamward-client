@@ -16,13 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -43,6 +41,7 @@ import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Match;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.pojo.Team;
+import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 import static fr.neamar.lolgamedata.holder.PlayerHolder.CHAMPION_MASTERIES_RESOURCES;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
@@ -260,7 +259,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
         final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
-            JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/summoner/performance?summoner=" + URLEncoder.encode(player.summoner.name, "UTF-8") + "&region=" + player.region + "&champion=" + URLEncoder.encode(player.champion.name, "UTF-8"), null,
+            NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/summoner/performance?summoner=" + URLEncoder.encode(player.summoner.name, "UTF-8") + "&region=" + player.region + "&champion=" + URLEncoder.encode(player.champion.name, "UTF-8"), null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -303,12 +302,6 @@ public class PlayerDetailActivity extends SnackBarActivity {
                     findViewById(R.id.matchHistoryHolder).setVisibility(View.INVISIBLE);
                 }
             });
-
-            jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    30000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            jsonRequest.setShouldCache(false);
 
             queue.add(jsonRequest);
         } catch (UnsupportedEncodingException e) {

@@ -12,12 +12,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -25,6 +23,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Locale;
+
+import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class ChampionActivity extends SnackBarActivity {
     private static final String TAG = "PlayerDetailActivity";
@@ -84,7 +84,7 @@ public class ChampionActivity extends SnackBarActivity {
         // Instantiate the RequestQueue.
         final RequestQueue queue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/champion/" + championId + "?locale=" + Locale.getDefault().toString(), null,
+        NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/champion/" + championId + "?locale=" + Locale.getDefault().toString(), null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -103,12 +103,6 @@ public class ChampionActivity extends SnackBarActivity {
                 queue.stop();
             }
         });
-
-        jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
-                30000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        jsonRequest.setShouldCache(false);
 
         queue.add(jsonRequest);
     }
