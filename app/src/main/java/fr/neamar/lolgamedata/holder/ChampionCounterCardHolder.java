@@ -1,11 +1,13 @@
 package fr.neamar.lolgamedata.holder;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -68,7 +70,13 @@ public class ChampionCounterCardHolder extends DummyHolder implements View.OnCli
 
     private void openChampionGG(Context context) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(championCounter.ggUrl));
+
+        try {
         context.startActivity(browserIntent);
+        }
+        catch(ActivityNotFoundException e) {
+            Toast.makeText(context, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void openSpellPage(Context context) {

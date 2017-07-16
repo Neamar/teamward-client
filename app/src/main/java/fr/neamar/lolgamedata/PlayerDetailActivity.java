@@ -149,7 +149,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
                     e.printStackTrace();
                 }
                 catch(ActivityNotFoundException e) {
-                    Toast.makeText(PlayerDetailActivity.this, "No browser", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlayerDetailActivity.this, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
@@ -208,7 +208,13 @@ public class PlayerDetailActivity extends SnackBarActivity {
             @Override
             public void onClick(View view) {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(player.champion.ggUrl));
+
+                try {
                 startActivity(browserIntent);
+                }
+                catch(ActivityNotFoundException e) {
+                    Toast.makeText(PlayerDetailActivity.this, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
+                }
 
                 Tracker.trackClickOnGG(PlayerDetailActivity.this, player.champion.name, player.champion.id, "player_details");
             }

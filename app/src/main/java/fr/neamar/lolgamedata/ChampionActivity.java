@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -65,7 +67,13 @@ public class ChampionActivity extends SnackBarActivity {
             return true;
         } else if (id == R.id.action_gg && !ggUrl.isEmpty()) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ggUrl));
-            startActivity(browserIntent);
+
+            try {
+                startActivity(browserIntent);
+            }
+            catch(ActivityNotFoundException e) {
+                Toast.makeText(this, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
+            }
 
             Tracker.trackClickOnGG(this, championName, championId, "champion_details");
         }

@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata.holder;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +8,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -87,6 +89,11 @@ public class MatchHolder extends RecyclerView.ViewHolder implements View.OnClick
         String url = match.matchUrl;
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
-        v.getContext().startActivity(i);
+        try {
+            v.getContext().startActivity(i);
+        }
+        catch(ActivityNotFoundException e) {
+            Toast.makeText(v.getContext(), R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
+        }
     }
 }
