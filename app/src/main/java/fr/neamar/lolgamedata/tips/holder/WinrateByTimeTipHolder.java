@@ -1,6 +1,5 @@
 package fr.neamar.lolgamedata.tips.holder;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +55,7 @@ public class WinrateByTimeTipHolder extends TipHolder {
                 new DataPoint(40, 48),
                 new DataPoint(45, 40),
         });
-        blueSeries.setColor(Color.BLUE);
+        blueSeries.setColor(graphView.getContext().getResources().getColor(R.color.blueTeam));
         graphView.addSeries(blueSeries);
 
         LineGraphSeries<DataPoint> redSeries = new LineGraphSeries<>(new DataPoint[] {
@@ -67,7 +66,19 @@ public class WinrateByTimeTipHolder extends TipHolder {
                 new DataPoint(40, 52),
                 new DataPoint(45, 55),
         });
-        redSeries.setColor(Color.RED);
+        blueSeries.setColor(graphView.getContext().getResources().getColor(R.color.redTeam));
         graphView.addSeries(redSeries);
+
+
+        LineGraphSeries<DataPoint> championSeries = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(20, 40),
+                new DataPoint(25, 45),
+                new DataPoint(30, 49),
+                new DataPoint(35, 55),
+                new DataPoint(40, 45),
+                new DataPoint(45, 40),
+        });
+        championSeries.setColor(graphView.getContext().getResources().getColor(R.color.yourChampion));
+        graphView.addSeries(championSeries);
     }
 }
