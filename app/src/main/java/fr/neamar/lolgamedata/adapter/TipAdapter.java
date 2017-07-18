@@ -12,9 +12,11 @@ import fr.neamar.lolgamedata.tips.MatchupsTip;
 import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.PremadeTip;
 import fr.neamar.lolgamedata.tips.Tip;
+import fr.neamar.lolgamedata.tips.WinrateByTimeTip;
 import fr.neamar.lolgamedata.tips.holder.MatchupsTipHolder;
 import fr.neamar.lolgamedata.tips.holder.PlayerStandardTipHolder;
 import fr.neamar.lolgamedata.tips.holder.PremadeTipHolder;
+import fr.neamar.lolgamedata.tips.holder.WinrateByTimeTipHolder;
 
 public class TipAdapter extends RecyclerView.Adapter<TipHolder> {
     private final ArrayList<Tip> tips;
@@ -31,6 +33,9 @@ public class TipAdapter extends RecyclerView.Adapter<TipHolder> {
             return PlayerStandardTipHolder.onCreateViewHolder(parent);
         } else if (viewType == MatchupsTip.class.getName().hashCode()) {
             return MatchupsTipHolder.onCreateViewHolder(parent);
+        }
+        else if(viewType == WinrateByTimeTip.class.getName().hashCode()) {
+            return WinrateByTimeTipHolder.onCreateViewHolder(parent);
         }
 
         throw new RuntimeException("Unknown tip class!");

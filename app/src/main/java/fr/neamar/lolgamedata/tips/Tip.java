@@ -18,6 +18,7 @@ import fr.neamar.lolgamedata.tips.builder.PremadeNotUsingTeamwardTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.PremadeTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.TipBuilder;
 import fr.neamar.lolgamedata.tips.builder.TryHarderTipBuilder;
+import fr.neamar.lolgamedata.tips.builder.WinrateByTimeTipBuilder;
 
 public class Tip {
     private static final List<TipBuilder> tipsBuilders = new ArrayList<>(Arrays.asList(
@@ -29,6 +30,7 @@ public class Tip {
             new NoobTipBuilder(),
             new OtpTipBuilder(),
             new PremadeTipBuilder(),
+            new WinrateByTimeTipBuilder(),
             new MatchupsBuilder(),
             new NoFlashTipBuilder(),
             new PremadeNotUsingTeamwardTipBuilder()
