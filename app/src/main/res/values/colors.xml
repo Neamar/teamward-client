@@ -9,4 +9,9 @@
     <color name="colorGoodMatchup">#388E3C</color>
     <color name="colorBadMatchup">#FF5252</color>
     <color name="colorUnknownMatchup">#727272</color>
+
+    <color name="redTeam">#FF0000</color>
+    <color name="blueTeam">#0000FF</color>
+    <color name="yourChampion">#5500FF00</color>
+
 </resources>

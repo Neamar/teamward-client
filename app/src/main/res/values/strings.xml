@@ -193,5 +193,6 @@
     <string name="last_season_rank">Last season</string>
     <string name="ranking_last_season">%1$s</string>
     <string name="unable_to_open_browser">Unable to open browser</string>
+    <string name="winrate_by_game_length">Winrate by game length</string>
 
 </resources>
