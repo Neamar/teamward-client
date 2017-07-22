@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class Game implements Serializable {
@@ -37,6 +39,13 @@ public class Game implements Serializable {
                 e.printStackTrace();
             }
         }
+
+        Collections.sort(teams, new Comparator<Team>() {
+            @Override
+            public int compare(Team o1, Team o2) {
+                return o1.teamId - o2.teamId;
+            }
+        });
     }
 
     @NonNull
