@@ -9,13 +9,10 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.util.Iterator;
-
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.TipHolder;
 import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.tips.Tip;
-import fr.neamar.lolgamedata.tips.WinrateByTimeTip;
 
 import static fr.neamar.lolgamedata.R.id.graph;
 
@@ -49,17 +46,15 @@ public class WinrateByTimeTipHolder extends TipHolder {
     }
 
     public void bind(Tip tip) {
-        WinrateByTimeTip winrateByTimeTip = (WinrateByTimeTip) tip;
-
         for(Team team: tip.game.teams) {
-            DataPoint[] points = new DataPoint[team.winrateByGameLength.length()];
+            DataPoint[] points = new DataPoint[team.winrateByGameLength.size()];
 
             int counter = 0;
-            Iterator<String> keys = team.winrateByGameLength.keys();
 
-            while(keys.hasNext()) {
-                String key = keys.next();
-                points[counter] = new DataPoint(Integer.parseInt(key), team.winrateByGameLength.optDouble(key, 50));
+
+            for(int i = 0; i < team.winrateByGameLength.size(); i++) {
+                int key = team.winrateByGameLength.keyAt(i);
+                points[counter] = new DataPoint(key, team.winrateByGameLength.get(key));
                 counter += 1;
             }
 

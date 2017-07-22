@@ -14,7 +14,7 @@ import fr.neamar.lolgamedata.R;
 
 public class Team implements Serializable {
     public final List<List<Integer>> premades = new ArrayList<>();
-    public final JSONObject winrateByGameLength;
+    public final WinrateByGameLength winrateByGameLength;
     public int teamId;
     public boolean isPlayerOwnTeam;
     public ArrayList<Player> players;
@@ -51,7 +51,7 @@ public class Team implements Serializable {
             }
         }
 
-        winrateByGameLength = team.getJSONObject("winrate_by_game_length");
+        winrateByGameLength = new WinrateByGameLength(team.getJSONObject("winrate_by_game_length"));
     }
 
     public String getName(Context context) {
