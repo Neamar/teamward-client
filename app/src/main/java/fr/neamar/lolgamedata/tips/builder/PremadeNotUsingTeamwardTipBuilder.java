@@ -33,7 +33,7 @@ public class PremadeNotUsingTeamwardTipBuilder extends TipBuilder {
         List<String> playersNotUsingTeamward = new ArrayList<>();
         for (Integer summonerId : premade) {
             Player player = findPlayerById(game, summonerId);
-            if (player != null && !player.teamwardUser) {
+            if (player != null && !player.teamwardUser && player != mainPlayer) {
                 playersNotUsingTeamward.add(player.summoner.name);
             }
         }
