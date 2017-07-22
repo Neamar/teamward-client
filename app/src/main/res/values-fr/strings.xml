@@ -175,4 +175,6 @@
     <string name="ranking_last_season">%1$s</string>
     <string name="unable_to_open_browser">Impossible d\'ouvrir le navigateur</string>
     <string name="winrate_by_game_length">Chances de victoire selon la durée</string>
+    <string name="relative_team_colors_summary">Toujours m\'afficher en tant qu\'équipe bleue</string>
+    <string name="relative_team_colors">Couleur d\'équipe relative</string>
 </resources>

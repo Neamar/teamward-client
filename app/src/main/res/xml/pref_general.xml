@@ -1,6 +1,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
+        android:key="relative_team_colors"
+        android:defaultValue="true"
+        android:summary="@string/relative_team_colors_summary"
+        android:title="@string/relative_team_colors" />
+
+    <SwitchPreference
         android:defaultValue="true"
         android:key="display_champion_name"
         android:summary="@string/display_champion_name_summary"

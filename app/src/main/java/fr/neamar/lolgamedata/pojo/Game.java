@@ -20,7 +20,7 @@ public class Game implements Serializable {
     public final Account associatedAccount;
     public final ArrayList<Team> teams;
 
-    public Game(JSONObject game, String region, Account associatedAccount) throws JSONException {
+    public Game(JSONObject game, String region, Account associatedAccount, boolean useRelativeTeamColor) throws JSONException {
         gameId = game.getLong("game_id");
         mapId = game.getInt("map_id");
         gameMode = game.getString("game_mode");
@@ -32,7 +32,7 @@ public class Game implements Serializable {
         teams = new ArrayList<>();
         for (int i = 0; i < teamsJson.length(); i++) {
             try {
-                teams.add(new Team(teamsJson.getJSONObject(i), region));
+                teams.add(new Team(teamsJson.getJSONObject(i), region, useRelativeTeamColor));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -79,5 +79,9 @@ public class Game implements Serializable {
 
     public int getNotificationId() {
         return Long.toString(gameId).hashCode();
+    }
+
+    public void useRelativeTeamId() {
+
     }
 }

@@ -270,7 +270,7 @@ public class GameActivity extends SnackBarActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                game = new Game(response, region, account);
+                                game = new Game(response, region, account, shouldUseRelativeTeamColor());
                                 GameActivity.this.summonerName = summonerName;
                                 displayGame(summonerName, game);
 
@@ -418,6 +418,10 @@ public class GameActivity extends SnackBarActivity {
 
     private boolean shouldDisplayChampionName() {
         return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("display_champion_name", true);
+    }
+
+    private boolean shouldUseRelativeTeamColor() {
+        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("relative_team_colors", true);
     }
 
     @Override

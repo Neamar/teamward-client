@@ -19,7 +19,7 @@ public class Team implements Serializable {
     public boolean isPlayerOwnTeam;
     public ArrayList<Player> players;
 
-    public Team(JSONObject team, String region) throws JSONException {
+    public Team(JSONObject team, String region, boolean useRelativeTeamColor) throws JSONException {
         teamId = team.getInt("team_id");
 
         JSONArray playersJson = team.getJSONArray("players");
@@ -33,6 +33,11 @@ public class Team implements Serializable {
         }
 
         isPlayerOwnTeam = team.getBoolean("own_team");
+
+        if(useRelativeTeamColor) {
+            // Ensure our team is always blue team
+            teamId = isPlayerOwnTeam ? 100 : 200;
+        }
 
         if(team.has("premades")) {
             JSONArray premadesJson = team.getJSONArray("premades");
