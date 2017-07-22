@@ -9,9 +9,13 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.Iterator;
+
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.TipHolder;
+import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.tips.Tip;
+import fr.neamar.lolgamedata.tips.WinrateByTimeTip;
 
 import static fr.neamar.lolgamedata.R.id.graph;
 
@@ -45,40 +49,30 @@ public class WinrateByTimeTipHolder extends TipHolder {
     }
 
     public void bind(Tip tip) {
-        // WinrateByTimeTip winrateByTimeTip = (WinrateByTimeTip) tip;
+        WinrateByTimeTip winrateByTimeTip = (WinrateByTimeTip) tip;
 
-        LineGraphSeries<DataPoint> blueSeries = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(20, 50),
-                new DataPoint(25, 55),
-                new DataPoint(30, 57),
-                new DataPoint(35, 52),
-                new DataPoint(40, 48),
-                new DataPoint(45, 40),
-        });
-        blueSeries.setColor(graphView.getContext().getResources().getColor(R.color.blueTeam));
-        graphView.addSeries(blueSeries);
+        for(Team team: tip.game.teams) {
+            DataPoint[] points = new DataPoint[team.winrateByGameLength.length()];
 
-        LineGraphSeries<DataPoint> redSeries = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(20, 45),
-                new DataPoint(25, 45),
-                new DataPoint(30, 47),
-                new DataPoint(35, 49),
-                new DataPoint(40, 52),
-                new DataPoint(45, 55),
-        });
-        blueSeries.setColor(graphView.getContext().getResources().getColor(R.color.redTeam));
-        graphView.addSeries(redSeries);
+            int counter = 0;
+            Iterator<String> keys = team.winrateByGameLength.keys();
 
+            while(keys.hasNext()) {
+                String key = keys.next();
+                points[counter] = new DataPoint(Integer.parseInt(key), team.winrateByGameLength.optDouble(key, 50));
+                counter += 1;
+            }
 
-        LineGraphSeries<DataPoint> championSeries = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(20, 40),
-                new DataPoint(25, 45),
-                new DataPoint(30, 49),
-                new DataPoint(35, 55),
-                new DataPoint(40, 45),
-                new DataPoint(45, 40),
-        });
-        championSeries.setColor(graphView.getContext().getResources().getColor(R.color.yourChampion));
-        graphView.addSeries(championSeries);
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(points);
+
+            if(team.teamId == 100) {
+                series.setColor(graphView.getContext().getResources().getColor(R.color.blueTeam));
+            }
+            else {
+                series.setColor(graphView.getContext().getResources().getColor(R.color.redTeam));
+            }
+
+            graphView.addSeries(series);
+        }
     }
 }
