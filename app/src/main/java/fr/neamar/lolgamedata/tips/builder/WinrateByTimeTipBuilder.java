@@ -14,6 +14,11 @@ public class WinrateByTimeTipBuilder extends TipBuilder {
     public ArrayList<Tip> getTips(Game game, Context context) {
         ArrayList<Tip> tips = new ArrayList<>();
 
+        // Only display on summoner's rift
+        if(game.mapId != 11) {
+            return tips;
+        }
+
         tips.add(new WinrateByTimeTip(game));
 
         return tips;

@@ -21,6 +21,11 @@ public class MatchupsBuilder extends TipBuilder {
             return tips;
         }
 
+        // Do not display on ARAM
+        if(game.mapId == 12) {
+            return tips;
+        }
+
         Team playerTeam = game.getPlayerOwnTeam();
         Team otherTeam = game.teams.get(0) == playerTeam ? game.teams.get(1) : game.teams.get(0);
 
