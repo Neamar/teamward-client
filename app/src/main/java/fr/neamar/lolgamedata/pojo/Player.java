@@ -14,6 +14,7 @@ public class Player implements Serializable {
     public Rank rank;
 
     public Boolean teamwardUser;
+    public int averageTimeBetweenGames;
 
     public String region;
 
@@ -26,6 +27,9 @@ public class Player implements Serializable {
         this.teamwardUser = player.getBoolean("teamward_user");
 
         this.rank = new Rank(player.getJSONObject("current_season_rank"), player.getString("last_season_rank"));
+
+        JSONObject recentGames = player.getJSONObject("recent_games");
+        this.averageTimeBetweenGames = recentGames.getInt("average_time_between_games");
 
         this.region = region;
     }

@@ -8,7 +8,9 @@ import java.util.List;
 
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.tips.builder.DoubleSmiteTipBuilder;
+import fr.neamar.lolgamedata.tips.builder.FilthyCasualTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.FullAPDTeamTipBuilder;
+import fr.neamar.lolgamedata.tips.builder.HardcoreGamerTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.MatchupsBuilder;
 import fr.neamar.lolgamedata.tips.builder.NoFlashTipBuilder;
 import fr.neamar.lolgamedata.tips.builder.NoSmiteTipBuilder;
@@ -33,6 +35,8 @@ public class Tip {
             new WinrateByTimeTipBuilder(),
             new MatchupsBuilder(),
             new NoFlashTipBuilder(),
+            new FilthyCasualTipBuilder(),
+            new HardcoreGamerTipBuilder(),
             new PremadeNotUsingTeamwardTipBuilder()
     ));
     public final Game game;
