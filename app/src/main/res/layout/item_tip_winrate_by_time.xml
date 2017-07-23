@@ -42,6 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/blueTeam"
                 android:text="@string/blue_team" />
 
             <View
@@ -53,6 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/redTeam"
                 android:text="@string/red_team" />
         </LinearLayout>
     </LinearLayout>

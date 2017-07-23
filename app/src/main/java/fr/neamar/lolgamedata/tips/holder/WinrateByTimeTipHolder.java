@@ -3,6 +3,7 @@ package fr.neamar.lolgamedata.tips.holder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
@@ -14,15 +15,17 @@ import fr.neamar.lolgamedata.holder.TipHolder;
 import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.tips.Tip;
 
-import static fr.neamar.lolgamedata.R.id.graph;
-
 public class WinrateByTimeTipHolder extends TipHolder {
     private final GraphView graphView;
+    private final TextView blueTeam;
+    private final TextView redTeam;
 
     private WinrateByTimeTipHolder(View itemView) {
         super(itemView);
 
-        graphView = (GraphView) itemView.findViewById(graph);
+        graphView = (GraphView) itemView.findViewById(R.id.graph);
+        blueTeam = (TextView) itemView.findViewById(R.id.blueTeam);
+        redTeam = (TextView) itemView.findViewById(R.id.redTeam);
 
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
@@ -68,6 +71,9 @@ public class WinrateByTimeTipHolder extends TipHolder {
             }
 
             graphView.addSeries(series);
+
+            blueTeam.setText(tip.game.getPlayerOwnTeam().teamId == 100 ? R.string.your_team : R.string.their_team);
+            redTeam.setText(tip.game.getPlayerOwnTeam().teamId == 200 ? R.string.your_team : R.string.their_team);
         }
     }
 }
