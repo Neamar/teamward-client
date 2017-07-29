@@ -16,11 +16,28 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/winrate_by_game_length"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="@string/winrate_by_game_length"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <ImageView
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_weight="0.1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:src="@drawable/ic_help_outline_black_24dp" />
+        </LinearLayout>
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
@@ -29,8 +46,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <View
@@ -40,9 +57,9 @@
                 android:background="@color/blueTeam" />
 
             <TextView
+                android:id="@+id/blueTeam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/blueTeam"
                 android:text="@string/blue_team" />
 
             <View
@@ -52,10 +69,18 @@
                 android:background="@color/redTeam" />
 
             <TextView
+                android:id="@+id/redTeam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/redTeam"
                 android:text="@string/red_team" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/disclaimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/winrate_by_time_disclaimer"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

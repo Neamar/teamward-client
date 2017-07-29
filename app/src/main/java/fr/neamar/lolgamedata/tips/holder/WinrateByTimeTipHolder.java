@@ -19,6 +19,7 @@ public class WinrateByTimeTipHolder extends TipHolder {
     private final GraphView graphView;
     private final TextView blueTeam;
     private final TextView redTeam;
+    private final TextView disclaimer;
 
     private WinrateByTimeTipHolder(View itemView) {
         super(itemView);
@@ -26,6 +27,7 @@ public class WinrateByTimeTipHolder extends TipHolder {
         graphView = (GraphView) itemView.findViewById(R.id.graph);
         blueTeam = (TextView) itemView.findViewById(R.id.blueTeam);
         redTeam = (TextView) itemView.findViewById(R.id.redTeam);
+        disclaimer = (TextView) itemView.findViewById(R.id.disclaimer);
 
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
@@ -36,6 +38,15 @@ public class WinrateByTimeTipHolder extends TipHolder {
                     // show currency for y values
                     return super.formatLabel(value, isValueX) + "%";
                 }
+            }
+        });
+
+        // Hide the disclaimer by default
+        disclaimer.setVisibility(View.GONE);
+        itemView.findViewById(R.id.help).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                disclaimer.setVisibility(disclaimer.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
             }
         });
     }
