@@ -16,7 +16,6 @@
     <string name="champion_mastery">Maestria de Campeão</string>
     <string name="champion_mastery_level">Nível de Maestria de Campeão %d</string>
     <string name="loading_game_data">Carregando dados de jogo para %s</string>
-    <string name="game_data_title">%2$s (%1$s)</string>
     <string name="stub_account">Neamar</string>
     <string name="loading_summoner_data">Carregando informações de invocador para %s</string>
     <string name="summoners_rift">Summoner\'s Rift</string>

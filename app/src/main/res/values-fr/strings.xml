@@ -16,7 +16,6 @@
     <string name="champion_mastery">Champion mastery</string>
     <string name="champion_mastery_level">Niveau de champion mastery %d</string>
     <string name="loading_game_data">Chargement des données pour %s</string>
-    <string name="game_data_title">%2$s (%1$s)</string>
     <string name="stub_account">Neamar</string>
     <string name="loading_summoner_data">Chargement des données d\'invocateur pour %s</string>
     <string name="summoners_rift">la Faille de l\'invocateur</string>

@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -116,7 +115,6 @@ public class GameActivity extends SnackBarActivity {
             finish();
             return;
         }
-
 
         // Get account
         if (getIntent() != null && getIntent().hasExtra("account")) {
@@ -356,11 +354,7 @@ public class GameActivity extends SnackBarActivity {
     }
 
     private void displayGame(String summonerName, Game game) {
-        String titleTemplate = getString(R.string.game_data_title);
-
-        @StringRes Integer stringRes = getMapName(game.mapId);
-
-        setTitle(String.format(titleTemplate, summonerName, getString(stringRes)));
+        getSupportActionBar().setSubtitle(PlayerDetailActivity.getQueueName(Integer.toString(game.queue)));
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
 

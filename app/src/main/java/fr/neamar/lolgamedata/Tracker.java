@@ -42,8 +42,7 @@ public class Tracker {
             j.putOpt("game_map_id", game.mapId);
 
             j.putOpt("game_map_name", activity.getString(getMapName(game.mapId)));
-            j.putOpt("game_mode", game.gameMode);
-            j.putOpt("game_type", game.gameType);
+            j.putOpt("queue", game.queue);
             j.putOpt("game_id", game.gameId);
             j.putOpt("default_tab", defaultTab);
             j.putOpt("display_champion_name", shouldDisplayChampionName);

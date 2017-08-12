@@ -71,6 +71,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
         queueNames.put("65", R.string.aram);
         queueNames.put("8", R.string.normal_3);
         queueNames.put("4", R.string.ranked_solo_5);
+        queueNames.put("318", R.string.arurf);
         queueNames.put("420", R.string.ranked_solo_5);
         queueNames.put("440", R.string.ranked_flex_5);
         queueNames.put("9", R.string.ranked_flex_3);

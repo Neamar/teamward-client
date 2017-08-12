@@ -16,7 +16,6 @@
     <string name="champion_mastery">Champion mastery</string>
     <string name="champion_mastery_level">Champion mastery level %d</string>
     <string name="loading_game_data">Building game data for %s</string>
-    <string name="game_data_title">%2$s (%1$s)</string>
     <string name="stub_account">Neamar</string>
     <string name="loading_summoner_data">Loading summoner information for %s</string>
     <string name="summoners_rift">Summoner\'s Rift</string>
@@ -203,4 +202,5 @@
     <string name="your_team">Your team</string>
     <string name="their_team">Their team</string>
     <string name="winrate_by_time_disclaimer" formatted="false">  • This graph is an indicator of each team powerspike and late-game scaling.\n  • Graph based on champions, not players\n • A team with late game champions will have a better winrate the longer the game is.\n  • A team made of weak champions in the current meta will likely never be above 50%.\n • Two very strong team compositions can both have an average winrate of more than 50%.</string>
+    <string name="arurf">All Random URF</string>
 </resources>

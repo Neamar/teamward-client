@@ -17,16 +17,15 @@ public class Game implements Serializable {
     public final long gameId;
     public final int mapId;
     public final Date startTime;
-    public final String gameMode;
-    public final String gameType;
+    public final int queue;
     public final Account associatedAccount;
     public final ArrayList<Team> teams;
 
     public Game(JSONObject game, String region, Account associatedAccount, boolean useRelativeTeamColor) throws JSONException {
         gameId = game.getLong("game_id");
         mapId = game.getInt("map_id");
-        gameMode = game.getString("game_mode");
-        gameType = game.getString("game_type");
+        queue = game.getInt("queue");
+
         startTime = new Date(game.optLong("game_start_time", new Date().getTime()));
         this.associatedAccount = associatedAccount;
 
