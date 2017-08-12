@@ -153,7 +153,7 @@
     <string name="error_adding_account">Error adding account. Please double check your summoner name and region!</string>
     <string name="top" translatable="false">Top</string>
     <string name="aram">ARAM</string>
-    <string name="normal">Normal</string>
+    <string name="normal">Normal 5v5</string>
     <string name="normal_3">Normal 3v3</string>
     <string name="ranked_solo_5">Ranked Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
@@ -203,4 +203,6 @@
     <string name="their_team">Their team</string>
     <string name="winrate_by_time_disclaimer" formatted="false">  • This graph is an indicator of each team powerspike and late-game scaling.\n  • Graph based on champions, not players\n • A team with late game champions will have a better winrate the longer the game is.\n  • A team made of weak champions in the current meta will likely never be above 50%.\n • Two very strong team compositions can both have an average winrate of more than 50%.</string>
     <string name="arurf">All Random URF</string>
+    <string name="blind_pick">Blind pick 5v5</string>
+    <string name="draft_pick">Draft pick 5v5</string>
 </resources>

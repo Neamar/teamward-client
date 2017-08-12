@@ -184,4 +184,7 @@
     <string name="their_team">Their team</string>
     <string name="your_team">Your team</string>
     <string name="winrate_by_time_disclaimer" formatted="false">	• Graph based on champions, not players\n	• A team with late game champions will have a better winrate the longer the game is.\n	• A team made of weak champions in the current meta will likely never be above 50%.\n	• Two very strong team compositions can both have an average winrate of more than 50%.\n	• This graph is an indicator of each team powerspike and late-game scaling.</string>
+    <string name="blind_pick">Blind pick 5v5</string>
+    <string name="draft_pick">Draft pick 5v5</string>
+    <string name="arurf">All Random URF</string>
 </resources>
