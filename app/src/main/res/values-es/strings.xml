@@ -1,0 +1,190 @@
+<resources>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_game">Game details</string>
+    <string name="blue_team">Blue team</string>
+    <string name="red_team">Red team</string>
+    <string name="unknown_team">\? team</string>
+    <string name="summoner_level">level %s</string>
+    <string name="champion_image">Champion image</string>
+    <string name="summoner_spell_d">Summoner spell D</string>
+    <string name="summoner_spell_f">Summoner spell F</string>
+    <string name="stub_champion_name">Aatrox</string>
+    <string name="stub_summoner_name">Graphistos</string>
+    <string name="stub_previous_ranking">level 27</string>
+    <string name="current_ranking_tier">Current ranking tier</string>
+    <string name="stub_ranking_division">IV</string>
+    <string name="champion_mastery">Champion mastery</string>
+    <string name="champion_mastery_level">Champion mastery level %d</string>
+    <string name="loading_game_data">Building game data for %s</string>
+    <string name="stub_account">Neamar</string>
+    <string name="loading_summoner_data">Loading summoner information for %s</string>
+    <string name="summoners_rift">Summoner\'s Rift</string>
+    <string name="proving_grounds">The proving grounds</string>
+    <string name="twisted_treeline">Twisted Treeline</string>
+    <string name="crystal_scar">The Crystal Scar</string>
+    <string name="howling_abyss">Howling Abyss</string>
+    <string name="butchers_bridge">Butcher\'s Bridge</string>
+    <string name="unknown_map">LoL</string>
+    <string name="home_empty">Add your main League of Legends\naccount to get started.</string>
+    <string name="action_about">About</string>
+    <string name="about_text">https://github.com/Neamar/teamward-client\n\nTeamWard isn\'t endorsed by Riot Games and doesn\'t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="rammus_ok">Rammus</string>
+    <string name="first_main">MAIN</string>
+    <string name="second_main">2ⁿᵈ MAIN</string>
+    <string name="third_main">3ʳᵈ MAIN</string>
+    <string name="summoner_icon">Summoner icon</string>
+    <string name="summoner_name">Summoner name</string>
+    <string name="add_account">Add account</string>
+
+    <string-array name="regions">
+        <item>EUW [EU West]</item>
+        <item>BR [Brazil]</item>
+        <item>EUNE [EU Nordic &amp; East]</item>
+        <item>KR [Republic of Korea]</item>
+        <item>LAN [Latin America North]</item>
+        <item>LAS [Latin America South]</item>
+        <item>NA [North America]</item>
+        <item>OCE [Oceania]</item>
+        <item>RU [Russia]</item>
+        <item>TR [Turkey]</item>
+        <item>JP [Japan]</item>
+    </string-array>
+    <string name="title_activity_add_account">Add new account</string>
+    <string name="s_is_not_in_game_right_now">%s is not in game right now!</string>
+
+    <string name="account_removed">Account removed.</string>
+    <string name="reload">Reload</string>
+    <string name="stale_data">Stale data?</string>
+    <string name="data_only_on_loading_screen">TeamWard only gets data once you are in the game loading screen.</string>
+    <string name="in_lobby_wait_then_refresh">If you\'re still in the lobby, wait and press refresh.</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_header_general">Game data</string>
+
+    <string-array name="pref_game_data_tabs_titles">
+        <item>My team</item>
+        <item>Enemy team</item>
+        <item>Tips</item>
+    </string-array>
+
+    <string name="pref_header_counters">Counters</string>
+
+    <string name="pref_counter_champion_mastery_name">Required champion mastery</string>
+    <string-array name="pref_counter_champion_mastery_titles">
+        <item>Played champion at least once</item>
+        <item>Champion mastery 1+</item>
+        <item>Champion mastery 2+</item>
+        <item>Champion mastery 3+</item>
+        <item>Champion mastery 4+</item>
+        <item>Champion mastery 5+</item>
+        <item>Champion mastery 6+</item>
+        <item>Champion mastery 7 only</item>
+    </string-array>
+
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="may_be_inaccurate">(may be inaccurate)</string>
+    <string name="premade_information">Premade information</string>
+    <string name="s_has_no_flash">%1$s uses %2$s and %3$s.</string>
+    <string name="no_flash">Flashless!</string>
+    <string name="no_smite">The lion sleeps tonight</string>
+    <string name="no_smite_desc">%s has no jungler</string>
+    <string name="tips">Tips</string>
+    <string name="such_ability">Such ability power!</string>
+    <string name="full_ap">%s is mostly made of AP champions.</string>
+    <string name="full_ad">%s is mostly made of AD champions.</string>
+    <string name="much_damage">Much damage!</string>
+    <string name="no_internet_connection">Please check your network connection.</string>
+    <string name="title_activity_counter">Find your counter!</string>
+    <string name="action_counter">Draft tool</string>
+    <string name="display_champion_name">Display champion name</string>
+    <string name="display_champion_name_summary">Champion picture will always be displayed</string>
+    <string name="counter_counters_activity_title">%1$s vs. %2$s %3$s</string>
+    <string name="search">Search</string>
+    <string name="double_smite_desc">%s plays with more than one Smite!</string>
+    <string name="double_smite">Double double animal style</string>
+    <string name="try_harder_desc">Everyone in %1$s plays a champion with mastery %2$d+</string>
+    <string name="try_harder">tryharders</string>
+    <string name="select_champion_playing_against">Select the champion you\'re drafting against</string>
+    <string name="good_counters">Your good %s counters</string>
+    <string name="bad_counters">Your bad %s counters</string>
+    <string name="no_counters">Not enough data on %s against the champions you\'re playing :(</string>
+    <string name="title_activity_player_detail">Game details</string>
+    <string name="pref_title_new_game_notifications">New game notifications</string>
+    <string name="default_tab">Default tab</string>
+    <string name="matchup_stub">50%</string>
+    <string name="expected_matchups">Expected matchups</string>
+    <string name="matchup_stats_source">(data: http://teamward.xyz)</string>
+    <string name="gg">GG</string>
+    <string name="welcome_to">Welcome to %s!</string>
+    <string name="player_is_in_game">%s is in game. Touch for information</string>
+    <string name="ap_ad_hint">Hint! Notice the frame around the champion picture? Red is AD, purple is AP.</string>
+    <string name="champion_mastery_lvl">Champion mastery %d</string>
+    <string name="ranking">%1$s %2$s</string>
+    <string name="noobs_noobs_everywhere">First timer</string>
+    <string name="is_playing_for_first_time">%1$s is playing %2$s for the first time.</string>
+    <string name="no_data_for_this_champion">No data for this champion.</string>
+    <string name="no_data">No data:</string>
+    <string name="not_enough_information">Although you play %s, we don\'t have enough data to say if it is a good matchup.</string>
+    <string name="kda_template">%1$d / &lt;font color="#FF5252"&gt;%2$d&lt;/font&gt; / %3$d</string>
+    <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
+    <string name="main_level_7">%1$s knows %2$s quite well, be careful!</string>
+    <string name="otp">One Trick Pony</string>
+    <string name="error_adding_account">Error adding account. Please double check your summoner name and region!</string>
+    <string name="aram">ARAM</string>
+    <string name="normal">Normal 5v5</string>
+    <string name="normal_3">Normal 3v3</string>
+    <string name="ranked_solo_5">Ranked Solo/Duo</string>
+    <string name="ranked_flex_5">Flex 5v5</string>
+    <string name="ranked_flex_3">Flex 3v3</string>
+    <string name="teambuilder_ranked">Teambuilder ranked</string>
+    <string name="unknown_queue">Unknown queue</string>
+    <string name="recent_matches">Recent matches with %1$s</string>
+    <string name="champion_points">%1$s points</string>
+    <string name="love_the_app">Teamward is free and ad-free! If you like it, please rate it on the Play Store :)</string>
+    <string name="rate_app">Rate it!</string>
+    <string name="thank_you">Thank you!</string>
+    <string name="custom">Custom game</string>
+    <string name="refresh">Refresh</string>
+    <string name="abilities">Abilities</string>
+    <string name="ability_name">%1$s — %2$s</string>
+    <string name="ability_passive">Passive</string>
+    <string name="ability_q">Q</string>
+    <string name="ability_w">W</string>
+    <string name="ability_e">E</string>
+    <string name="ability_r">R</string>
+    <string name="ability_cooldowns">%ss</string>
+    <string name="champion_details">Champion details</string>
+    <string name="title_activity_champion">Champion details</string>
+    <string name="teamward_user">A TeamWard user!</string>
+    <string name="hope_he_wins">I hope he wins this game.</string>
+    <string name="not_using_teamward">Shame! Shame!</string>
+    <string name="s_is_not_using_teamward">%s is playing with you, but is not using TeamWard. Me sad.</string>
+    <string name="s_are_not_using_teamward">%s are not using TeamWard. Makes me cry.</string>
+    <string name="standard_separator">,</string>
+    <string name="final_separator">and</string>
+    <string name="patch_s">(data: patch %1$s)</string>
+    <string name="s_winrate">%s winrate</string>
+    <string name="spells">Spells</string>
+    <string name="champion_gg">champion.gg</string>
+    <string name="last_season_rank">Last season</string>
+    <string name="ranking_last_season">%1$s</string>
+    <string name="unable_to_open_browser">Unable to open browser</string>
+    <string name="winrate_by_game_length">Winrate by game length</string>
+    <string name="relative_team_colors_summary">Always see yourself on blue team</string>
+    <string name="relative_team_colors">Enable relative team color</string>
+    <string name="hardcore_gamer">Hardcore gamer !</string>
+    <string name="hardcore_gamer_description">%s has played more than 10 games in the last 24 hours.</string>
+    <string name="filthy_casual_description">%s plays less than one game a week! What a casual!</string>
+    <string name="filthy_casual">Filthy casual…</string>
+    <string name="your_team">Your team</string>
+    <string name="their_team">Their team</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">  • This graph is an indicator of each team powerspike and late-game scaling.\n  • Graph based on champions, not players\n • A team with late game champions will have a better winrate the longer the game is.\n  • A team made of weak champions in the current meta will likely never be above 50%.\n • Two very strong team compositions can both have an average winrate of more than 50%.</string>
+    <string name="arurf">All Random URF</string>
+    <string name="blind_pick">Blind pick 5v5</string>
+    <string name="draft_pick">Draft pick 5v5</string>
+</resources>
