@@ -167,24 +167,24 @@
     <string name="s_are_not_using_teamward">%s não está usando TeamWard. Badfeels man</string>
     <string name="standard_separator">,</string>
     <string name="final_separator">e</string>
-    <string name="patch_s">(data: patch %1$s)</string>
+    <string name="patch_s">(Dados: patch %1$s)</string>
     <string name="s_winrate">%s winrate</string>
     <string name="champion_gg">champion.gg</string>
-    <string name="spells">Spells</string>
-    <string name="last_season_rank">Last season</string>
+    <string name="spells">Feitiços</string>
+    <string name="last_season_rank">Última season</string>
     <string name="ranking_last_season">%1$s</string>
-    <string name="unable_to_open_browser">Unable to open browser</string>
-    <string name="relative_team_colors_summary">Always see yourself on blue team</string>
-    <string name="relative_team_colors">Enable relative team color</string>
-    <string name="winrate_by_game_length">Winrate by game length</string>
+    <string name="unable_to_open_browser">Não foi possível abrir o navegador</string>
+    <string name="relative_team_colors_summary">Sempre ver você no time azul</string>
+    <string name="relative_team_colors">Habilitar cores de times relativas</string>
+    <string name="winrate_by_game_length">Winrate por duração de jogo</string>
     <string name="hardcore_gamer">Gamer hardcore!</string>
     <string name="hardcore_gamer_description">%s jogou mais que 10 vezes nas últimas 24horas.</string>
     <string name="filthy_casual_description">%s joga menos que um jogo por semana! Que casual!</string>
     <string name="filthy_casual">Casualsinho…</string>
-    <string name="their_team">Their team</string>
-    <string name="your_team">Your team</string>
-    <string name="winrate_by_time_disclaimer" formatted="false">	• Graph based on champions, not players\n	• A team with late game champions will have a better winrate the longer the game is.\n	• A team made of weak champions in the current meta will likely never be above 50%.\n	• Two very strong team compositions can both have an average winrate of more than 50%.\n	• This graph is an indicator of each team powerspike and late-game scaling.</string>
+    <string name="their_team">Time deles</string>
+    <string name="your_team">Seu time</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">	• Gráfico baseado em campeões, não em jogadores\n	• O time que tiver campeões late game irão ter melhor winrate quanto mais longo for o jogo.\n	• Um time feito de campeões fracos no meta atual básicamente nunca estará acima de 50%.\n	• Duas composições de times fortes podem ter uma média de winrate maior que 50%.\n	• Este gráfico é um indicador de escalamento de cada powerspike e late-game.</string>
     <string name="blind_pick">Blind pick 5v5</string>
-    <string name="draft_pick">Draft pick 5v5</string>
+    <string name="draft_pick">Escolha alternada 5v5</string>
     <string name="arurf">All Random URF</string>
 </resources>
