@@ -180,8 +180,8 @@
     <string name="hardcore_gamer_description">%s a joué plus de 10 parties en 24h.</string>
     <string name="filthy_casual_description">%s joue moins d\'une fois par semaine ! Quel casual !</string>
     <string name="filthy_casual">Filthy casual…</string>
-    <string name="their_team">Mon équipe</string>
-    <string name="your_team">Leur équipe</string>
+    <string name="their_team">Leur équipe</string>
+    <string name="your_team">Mon équipe</string>
     <string name="winrate_by_time_disclaimer" formatted="false">  • Ce graphe indique les powerspikes des équipes, et de quelle façon chaque composition évolue dans le temps\n  • Graphique basé sur les champions, pas les joueurs\n • Une équipe de champions late-game aura un meilleur winrate sur les parties plus longues.\n  • Une équipe de champions faibles dans la méta actuelle ne dépassera probablement jamais 50%.\n • Deux bonnes compositions peuvent avoir chacune plus de 50% de chances de victoire en moyenne.</string>
     <string name="blind_pick">Blind pick 5v5</string>
     <string name="draft_pick">Draft pick 5v5</string>
