@@ -183,7 +183,7 @@
     <string name="filthy_casual">Filthy casual…</string>
     <string name="your_team">Tu equipo</string>
     <string name="their_team">Equipo de ellos</string>
-    <string name="winrate_by_time_disclaimer" formatted="false">  • Este grafico es un indicador de cada equipo potencia y escalado de juego tardio.\n  • Grafico basado en campeones no jugadores. • Un equipo con campeones de juego tardio puede tener un mayor winrate segun la longitud del juego. • Un equipo de campeones debiles en el meta actual puede tener un uso del 50% • Dos composiciones de equipo muy fuertes superan un winrate del 50%.
+    <string name="winrate_by_time_disclaimer" formatted="false">  • Este grafico es un indicador de cada equipo potencia y escalado de juego tardio.\n  • Grafico basado en campeones no jugadores. • Un equipo con campeones de juego tardio puede tener un mayor winrate segun la longitud del juego. • Un equipo de campeones debiles en el meta actual puede tener un uso del 50% • Dos composiciones de equipo muy fuertes superan un winrate del 50%.</string>
     <string name="arurf">Todo Aletorio URF</string>
     <string name="blind_pick">Seleccion oculta</string>
     <string name="draft_pick">Seleccion mostrada</string>
