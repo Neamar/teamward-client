@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="action_settings">Paramètres</string>
     <string name="title_activity_game">Détails de la partie</string>
@@ -6,8 +7,8 @@
     <string name="unknown_team">équipe \?</string>
     <string name="summoner_level">niveau %s</string>
     <string name="champion_image">Image du champion</string>
-    <string name="summoner_spell_d">Summoner spell D</string>
-    <string name="summoner_spell_f">Summoner spell F</string>
+    <string name="summoner_spell_d">Sort d\'Invocateur D</string>
+    <string name="summoner_spell_f">Sort d\'Invocateur F</string>
     <string name="stub_champion_name">Aatrox</string>
     <string name="stub_summoner_name">Graphistos</string>
     <string name="stub_previous_ranking">niveau 27</string>
@@ -54,7 +55,7 @@
 
     <string name="account_removed">Compte supprimé.</string>
     <string name="reload">Recharger</string>
-    <string name="stale_data">Dans une nouvelle partie?</string>
+    <string name="stale_data">Dans une nouvelle partie ?</string>
     <string name="data_only_on_loading_screen">TeamWard ne peut afficher des données qu\'une fois l\'écran de chargement affiché.</string>
     <string name="in_lobby_wait_then_refresh">Si vous êtes dans le lobby, attendez le chargement puis rechargez.</string>
     <string name="title_activity_settings">Paramètres</string>
@@ -99,12 +100,12 @@
     <string name="much_damage">Much damage !</string>
     <string name="no_internet_connection">Vérifiez votre connexion internet.</string>
     <string name="title_activity_counter">Découvrez vos counters !</string>
-    <string name="action_counter">VS.</string>
+    <string name="action_counter">Versus</string>
     <string name="display_champion_name">Afficher le nom des champions</string>
     <string name="display_champion_name_summary">Les avatars sont toujours affichés</string>
     <string name="counter_counters_activity_title">%1$s vs. %2$s %3$s</string>
     <string name="search">Rechercher</string>
-    <string name="double_smite_desc">%s a plus d\'un Smite ! WTF.</string>
+    <string name="double_smite_desc">%s a plus d\'un Smite !</string>
     <string name="double_smite">Double double animal style</string>
     <string name="try_harder_desc">Tout le monde dans %1$s a une champion mastery %2$d+</string>
     <string name="try_harder">tryharders</string>
@@ -122,9 +123,9 @@
     <string name="player_is_in_game">%s est en jeu. Touchez pour plus d\'informations</string>
     <string name="welcome_to">Bienvenue dans %s !</string>
     <string name="noobs_noobs_everywhere">Première fois</string>
-    <string name="no_data">Inconnu:</string>
-    <string name="no_data_for_this_champion">Aucune donnée pour ce champion</string>
-    <string name="not_enough_information">Vous jouez %s, mais il n\'y a pas assez d\'information pour dire s\'il s\'agit d\'un bon matchup</string>
+    <string name="no_data">Inconnu :</string>
+    <string name="no_data_for_this_champion">Aucune donnée pour ce champion.</string>
+    <string name="not_enough_information">Vous jouez %s, mais il n\'y a pas assez d\'information pour dire s\'il s\'agit d\'un bon matchup.</string>
     <string name="ap_ad_hint">Regardez le carde autour de l\'image du champion : rouge pour AD, violet pour AP.</string>
     <string name="champion_mastery_lvl">Maîtrise de champion %d</string>
     <string name="is_playing_for_first_time">%1$s joue %2$s pour la première fois.</string>
@@ -144,7 +145,7 @@
     <string name="unknown_queue">File inconnue</string>
     <string name="champion_points">%1$s points</string>
     <string name="recent_matches">Parties récentes avec %1$s</string>
-    <string name="rate_app">Noter l\'app</string>
+    <string name="rate_app">Noter l\'app !</string>
     <string name="love_the_app">Teamward est gratuit et sans pub! Si vous aimez l\'appli, notez la sur le Play Store :)</string>
     <string name="thank_you">Merci !</string>
     <string name="custom">Partie personnalisée</string>
@@ -160,8 +161,8 @@
     <string name="title_activity_champion">Détails du champion</string>
     <string name="champion_details">Infos champion</string>
     <string name="final_separator">et</string>
-    <string name="not_using_teamward">Shame! Shame!</string>
-    <string name="s_are_not_using_teamward">%s n\'utilisent pas TeamWard. Ça me donne envie de pleurer :(</string>
+    <string name="not_using_teamward">Shame ! Shame !</string>
+    <string name="s_are_not_using_teamward">%s n\'utilisent pas TeamWard. Ça me donne envie de pleurer.</string>
     <string name="s_is_not_using_teamward">%s joue avec vous, mais n\'utilise pas Teamward, ce qui est bien triste.</string>
     <string name="standard_separator">,</string>
     <string name="teamward_user">Un utilisateur de TeamWard !</string>
