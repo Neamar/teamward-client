@@ -9,15 +9,10 @@
     <string name="champion_image">Image du champion</string>
     <string name="summoner_spell_d">Sort d\'Invocateur D</string>
     <string name="summoner_spell_f">Sort d\'Invocateur F</string>
-    <string name="stub_champion_name">Aatrox</string>
-    <string name="stub_summoner_name">Graphistos</string>
-    <string name="stub_previous_ranking">niveau 27</string>
     <string name="current_ranking_tier">Classement actuel</string>
-    <string name="stub_ranking_division">IV</string>
     <string name="champion_mastery">Champion mastery</string>
     <string name="champion_mastery_level">Niveau de champion mastery %d</string>
     <string name="loading_game_data">Chargement des données pour %s</string>
-    <string name="stub_account">Neamar</string>
     <string name="loading_summoner_data">Chargement des données d\'invocateur pour %s</string>
     <string name="summoners_rift">la Faille de l\'invocateur</string>
     <string name="proving_grounds">The proving grounds</string>

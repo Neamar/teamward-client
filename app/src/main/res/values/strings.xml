@@ -8,15 +8,15 @@
     <string name="champion_image">Champion image</string>
     <string name="summoner_spell_d">Summoner spell D</string>
     <string name="summoner_spell_f">Summoner spell F</string>
-    <string name="stub_champion_name">Aatrox</string>
-    <string name="stub_summoner_name">Graphistos</string>
-    <string name="stub_previous_ranking">level 27</string>
+    <string name="stub_champion_name" translatable="false">Aatrox</string>
+    <string name="stub_summoner_name" translatable="false">Graphistos</string>
+    <string name="stub_previous_ranking" translatable="false">level 27</string>
     <string name="current_ranking_tier">Current ranking tier</string>
-    <string name="stub_ranking_division">IV</string>
+    <string name="stub_ranking_division" translatable="false">IV</string>
     <string name="champion_mastery">Champion mastery</string>
     <string name="champion_mastery_level">Champion mastery level %d</string>
     <string name="loading_game_data">Building game data for %s</string>
-    <string name="stub_account">Neamar</string>
+    <string name="stub_account" translatable="false">Neamar</string>
     <string name="loading_summoner_data">Loading summoner information for %s</string>
     <string name="summoners_rift">Summoner\'s Rift</string>
     <string name="proving_grounds">The proving grounds</string>
