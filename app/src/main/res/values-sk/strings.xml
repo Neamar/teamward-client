@@ -68,4 +68,95 @@
     <string name="much_damage">"Veľa  fyzického poškodenia (Full AD)!"</string>
     <string name="no_internet_connection">Prosím skontroluj svoje internetové pripojenie.</string>
     <string name="title_activity_counter">Najdi svojho countera!</string>
-    </resources>
+    <string name="action_counter">Pomocník</string>
+    <string name="display_champion_name">Zobrazené meno šampióna</string>
+    <string name="display_champion_name_summary">Obrázok šampióna bude zobrazený tu</string>
+    <string name="counter_counters_activity_title">%1$s vs. %2$s %3$s</string>
+    <string name="search">Hľadať</string>
+    <string name="double_smite_desc">%s hrajú viac ako len s jedným Smitom!</string>
+    <string name="double_smite">Dvojitý zvierací štýl</string>
+    <string name="try_harder_desc">Každý v %1$s hraje šampióna s majstrovstvom %2$d+</string>
+    <string name="try_harder">tryharderi</string>
+    <string name="select_champion_playing_against">Vyber šampióna proti ktorému si</string>
+    <string name="good_counters">Tvoji dobrý %s countery</string>
+    <string name="bad_counters">Tvoji zlý %s countery</string>
+    <string name="no_counters">Nedostatok dát ohľadom %s protivníkovi ktorému hráš :(</string>
+    <string name="title_activity_player_detail">Detaily hry</string>
+    <string name="pref_title_new_game_notifications">Upozornenie na novú hru</string>
+    <string name="default_tab">Domov</string>
+    <string name="matchup_stub">50%</string>
+    <string name="expected_matchups">Predpokladané šance</string>
+    <string name="matchup_stats_source">(údaje: http://teamward.xyz)</string>
+    <string name="gg">GG</string>
+    <string name="welcome_to">Vitajte v %s!</string>
+    <string name="player_is_in_game">%s je v hre. Kliknite pre viac informácií</string>
+    <string name="ap_ad_hint">"Rada! Všimol si si rámček okolo obrázku šampióna?  Červená je AD a fialová AP."</string>
+    <string name="champion_mastery_lvl">Majstrovstvo šampióna %d</string>
+    <string name="ranking">%1$s %2$s</string>
+    <string name="noobs_noobs_everywhere">Prvý krát</string>
+    <string name="is_playing_for_first_time">%1$s hraje %2$s po prvý krát.</string>
+    <string name="no_data_for_this_champion">Žiadne údaje o tomto šampiónovi.</string>
+    <string name="no_data">Žiadne data:</string>
+    <string name="not_enough_information">Aj keď si hral %s, nemáme dostatok údajov aby sme mohli povedať ako si na tom.</string>
+    <string name="kda_template">%1$d / &lt;font color=#FF5252&gt;%2$d&lt;/font&gt; / %3$d</string>
+    <string name="cs_template">CS %1$d &lt;font color=#AAAAAA&gt;(%2$,.1f/min)&lt;/font&gt;</string>
+    <string name="main_level_7">%1$s vie %2$s celkom dobre, buď opatrný!</string>
+    <string name="otp">One Trick Pony</string>
+    <string name="error_adding_account">Error pri pridávaní účtu. Prosím znova skontroluj vyvolávačovo meno a región!</string>
+    <string name="aram">ARAM</string>
+    <string name="normal">Normálka 5vs5</string>
+    <string name="normal_3">Normálka 3vs3</string>
+    <string name="ranked_solo_5">Ranked Solo/Duo</string>
+    <string name="ranked_flex_5">Flex 5vs5</string>
+    <string name="ranked_flex_3">Flex 3vs3</string>
+    <string name="teambuilder_ranked">Zostavený tím ranked</string>
+    <string name="unknown_queue">Neznáma fronta</string>
+    <string name="recent_matches">Nedávne zápasy s %1$s</string>
+    <string name="champion_points">%1$s bodov</string>
+    <string name="love_the_app">Teamward je zdarma a bez reklám! Ak sa ti páči, tak ohodnoť na Obchod Play :)</string>
+    <string name="rate_app">Ohodnoť!</string>
+    <string name="thank_you">Ďakujeme!</string>
+    <string name="custom">Vlastná hra</string>
+    <string name="refresh">Znovu načítať</string>
+    <string name="abilities">Schopností</string>
+    <string name="ability_name">%1$s — %2$s</string>
+    <string name="ability_passive">Pasívka</string>
+    <string name="ability_q">Q</string>
+    <string name="ability_w">W</string>
+    <string name="ability_e">E</string>
+    <string name="ability_r">R</string>
+    <string name="ability_cooldowns">%ss</string>
+    <string name="champion_details">Údaje o šampiónovi</string>
+    <string name="title_activity_champion">Údaje o šampiónovi</string>
+    <string name="teamward_user">Používateľ TeamWard!</string>
+    <string name="hope_he_wins">Dúfam, že túto hru vyhrá.</string>
+    <string name="not_using_teamward">Hanba! Hanba!</string>
+    <string name="s_is_not_using_teamward">%s hraje s tebou, ale nepoužíva TeamWard. Kevin je smutný.</string>
+    <string name="s_are_not_using_teamward">%s nepoužíva TeamWard. Kevin bude plakať.</string>
+    <string name="standard_separator">,</string>
+    <string name="final_separator">a</string>
+    <string name="patch_s">(data: patch %1$s)</string>
+    <string name="s_winrate">%s winrate</string>
+    <string name="spells">Schopnosti</string>
+    <string name="champion_gg">champion.gg</string>
+    <string name="last_season_rank">Minulá sezóna</string>
+    <string name="ranking_last_season">%1$s</string>
+    <string name="unable_to_open_browser">Nedokážem otvoriť prehliadač</string>
+    <string name="winrate_by_game_length">Šanca na výhru podľa dĺžky zápasu</string>
+    <string name="relative_team_colors_summary">Vždy byť v modrom tíme</string>
+    <string name="relative_team_colors">Umožniť relatívnu farebnosť tímov</string>
+    <string name="hardcore_gamer">Ťažký hráč!</string>
+    <string name="hardcore_gamer_description">%s hral viac ako 10 hier v posledných 24 hodinách.</string>
+    <string name="filthy_casual_description">%s hra menej a jednú hru za týždeň!</string>
+    <string name="filthy_casual">Obyčajný človek…</string>
+    <string name="your_team">Tvoj tím</string>
+    <string name="their_team">Ich tím</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• Tento graf je indikátorom sily a late-game škálovania
+\n • Graf je podľa šampiónov nie podľa hráčov
+\n • Tím s viacej late game šampiónmi budú mať väčšiu šancu na výhru ak bude hra dlhšia.
+\n • Tím so slabými šampiónmi ktorý nie sú momentálne v mete nebudú mať nikdy viac ako 50%.
+\n • Dve veľmi silné tímové kompozície môžu mať priemernú šancu na výhru viac ako 50%.</string>
+    <string name="arurf">Náhodný URF</string>
+    <string name="blind_pick">Slepý výber 5vs5</string>
+    <string name="draft_pick">Draft výber 5vs5</string>
+</resources>
