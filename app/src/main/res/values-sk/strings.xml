@@ -1,2 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="action_settings">Nastavenia</string>
+    <string name="title_activity_game">Detaily o hre</string>
+    <string name="blue_team">Modrý tím</string>
+    <string name="red_team">Červený tím</string>
+    <string name="unknown_team">" tím"</string>
+    <string name="summoner_level">level %s</string>
+    <string name="champion_image">Obrázok šampióna</string>
+    <string name="summoner_spell_d">Vyvolávačovo kúzlo D</string>
+    <string name="summoner_spell_f">Vyvolávačovo kúzlo F</string>
+    <string name="current_ranking_tier">Momentálny rank</string>
+    <string name="champion_mastery">Majstrovstvo šampióna</string>
+    <string name="champion_mastery_level">Level majstrovstva %d</string>
+    <string name="loading_game_data">Hľadám dáta o hre pre %s</string>
+    <string name="loading_summoner_data">Načítavanie vyvolávačových údajov o %s</string>
+    <string name="summoners_rift">Vyvolávačov žľab</string>
+    <string name="proving_grounds">Dokazované pozemky</string>
+    <string name="twisted_treeline">Pokrútená alej</string>
+    <string name="crystal_scar">Dominion</string>
+    <string name="howling_abyss">Ľadová priepasť</string>
+    <string name="butchers_bridge">Mäsiarov most</string>
+    <string name="unknown_map">LoL</string>
+    <string name="home_empty">Pridaj svoj hlavný League of Legends
+\núčet pre pokračovanie.</string>
+    <string name="action_about">Ohľadom</string>
+    <string name="about_text">https://github.com/Neamar/teamward-client
+\n
+\nTeamWard nie je schválená od Riot Games a nereflektuje pozretia alebo otázky ohľadom Riot Games alebo niekoho oficiálne zapojeného do produkovania alebo riadenia League of Legends. League of Legends a Riot Games sú registrované chránené známky spoločnosťou Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="rammus_ok">Rammus</string>
+    <string name="first_main">Hlavný šampión</string>
+    <string name="second_main">2. Hlavný šampión</string>
+    <string name="third_main">3. Hlavný šampión</string>
+    <string name="summoner_icon">Ikona vyvolávača</string>
+    <string name="summoner_name">Meno vyvolávača</string>
+    <string name="add_account">Pridať účet</string>
+
+    <string name="title_activity_add_account">Pridať nový účet</string>
+    <string name="s_is_not_in_game_right_now">%s nie je práve v žiadnej hre!</string>
+
+    <string name="account_removed">Účet odstránení.</string>
+    <string name="reload">Znova načítať</string>
+    <string name="stale_data">Stále údaje?</string>
+    <string name="data_only_on_loading_screen">TeamWard získava informácia iba keď si v načítacej obrazovke.</string>
+    <string name="in_lobby_wait_then_refresh">Ak si stále v lobby, počkaj a stlač znova načítať.</string>
+    <string name="title_activity_settings">Nastavenia</string>
+
+    <string name="pref_header_general">Data o hre</string>
+
+    <string name="pref_header_counters">Counter</string>
+
+    <string name="pref_counter_champion_mastery_name">Potrebné majstrovstvo šampióna</string>
+    <string name="pref_header_notifications">Upozornenia</string>
+
+    <string name="pref_title_ringtone">Zvonenie</string>
+    <string name="pref_ringtone_silent">Potichu</string>
+
+    <string name="pref_title_vibrate">Vibrácie</string>
+    <string name="may_be_inaccurate">(nemusia byť presné)</string>
+    <string name="premade_information">Informácie o premade</string>
+    <string name="s_has_no_flash">%1$s používa %2$s a %3$s.</string>
+    <string name="no_flash">Bez flashu!</string>
+    <string name="no_smite">Nemajú smite</string>
+    <string name="no_smite_desc">%s nemajú džunglera</string>
+    <string name="tips">Typy</string>
+    <string name="such_ability">Veľa sily schopností (Full AP)!</string>
+    <string name="full_ap">%s sú z väčšiny AP šampióni.</string>
+    <string name="full_ad">%s sú z väčšiny AD šampióni.</string>
+    <string name="much_damage">"Veľa  fyzického poškodenia (Full AD)!"</string>
+    <string name="no_internet_connection">Prosím skontroluj svoje internetové pripojenie.</string>
+    <string name="title_activity_counter">Najdi svojho countera!</string>
+    </resources>
