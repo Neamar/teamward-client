@@ -10,9 +10,9 @@
     <string name="summoner_spell_f">Zaklęcie F</string>
     <string name="current_ranking_tier">Aktualny ranking</string>
     <string name="champion_mastery">Maestria bohatera</string>
-    <string name="champion_mastery_level">Poziom maestrii bohatera</string>
-    <string name="loading_game_data">Tworzenie danych gry dla</string>
-    <string name="loading_summoner_data">Ładowanie danych przywoływacza</string>
+    <string name="champion_mastery_level">Poziom maestrii bohatera %d</string>
+    <string name="loading_game_data">Tworzenie danych gry dla %s</string>
+    <string name="loading_summoner_data">Ładowanie danych przywoływacza dla %s</string>
     <string name="summoners_rift">Summoner\'s Rift</string>
     <string name="proving_grounds">The proving grounds</string>
     <string name="twisted_treeline">Twisted Treeline</string>
@@ -21,7 +21,7 @@
     <string name="butchers_bridge">Butcher\'s Bridge</string>
     <string name="unknown_map">LoL</string>
     <string name="home_empty">Dodaj swoje główne konto League Of Legends aby zacząć.</string>
-    <string name="action_about">O</string>
+    <string name="action_about">O nas</string>
     <string name="rammus_ok">Rammus</string>
     <string name="first_main">MAIN</string>
     <string name="second_main">2ⁿᵈ MAIN</string>
@@ -49,4 +49,56 @@
 
     <string name="no_smite_desc">nie ma junglera</string>
     <string name="tips">Porady</string>
+    <string name="about_text">https://github.com/Neamar/teamward-client
+\n
+\nTeamWard nie jest zatwierdzony przez Riot Games i nie odzwierciedla poglądów lub opinii Riot Games lub każdego oficjalnie zaangażowanego w produkowanie lub zarządzanie League of Legends. League of Legends i Riot Games są markami lub zarejestrowanymi znakami firmowymi Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="pref_header_counters">Kontry</string>
+
+    <string name="pref_counter_champion_mastery_name">Wymagana masteria bohatera</string>
+    <string name="pref_title_vibrate">Wibracje</string>
+    <string name="may_be_inaccurate">(może być niedokładne)</string>
+    <string name="premade_information">Informacje premade</string>
+    <string name="s_has_no_flash">%1$s używa %2$s i %3$s.</string>
+    <string name="no_smite">Lew śpi tej nocy</string>
+    <string name="such_ability">Taka moc zdolności!</string>
+    <string name="full_ap">%s składa się głównie z bohaterów AP.</string>
+    <string name="full_ad">%s składa się głównie z AD bohaterów.</string>
+    <string name="much_damage">Duże obrażenia!</string>
+    <string name="no_internet_connection">Proszę sprawdź swoje połączenie sieciowe.</string>
+    <string name="title_activity_counter">Znajdź swoją kontrę!</string>
+    <string name="display_champion_name">Wyświetl nazwę bohatera</string>
+    <string name="display_champion_name_summary">Obraz bohatera będzie zawsze wyświetlany</string>
+    <string name="counter_counters_activity_title">%1$s vs. %2$s %3$s</string>
+    <string name="search">Szukaj</string>
+    <string name="double_smite_desc">%s gra z więcej niż jednym Porażeniem!</string>
+    <string name="try_harder_desc">Wszyscy w %1$s graja bohatera ze specjalizacjami %2$d+</string>
+    <string name="select_champion_playing_against">Wybierz bohatera, z którym będziesz walczył</string>
+    <string name="good_counters">Twoje dobre %s kontry</string>
+    <string name="bad_counters">Twoje złe %s kontry</string>
+    <string name="no_counters">Brak wystarczającej ilości danych na %s przeciwko bohaterom, z którymi grasz :(</string>
+    <string name="title_activity_player_detail">Szczegóły gry</string>
+    <string name="pref_title_new_game_notifications">Powiadomienia o nowej grze</string>
+    <string name="default_tab">Zakładka domyślna</string>
+    <string name="matchup_stub">50%</string>
+    <string name="matchup_stats_source">(dane: http://teamward.xyz)</string>
+    <string name="gg">GG</string>
+    <string name="welcome_to">Witamy w $s!</string>
+    <string name="player_is_in_game">% s jest w grze. Dotknij, aby uzyskać informacje</string>
+    <string name="ap_ad_hint">Wskazówka! Zauważyłeś ramkę wokół obrazka bohatera? Czerwony to AD, fioletowy to AP.</string>
+    <string name="ranking">%1$s %2$s</string>
+    <string name="noobs_noobs_everywhere">Nowicjusz</string>
+    <string name="is_playing_for_first_time">%1$s gra %2$s po raz pierwszy.</string>
+    <string name="no_data_for_this_champion">Brak danych dla tego bohatera.</string>
+    <string name="no_data">Brak danych:</string>
+    <string name="kda_template">%1$d / &lt;font color=#FF5252&gt;%2$d&lt;/font&gt; / %3$d</string>
+    <string name="cs_template">CS %1$d &lt;font color=#AAAAAA&gt;(%2$,.1f/min)&lt;/font&gt;</string>
+    <string name="main_level_7">%1$s wie %2$s całkiem dobrze, bądź ostrożny!</string>
+    <string name="otp">One Trick Pony</string>
+    <string name="error_adding_account">Wystąpił błąd podczas dodawania konta. Sprawdź podwójnie nazwę i region przywoływacza!</string>
+    <string name="aram">ARAM</string>
+    <string name="normal">Normalna 5v5</string>
+    <string name="normal_3">Normalna 3v3</string>
+    <string name="ranked_solo_5">Rankingowa Solo/Duo</string>
+    <string name="ranked_flex_5">Flex 5v5</string>
+    <string name="ranked_flex_3">Flex 3v3</string>
     </resources>
