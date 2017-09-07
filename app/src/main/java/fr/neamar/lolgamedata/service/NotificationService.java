@@ -53,14 +53,12 @@ public class NotificationService extends GcmListenerService {
 
             Log.i(TAG, "End of game, hiding notification.");
             getNotificationManager().cancel(Long.toString(gameId).hashCode());
-        }
-        else if(data.containsKey("mp_message")) {
+        } else if (data.containsKey("mp_message")) {
             String title = data.getString("mp_title", getString(R.string.app_name));
             String message = data.getString("mp_message");
             String url = data.getString("mp_url", "");
             displayCustomNotification(title, message, url);
-        }
-        else {
+        } else {
             Log.i(TAG, "Received unknown notification:" + data.toString());
         }
     }
@@ -96,7 +94,15 @@ public class NotificationService extends GcmListenerService {
 
         NotificationManager notificationManager = getNotificationManager();
         if (prefs.getBoolean("notifications_new_game", true)) {
-            notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
+            try {
+                notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
+            } catch (RuntimeException e) {
+                // Most likely, the ringtone doesn't exist anymore. Use system default
+                // (seems to be a bug in Android 6.0)
+                notificationUri = Uri.parse(Settings.System.DEFAULT_NOTIFICATION_URI.toString());
+                notificationBuilder.setSound(notificationUri);
+                notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
+            }
 
             Tracker.trackNotificationDisplayed(this, account, mapId, getString(GameActivity.getMapName(mapId)), gameId);
         }
@@ -105,11 +111,10 @@ public class NotificationService extends GcmListenerService {
     private void displayCustomNotification(String title, String message, String url) {
         Intent intent;
 
-        if(url.isEmpty()) {
+        if (url.isEmpty()) {
             intent = new Intent(this, GameActivity.class);
             intent.putExtra("source", "custom_notification");
-        }
-        else {
+        } else {
             intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
         }
