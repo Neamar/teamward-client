@@ -44,7 +44,7 @@
 
     <string name="pref_header_notifications">Powiadomienia</string>
 
-    <string name="pref_title_ringtone">Dzwonel</string>
+    <string name="pref_title_ringtone">Dzwonek</string>
     <string name="pref_ringtone_silent">Cichy</string>
 
     <string name="no_smite_desc">nie ma junglera</string>
