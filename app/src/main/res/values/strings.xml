@@ -145,7 +145,7 @@
     <string name="no_data_for_this_champion">No data for this champion.</string>
     <string name="no_data">No data:</string>
     <string name="not_enough_information">Although you play %s, we don\'t have enough data to say if it is a good matchup.</string>
-    <string name="game_length_template" translatable="false">%1$s:%2$s / %3$s</string>
+    <string name="game_length_template" translatable="false">%1$s:%2$s / %3$s / %4$s</string>
     <string name="kda_template">%1$d / &lt;font color="#FF5252"&gt;%2$d&lt;/font&gt; / %3$d</string>
     <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s knows %2$s quite well, be careful!</string>

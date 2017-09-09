@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -77,7 +78,7 @@ public class MatchHolder extends RecyclerView.ViewHolder implements View.OnClick
         int secDuration = match.duration % 60;
         String gameLengthTemplate = this.gameLengthText.getContext().getString(R.string.game_length_template);
         String queueName = winOrLossView.getContext().getString(PlayerDetailActivity.getQueueName(match.queue));
-        this.gameLengthText.setText(String.format(gameLengthTemplate, minDuration < 10 ? "0" + minDuration : minDuration, secDuration < 10 ? "0" + secDuration : secDuration, queueName));
+        this.gameLengthText.setText(String.format(gameLengthTemplate, minDuration < 10 ? "0" + minDuration : minDuration, secDuration < 10 ? "0" + secDuration : secDuration, match.role, queueName));
 
         float csPerMin = (float) match.cs / minDuration;
         String csTemplate = this.gameLengthText.getContext().getString(R.string.cs_template);
