@@ -195,7 +195,7 @@
     <string name="winrate_by_game_length">Winrate by game length</string>
     <string name="relative_team_colors_summary">Always see yourself on blue team</string>
     <string name="relative_team_colors">Enable relative team color</string>
-    <string name="hardcore_gamer">Hardcore gamer !</string>
+    <string name="hardcore_gamer">Hardcore gamer!</string>
     <string name="hardcore_gamer_description">%s has played more than 10 games in the last 24 hours.</string>
     <string name="filthy_casual_description">%s plays less than one game a week! What a casual!</string>
     <string name="filthy_casual">Filthy casual…</string>
