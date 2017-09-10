@@ -26,6 +26,10 @@ android {
             resValue "string", "MIXPANEL_TOKEN", "1a7075d95ff6db6d08714db52edb706a"
             resValue "string", "API_URL", "https://app.teamward.xyz"
             resValue "string", "app_name", "Team Ward"
+
+            lintOptions {
+                disable 'MissingTranslation'
+            }
         }
     }
 }
