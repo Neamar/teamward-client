@@ -10,12 +10,12 @@
     <string name="summoner_spell_d">Sort d\'Invocateur D</string>
     <string name="summoner_spell_f">Sort d\'Invocateur F</string>
     <string name="current_ranking_tier">Classement actuel</string>
-    <string name="champion_mastery">Champion mastery</string>
+    <string name="champion_mastery">Maîtrise du champion</string>
     <string name="champion_mastery_level">Niveau de champion mastery %d</string>
     <string name="loading_game_data">Chargement des données pour %s</string>
     <string name="loading_summoner_data">Chargement des données d\'invocateur pour %s</string>
     <string name="summoners_rift">la Faille de l\'invocateur</string>
-    <string name="proving_grounds">The proving grounds</string>
+    <string name="proving_grounds">Terrain d\'entraînement</string>
     <string name="twisted_treeline">la forêt torturée</string>
     <string name="crystal_scar">la Brèche de Cristal</string>
     <string name="howling_abyss">l\'Abîme hurlant</string>
@@ -101,7 +101,7 @@
     <string name="counter_counters_activity_title">%1$s vs. %2$s %3$s</string>
     <string name="search">Rechercher</string>
     <string name="double_smite_desc">%s a plus d\'un Smite !</string>
-    <string name="double_smite">Double double animal style</string>
+    <string name="double_smite">Quitte ou double</string>
     <string name="try_harder_desc">Tout le monde dans %1$s a une champion mastery %2$d+</string>
     <string name="try_harder">tryharders</string>
     <string name="select_champion_playing_against">Sélectionnez le champion contre lequel vous draftez</string>
@@ -166,7 +166,7 @@
     <string name="s_winrate">Taux de victoire: %s</string>
     <string name="champion_gg">champion.gg</string>
     <string name="spells">Sorts</string>
-    <string name="last_season_rank">Last season</string>
+    <string name="last_season_rank">Saison dernière</string>
     <string name="ranking_last_season">%1$s</string>
     <string name="unable_to_open_browser">Impossible d\'ouvrir le navigateur</string>
     <string name="winrate_by_game_length">Chances de victoire selon la durée</string>
