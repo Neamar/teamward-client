@@ -1,2 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="action_settings">Настройки</string>
+    <string name="title_activity_game">Информация об игре</string>
+    <string name="blue_team">Синяя команда</string>
+    <string name="red_team">Красная команда</string>
+    <string name="unknown_team">" команда"</string>
+    <string name="summoner_level">уровень %s</string>
+    <string name="champion_image">Изображение чемпиона</string>
+    <string name="summoner_spell_d">Заклинание призывателя D</string>
+    <string name="summoner_spell_f">Заклинание призывателя F</string>
+    <string name="current_ranking_tier">Текущий рейтинг</string>
+    <string name="champion_mastery">Мастерство чемпиона</string>
+    <string name="champion_mastery_level">Уровень мастерства %d</string>
+    <string name="loading_game_data">Загружаем данные про %s</string>
+    <string name="loading_summoner_data">Загружаем информацию призывателя %s</string>
+    <string name="summoners_rift">Ущелье призывателей</string>
+    <string name="proving_grounds">Земли испытаний</string>
+    <string name="twisted_treeline">Проклятый Лес</string>
+    <string name="crystal_scar">Доминион</string>
+    <string name="howling_abyss">Воющая Бездна</string>
+    <string name="butchers_bridge">Мост Мясника</string>
+    <string name="unknown_map">ЛоЛ</string>
+    <string name="home_empty">Добавьте свой основной аккаунт в Лиге Легенд
+\nчтобы продолжить.</string>
+    <string name="action_about">О нас</string>
+    <string name="about_text">https://github.com/Neamar/teamward-client
+\n
+\nTeamWard не одобренна Roit Games и не отображает взгляды и/или мнения Riot Games или кого либо, кто участвует в создании или управлении League of Legends. League of Legends и Riot Games являются товарными знаками или зарегистрированными товарными знаками Riot Games, Inc. League of Legends 
+\n© Riot Games, Inc.</string>
+    <string name="rammus_ok">Раммус</string>
+    <string name="first_main">МЕЙН</string>
+    <string name="second_main">2 МЕЙН</string>
+    <string name="third_main">3 МЕЙН</string>
+    <string name="summoner_icon">Иконка призывателя</string>
+    <string name="summoner_name">Имя призывателя</string>
+    <string name="add_account">Добавить аккаунт</string>
+
+    <string name="title_activity_add_account">Добавить новый аккаунт</string>
+    <string name="s_is_not_in_game_right_now">%s сейчас не в игре!</string>
+
+    <string name="account_removed">Аккаунт удален.</string>
+    <string name="reload">Обновить</string>
+    <string name="stale_data">Устаревшие данные?</string>
+    <string name="data_only_on_loading_screen">TeamWard получает данные только когда вы на загрузочном экране.</string>
+    <string name="in_lobby_wait_then_refresh">Если вы еще в лобби, подождите и нажмите обновить.</string>
+    <string name="title_activity_settings">Настройки</string>
+
+    <string name="pref_header_general">Отображение</string>
+
+    <string name="pref_header_counters">Контр пики</string>
+
+    <string name="pref_counter_champion_mastery_name">Требуемое мастерство чемпиона</string>
+    <string name="pref_header_notifications">Уведомления</string>
+
+    <string name="pref_title_ringtone">Рингтон</string>
+    <string name="pref_ringtone_silent">Без звука</string>
+
+    <string name="pref_title_vibrate">Вибрация</string>
+    <string name="may_be_inaccurate">(данные могут быть не точными)</string>
+    <string name="premade_information">Информация о премейдах</string>
+    <string name="s_has_no_flash">%1$s выбрал %2$s и %3$s.</string>
+    <string name="no_flash">Без скачка!</string>
+    <string name="no_smite">Без кары</string>
+    <string name="no_smite_desc">%s играет без лесника</string>
+    <string name="tips">Советы</string>
+    <string name="such_ability">Очень много магического урона!</string>
+    <string name="full_ap">%s состоит в основном из героев с магическим уроном.</string>
+    <string name="full_ad">%s состоит в основном из героев с физическим уроном.</string>
+    <string name="much_damage">Очень много физического урона!</string>
+    <string name="no_internet_connection">Проверьте соединение с интернетом.</string>
+    <string name="title_activity_counter">Найдите свой конт пик!</string>
+    <string name="action_counter">Режим выбора</string>
+    <string name="display_champion_name">Отображать имя чемпиона</string>
+    <string name="display_champion_name_summary">Изображение чемпиона всегда будет отображаться</string>
+    <string name="counter_counters_activity_title">%1$s против %2$s %3$s</string>
+    <string name="search">Поиск</string>
+    <string name="double_smite_desc">У %s больше 1 кары!</string>
+    <string name="double_smite">Стиль двух животных</string>
+    <string name="try_harder_desc">У всех в %1$s мастерство чемпиона больше, чем %2$d+</string>
+    <string name="try_harder">Трайхайдеры</string>
+    <string name="select_champion_playing_against">Выберите чемпиона, против которого вы играете</string>
+    <string name="good_counters">Хорошие пики на %s</string>
+    <string name="bad_counters">Плохие пики на %s</string>
+    <string name="no_counters">Недостаточно данных про чемпионов, против которых вы играете на %s :(</string>
+    <string name="title_activity_player_detail">Информация о игре</string>
+    <string name="pref_title_new_game_notifications">Уведомление о начале игры</string>
+    <string name="default_tab">Вкладка по умолчанию</string>
+    <string name="matchup_stub">50%</string>
+    <string name="expected_matchups">Матчапы</string>
+    <string name="matchup_stats_source">(Источник: http://teamward.xyz)</string>
+    <string name="gg">ГГ</string>
+    <string name="welcome_to">Добро пожаловать в %s!</string>
+    <string name="player_is_in_game">%s в игре. Нажмите для подробной информации</string>
+    <string name="ap_ad_hint">Подсказка! Обратили внимание на цвет рамки вокруг изображения чемпионов? Красный - это АД, фиолетовый - АП.</string>
+    <string name="champion_mastery_lvl">%d мастерство чемпиона</string>
+    <string name="ranking">%1$s %2$s</string>
+    <string name="noobs_noobs_everywhere">Первая игра</string>
+    <string name="is_playing_for_first_time">%1$s играет %2$s первый раз.</string>
+    <string name="no_data_for_this_champion">Нет информации для этого чемпиона.</string>
+    <string name="no_data">Нет данных:</string>
+    <string name="not_enough_information">Даже если у вас есть скилл, мы не уверены, что %s - хороший пик, так как недостаточно информации.</string>
+    <string name="kda_template">%1$d / <font color="#FF5252">%2$d</font> / %3$d</string>
+    <string name="cs_template">Фарм %1$d &lt;font color=#AAAAAA&gt;(%2$,.1f/мин)&lt;/font&gt;</string>
+    <string name="main_level_7">%1$s знает %2$s достаточно хорошо, будьте осторожны!</string>
+    <string name="otp">Играет только на этом чемпионе(One Trick Pony)</string>
+    <string name="error_adding_account">Ошибка добавления аккаунта. Пожалуйста, проверьте 2 раза ник и регион!</string>
+    <string name="aram">АРАМ</string>
+    <string name="normal">Классика 5x5</string>
+    <string name="normal_3">Классика 3x3</string>
+    <string name="ranked_solo_5">Ранговая (Соло/Дуо)</string>
+    <string name="ranked_flex_5">Ранговая(гибкая) 5x5</string>
+    <string name="ranked_flex_3">Ранговая(гибкая) 3x3</string>
+    <string name="teambuilder_ranked">Создание команды</string>
+    <string name="unknown_queue">Неизвестная очередь</string>
+    <string name="recent_matches">Последние игры с %1$s</string>
+    <string name="champion_points">%1$s очков</string>
+    <string name="love_the_app">Teamward - это бесплатное приложение, которое не содержит рекламу! Если вам нравится это, поставьте 5 звезд в Play маркете :)</string>
+    <string name="rate_app">Оцените!</string>
+    <string name="thank_you">Спасибо!</string>
+    <string name="custom">Своя игра</string>
+    <string name="refresh">Обновить</string>
+    <string name="abilities">Умения</string>
+    <string name="ability_name">%1$s — %2$s</string>
+    <string name="ability_passive">Пассивное умение</string>
+    <string name="ability_q">Q</string>
+    <string name="ability_w">W</string>
+    <string name="ability_e">E</string>
+    <string name="ability_r">R</string>
+    <string name="ability_cooldowns">%ss</string>
+    <string name="champion_details">Информация о чемпионе</string>
+    <string name="title_activity_champion">Информация о чемпионе</string>
+    <string name="teamward_user">Пользователь TeamWard!</string>
+    <string name="hope_he_wins">Надеюсь, он выиграет эту игру.</string>
+    <string name="not_using_teamward">Позор! Позор!</string>
+    <string name="s_is_not_using_teamward">%s играет с вами, но не использует TeamWard. Это грустно.</string>
+    <string name="s_are_not_using_teamward">%s не использует TeamWard. Это заставляет меня плакать.</string>
+    <string name="standard_separator">,</string>
+    <string name="final_separator">и</string>
+    <string name="patch_s">(на основе патча %1$s)</string>
+    <string name="s_winrate">%s побед</string>
+    <string name="spells">Заклинания призывателя</string>
+    <string name="champion_gg">champion.gg</string>
+    <string name="last_season_rank">Последний сезон</string>
+    <string name="ranking_last_season">%1$s</string>
+    <string name="unable_to_open_browser">Не удается открыть браузер</string>
+    <string name="winrate_by_game_length">Шанс победы от длительности игры</string>
+    <string name="relative_team_colors_summary">Всегда показывать синюю команду</string>
+    <string name="relative_team_colors">Относительный цвет команды</string>
+    <string name="hardcore_gamer">Да, это жестко!</string>
+    <string name="hardcore_gamer_description">%s сыграл больше 10 игр за последние 24 часа.</string>
+    <string name="filthy_casual_description">%s играет меньше 1 игры в неделю! Как мило!</string>
+    <string name="filthy_casual">Хах…</string>
+    <string name="your_team">Твоя команда</string>
+    <string name="their_team">Их команда</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• Этот график показывает силу команд от начала до конца игры.
+\n • График основывается на чемпионах, не игроках
+\n • Команда с чемпионами, которые сильны в конце игры будет иметь больший шанс победить в длинных играх.
+\n • Команда с слабыми чемпионами в данной мете вряд ли будет иметь больше 50% побед.
+\n • 2 сильные комбинации могут в среднем иметь больше 50% побед.</string>
+    <string name="arurf">АУРФ</string>
+    <string name="blind_pick">Выбор вслепую 5x5</string>
+    <string name="draft_pick">Режим выбора 5x5</string>
+</resources>
