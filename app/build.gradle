@@ -43,7 +43,7 @@ dependencies {
     compile 'com.mixpanel.android:mixpanel-android:4.8.5'
 
     // Support old Android, push notifications and cardviews
-    compile 'com.google.android.gms:play-services-gcm:9.6.1'
+    compile 'com.google.android.gms:play-services-gcm:11.0.4'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
