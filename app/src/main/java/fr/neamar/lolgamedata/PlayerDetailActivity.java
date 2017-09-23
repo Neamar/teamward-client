@@ -8,6 +8,7 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,6 +37,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.MatchAdapter;
+import fr.neamar.lolgamedata.pojo.AggregatedPerformance;
 import fr.neamar.lolgamedata.pojo.Champion;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Match;
@@ -226,6 +228,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
         // RECENT MATCHES
         TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
         recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
+        findViewById(R.id.aggregate).setVisibility(View.GONE);
         downloadPerformance();
 
         // TEAMARD USER
@@ -273,7 +276,8 @@ public class PlayerDetailActivity extends SnackBarActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             ArrayList<Match> matches = Match.getMatches(response);
-                            displayPerformance(matches);
+                            AggregatedPerformance aggregated = AggregatedPerformance.getAggregated(response);
+                            displayPerformance(matches, aggregated);
 
                             Log.i(TAG, "Displaying performance for " + player.summoner.name);
 
@@ -318,7 +322,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
         }
     }
 
-    private void displayPerformance(ArrayList<Match> matches) {
+    private void displayPerformance(ArrayList<Match> matches, AggregatedPerformance aggregatedPerformance) {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.VISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.GONE);
@@ -326,6 +330,17 @@ public class PlayerDetailActivity extends SnackBarActivity {
 
         if (matches.size() == 0) {
             findViewById(R.id.matchHistoryHolder).setVisibility(View.GONE);
+        }
+
+        if(aggregatedPerformance != null && aggregatedPerformance.gamesCount > 10) {
+            findViewById(R.id.aggregate).setVisibility(View.VISIBLE);
+            TextView kdaText= ((TextView) findViewById(R.id.averageKda));
+            kdaText.setText(Html.fromHtml(String.format(getString(R.string.average_kda_template), aggregatedPerformance.kills, aggregatedPerformance.deaths, aggregatedPerformance.assists)));
+
+            ((TextView) findViewById(R.id.numberOfGames)).setText(String.format(getString(R.string.over_x_games), aggregatedPerformance.gamesCount));
+
+            ((TextView) findViewById(R.id.aggregatedData)).setText(String.format(getString(R.string.aggregated_data), Long.toString(Math.round(aggregatedPerformance.winsPercent)) + "%", aggregatedPerformance.getQualities(this)));
+
         }
     }
 }

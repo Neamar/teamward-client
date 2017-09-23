@@ -20,6 +20,47 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/champion_mastery_half_size"
+        android:id="@+id/aggregate"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/averageKda"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="23sp"
+            android:text="@string/average_kda_template" />
+
+        <TextView
+            android:id="@+id/aggregatedData"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:text="@string/aggregated_data" />
+
+        <TextView
+            android:id="@+id/numberOfGames"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="9sp"
+            android:text="@string/over_x_games" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/chip_drawable"
+            android:text="Hello, I'm a simple Chip!"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"

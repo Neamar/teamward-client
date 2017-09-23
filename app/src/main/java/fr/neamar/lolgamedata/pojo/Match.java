@@ -52,7 +52,6 @@ public class Match {
         try {
             jsonMatches = json.getJSONArray("matches");
 
-
             for (int i = 0; i < jsonMatches.length(); i++) {
                 Match match = new Match(jsonMatches.getJSONObject(i));
                 matches.add(match);

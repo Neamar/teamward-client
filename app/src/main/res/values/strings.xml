@@ -147,6 +147,7 @@
     <string name="not_enough_information">Although you play %s, we don\'t have enough data to say if it is a good matchup.</string>
     <string name="game_length_template" translatable="false">%1$s:%2$s / %3$s / %4$s</string>
     <string name="kda_template">%1$d / &lt;font color="#FF5252"&gt;%2$d&lt;/font&gt; / %3$d</string>
+    <string name="average_kda_template">%1$.2f / &lt;font color="#FF5252"&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
     <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s knows %2$s quite well, be careful!</string>
     <string name="otp">One Trick Pony</string>
@@ -205,4 +206,13 @@
     <string name="arurf">All Random URF</string>
     <string name="blind_pick">Blind pick 5v5</string>
     <string name="draft_pick">Draft pick 5v5</string>
+    <string name="over_x_games">(%1d known ranked games)</string>
+    <string name="aggregated_data">(%1$s winrate%2$s)</string>
+    <string name="good_farmer">good farmer</string>
+    <string name="exceptional_farmer">exceptional farmer</string>
+    <string name="exceptional_laner">exceptional laning phase</string>
+    <string name="good_laner">good laner</string>
+    <string name="often_gets_first_blood">often gets first blood</string>
+    <string name="often_gets_first_tower">often gets first tower</string>
+    <string name="multi_kill_machine">multi kill machine</string>
 </resources>

@@ -25,5 +25,7 @@
     <dimen name="item_half_size">15dp</dimen>
     <dimen name="app_bar_height">300dp</dimen>
     <dimen name="item_margin">2dp</dimen>
+    <dimen name="chip_margin">2dp</dimen>
+    <dimen name="chip_radius">6dp</dimen>
 
 </resources>
