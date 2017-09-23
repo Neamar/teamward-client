@@ -263,81 +263,86 @@ public class GameActivity extends SnackBarActivity {
         final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
-            NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region, null,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
+            String url = ((LolApplication) getApplication()).getApiUrl() + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region;
+
+            if (BuildConfig.DEBUG && summonerName.equalsIgnoreCase("MOCK")) {
+                url = "https://gist.githubusercontent.com/Neamar/eb278b4d5f188546f56028c3a0310507/raw/mock.json";
+            }
+
+            NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            game = new Game(response, region, account, shouldUseRelativeTeamColor());
+                            GameActivity.this.summonerName = summonerName;
+                            displayGame(summonerName, game);
+
+                            Log.i(TAG, "Displaying game #" + game.gameId);
+
+                            String source = getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty() ? getIntent().getStringExtra("source") : "unknown";
+                            Tracker.trackGameViewed(GameActivity.this, account, game, getDefaultTabName(), shouldDisplayChampionName(), source);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } finally {
                             try {
-                                game = new Game(response, region, account, shouldUseRelativeTeamColor());
-                                GameActivity.this.summonerName = summonerName;
-                                displayGame(summonerName, game);
-
-                                Log.i(TAG, "Displaying game #" + game.gameId);
-
-                                String source = getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty() ? getIntent().getStringExtra("source") : "unknown";
-                                Tracker.trackGameViewed(GameActivity.this, account, game, getDefaultTabName(), shouldDisplayChampionName(), source);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            } finally {
-                                try {
-                                    if (dialog.isShowing()) {
-                                        dialog.dismiss();
-                                    }
-                                } catch (IllegalArgumentException e) {
-                                    // View is not attached (rotation for instance)
+                                if (dialog.isShowing()) {
+                                    dialog.dismiss();
                                 }
-
-                                lastLoaded = new Date();
-
-                                queue.stop();
+                            } catch (IllegalArgumentException e) {
+                                // View is not attached (rotation for instance)
                             }
+
+                            lastLoaded = new Date();
+
+                            queue.stop();
                         }
                     }
+                }
 
-                    , new Response.ErrorListener()
+                , new Response.ErrorListener()
 
-            {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    game = null;
-                    lastLoaded = null;
+        {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                game = null;
+                lastLoaded = null;
 
-                    try {
-                        if (dialog.isShowing()) {
-                            dialog.dismiss();
-                        }
-                    } catch (IllegalArgumentException e) {
-                        // View is not attached (rotation for instance)
+                try {
+                    if (dialog.isShowing()) {
+                        dialog.dismiss();
                     }
+                } catch (IllegalArgumentException e) {
+                    // View is not attached (rotation for instance)
+                }
 
-                    Log.e(TAG, error.toString());
+                Log.e(TAG, error.toString());
 
-                    queue.stop();
+                queue.stop();
 
-                    setUiMode(UI_MODE_NO_INTERNET);
+                setUiMode(UI_MODE_NO_INTERNET);
 
-                    if (error instanceof NoConnectionError) {
-                        displaySnack(getString(R.string.no_internet_connection));
-                        return;
+                if (error instanceof NoConnectionError) {
+                    displaySnack(getString(R.string.no_internet_connection));
+                    return;
+                }
+
+
+                try {
+                    String responseBody = new String(error.networkResponse.data, "utf-8");
+                    Log.i(TAG, responseBody);
+
+                    if (!responseBody.contains("ummoner not in game")) {
+                        displaySnack(responseBody);
+                        Tracker.trackErrorViewingGame(GameActivity.this, account, responseBody.replace("Error:", ""));
+                    } else {
+                        setUiMode(UI_MODE_NOT_IN_GAME);
                     }
-
-
-                    try {
-                        String responseBody = new String(error.networkResponse.data, "utf-8");
-                        Log.i(TAG, responseBody);
-
-                        if (!responseBody.contains("ummoner not in game")) {
-                            displaySnack(responseBody);
-                            Tracker.trackErrorViewingGame(GameActivity.this, account, responseBody.replace("Error:", ""));
-                        } else {
-                            setUiMode(UI_MODE_NOT_IN_GAME);
-                        }
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    } catch (NullPointerException e) {
-                        // Do nothing, no text content in the HTTP reply.
-                    }
-
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (NullPointerException e) {
+                    // Do nothing, no text content in the HTTP reply.
+                }
                 }
             });
 
