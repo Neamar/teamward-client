@@ -160,4 +160,14 @@
     <string name="arurf">АУРФ</string>
     <string name="blind_pick">Выбор вслепую 5x5</string>
     <string name="draft_pick">Режим выбора 5x5</string>
+<string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
+    <string name="over_x_games">(%1d ранговых игр)</string>
+    <string name="aggregated_data">(%1$s процент побед %2$s)</string>
+    <string name="good_farmer">хорошо фармит</string>
+    <string name="exceptional_farmer">идеально фармит</string>
+    <string name="exceptional_laner">идеальная лейнинг фаза</string>
+    <string name="good_laner">хорошо играет на линии</string>
+    <string name="often_gets_first_blood">часто забирает первую кровь</string>
+    <string name="often_gets_first_tower">часто забирает первую вышку</string>
+    <string name="multi_kill_machine">машина убийств</string>
 </resources>
