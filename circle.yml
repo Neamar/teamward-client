@@ -8,6 +8,9 @@ dependencies:
    - echo y | android update sdk --no-ui --all --filter "android-25","build-tools-25.0.0","extra-android-m2repository","google-services"
    - ./gradlew:
        background: true
+checkout:
+  post:
+    - cp -r licenses/. $ANDROID_HOME/licenses
 test:
   pre:
     # start the emulator
