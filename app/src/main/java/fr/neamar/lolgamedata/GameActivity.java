@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -263,7 +265,14 @@ public class GameActivity extends SnackBarActivity {
         final RequestQueue queue = Volley.newRequestQueue(this);
 
         try {
-            String url = ((LolApplication) getApplication()).getApiUrl() + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region;
+            String version = "unknown";
+            try {
+                PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+                version = pInfo.versionName;
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            String url = ((LolApplication) getApplication()).getApiUrl() + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region + "&version=" + version;
 
             if (BuildConfig.DEBUG && summonerName.equalsIgnoreCase("MOCK")) {
                 url = "https://gist.githubusercontent.com/Neamar/eb278b4d5f188546f56028c3a0310507/raw/mock.json";
