@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +29,9 @@ public class MatchHolder extends RecyclerView.ViewHolder implements View.OnClick
 
     private final ArrayList<ImageView> itemImages = new ArrayList<>(6);
 
+    private final ImageView championImage;
+    private final ImageView opponentImage;
+
     private Match match;
 
     public MatchHolder(View view) {
@@ -40,6 +42,8 @@ public class MatchHolder extends RecyclerView.ViewHolder implements View.OnClick
         winOrLossView = view.findViewById(R.id.winOrLossBanner);
         gameLengthText = (TextView) view.findViewById(R.id.gameLengthText);
         csText = (TextView) view.findViewById(R.id.csText);
+        opponentImage = (ImageView) view.findViewById(R.id.opponentImage);
+        championImage = (ImageView) view.findViewById(R.id.championImage);
 
         itemImages.add((ImageView) view.findViewById(R.id.item1));
         itemImages.add((ImageView) view.findViewById(R.id.item2));
@@ -83,6 +87,11 @@ public class MatchHolder extends RecyclerView.ViewHolder implements View.OnClick
         float csPerMin = (float) match.cs / minDuration;
         String csTemplate = this.gameLengthText.getContext().getString(R.string.cs_template);
         this.csText.setText(Html.fromHtml(String.format(csTemplate, match.cs, csPerMin)));
+
+        ImageLoader.getInstance().displayImage(match.championImage, championImage);
+        if(match.opponentImage != null) {
+            ImageLoader.getInstance().displayImage(match.opponentImage, opponentImage);
+        }
     }
 
     @Override

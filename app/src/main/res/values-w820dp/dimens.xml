@@ -5,4 +5,6 @@
     <dimen name="activity_margin">64dp</dimen>
     <dimen name="constrained_margin">32dp</dimen>
     <dimen name="less_constrained_margin">32dp</dimen>
+    <dimen name="item_size">50dp</dimen>
+    <dimen name="item_half_size">25dp</dimen>
 </resources>

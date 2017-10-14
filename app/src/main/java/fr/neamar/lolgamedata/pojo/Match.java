@@ -20,6 +20,9 @@ public class Match {
     public String ward;
     public String matchUrl;
 
+    public String championImage;
+    public String opponentImage = null;
+
     public final ArrayList<String> items = new ArrayList<>();
 
     private Match(JSONObject match) throws JSONException {
@@ -32,6 +35,12 @@ public class Match {
         queue = match.getString("queue");
         duration = match.getInt("duration");
         matchUrl = match.getString("match_url");
+        championImage = match.getJSONObject("champion").getString("image");
+        JSONObject opponent = match.getJSONObject("opponent");
+
+        if(opponent.has("image")) {
+            opponentImage = opponent.getString("image");
+        }
 
 
         if (match.has("ward")) {

@@ -105,6 +105,8 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/itemWard"
         android:layout_toRightOf="@+id/itemWard"
+        android:layout_toLeftOf="@+id/champions"
+        android:layout_toStartOf="@+id/champions"
         android:orientation="vertical"
         android:paddingLeft="8dp"
         android:paddingStart="8dp">
@@ -135,6 +137,27 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:text="@string/cs_template" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/champions"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="@dimen/item_size"
+            android:layout_height="@dimen/item_size"
+            android:id="@+id/championImage"
+            android:layout_margin="@dimen/item_margin"
+            android:src="@drawable/default_champion"/>
+        <ImageView
+            android:layout_width="@dimen/item_size"
+            android:layout_height="@dimen/item_size"
+            android:id="@+id/opponentImage"
+            android:layout_margin="@dimen/item_margin"
+            android:src="@drawable/default_champion"/>
     </LinearLayout>
 
 </RelativeLayout>
