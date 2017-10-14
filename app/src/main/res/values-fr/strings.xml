@@ -182,4 +182,14 @@
     <string name="blind_pick">Aveugle 5v5</string>
     <string name="draft_pick">Draft 5v5</string>
     <string name="arurf">All Random URF</string>
+<string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
+    <string name="over_x_games">(%1d parties connues en ranked)</string>
+    <string name="aggregated_data">(%1$s winrate%2$s)</string>
+    <string name="good_farmer">bon farmer</string>
+    <string name="exceptional_farmer">farmer exceptionnel</string>
+    <string name="exceptional_laner">phase de lane exceptionnelle</string>
+    <string name="good_laner">bonne phase de lane</string>
+    <string name="often_gets_first_blood">a souvent le premier sang</string>
+    <string name="often_gets_first_tower">a souvent la première tour</string>
+    <string name="multi_kill_machine">machine à multi-kill</string>
 </resources>
