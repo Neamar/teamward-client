@@ -159,4 +159,14 @@
     <string name="arurf">Náhodný URF</string>
     <string name="blind_pick">Slepý výber 5vs5</string>
     <string name="draft_pick">Draft výber 5vs5</string>
+<string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
+    <string name="over_x_games">(%1d pozná hodnotené zápasy)</string>
+    <string name="aggregated_data">(%1$s winrate%2$s)</string>
+    <string name="good_farmer">Je dobrý vo farmení</string>
+    <string name="exceptional_farmer">Výnimočný vo farmení</string>
+    <string name="exceptional_laner">výnimočná počiatočná fáza</string>
+    <string name="good_laner">dobrý matdudovec</string>
+    <string name="often_gets_first_blood">väčšinou získa First Blood</string>
+    <string name="often_gets_first_tower">väčšinou získa prvú vežu</string>
+    <string name="multi_kill_machine">TERMINÁTOR MATDUD</string>
 </resources>
