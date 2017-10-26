@@ -305,7 +305,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
 
-                        Tracker.trackErrorViewingDetails(PlayerDetailActivity.this, responseBody.replace("Error:", ""));
+                        Tracker.trackErrorViewingDetails(PlayerDetailActivity.this, player.region, responseBody.replace("Error:", ""));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
