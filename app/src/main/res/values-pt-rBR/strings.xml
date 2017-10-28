@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
     <string name="action_settings">Configurações</string>
     <string name="title_activity_game">Detalhes do jogo</string>
@@ -133,7 +134,7 @@
     <string name="aram">ARAM</string>
     <string name="normal">Normal</string>
     <string name="normal_3">Normal 3v3</string>
-    <string name="ranked_solo_5">Ranked Solo/Duo</string>
+    <string name="ranked_solo_5">Ranqueada Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>
     <string name="teambuilder_ranked">Teambuilder ranked</string>

@@ -224,9 +224,10 @@ public class Tracker {
         getMixpanel(activity).track("Champion viewed", j);
     }
 
-    static void trackErrorViewingDetails(Activity activity, String error) {
+    static void trackErrorViewingDetails(Activity activity, String region, String error) {
         JSONObject j = new JSONObject();
         try {
+            j.put("region", region);
             j.put("error", error);
         } catch (JSONException e) {
             e.printStackTrace();

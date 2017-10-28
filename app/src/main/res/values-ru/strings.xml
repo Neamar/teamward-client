@@ -92,7 +92,7 @@
     <string name="welcome_to">Добро пожаловать в %s!</string>
     <string name="player_is_in_game">%s в игре. Нажмите для подробной информации</string>
     <string name="ap_ad_hint">Подсказка! Обратили внимание на цвет рамки вокруг изображения чемпионов? Красный - это АД, фиолетовый - АП.</string>
-    <string name="champion_mastery_lvl">%d мастерство чемпиона</string>
+    <string name="champion_mastery_lvl">Мастерство чемпиона: %d</string>
     <string name="ranking">%1$s %2$s</string>
     <string name="noobs_noobs_everywhere">Первая игра</string>
     <string name="is_playing_for_first_time">%1$s играет %2$s первый раз.</string>
@@ -100,7 +100,7 @@
     <string name="no_data">Нет данных:</string>
     <string name="not_enough_information">Даже если у вас есть скилл, мы не уверены, что %s - хороший пик, так как недостаточно информации.</string>
     <string name="kda_template">%1$d / <font color="#FF5252">%2$d</font> / %3$d</string>
-    <string name="cs_template">Фарм %1$d &lt;font color=#AAAAAA&gt;(%2$,.1f/мин)&lt;/font&gt;</string>
+    <string name="cs_template">%1$d фарма &lt;font color=#AAAAAA&gt;(%2$,.1f/мин)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s знает %2$s достаточно хорошо, будьте осторожны!</string>
     <string name="otp">Играет только на этом чемпионе(One Trick Pony)</string>
     <string name="error_adding_account">Ошибка добавления аккаунта. Пожалуйста, проверьте 2 раза ник и регион!</string>
@@ -112,7 +112,7 @@
     <string name="ranked_flex_3">Ранговая(гибкая) 3x3</string>
     <string name="teambuilder_ranked">Создание команды</string>
     <string name="unknown_queue">Неизвестная очередь</string>
-    <string name="recent_matches">Последние игры с %1$s</string>
+    <string name="recent_matches">Последние игры за %1$s</string>
     <string name="champion_points">%1$s очков</string>
     <string name="love_the_app">Teamward - это бесплатное приложение, которое не содержит рекламу! Если вам нравится это, поставьте 5 звезд в Play маркете :)</string>
     <string name="rate_app">Оцените!</string>
@@ -140,7 +140,7 @@
     <string name="s_winrate">%s побед</string>
     <string name="spells">Заклинания призывателя</string>
     <string name="champion_gg">champion.gg</string>
-    <string name="last_season_rank">Последний сезон</string>
+    <string name="last_season_rank">Предыдущий сезон</string>
     <string name="ranking_last_season">%1$s</string>
     <string name="unable_to_open_browser">Не удается открыть браузер</string>
     <string name="winrate_by_game_length">Шанс победы от длительности игры</string>
