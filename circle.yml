@@ -3,14 +3,14 @@ machine:
     version: openjdk8
   environment:
     GRADLE_OPTS: -Dorg.gradle.daemon=true -Dorg.gradle.jvmargs=-Xmx2048M
+checkout:
+  post:
+    - cp -r licenses/. $ANDROID_HOME/licenses
 dependencies:
   pre:
    - echo y | android update sdk --no-ui --all --filter "android-25","build-tools-26.0.0","extra-android-m2repository","google-services"
    - ./gradlew:
        background: true
-checkout:
-  post:
-    - cp -r licenses/. $ANDROID_HOME/licenses
 test:
   pre:
     # start the emulator
