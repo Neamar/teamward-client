@@ -3,14 +3,14 @@ apply plugin: 'newrelic'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 69
-        versionName "2.15"
+        versionCode 70
+        versionName "2.16"
 
         // Staging mixpanel token
         resValue "string", "MIXPANEL_TOKEN", "6871a7de8eb71082f3397bb1be7ded58"

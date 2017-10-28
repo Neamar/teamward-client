@@ -82,7 +82,7 @@
     <string name="matchup_stub">50%</string>
     <string name="matchup_stats_source">(dane: http://teamward.xyz)</string>
     <string name="gg">GG</string>
-    <string name="welcome_to">Witamy w $s!</string>
+    <string name="welcome_to">Witamy w %s!</string>
     <string name="player_is_in_game">% s jest w grze. Dotknij, aby uzyskać informacje</string>
     <string name="ap_ad_hint">Wskazówka! Zauważyłeś ramkę wokół obrazka bohatera? Czerwony to AD, fioletowy to AP.</string>
     <string name="ranking">%1$s %2$s</string>
