@@ -18,6 +18,7 @@ test:
         background: true
         parallel: true
   override:
+    - ./gradlew lint --console=plain
     # Run tests, build the apk, and build the test apk for running
     # the espresso tests
     - ./gradlew test assembleDebug assembleDebugAndroidTest --console=plain
