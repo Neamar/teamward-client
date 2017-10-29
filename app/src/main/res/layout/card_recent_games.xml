@@ -50,16 +50,6 @@
             android:textAlignment="center"
             android:textSize="9sp"
             android:text="@string/over_x_games" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/chip_drawable"
-            android:text="Hello, I'm a simple Chip!"
-            android:textColor="@android:color/white"
-            android:visibility="gone"
-            android:textStyle="bold" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

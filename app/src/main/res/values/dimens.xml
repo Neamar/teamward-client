@@ -11,7 +11,6 @@
     <dimen name="player_pod_height">90dp</dimen>
     <dimen name="champion_mastery_size">36dp</dimen>
     <dimen name="champion_mastery_size_counter">20dp</dimen>
-    <dimen name="champion_mastery_size_details">50dp</dimen>
     <dimen name="champion_mastery_half_size">18dp</dimen>
     <dimen name="ad_ap_frame_width">-3dp</dimen>
     <dimen name="tip_premade_champion_thumbnail">30dp</dimen>
@@ -23,7 +22,6 @@
     <dimen name="counter_champion_no_data">40dp</dimen>
     <dimen name="item_size">35dp</dimen>
     <dimen name="item_half_size">15dp</dimen>
-    <dimen name="app_bar_height">300dp</dimen>
     <dimen name="item_margin">2dp</dimen>
     <dimen name="chip_margin">2dp</dimen>
     <dimen name="chip_radius">6dp</dimen>

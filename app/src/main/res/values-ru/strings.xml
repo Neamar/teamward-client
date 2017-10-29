@@ -99,7 +99,7 @@
     <string name="no_data_for_this_champion">Нет информации для этого чемпиона.</string>
     <string name="no_data">Нет данных:</string>
     <string name="not_enough_information">Даже если у вас есть скилл, мы не уверены, что %s - хороший пик, так как недостаточно информации.</string>
-    <string name="kda_template">%1$d / <font color="#FF5252">%2$d</font> / %3$d</string>
+    <string name="kda_template">%1$d / &lt;font color=\"#FF5252\"&gt;%2$d&lt;/font&gt; / %3$d</string>
     <string name="cs_template">%1$d фарма &lt;font color=#AAAAAA&gt;(%2$,.1f/мин)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s знает %2$s достаточно хорошо, будьте осторожны!</string>
     <string name="otp">Играет только на этом чемпионе(One Trick Pony)</string>
