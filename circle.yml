@@ -14,7 +14,7 @@ checkout:
 test:
   pre:
     # start the emulator
-    - emulator -avd circleci-android23 -no-audio -no-window:
+    - emulator -avd circleci-android24 -no-audio -no-window:
         background: true
         parallel: true
   override:
