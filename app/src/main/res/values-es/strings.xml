@@ -35,7 +35,7 @@
         <item>EUW [EU Oeste]</item>
         <item>BR [Brasil]</item>
         <item>EUNE [EU Nordica y Este]</item>
-        <item>KR [Republica de Korea]</item>
+        <item>KR [República de Korea]</item>
         <item>LAN [Latin America Norte]</item>
         <item>LAS [Latin America Sur]</item>
         <item>NA [Norte America]</item>
@@ -86,7 +86,7 @@
     <string name="premade_information">Premade informarcion</string>
     <string name="s_has_no_flash">%1$s usa %2$s y %3$s.</string>
     <string name="no_flash">Sin flash</string>
-    <string name="no_smite">El leon duerme esta noche</string>
+    <string name="no_smite">El león duerme esta noche</string>
     <string name="no_smite_desc">%s no tiene jungla</string>
     <string name="tips">Consejos</string>
     <string name="such_ability">Mucho poder de habilidad!</string>
@@ -97,7 +97,7 @@
     <string name="title_activity_counter">Busca tu counter!</string>
     <string name="action_counter">Herramienta de proyeccion</string>
     <string name="display_champion_name">Mostrar nombre del campeon</string>
-    <string name="display_champion_name_summary">Foto del campeon siempre sera mostrada</string>
+    <string name="display_champion_name_summary">Foto del campeon siempre será mostrada</string>
     <string name="counter_counters_activity_title">%1$s vs %2$s %3$s</string>
     <string name="search">Buscar</string>
     <string name="double_smite_desc">%s juega con más de un smite!</string>
@@ -178,7 +178,7 @@
     <string name="filthy_casual">Filthy casual…</string>
     <string name="your_team">Tu equipo</string>
     <string name="their_team">Equipo de ellos</string>
-    <string name="winrate_by_time_disclaimer" formatted="false">  • Este grafico es un indicador de cada equipo potencia y escalado de juego tardio.\n  • Grafico basado en campeones no jugadores. • Un equipo con campeones de juego tardio puede tener un mayor winrate segun la longitud del juego. • Un equipo de campeones debiles en el meta actual puede tener un uso del 50% • Dos composiciones de equipo muy fuertes superan un winrate del 50%.</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">  • Este grafico es un indicador de cada equipo potencia y escalado de juego tardio.\n  • Grafico basado en campeones no jugadores. • Un equipo con campeones de juego tardio puede tener un mayor winrate según la longitud del juego. • Un equipo de campeones debiles en el meta actual puede tener un uso del 50% • Dos composiciones de equipo muy fuertes superan un winrate del 50%.</string>
     <string name="arurf">Todo Aletorio URF</string>
     <string name="blind_pick">Seleccion oculta</string>
     <string name="draft_pick">Seleccion mostrada</string>

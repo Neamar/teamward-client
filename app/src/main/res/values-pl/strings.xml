@@ -47,7 +47,7 @@
     <string name="pref_title_ringtone">Dzwonek</string>
     <string name="pref_ringtone_silent">Cichy</string>
 
-    <string name="no_smite_desc">nie ma junglera</string>
+    <string name="no_smite_desc">%s nie ma junglera</string>
     <string name="tips">Porady</string>
     <string name="about_text">https://github.com/Neamar/teamward-client
 \n
@@ -83,7 +83,7 @@
     <string name="matchup_stats_source">(dane: http://teamward.xyz)</string>
     <string name="gg">GG</string>
     <string name="welcome_to">Witamy w %s!</string>
-    <string name="player_is_in_game">% s jest w grze. Dotknij, aby uzyskać informacje</string>
+    <string name="player_is_in_game">%s jest w grze. Dotknij, aby uzyskać informacje</string>
     <string name="ap_ad_hint">Wskazówka! Zauważyłeś ramkę wokół obrazka bohatera? Czerwony to AD, fioletowy to AP.</string>
     <string name="ranking">%1$s %2$s</string>
     <string name="noobs_noobs_everywhere">Nowicjusz</string>
