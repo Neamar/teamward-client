@@ -23,12 +23,12 @@ test:
     # the espresso tests
     - ./gradlew test assembleDebug assembleDebugAndroidTest --console=plain
     # wait for the emulator to have booted
-    # - circle-android wait-for-boot
-    # - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
-    # # Run espresso tests
-    # - ./gradlew connectedAndroidTest --console=plain
-    # # Screenshot
-    # - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
+    - circle-android wait-for-boot
+    - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
+    # Run espresso tests
+    - ./gradlew connectedAndroidTest --console=plain
+    # Screenshot
+    - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
   post:
     - cp -r app/build/outputs $CIRCLE_ARTIFACTS
     - mkdir $CIRCLE_ARTIFACTS/reports
