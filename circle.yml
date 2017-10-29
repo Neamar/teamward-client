@@ -34,5 +34,5 @@ test:
     - mkdir $CIRCLE_ARTIFACTS/reports
     - cp -r app/build/reports $CIRCLE_ARTIFACTS/reports
     # copy the test results to the test results directory.
-    # - find app/build/test-results -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/ \;
-    # - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+    - find app/build/test-results -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/ \;
+    - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
