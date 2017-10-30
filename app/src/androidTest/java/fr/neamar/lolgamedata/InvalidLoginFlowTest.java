@@ -11,16 +11,18 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
-public class NotInGameTest extends FlowTest {
+public class InvalidLoginFlowTest extends FlowTest {
     @SuppressLint("CommitPrefEdits")
     @Test
-    public void loginFlowTest() {
+    public void invalidLoginTest() {
+        String fakeAccount = "riot neamar 404";
         ViewInteraction floatingActionButton = onView(
                 allOf(withId(R.id.fab),
                         withParent(allOf(withId(R.id.coordinatorLayout),
@@ -30,16 +32,23 @@ public class NotInGameTest extends FlowTest {
 
         ViewInteraction editText = onView(
                 allOf(withId(R.id.summonerText), isDisplayed()));
-        editText.perform(replaceText("Neamar"), closeSoftKeyboard());
+        editText.perform(replaceText(fakeAccount), closeSoftKeyboard());
 
         ViewInteraction button = onView(
                 allOf(withId(R.id.save), withText("Add account"), isDisplayed()));
         button.perform(click());
 
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.summoner_not_in_game_text), withText("Neamar is not in game right now!"),
+        ViewInteraction editText3 = onView(
+                allOf(withId(R.id.summonerText), withText(fakeAccount),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                0),
                         isDisplayed()));
-        textView.check(matches(withText("Neamar is not in game right now!")));
+
+        // Ideally, the string should come from the resource file
+        editText3.check(matches(hasErrorText("Error adding account. Please double check your summoner name and region!")));
 
     }
 }
