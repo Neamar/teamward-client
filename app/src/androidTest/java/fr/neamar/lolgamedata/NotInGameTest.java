@@ -33,7 +33,7 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LoginFlowTest {
+public class NotInGameTest {
 
     @Rule
     public ActivityTestRule<GameActivity> mActivityTestRule = new ActivityTestRule<>(GameActivity.class, false, false);
@@ -64,21 +64,16 @@ public class LoginFlowTest {
 
         ViewInteraction editText = onView(
                 allOf(withId(R.id.summonerText), isDisplayed()));
-        editText.perform(replaceText("riot neamar"), closeSoftKeyboard());
+        editText.perform(replaceText("Neamar"), closeSoftKeyboard());
 
         ViewInteraction button = onView(
                 allOf(withId(R.id.save), withText("Add account"), isDisplayed()));
         button.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.summoner_not_in_game_text), withText("Riot Neamar is not in game right now!"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.empty),
-                                        0),
-                                0),
+                allOf(withId(R.id.summoner_not_in_game_text), withText("Neamar is not in game right now!"),
                         isDisplayed()));
-        textView.check(matches(withText("Riot Neamar is not in game right now!")));
+        textView.check(matches(withText("Neamar is not in game right now!")));
 
     }
 
