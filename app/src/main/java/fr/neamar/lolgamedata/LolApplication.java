@@ -1,11 +1,9 @@
 package fr.neamar.lolgamedata;
 
 import android.app.Application;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Handler;
-import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -20,7 +18,6 @@ import org.json.JSONArray;
 import java.util.List;
 
 import fr.neamar.lolgamedata.pojo.Account;
-import fr.neamar.lolgamedata.service.RegistrationIntentService;
 
 public class LolApplication extends Application {
     private static final String TAG = "LolApplication";
@@ -47,6 +44,7 @@ public class LolApplication extends Application {
         ImageLoader.getInstance().init(config);
 
         if (BuildConfig.DEBUG) {
+            /*
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
@@ -56,13 +54,8 @@ public class LolApplication extends Application {
                     .penaltyLog()
                     .penaltyDeath()
                     .build());
+            */
         }
-
-        // Register for push notifications, send token again in case it changed
-        Intent intent = new Intent(this, RegistrationIntentService.class);
-        Log.i(TAG, "Starting Service");
-        startService(intent);
-
 
         // Tracking initialization
         final Runnable r = new Runnable() {
