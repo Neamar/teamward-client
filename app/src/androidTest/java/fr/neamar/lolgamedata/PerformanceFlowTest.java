@@ -1,7 +1,6 @@
 package fr.neamar.lolgamedata;
 
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
@@ -25,23 +24,20 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class CounterFlowTest {
+public class PerformanceFlowTest {
 
     @Rule
     public ActivityTestRule<GameActivity> mActivityTestRule = new ActivityTestRule<>(GameActivity.class, false, false);
 
-    @SuppressLint("CommitPrefEdits")
     @Test
-    public void counterFlowTest() {
+    public void performanceFlowTest() {
         // Clean up all accounts
         InstrumentationRegistry.getTargetContext().getSharedPreferences("accounts", Context.MODE_PRIVATE).edit().clear().commit();
 
@@ -57,42 +53,53 @@ public class CounterFlowTest {
         };
         activity.runOnUiThread(wakeUpDevice);
 
-        // Create an account
+        // Create account
         ViewInteraction floatingActionButton = onView(
                 allOf(withId(R.id.fab),
-                        withParent(allOf(withId(R.id.coordinatorLayout),
-                                withParent(withId(android.R.id.content)))),
                         isDisplayed()));
         floatingActionButton.perform(click());
 
         ViewInteraction editText = onView(
-                allOf(withId(R.id.summonerText), isDisplayed()));
+                allOf(withId(R.id.summonerText),
+                        isDisplayed()));
         editText.perform(replaceText("MOCK"), closeSoftKeyboard());
 
         ViewInteraction button = onView(
-                allOf(withId(R.id.save), withText(R.string.add_account), isDisplayed()));
+                allOf(withId(R.id.save), withText("Add account"),
+                        isDisplayed()));
         button.perform(click());
+
+        // Load current game (mocked)
+        wait(1000);
+
+        ViewInteraction championName = onView(
+                allOf(withText("Illaoi"), isDisplayed()));
+        championName.perform(click());
 
         wait(1000);
 
-        // Open draft tools
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.championMasteryText),
+                        isDisplayed()));
+        textView.check(matches(withText("Champion mastery 7")));
+
+        ViewInteraction textView4 = onView(
+                allOf(withId(R.id.recentMatchesTitle),
+                        isDisplayed()));
+        textView4.check(matches(withText("Recent matches with Illaoi")));
+
         ViewInteraction actionMenuItemView = onView(
-                allOf(withId(R.id.action_counter), withText(R.string.action_counter), isDisplayed()));
+                allOf(withId(R.id.action_champion_details),
+                        isDisplayed()));
         actionMenuItemView.perform(click());
 
         wait(1000);
 
-        ViewInteraction recyclerView = onView(
-                allOf(withId(R.id.recyclerView), isDisplayed()));
-        recyclerView.perform(actionOnItemAtPosition(1, click()));
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.sectionTitle), withText("Your good Mid counters"), isDisplayed()));
-        textView.check(matches(withText("Your good Mid counters")));
-
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.sectionTitle), withText("Your bad Mid counters")));
-        textView2.check(matches(withText("Your bad Mid counters")));
+        ViewInteraction textView5 = onView(
+                allOf(withId(R.id.abilityName),
+                        withText("Q — Tentacle Smash"),
+                        isDisplayed()));
+        textView5.check(matches(withText("Q — Tentacle Smash")));
     }
 
     private static Matcher<View> childAtPosition(
