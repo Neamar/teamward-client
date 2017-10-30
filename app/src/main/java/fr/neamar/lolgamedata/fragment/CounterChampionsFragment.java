@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import fr.neamar.lolgamedata.BuildConfig;
 import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.SnackBarActivity;
@@ -114,7 +115,12 @@ public class CounterChampionsFragment extends Fragment {
         final int requiredChampionMastery = Integer.parseInt(prefs.getString("counter_required_mastery", "3"));
 
         try {
-            NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getActivity().getApplication()).getApiUrl() + "/summoner/counter?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region.toLowerCase() + "&role=" + role.toLowerCase() + "&level=" + requiredChampionMastery, null,
+            String url = ((LolApplication) getActivity().getApplication()).getApiUrl() + "/summoner/counter?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region.toLowerCase() + "&role=" + role.toLowerCase() + "&level=" + requiredChampionMastery;
+
+            if (BuildConfig.DEBUG && summonerName.equalsIgnoreCase("MOCK")) {
+                url = "https://gist.githubusercontent.com/Neamar/eb278b4d5f188546f56028c3a0310507/raw/counters.json";
+            }
+            NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {

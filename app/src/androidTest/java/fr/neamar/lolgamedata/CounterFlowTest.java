@@ -27,7 +27,6 @@ import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -43,6 +42,7 @@ public class CounterFlowTest {
     @SuppressLint("CommitPrefEdits")
     @Test
     public void counterFlowTest() {
+        // Clean up all accounts
         InstrumentationRegistry.getTargetContext().getSharedPreferences("accounts", Context.MODE_PRIVATE).edit().clear().commit();
 
         mActivityTestRule.launchActivity(null);
@@ -57,8 +57,9 @@ public class CounterFlowTest {
         };
         activity.runOnUiThread(wakeUpDevice);
 
+        // Create an account
         ViewInteraction floatingActionButton = onView(
-                allOf(withId(R.id.refresh),
+                allOf(withId(R.id.fab),
                         withParent(allOf(withId(R.id.coordinatorLayout),
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
@@ -66,40 +67,32 @@ public class CounterFlowTest {
 
         ViewInteraction editText = onView(
                 allOf(withId(R.id.summonerText), isDisplayed()));
-        editText.perform(replaceText("riot neamar"), closeSoftKeyboard());
+        editText.perform(replaceText("MOCK"), closeSoftKeyboard());
 
         ViewInteraction button = onView(
-                allOf(withId(R.id.save), withText("Add account"), isDisplayed()));
+                allOf(withId(R.id.save), withText(R.string.add_account), isDisplayed()));
         button.perform(click());
 
+        wait(3000);
+
+        // Open draft tools
         ViewInteraction actionMenuItemView = onView(
-                allOf(withId(R.id.action_counter), withText("Draft tool"), withContentDescription("Draft tool"), isDisplayed()));
+                allOf(withId(R.id.action_counter), withText(R.string.action_counter), isDisplayed()));
         actionMenuItemView.perform(click());
+
+        wait(3000);
 
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.recyclerView), isDisplayed()));
         recyclerView.perform(actionOnItemAtPosition(1, click()));
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.sectionTitle), withText("Good counters that you play"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.recyclerView),
-                                        0),
-                                0),
-                        isDisplayed()));
-        textView.check(matches(withText("Good counters that you play")));
+                allOf(withId(R.id.sectionTitle), withText("Your good Mid counters"), isDisplayed()));
+        textView.check(matches(withText("Your good Mid counters")));
 
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.sectionTitle), withText("Bad counters that you play"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.recyclerView),
-                                        1),
-                                0),
-                        isDisplayed()));
-        textView2.check(matches(withText("Bad counters that you play")));
-
+                allOf(withId(R.id.sectionTitle), withText("Your bad Mid counters")));
+        textView2.check(matches(withText("Your bad Mid counters")));
     }
 
     private static Matcher<View> childAtPosition(
@@ -119,5 +112,13 @@ public class CounterFlowTest {
                         && view.equals(((ViewGroup) parent).getChildAt(position));
             }
         };
+    }
+
+    private void wait(int delay) {
+        try {
+            Thread.sleep(delay);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
