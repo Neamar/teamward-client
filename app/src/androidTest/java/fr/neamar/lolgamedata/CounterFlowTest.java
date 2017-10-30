@@ -49,14 +49,14 @@ public class CounterFlowTest extends FlowTest {
                 allOf(withId(R.id.save), withText(R.string.add_account), isDisplayed()));
         button.perform(click());
 
-        wait(1000);
+        wait(10000);
 
         // Open draft tools
         ViewInteraction actionMenuItemView = onView(
                 allOf(withId(R.id.action_counter), withText(R.string.action_counter), isDisplayed()));
         actionMenuItemView.perform(click());
 
-        wait(1000);
+        wait(10000);
 
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.recyclerView), isDisplayed()));
