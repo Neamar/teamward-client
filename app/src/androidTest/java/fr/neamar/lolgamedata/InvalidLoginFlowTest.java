@@ -40,11 +40,6 @@ public class InvalidLoginFlowTest extends FlowTest {
 
         ViewInteraction editText3 = onView(
                 allOf(withId(R.id.summonerText), withText(fakeAccount),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
                         isDisplayed()));
 
         // Ideally, the string should come from the resource file
