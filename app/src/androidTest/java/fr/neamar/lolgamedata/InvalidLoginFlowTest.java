@@ -38,6 +38,8 @@ public class InvalidLoginFlowTest extends FlowTest {
                 allOf(withId(R.id.save), withText("Add account"), isDisplayed()));
         button.perform(click());
 
+        pause();
+
         ViewInteraction editText3 = onView(
                 allOf(withId(R.id.summonerText), withText(fakeAccount),
                         isDisplayed()));
