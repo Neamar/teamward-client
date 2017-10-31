@@ -74,9 +74,9 @@ public abstract class FlowTest {
         };
     }
 
-    protected void wait(int delay) {
+    protected void pause() {
         try {
-            Thread.sleep(delay);
+            Thread.sleep(60000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -35,13 +35,13 @@ public class PerformanceFlowTest extends FlowTest {
         button.perform(click());
 
         // Load current game (mocked)
-        wait(10000);
+        pause();
 
         ViewInteraction championName = onView(
                 allOf(withText("Illaoi"), isDisplayed()));
         championName.perform(click());
 
-        wait(10000);
+        pause();
 
         ViewInteraction textView = onView(
                 allOf(withId(R.id.championMasteryText),
@@ -58,7 +58,7 @@ public class PerformanceFlowTest extends FlowTest {
                         isDisplayed()));
         actionMenuItemView.perform(click());
 
-        wait(10000);
+        pause();
 
         ViewInteraction textView5 = onView(
                 allOf(withId(R.id.abilityName),
