@@ -37,7 +37,7 @@ public class NotInGameTest extends FlowTest {
         button.perform(click());
 
         pause();
-        
+
         ViewInteraction textView = onView(
                 allOf(withId(R.id.summoner_not_in_game_text), withText("Neamar is not in game right now!"),
                         isDisplayed()));

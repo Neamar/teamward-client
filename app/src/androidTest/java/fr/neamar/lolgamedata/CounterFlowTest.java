@@ -53,7 +53,7 @@ public class CounterFlowTest extends FlowTest {
 
         // Open draft tools
         ViewInteraction actionMenuItemView = onView(
-                allOf(withId(R.id.action_counter), withText(R.string.action_counter), isDisplayed()));
+                allOf(withId(R.id.action_counter), isDisplayed()));
         actionMenuItemView.perform(click());
 
         pause();
