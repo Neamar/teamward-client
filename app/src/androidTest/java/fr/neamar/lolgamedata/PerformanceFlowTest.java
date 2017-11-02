@@ -62,8 +62,7 @@ public class PerformanceFlowTest extends FlowTest {
 
         ViewInteraction textView5 = onView(
                 allOf(withId(R.id.abilityName),
-                        withText("Q — Tentacle Smash"),
-                        isDisplayed()));
+                        withText("Q — Tentacle Smash")));
         textView5.check(matches(withText("Q — Tentacle Smash")));
     }
 }
