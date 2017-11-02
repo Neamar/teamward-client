@@ -48,7 +48,7 @@ public class RegistrationIntentService extends IntentService {
             return;
         }
 
-        if(intent.hasExtra("unregistered")) {
+        if(intent != null && intent.hasExtra("unregistered")) {
             Log.i(TAG, "Unregistering current token id for device.");
             ((LolApplication) getApplication()).getMixpanel().getPeople().clearPushRegistrationId();
             return;
