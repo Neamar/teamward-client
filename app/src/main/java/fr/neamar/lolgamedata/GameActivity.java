@@ -281,7 +281,7 @@ public class GameActivity extends SnackBarActivity {
             String url = ((LolApplication) getApplication()).getApiUrl() + "/game/data?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region + "&version=" + version;
 
             if (BuildConfig.DEBUG && summonerName.equalsIgnoreCase("MOCK")) {
-                url = "https://gist.githubusercontent.com/Neamar/eb278b4d5f188546f56028c3a0310507/raw/mock.json";
+                url = "https://gist.githubusercontent.com/Neamar/eb278b4d5f188546f56028c3a0310507/raw/game.json";
             }
 
             NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, url, null,
@@ -374,7 +374,7 @@ public class GameActivity extends SnackBarActivity {
     }
 
     private void displayGame(String summonerName, Game game) {
-        getSupportActionBar().setSubtitle(PlayerDetailActivity.getQueueName(Integer.toString(game.queue)));
+        getSupportActionBar().setSubtitle(PerformanceActivity.getQueueName(Integer.toString(game.queue)));
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
 

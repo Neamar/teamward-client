@@ -14,25 +14,25 @@ checkout:
 test:
   pre:
     # start the emulator
-    - emulator -avd circleci-android23 -no-audio -no-window:
-        background: true
-        parallel: true
+    # - emulator -avd circleci-android24 -no-audio -no-window:
+    #    background: true
+    #    parallel: true
   override:
-    - ./gradlew lint --console=plain
+   # Lint the project
+   # Retry command automatically cause Gradle is super brittle
+    - ./gradlew lint --console=plain || ./gradlew lint --console=plain
     # Run tests, build the apk, and build the test apk for running
     # the espresso tests
-    - ./gradlew test assembleDebug assembleDebugAndroidTest --console=plain
-    # wait for the emulator to have booted
+    - ./gradlew test assembleDebug assembleDebugAndroidTest --console=plain || ./gradlew test assembleDebug assembleDebugAndroidTest --console=plain
+    # TESTS DISABLED FOR NOW. CAN'T GET THEM TO WORK IN THE CI. They will run on a real device or Firebase.
+    # # wait for the emulator to have booted
     # - circle-android wait-for-boot
-    # - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
     # # Run espresso tests
-    # - ./gradlew connectedAndroidTest --console=plain
-    # # Screenshot
-    # - adb shell screencap -p | sed 's/\r$//' > $CIRCLE_ARTIFACTS/screen-$(date +"%T").png
+    # - ./gradlew connectedAndroidTest --console=plain || ./gradlew connectedAndroidTest --console=plain
   post:
     - cp -r app/build/outputs $CIRCLE_ARTIFACTS || true
     - mkdir $CIRCLE_ARTIFACTS/reports
     - cp -r app/build/reports $CIRCLE_ARTIFACTS/reports || true
     # copy the test results to the test results directory.
-    # - find app/build/test-results -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/ \;
-    # - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+    - find app/build/test-results -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/ \ || true
+    - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS || true

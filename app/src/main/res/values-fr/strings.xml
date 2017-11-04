@@ -108,7 +108,7 @@
     <string name="good_counters">Vos bons counters %s</string>
     <string name="bad_counters">Vos champions plus faibles %s</string>
     <string name="no_counters">Pas d\'information pour les matchups %s / vos champions :(</string>
-    <string name="title_activity_player_detail">Informations de jeu</string>
+    <string name="title_activity_performance">Informations de jeu</string>
     <string name="pref_title_new_game_notifications">Notifier en début de partie</string>
     <string name="default_tab">Onglet par défaut</string>
     <string name="matchup_stats_source">(source: http://teamward.xyz)</string>

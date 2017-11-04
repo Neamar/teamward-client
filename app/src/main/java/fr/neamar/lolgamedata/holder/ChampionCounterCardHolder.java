@@ -58,12 +58,12 @@ public class ChampionCounterCardHolder extends DummyHolder implements View.OnCli
     @Override
     public void onClick(View view) {
         if(championCounter != null) {
-            Intent detailIntent = new Intent(view.getContext(), ChampionActivity.class);
-            detailIntent.putExtra("championName", championCounter.name);
-            detailIntent.putExtra("championId", championCounter.id);
-            detailIntent.putExtra("from", "counter");
+            Intent performanceIntent = new Intent(view.getContext(), ChampionActivity.class);
+            performanceIntent.putExtra("championName", championCounter.name);
+            performanceIntent.putExtra("championId", championCounter.id);
+            performanceIntent.putExtra("from", "counter");
 
-            view.getContext().startActivity(detailIntent);
+            view.getContext().startActivity(performanceIntent);
         }
     }
 
@@ -80,11 +80,11 @@ public class ChampionCounterCardHolder extends DummyHolder implements View.OnCli
     }
 
     private void openSpellPage(Context context) {
-        Intent detailIntent = new Intent(context, ChampionActivity.class);
-        detailIntent.putExtra("championName", championCounter.name);
-        detailIntent.putExtra("championId", championCounter.id);
-        detailIntent.putExtra("from", "counter");
+        Intent championIntent = new Intent(context, ChampionActivity.class);
+        championIntent.putExtra("championName", championCounter.name);
+        championIntent.putExtra("championId", championCounter.id);
+        championIntent.putExtra("from", "counter");
 
-        context.startActivity(detailIntent);
+        context.startActivity(championIntent);
     }
 }
