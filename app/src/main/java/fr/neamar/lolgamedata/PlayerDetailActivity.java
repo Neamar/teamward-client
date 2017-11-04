@@ -281,7 +281,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
 
                             Log.i(TAG, "Displaying performance for " + player.summoner.name);
 
-                            Tracker.trackDetailsViewed(PlayerDetailActivity.this, player);
+                            Tracker.trackDetailsViewed(PlayerDetailActivity.this, player, matches.size());
 
                             queue.stop();
 

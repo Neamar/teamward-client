@@ -195,7 +195,7 @@ public class Tracker {
         getMixpanel(activity).track("Click on op.gg", j);
     }
 
-    static void trackDetailsViewed(Activity activity, Player player) {
+    static void trackDetailsViewed(Activity activity, Player player, int matchHistoryLength) {
         JSONObject j = new JSONObject();
         try {
             j.put("region", player.region.toUpperCase());
@@ -204,6 +204,8 @@ public class Tracker {
             j.put("champion", player.champion.id);
             j.put("tier", player.rank.tier);
             j.put("division", player.rank.division);
+            j.put("match_history_length", matchHistoryLength);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
