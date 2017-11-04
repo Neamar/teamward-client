@@ -76,7 +76,7 @@
     <string name="good_counters">Twoje dobre %s kontry</string>
     <string name="bad_counters">Twoje złe %s kontry</string>
     <string name="no_counters">Brak wystarczającej ilości danych na %s przeciwko bohaterom, z którymi grasz :(</string>
-    <string name="title_activity_player_detail">Szczegóły gry</string>
+    <string name="title_activity_performance">Szczegóły gry</string>
     <string name="pref_title_new_game_notifications">Powiadomienia o nowej grze</string>
     <string name="default_tab">Zakładka domyślna</string>
     <string name="matchup_stub">50%</string>

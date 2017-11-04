@@ -14,7 +14,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
-import fr.neamar.lolgamedata.PlayerDetailActivity;
+import fr.neamar.lolgamedata.PerformanceActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Match;
 
@@ -81,7 +81,7 @@ public class MatchHolder extends RecyclerView.ViewHolder implements View.OnClick
         int minDuration = match.duration / 60;
         int secDuration = match.duration % 60;
         String gameLengthTemplate = this.gameLengthText.getContext().getString(R.string.game_length_template);
-        String queueName = winOrLossView.getContext().getString(PlayerDetailActivity.getQueueName(match.queue));
+        String queueName = winOrLossView.getContext().getString(PerformanceActivity.getQueueName(match.queue));
         this.gameLengthText.setText(String.format(gameLengthTemplate, minDuration < 10 ? "0" + minDuration : minDuration, secDuration < 10 ? "0" + secDuration : secDuration, match.role, queueName));
 
         float csPerMin = (float) match.cs / minDuration;
