@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="fr.neamar.lolgamedata.PlayerDetailActivity"
-    tools:showIn="@layout/activity_player_detail">
+    tools:context="fr.neamar.lolgamedata.PerformanceActivity"
+    tools:showIn="@layout/activity_performance">
 
     <LinearLayout
         android:layout_width="match_parent"

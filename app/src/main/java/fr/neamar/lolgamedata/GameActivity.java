@@ -374,7 +374,7 @@ public class GameActivity extends SnackBarActivity {
     }
 
     private void displayGame(String summonerName, Game game) {
-        getSupportActionBar().setSubtitle(PlayerDetailActivity.getQueueName(Integer.toString(game.queue)));
+        getSupportActionBar().setSubtitle(PerformanceActivity.getQueueName(Integer.toString(game.queue)));
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
 

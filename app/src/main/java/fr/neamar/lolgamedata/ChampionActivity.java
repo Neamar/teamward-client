@@ -29,7 +29,7 @@ import java.util.Locale;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class ChampionActivity extends SnackBarActivity {
-    private static final String TAG = "PlayerDetailActivity";
+    private static final String TAG = "PerformanceActivity";
     private String championName;
     private int championId;
     private String ggUrl = "";

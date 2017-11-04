@@ -82,7 +82,7 @@
     <string name="good_counters">Хорошие пики на %s</string>
     <string name="bad_counters">Плохие пики на %s</string>
     <string name="no_counters">Недостаточно данных про чемпионов, против которых вы играете на %s :(</string>
-    <string name="title_activity_player_detail">Информация о игре</string>
+    <string name="title_activity_performance">Информация о игре</string>
     <string name="pref_title_new_game_notifications">Уведомление о начале игры</string>
     <string name="default_tab">Вкладка по умолчанию</string>
     <string name="matchup_stub">50%</string>

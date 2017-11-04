@@ -81,7 +81,7 @@
     <string name="good_counters">Tvoji dobrý %s countery</string>
     <string name="bad_counters">Tvoji zlý %s countery</string>
     <string name="no_counters">Nedostatok dát ohľadom %s protivníkovi ktorému hráš :(</string>
-    <string name="title_activity_player_detail">Detaily hry</string>
+    <string name="title_activity_performance">Detaily hry</string>
     <string name="pref_title_new_game_notifications">Upozornenie na novú hru</string>
     <string name="default_tab">Domov</string>
     <string name="matchup_stub">50%</string>

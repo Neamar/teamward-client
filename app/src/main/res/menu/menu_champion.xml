@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="fr.neamar.lolgamedata.PlayerDetailActivity">
+    tools:context="fr.neamar.lolgamedata.PerformanceActivity">
     <item
         android:id="@+id/action_gg"
         android:title="@string/gg"

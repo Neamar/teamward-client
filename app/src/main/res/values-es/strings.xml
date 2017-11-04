@@ -108,7 +108,7 @@
     <string name="good_counters">Tus buenos %s counters</string>
     <string name="bad_counters">Tus malos %s counters</string>
     <string name="no_counters">No hay suficientes datos en %s contra los campeones que estas jugando :(</string>
-    <string name="title_activity_player_detail">Detalles de juego</string>
+    <string name="title_activity_performance">Detalles de juego</string>
     <string name="pref_title_new_game_notifications">Notificaciones de nuevo juego</string>
     <string name="default_tab">Tab por defecto</string>
     <string name="matchup_stub">50%</string>

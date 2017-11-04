@@ -48,8 +48,8 @@ import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.CHAMPION_MASTERIES_RESOURCES;
 import static fr.neamar.lolgamedata.holder.PlayerHolder.RANKING_TIER_RESOURCES;
 
-public class PlayerDetailActivity extends SnackBarActivity {
-    private static final String TAG = "PlayerDetailActivity";
+public class PerformanceActivity extends SnackBarActivity {
+    private static final String TAG = "PerformanceActivity";
     private Player player;
 
     private static final Map<String, Integer> QUEUE_NAMES;
@@ -92,7 +92,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_detail);
+        setContentView(R.layout.activity_performance);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -149,12 +149,12 @@ public class PlayerDetailActivity extends SnackBarActivity {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + player.region + ".op.gg/summoner/userName=" + URLEncoder.encode(player.summoner.name, "UTF-8")));
                     startActivity(browserIntent);
 
-                    Tracker.trackClickOnOpGG(PlayerDetailActivity.this, player);
+                    Tracker.trackClickOnOpGG(PerformanceActivity.this, player);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
                 catch(ActivityNotFoundException e) {
-                    Toast.makeText(PlayerDetailActivity.this, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PerformanceActivity.this, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
@@ -218,10 +218,10 @@ public class PlayerDetailActivity extends SnackBarActivity {
                 startActivity(browserIntent);
                 }
                 catch(ActivityNotFoundException e) {
-                    Toast.makeText(PlayerDetailActivity.this, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PerformanceActivity.this, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
                 }
 
-                Tracker.trackClickOnGG(PlayerDetailActivity.this, player.champion.name, player.champion.id, "player_details");
+                Tracker.trackClickOnGG(PerformanceActivity.this, player.champion.name, player.champion.id, "player_details");
             }
         });
 
@@ -287,7 +287,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
 
                             Log.i(TAG, "Displaying performance for " + player.summoner.name);
 
-                            Tracker.trackDetailsViewed(PlayerDetailActivity.this, player);
+                            Tracker.trackPerformanceViewed(PerformanceActivity.this, player, matches.size());
 
                             queue.stop();
 
@@ -311,7 +311,7 @@ public class PlayerDetailActivity extends SnackBarActivity {
                         String responseBody = new String(error.networkResponse.data, "utf-8");
                         Log.i(TAG, responseBody);
 
-                        Tracker.trackErrorViewingDetails(PlayerDetailActivity.this, player.region, responseBody.replace("Error:", ""));
+                        Tracker.trackErrorViewingDetails(PerformanceActivity.this, player.region, responseBody.replace("Error:", ""));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NullPointerException e) {
