@@ -24,7 +24,7 @@ public class Game implements Serializable {
     public Game(JSONObject game, String region, Account associatedAccount, boolean useRelativeTeamColor) throws JSONException {
         gameId = game.getLong("game_id");
         mapId = game.getInt("map_id");
-        queue = game.getInt("queue");
+        queue = game.optInt("queue", 0);
 
         startTime = new Date(game.optLong("game_start_time", new Date().getTime()));
         this.associatedAccount = associatedAccount;

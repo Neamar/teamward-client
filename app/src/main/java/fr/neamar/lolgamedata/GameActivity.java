@@ -48,7 +48,6 @@ import java.util.Map;
 import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
-import fr.neamar.lolgamedata.service.RegistrationIntentService;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class GameActivity extends SnackBarActivity {
@@ -171,11 +170,6 @@ public class GameActivity extends SnackBarActivity {
         if (savedInstanceState == null || !savedInstanceState.containsKey("game")) {
             loadCurrentGame(account.summonerName, account.region);
         }
-
-        // Register for push notifications, send token again in case it changed
-        Intent intent = new Intent(this, RegistrationIntentService.class);
-        Log.i(TAG, "Starting Service");
-        startService(intent);
     }
 
     @Override

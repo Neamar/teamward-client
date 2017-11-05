@@ -35,8 +35,11 @@ public class NotificationService extends GcmListenerService {
      */
     @Override
     public void onMessageReceived(String from, Bundle data) {
+        Log.e("WTF", "Bundle: " + data.toString());
+        Log.e("WTF", "GameID:" + data.getString("gameId"));
+
         if (data.containsKey("gameId")) {
-            long gameId = data.getLong("gameId");
+            long gameId = Long.parseLong(data.getString("gameId"));
             String gameMode = data.getString("gameMode");
             String summonerName = data.getString("summonerName");
             String region = data.getString("region");
@@ -95,7 +98,10 @@ public class NotificationService extends GcmListenerService {
         NotificationManager notificationManager = getNotificationManager();
         if (prefs.getBoolean("notifications_new_game", true)) {
             try {
+                Log.e("WTF", "Builing...");
                 notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
+                Log.e("WTF", "Built!");
+
             } catch (RuntimeException e) {
                 // Most likely, the ringtone doesn't exist anymore. Use system default
                 // (seems to be a bug in Android 6.0)
