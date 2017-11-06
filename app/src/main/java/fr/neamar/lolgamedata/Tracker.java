@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
 
+import com.amplitude.api.Amplitude;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.json.JSONException;
@@ -22,17 +23,39 @@ import fr.neamar.lolgamedata.pojo.Player;
 import static fr.neamar.lolgamedata.GameActivity.getMapName;
 
 public class Tracker {
-    private static LolApplication getApplication(@NonNull Activity activity) {
-        return ((LolApplication) activity.getApplication());
+    private static LolApplication getApplication(@NonNull Context context) {
+        return ((LolApplication) context.getApplicationContext());
     }
 
-    private static MixpanelAPI getMixpanel(@NonNull Activity activity) {
-        return getApplication(activity).getMixpanel();
+    private static MixpanelAPI getMixpanel(@NonNull Context context) {
+        return getApplication(context).getMixpanel();
     }
 
     static void flush(Activity activity) {
         getMixpanel(activity).flush();
     }
+
+    static void track(Activity activity, String eventName) {
+        track(activity, eventName, new JSONObject());
+    }
+
+    // Track event on both Mixpanel and Amplitude
+    static void track(Activity activity, String eventName, JSONObject props) {
+        LolApplication application = getApplication(activity);
+        application.getMixpanel().track(eventName, props);
+        application.getAmplitude().logEvent(eventName, props);
+    }
+
+    static void trackProfile(Context context, JSONObject props) {
+        LolApplication application = (LolApplication) context.getApplicationContext();
+        application.getMixpanel().getPeople().set(props);
+        application.getAmplitude().setUserProperties(props);
+
+        if(props.has("$username")) {
+            application.getAmplitude().setUserId(props.optString("$username", null));
+        }
+    }
+
 
     static void trackGameViewed(Activity activity, Account account, Game game, String defaultTab, Boolean shouldDisplayChampionName, String source) {
         JSONObject j = account.toJsonObject();
@@ -89,7 +112,7 @@ public class Tracker {
         }
 
         MixpanelAPI mixpanel = getMixpanel(activity);
-        mixpanel.track("Game viewed", j);
+        track(activity, "Game viewed", j);
 
         mixpanel.getPeople().increment("games_viewed_count", 1);
         mixpanel.getPeople().set("last_viewed_game", new Date());
@@ -102,7 +125,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        getMixpanel(activity).track("Error viewing game", j);
+        track(activity, "Error viewing game", j);
     }
 
     public static void trackNotificationDisplayed(Context context, Account account, int mapId, String mapName, long gameId) {
@@ -117,20 +140,28 @@ public class Tracker {
 
         // Build a new Mixpanel instance, to make sure we don't update the user profile
         MixpanelAPI.getInstance(context, context.getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", j);
+        // Send this event as outOfSession
+        Amplitude.getInstance().logEvent("Notification displayed", j, true);
     }
 
     static void trackRateTheApp(Activity activity) {
-        MixpanelAPI mixpanel = getMixpanel(activity);
-        mixpanel.track("Rate the app");
-        mixpanel.getPeople().set("app_rated", true);
+        track(activity, "Rate the app");
+
+        JSONObject j = new JSONObject();
+        try {
+            j.put("app_rated", true);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        trackProfile(activity, j);
     }
 
     static void trackFirstTimeAppOpen(Activity activity) {
-        getMixpanel(activity).track("First time app open");
+        track(activity, "First time app open");
     }
 
     static void trackReloadStaleGame(Activity activity, Account account) {
-        getMixpanel(activity).track("Reload stale game", account.toJsonObject());
+        track(activity, "Reload stale game", account.toJsonObject());
     }
 
     static void trackSettingsUpdated(Context context, Preference preference, String value) {
@@ -144,10 +175,11 @@ public class Tracker {
         }
 
         ((LolApplication) context.getApplicationContext()).getMixpanel().track("Setting updated", j);
+        Amplitude.getInstance().logEvent("Setting updated", j);
     }
 
     static void trackAccessSettings(Activity activity) {
-        getMixpanel(activity).track("Access settings");
+        track(activity, "Access settings");
     }
 
     static void trackViewChampionCounters(Activity activity, Counter counter) {
@@ -163,7 +195,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        getMixpanel(activity).track("View champion counters", j);
+        track(activity, "View champion counters", j);
     }
 
     static void trackClickOnGG(Activity activity, String championName, int championId, String source) {
@@ -176,7 +208,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        getMixpanel(activity).track("Click on GG", j);
+        track(activity, "Click on GG", j);
     }
 
     static void trackClickOnOpGG(Activity activity, Player player) {
@@ -191,8 +223,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        getMixpanel(activity).track("Click on op.gg", j);
+        track(activity, "Click on op.gg", j);
     }
 
     static void trackPerformanceViewed(Activity activity, Player player, int matchHistoryLength) {
@@ -209,8 +240,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        getMixpanel(activity).track("Performance viewed", j);
+        track(activity, "Performance viewed", j);
     }
 
     static void trackChampionViewed(Activity activity, String championName, int championId, String from) {
@@ -222,8 +252,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        getMixpanel(activity).track("Champion viewed", j);
+        track(activity, "Champion viewed", j);
     }
 
     static void trackErrorViewingDetails(Activity activity, String region, String error) {
@@ -234,7 +263,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        getMixpanel(activity).track("Error viewing details", j);
+        track(activity, "Error viewing details", j);
     }
 
     static void trackAccountAdded(Activity activity, Account account, int index) {
@@ -244,8 +273,8 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        getMixpanel(activity).track("Account added", j);
-        getApplication(activity).identifyOnMixpanel();
+        track(activity, "Account added", j);
+        getApplication(activity).identifyOnTrackers();
     }
 
     static void trackErrorAddingAccount(Activity activity, Account account, String error) {
@@ -255,7 +284,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        getMixpanel(activity).track("Error adding account", j);
+        track(activity, "Error adding account", j);
     }
 
     public static void trackViewCounters(Activity activity, Account account, String role, int requiredChampionMastery) {
@@ -267,7 +296,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        getMixpanel(activity).track("View counters", j);
+        track(activity, "View counters", j);
     }
 
     public static void trackErrorViewingCounters(Activity activity, Account account, String error) {
@@ -277,20 +306,26 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        getMixpanel(activity).track("Error viewing counters", j);
+        track(activity, "Error viewing counters", j);
     }
 
-    static void trackUserProperties(Context context, Account account, int accountsLength, SharedPreferences sp) {
-        MixpanelAPI.People people = ((LolApplication) context.getApplicationContext()).getMixpanel().getPeople();
+    static void trackUserProperties(Context context, Account mainAccount, int accountsLength, SharedPreferences sp) {
+       JSONObject j = mainAccount.toJsonObject();
 
-        people.set("accounts_length", accountsLength);
-        people.set("$username", account.summonerName);
-        people.set("$name", account.summonerName);
-        people.set("region", account.region);
+       try {
+           j.put("accounts_length", accountsLength);
+           j.put("$username", mainAccount.summonerName);
+           j.put("$name", mainAccount.summonerName);
+           j.put("region", mainAccount.region);
 
-        Map<String, ?> properties = sp.getAll();
-        for (Map.Entry<String, ?> entry : properties.entrySet()) {
-            people.set("settings_" + entry.getKey(), entry.getValue());
-        }
+           Map<String, ?> properties = sp.getAll();
+           for (Map.Entry<String, ?> entry : properties.entrySet()) {
+               j.put("settings_" + entry.getKey(), entry.getValue());
+           }
+       } catch(JSONException e) {
+           e.printStackTrace();
+       }
+
+       trackProfile(context, j);
     }
 }

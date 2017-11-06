@@ -9,6 +9,8 @@ import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.amplitude.api.Amplitude;
+import com.amplitude.api.AmplitudeClient;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -26,6 +28,7 @@ public class LolApplication extends Application {
     private static final String TAG = "LolApplication";
 
     private MixpanelAPI mixpanel = null;
+    private AmplitudeClient amplitude = null;
 
     @Override
     public void onCreate() {
@@ -61,7 +64,8 @@ public class LolApplication extends Application {
         // Tracking initialization
         final Runnable r = new Runnable() {
             public void run() {
-                identifyOnMixpanel();
+                identifyOnAmplitude();
+                identifyOnTrackers();
             }
         };
 
@@ -83,13 +87,22 @@ public class LolApplication extends Application {
         return mixpanel;
     }
 
+    public AmplitudeClient getAmplitude() {
+        if(amplitude == null) {
+            Amplitude.getInstance().initialize(this, getString(R.string.AMPLITUDE_TOKEN)).enableForegroundTracking(this);
+            amplitude = Amplitude.getInstance();
+        }
+
+        return amplitude;
+    }
+
     public JSONArray getJSONArrayFromSingleItem(String item) {
         JSONArray a = new JSONArray();
         a.put(item);
         return a;
     }
 
-    public void identifyOnMixpanel() {
+    public void identifyOnTrackers() {
         AccountManager accountManager = new AccountManager(getApplicationContext());
         List<Account> accounts = accountManager.getAccounts();
         Log.i(TAG, "Current size for accounts is " + accounts.size());
@@ -99,6 +112,9 @@ public class LolApplication extends Application {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             Tracker.trackUserProperties(getApplicationContext(), accounts.get(0), accounts.size(), sp);
         }
+    }
+
+    public void identifyOnAmplitude() {
     }
 
     public String getApiUrl() {
