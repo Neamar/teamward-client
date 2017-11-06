@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
 
+import com.amplitude.api.Amplitude;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.json.JSONException;
@@ -34,6 +35,10 @@ public class Tracker {
         getMixpanel(activity).flush();
     }
 
+    static void track(Activity activity, String eventName, JSONObject props) {
+        getMixpanel(activity).track(eventName, props);
+        Amplitude.getInstance().logEvent(eventName, props);
+    }
     static void trackGameViewed(Activity activity, Account account, Game game, String defaultTab, Boolean shouldDisplayChampionName, String source) {
         JSONObject j = account.toJsonObject();
         LolApplication application = getApplication(activity);

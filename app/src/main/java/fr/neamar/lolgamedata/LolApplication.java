@@ -9,6 +9,7 @@ import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.amplitude.api.Amplitude;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -61,6 +62,7 @@ public class LolApplication extends Application {
         // Tracking initialization
         final Runnable r = new Runnable() {
             public void run() {
+                identifyOnAmplitude();
                 identifyOnMixpanel();
             }
         };
@@ -99,6 +101,10 @@ public class LolApplication extends Application {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             Tracker.trackUserProperties(getApplicationContext(), accounts.get(0), accounts.size(), sp);
         }
+    }
+
+    public void identifyOnAmplitude() {
+        Amplitude.getInstance().initialize(this, getString(R.string.AMPLITUDE_TOKEN)).enableForegroundTracking(this);
     }
 
     public String getApiUrl() {
