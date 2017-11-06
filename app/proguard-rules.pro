@@ -15,13 +15,25 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
--dontwarn com.mixpanel.**
+
+
+# Make sure stack traces looks goods
+-dontobfuscate
+
 
 -keep public class com.google.android.gms.* { public *; }
 -keep class android.support.v7.widget.SearchView { *; }
 -dontwarn com.google.android.gms.**
--dontobfuscate
 
+
+# Newrelic
 -keep class com.newrelic.** { *; }
 -dontwarn com.newrelic.**
 -keepattributes Exceptions, Signature, InnerClasses, LineNumberTable
+
+# Mixpanel
+-dontwarn com.mixpanel.**
+
+# Amplitude
+-keep class com.google.android.gms.ads.** { *; }
+-dontwarn okio.**
