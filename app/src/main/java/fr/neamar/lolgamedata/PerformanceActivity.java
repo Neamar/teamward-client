@@ -181,12 +181,14 @@ public class PerformanceActivity extends SnackBarActivity {
         TextView matchupTextView = (TextView) findViewById(R.id.matchupStats);
 
         final Team playerTeam = game.getTeamForPlayer(player);
-        Team otherTeam = game.teams.get(0) == playerTeam ? game.teams.get(1) : game.teams.get(0);
         Player oppositePlayer = null;
-        for (Player tplayer : otherTeam.players) {
-            if (player.champion.role.equals(tplayer.champion.role)) {
-                oppositePlayer = tplayer;
-                break;
+        if(game.teams.size() > 1) {
+            Team otherTeam = game.teams.get(0) == playerTeam ? game.teams.get(1) : game.teams.get(0);
+            for (Player tplayer : otherTeam.players) {
+                if (player.champion.role.equals(tplayer.champion.role)) {
+                    oppositePlayer = tplayer;
+                    break;
+                }
             }
         }
 
