@@ -7,6 +7,7 @@ import android.preference.Preference;
 import android.support.annotation.NonNull;
 
 import com.amplitude.api.Amplitude;
+import com.amplitude.api.Identify;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.json.JSONException;
@@ -116,6 +117,9 @@ public class Tracker {
 
         mixpanel.getPeople().increment("games_viewed_count", 1);
         mixpanel.getPeople().set("last_viewed_game", new Date());
+
+        Identify identify = new Identify().add("games_viewed_count", 1).set("last_viewed_game", new Date().toString());
+        Amplitude.getInstance().identify(identify);
     }
 
     static void trackErrorViewingGame(Activity activity, Account account, String error) {
@@ -128,12 +132,14 @@ public class Tracker {
         track(activity, "Error viewing game", j);
     }
 
-    public static void trackNotificationDisplayed(Context context, Account account, int mapId, String mapName, long gameId) {
+    public static void trackNotificationDisplayed(Context context, Account account, int mapId, String mapName, long gameId, boolean unableToDisplay) {
         JSONObject j = account.toJsonObject();
         try {
             j.put("game_map_id", mapId);
             j.put("game_map_name", mapName);
             j.put("game_id", gameId);
+            j.put("notification_threw_runtime_error", unableToDisplay);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
