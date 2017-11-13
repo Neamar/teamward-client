@@ -51,7 +51,8 @@ public class Team implements Serializable {
             }
         }
 
-        winrateByGameLength = new WinrateByGameLength(team.getJSONObject("winrate_by_game_length"));
+        // Happens on custom games where you're alone.
+        winrateByGameLength = team.has("winrate_by_game_length") ? new WinrateByGameLength(team.getJSONObject("winrate_by_game_length")) : new WinrateByGameLength();
     }
 
     public String getName(Context context) {
