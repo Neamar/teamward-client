@@ -61,7 +61,7 @@
 
         <service
             android:name=".service.NotificationService"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
