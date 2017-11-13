@@ -16,4 +16,8 @@ public class WinrateByGameLength extends SparseArray<Double> implements Serializ
             this.append(Integer.parseInt(key), winrateByGameLength.optDouble(key, 50));
         }
     }
+
+    public WinrateByGameLength() {
+
+    }
 }

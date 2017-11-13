@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -89,23 +90,25 @@ public class NotificationService extends GcmListenerService {
             notificationBuilder.setVibrate(new long[]{1000, 1000});
         }
 
-        Uri notificationUri = Uri.parse(prefs.getString("notifications_new_game_ringtone", Settings.System.DEFAULT_NOTIFICATION_URI.toString()));
-        notificationBuilder.setSound(notificationUri);
+        if(Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
+            Uri notificationUri = Uri.parse(prefs.getString("notifications_new_game_ringtone", Settings.System.DEFAULT_NOTIFICATION_URI.toString()));
+            notificationBuilder.setSound(notificationUri);
+        }
 
         NotificationManager notificationManager = getNotificationManager();
+        boolean unableToDisplay = false;
         if (prefs.getBoolean("notifications_new_game", true)) {
             try {
                 notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
 
             } catch (RuntimeException e) {
-                // Most likely, the ringtone doesn't exist anymore. Use system default
-                // (seems to be a bug in Android 6.0)
-                notificationUri = Uri.parse(Settings.System.DEFAULT_NOTIFICATION_URI.toString());
-                notificationBuilder.setSound(notificationUri);
-                notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
+                // Most likely, the ringtone doesn't exist anymore.
+                // Used to happen only in Android 6.0, so the notification part is skipped on API M.
+                // I'm keeping the try/catch just in case ;)
+                unableToDisplay = true;
             }
 
-            Tracker.trackNotificationDisplayed(this, account, mapId, getString(GameActivity.getMapName(mapId)), gameId);
+            Tracker.trackNotificationDisplayed(this, account, mapId, getString(GameActivity.getMapName(mapId)), gameId, unableToDisplay);
         }
     }
 
