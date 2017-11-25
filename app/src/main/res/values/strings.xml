@@ -215,4 +215,6 @@
     <string name="often_gets_first_blood">often gets first blood</string>
     <string name="often_gets_first_tower">often gets first tower</string>
     <string name="multi_kill_machine">multi kill machine</string>
+    <string name="display_level">Always display champion level</string>
+    <string name="display_level_summary">Display champion level even when player is ranked</string>
 </resources>
