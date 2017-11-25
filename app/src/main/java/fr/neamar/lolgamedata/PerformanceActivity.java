@@ -80,6 +80,7 @@ public class PerformanceActivity extends SnackBarActivity {
         queueNames.put("410", R.string.teambuilder_ranked);
         queueNames.put("420", R.string.ranked_solo_5);
         queueNames.put("440", R.string.ranked_flex_5);
+        queueNames.put("450", R.string.aram);
 
         QUEUE_NAMES = Collections.unmodifiableMap(queueNames);
     }
