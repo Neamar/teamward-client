@@ -217,4 +217,5 @@
     <string name="multi_kill_machine">multi kill machine</string>
     <string name="display_level">Always display champion level</string>
     <string name="display_level_summary">Display champion level even when player is ranked</string>
+    <string name="overcharge">Overcharge</string>
 </resources>

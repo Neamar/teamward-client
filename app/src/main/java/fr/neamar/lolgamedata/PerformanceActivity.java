@@ -57,6 +57,7 @@ public class PerformanceActivity extends SnackBarActivity {
     static {
         // https://developer.riotgames.com/game-constants.html
         Map<String, Integer> queueNames = new HashMap<>();
+        // Used for /lol/league/v3/positions/by-summoner/
         queueNames.put("NORMAL", R.string.normal);
         queueNames.put("CUSTOM_GAME", R.string.custom);
         queueNames.put("ARAM_UNRANKED_5x5", R.string.aram);
@@ -67,7 +68,7 @@ public class PerformanceActivity extends SnackBarActivity {
         queueNames.put("RANKED_FLEX_TT", R.string.ranked_flex_3);
         queueNames.put("TEAM_BUILDER_DRAFT_RANKED_5x5", R.string.teambuilder_ranked);
 
-        // Also with ids
+        // Used for spectated games
         queueNames.put("0", R.string.custom);
         queueNames.put("2", R.string.blind_pick);
         queueNames.put("4", R.string.ranked_solo_5);
@@ -81,6 +82,7 @@ public class PerformanceActivity extends SnackBarActivity {
         queueNames.put("420", R.string.ranked_solo_5);
         queueNames.put("440", R.string.ranked_flex_5);
         queueNames.put("450", R.string.aram);
+        queueNames.put("1000", R.string.overcharge);
 
         QUEUE_NAMES = Collections.unmodifiableMap(queueNames);
     }
