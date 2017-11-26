@@ -1,2 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<?xml version='1.0' encoding='UTF-8'?>
+<resources><string name="action_settings">Innstillinger</string>
+    <string name="title_activity_game">Spilldetaljer</string>
+    <string name="blue_team">Blått lag</string>
+    <string name="red_team">Rødt lag</string>
+    <string name="unknown_team">" lag"</string>
+    <string name="summoner_level">nivå %s</string>
+    <string name="champion_image">Heltebilde</string>
+    <string name="current_ranking_tier">Nåværende rangeringsklasse</string>
+    <string name="loading_game_data">Bygger spilldata for %s</string>
+    <string name="twisted_treeline">Vridd trelinje</string>
+    <string name="crystal_scar">Krystallarret</string>
+    <string name="howling_abyss">Ulende avgrunn</string>
+    <string name="butchers_bridge">Slakterens bro</string>
+    <string name="unknown_map">LoL</string>
+    <string name="home_empty">Legg til din hovedkonto
+\nfor å komme i gang.</string>
+    <string name="action_about">Om</string>
+    <string name="add_account">Legg til konto</string>
+
+    <string name="title_activity_add_account">Legg til ny konto</string>
+    <string name="s_is_not_in_game_right_now">%s er ikke i spillet nå.</string>
+
+    <string name="account_removed">Konto fjernet.</string>
+    <string name="stale_data">Fastlåst data?</string>
+    <string name="data_only_on_loading_screen">TeamWard kan bare hente data når du er på spillastingsskjermen.</string>
+    <string name="in_lobby_wait_then_refresh">Hvis du fremdeles er i lobbyen, vent og trykk gjenoppfrisk.</string>
+    <string name="title_activity_settings">Innstillinger</string>
+
+    <string name="pref_header_general">Spilldata</string>
+
+    <string name="pref_header_notifications">Merknader</string>
+
+    <string name="pref_title_ringtone">Ringetone</string>
+    <string name="pref_ringtone_silent">Stille</string>
+
+    <string name="pref_title_vibrate">Vibrer</string>
+    <string name="may_be_inaccurate">(kan være unøyaktig)</string>
+    <string name="s_has_no_flash">%1$s bruker %2$s og %3$s.</string>
+    <string name="display_champion_name">Vis heltenavn</string>
+    <string name="display_champion_name_summary">Heltebilde vil alltid vises</string>
+    <string name="counter_counters_activity_title">%1$s mot %2$s %3$s</string>
+    <string name="search">Søk</string>
+    <string name="good_counters">Dine gode %s-motsatser</string>
+    <string name="bad_counters">Dine dårlige %s-motsatser</string>
+    <string name="title_activity_performance">Spilldetaljer</string>
+    <string name="pref_title_new_game_notifications">Merknader om nye spill</string>
+    <string name="default_tab">Forvalgt fane</string>
+    <string name="matchup_stub">50%</string>
+    <string name="gg">GeGe</string>
+    <string name="welcome_to">Velkommen til %s!</string>
+    <string name="player_is_in_game">%s er i et spill. Trykk for informasjon</string>
+    <string name="ranking">%1$s %2$s</string>
+    <string name="no_data">Ingen data:</string>
+    <string name="unknown_queue">Ukjent kø</string>
+    <string name="champion_points">%1$s poeng</string>
+    <string name="love_the_app">Teamward er friprog og har ikke reklame. Hvis du liker det, legg inn vurdering på Play-butikken :)</string>
+    <string name="rate_app">Vurder programmet.</string>
+    <string name="thank_you">Takk.</string>
+    <string name="custom">Egendefinert spill</string>
+    <string name="abilities">Evner</string>
+    <string name="ability_name">%1$s — %2$s</string>
+    <string name="ability_q">Q</string>
+    <string name="ability_w">W</string>
+    <string name="ability_e">E</string>
+    <string name="ability_r">R</string>
+    <string name="ability_cooldowns">%ss</string>
+    <string name="champion_details">Heltedetaljer</string>
+    <string name="title_activity_champion">Heltedetaljer</string>
+    <string name="teamward_user">En TeamWard-bruker.</string>
+    <string name="hope_he_wins">Jeg håper han går seirende ut.</string>
+    <string name="not_using_teamward">Skam! Skam!</string>
+    <string name="final_separator">og</string>
+    <string name="last_season_rank">Sist sesong</string>
+    <string name="ranking_last_season">%1$s</string>
+    <string name="unable_to_open_browser">Klarte ikke å åpne nettleser</string>
+    <string name="their_team">Deres lag</string>
+    </resources>
