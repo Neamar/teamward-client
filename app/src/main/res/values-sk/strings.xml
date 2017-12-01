@@ -28,7 +28,7 @@
 \nTeamWard nie je schválená od Riot Games a nereflektuje pozretia alebo otázky ohľadom Riot Games alebo niekoho oficiálne zapojeného do produkovania alebo riadenia League of Legends. League of Legends a Riot Games sú registrované chránené známky spoločnosťou Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
     <string name="rammus_ok">Rammus</string>
     <string name="first_main">Hlavný šampión</string>
-    <string name="second_main">2. Hlavný šampión</string>
+    <string name="second_main">2. Hlavný</string>
     <string name="third_main">3. Hlavný</string>
     <string name="summoner_icon">Ikona vyvolávača</string>
     <string name="summoner_name">Meno vyvolávača</string>
@@ -132,7 +132,7 @@
     <string name="hope_he_wins">Dúfam, že túto hru vyhrá.</string>
     <string name="not_using_teamward">Hanba! Hanba!</string>
     <string name="s_is_not_using_teamward">%s hraje s tebou, ale nepoužíva TeamWard. Dandrej je smutný.</string>
-    <string name="s_are_not_using_teamward">%s nepoužíva TeamWard. Eyik bude plakať.</string>
+    <string name="s_are_not_using_teamward">%s nepoužíva TeamWard. Eyko bude plakať.</string>
     <string name="standard_separator">,</string>
     <string name="final_separator">a</string>
     <string name="patch_s">(data: patch %1$s)</string>
@@ -148,7 +148,7 @@
     <string name="hardcore_gamer">Ťažký hráč!</string>
     <string name="hardcore_gamer_description">%s hral viac ako 10 hier v posledných 24 hodinách.</string>
     <string name="filthy_casual_description">%s hra menej a jednú hru za týždeň!</string>
-    <string name="filthy_casual">Obyčajný človek…</string>
+    <string name="filthy_casual">Ružbašan…</string>
     <string name="your_team">Tvoj tím</string>
     <string name="their_team">Ich tím</string>
     <string name="winrate_by_time_disclaimer" formatted="false">• Tento graf je indikátorom sily a late-game škálovania
@@ -160,7 +160,7 @@
     <string name="blind_pick">Slepý výber 5vs5</string>
     <string name="draft_pick">Draft výber 5vs5</string>
 <string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
-    <string name="over_x_games">(%1d pozná hodnotené zápasy)</string>
+    <string name="over_x_games">(%1d hrá z väčšiny ranked)</string>
     <string name="aggregated_data">(%1$s winrate%2$s)</string>
     <string name="good_farmer">Je dobrý vo farmení</string>
     <string name="exceptional_farmer">Výnimočný vo farmení</string>
@@ -168,5 +168,8 @@
     <string name="good_laner">dobrý matdudovec</string>
     <string name="often_gets_first_blood">väčšinou získa First Blood</string>
     <string name="often_gets_first_tower">väčšinou získa prvú vežu</string>
-    <string name="multi_kill_machine">TERMINÁTOR MATDUD</string>
+    <string name="multi_kill_machine">Mačok the zabijak</string>
+<string name="display_level">Vždy zobraziť level šampióna</string>
+    <string name="display_level_summary">Zobraziť level šampióna aj keď má hráč hodnosť</string>
+    <string name="overcharge">Overcharge</string>
 </resources>
