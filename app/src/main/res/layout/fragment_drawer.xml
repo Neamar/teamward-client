@@ -18,9 +18,11 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/view"
+        android:layout_above="@+id/remove_hint"
         android:layout_below="@+id/imageView2"
         tools:listitem="@layout/item_account" />
+
+
 
     <View
         android:id="@+id/view"
@@ -29,7 +31,17 @@
         android:layout_above="@+id/addLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#f6f6f6" />
+        android:background="#f6f6f6"/>
+
+    <TextView
+            android:id="@+id/remove_hint"
+            android:textColor="@color/textHint"
+            android:textSize="9sp"
+            android:text="@string/remove_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_above="@id/view"/>
 
     <LinearLayout
         android:id="@+id/addLayout"
