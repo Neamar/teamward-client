@@ -8,7 +8,7 @@ import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.pojo.Team;
-import fr.neamar.lolgamedata.tips.PlayerStandardTip;
+import fr.neamar.lolgamedata.tips.ChampionStandardTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
 public class NoFlashTipBuilder extends TipBuilder {
@@ -21,7 +21,7 @@ public class NoFlashTipBuilder extends TipBuilder {
                 if (!player.spellD.name.equals("Flash") && !player.spellF.name.equals("Flash")) {
                     String descriptionTemplate = context.getString(R.string.s_has_no_flash);
                     String description = String.format(descriptionTemplate, player.summoner.name, player.spellD.name, player.spellF.name);
-                    tips.add(new PlayerStandardTip(game, player, player.champion.imageUrl, context.getString(R.string.no_flash), description));
+                    tips.add(new ChampionStandardTip(game, player, player.champion, context.getString(R.string.no_flash), description));
                 }
             }
         }

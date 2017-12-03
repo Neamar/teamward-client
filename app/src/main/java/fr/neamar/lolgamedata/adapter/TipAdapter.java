@@ -8,11 +8,13 @@ import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.holder.TipHolder;
 import fr.neamar.lolgamedata.pojo.Game;
+import fr.neamar.lolgamedata.tips.ChampionStandardTip;
 import fr.neamar.lolgamedata.tips.MatchupsTip;
 import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.PremadeTip;
 import fr.neamar.lolgamedata.tips.Tip;
 import fr.neamar.lolgamedata.tips.WinrateByTimeTip;
+import fr.neamar.lolgamedata.tips.holder.ChampionStandardTipHolder;
 import fr.neamar.lolgamedata.tips.holder.MatchupsTipHolder;
 import fr.neamar.lolgamedata.tips.holder.PlayerStandardTipHolder;
 import fr.neamar.lolgamedata.tips.holder.PremadeTipHolder;
@@ -31,10 +33,11 @@ public class TipAdapter extends RecyclerView.Adapter<TipHolder> {
             return PremadeTipHolder.onCreateViewHolder(parent);
         } else if (viewType == PlayerStandardTip.class.getName().hashCode()) {
             return PlayerStandardTipHolder.onCreateViewHolder(parent);
+        } else if (viewType == ChampionStandardTip.class.getName().hashCode()) {
+            return ChampionStandardTipHolder.onCreateViewHolder(parent);
         } else if (viewType == MatchupsTip.class.getName().hashCode()) {
             return MatchupsTipHolder.onCreateViewHolder(parent);
-        }
-        else if(viewType == WinrateByTimeTip.class.getName().hashCode()) {
+        } else if (viewType == WinrateByTimeTip.class.getName().hashCode()) {
             return WinrateByTimeTipHolder.onCreateViewHolder(parent);
         }
 
