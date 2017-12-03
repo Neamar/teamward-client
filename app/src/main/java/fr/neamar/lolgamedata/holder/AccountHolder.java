@@ -1,8 +1,6 @@
 package fr.neamar.lolgamedata.holder;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -53,23 +51,11 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
     }
 
     @Override
-    public boolean onLongClick(final View v) {
-        new AlertDialog.Builder(v.getContext())
-                .setTitle(R.string.dialog_account_title)
-                .setMessage((R.string.dialog_account_message))
-                .setPositiveButton(R.string.dialog_remove, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        AccountManager accountManager = new AccountManager(v.getContext());
-                        accountManager.removeAccount(account);
+    public boolean onLongClick(View v) {
+        AccountManager accountManager = new AccountManager(v.getContext());
+        accountManager.removeAccount(account);
 
-                        Toast.makeText(v.getContext(), R.string.account_removed, Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        }).show();
-
+        Toast.makeText(v.getContext(), R.string.account_removed, Toast.LENGTH_SHORT).show();
         return true;
     }
 }
