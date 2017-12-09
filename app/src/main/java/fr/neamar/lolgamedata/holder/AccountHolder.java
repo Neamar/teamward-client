@@ -55,8 +55,8 @@ public class AccountHolder extends RecyclerView.ViewHolder implements View.OnCli
     @Override
     public boolean onLongClick(final View v) {
         new AlertDialog.Builder(v.getContext())
-                .setTitle(R.string.dialog_account_title)
-                .setMessage((R.string.dialog_account_message))
+                .setTitle(R.string.dialog_remove_account_title)
+                .setMessage((R.string.dialog_remove_account_message))
                 .setPositiveButton(R.string.dialog_remove, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         AccountManager accountManager = new AccountManager(v.getContext());

@@ -218,8 +218,8 @@
     <string name="display_level">Always display champion level</string>
     <string name="display_level_summary">Display champion level even when player is ranked</string>
     <string name="overcharge">Overcharge</string>
-    <string name="dialog_account_title">Remove Account</string>
-    <string name="dialog_account_message">This action will remove your account. Are you sure you
+    <string name="dialog_remove_account_title">Remove Account</string>
+    <string name="dialog_remove_account_message">This will remove your account. Do you
         want to continue?
     </string>
     <string name="dialog_remove">Remove</string>
