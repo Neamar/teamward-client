@@ -18,7 +18,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONException;
@@ -26,6 +25,7 @@ import org.json.JSONObject;
 
 import java.util.Locale;
 
+import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class ChampionActivity extends SnackBarActivity {
@@ -90,7 +90,7 @@ public class ChampionActivity extends SnackBarActivity {
 
     private void downloadChampionDetails(int championId) {
         // Instantiate the RequestQueue.
-        final RequestQueue queue = Volley.newRequestQueue(this);
+        final RequestQueue queue = VolleyQueue.newRequestQueue(this);
 
         NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/champion/" + championId + "?locale=" + Locale.getDefault().toString(), null,
                 new Response.Listener<JSONObject>() {

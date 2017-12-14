@@ -18,7 +18,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,6 +31,7 @@ import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.SnackBarActivity;
 import fr.neamar.lolgamedata.Tracker;
 import fr.neamar.lolgamedata.adapter.CounterChampionAdapter;
+import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Counter;
 import fr.neamar.lolgamedata.pojo.Counters;
@@ -107,7 +107,7 @@ public class CounterChampionsFragment extends Fragment {
 
     private void loadCounters(final RecyclerView recyclerView, final Account account, final String role) {
         // Instantiate the RequestQueue.
-        final RequestQueue queue = Volley.newRequestQueue(getActivity());
+        final RequestQueue queue = VolleyQueue.newRequestQueue(getActivity());
         final String summonerName = account.summonerName;
         String region = account.region;
 
