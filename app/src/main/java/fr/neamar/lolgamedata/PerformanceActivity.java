@@ -22,7 +22,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONObject;
@@ -37,6 +36,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.MatchAdapter;
+import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.AggregatedPerformance;
 import fr.neamar.lolgamedata.pojo.Champion;
 import fr.neamar.lolgamedata.pojo.Game;
@@ -273,7 +273,7 @@ public class PerformanceActivity extends SnackBarActivity {
 
     public void downloadPerformance() {
         // Instantiate the RequestQueue.
-        final RequestQueue queue = Volley.newRequestQueue(this);
+        final RequestQueue queue = VolleyQueue.newRequestQueue(this);
 
         try {
             String url = ((LolApplication) getApplication()).getApiUrl() + "/summoner/performance?summoner=" + URLEncoder.encode(player.summoner.name, "UTF-8") + "&region=" + player.region + "&champion=" + URLEncoder.encode(player.champion.name, "UTF-8");

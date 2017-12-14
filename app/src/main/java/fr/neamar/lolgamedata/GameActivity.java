@@ -32,7 +32,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 import com.newrelic.agent.android.NewRelic;
 
 import org.json.JSONException;
@@ -46,6 +45,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
+import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
@@ -262,7 +262,7 @@ public class GameActivity extends SnackBarActivity {
         dialog.show();
 
         // Instantiate the RequestQueue.
-        final RequestQueue queue = Volley.newRequestQueue(this);
+        final RequestQueue queue = VolleyQueue.newRequestQueue(this);
 
         try {
             String version = "unknown";

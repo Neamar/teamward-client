@@ -14,13 +14,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
@@ -70,7 +70,7 @@ public class AddAccountActivity extends Activity {
         dialog.show();
 
         // Instantiate the RequestQueue.
-        final RequestQueue queue = Volley.newRequestQueue(this);
+        final RequestQueue queue = VolleyQueue.newRequestQueue(this);
 
         try {
             NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/summoner/data?summoner=" + URLEncoder.encode(name, "UTF-8") + "&region=" + region,

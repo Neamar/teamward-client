@@ -10,7 +10,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -25,6 +24,7 @@ import java.util.ArrayList;
 import fr.neamar.lolgamedata.AccountManager;
 import fr.neamar.lolgamedata.LolApplication;
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
@@ -89,7 +89,7 @@ public class RegistrationIntentService extends IntentService {
 
     private void sendTokenToServer(final String token, final Account account) {
         // Instantiate the RequestQueue.
-        final RequestQueue queue = Volley.newRequestQueue(this);
+        final RequestQueue queue = VolleyQueue.newRequestQueue(this);
 
         try {
             NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, ((LolApplication) getApplication()).getApiUrl() + "/push?token=" + token + "&summoner=" + URLEncoder.encode(account.summonerName, "UTF-8") + "&region=" + account.region,
