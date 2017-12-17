@@ -77,7 +77,7 @@ public class NotificationService extends GcmListenerService {
                 PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher_transparent)
+                .setSmallIcon(R.drawable.ic_launcher_transparent_white)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_transparent))
                 .setContentTitle(String.format(getString(R.string.welcome_to), getString(GameActivity.getMapName(mapId))))
                 .setContentText(String.format(getString(R.string.player_is_in_game), account.summonerName))
