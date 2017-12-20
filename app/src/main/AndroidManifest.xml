@@ -4,18 +4,18 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+
+    <!-- Ensure this permission is only used in older Android versions,
+    After API 18 you don't need this permission, you get an app cache by default
+    -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <!-- Fix for an Android 4.1 bug where displaying notification require the vibrate permission -->
     <uses-permission
         android:name="android.permission.VIBRATE"
         android:maxSdkVersion="18" />
-
-    <permission
-        android:name="fr.neamar.lolgamedata.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
-
-    <uses-permission android:name="fr.neamar.lolgamedata.permission.C2D_MESSAGE" />
 
     <application
         android:name=".LolApplication"
@@ -41,17 +41,6 @@
         </activity>
 
         <receiver
-            android:name="com.google.android.gms.gcm.GcmReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-
-                <category android:name="com.example.gcm" />
-            </intent-filter>
-        </receiver>
-
-        <receiver
             android:name="com.mixpanel.android.mpmetrics.InstallReferrerReceiver"
             android:exported="true">
             <intent-filter>
@@ -59,25 +48,18 @@
             </intent-filter>
         </receiver>
 
-        <service
-            android:name=".service.NotificationService"
-            android:exported="true">
+        <service android:name=".service.NotificationService">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            </intent-filter>
-        </service>
-        <service
-            android:name=".service.RegistrationIntentService"
-            android:exported="false" />
-        <service
-            android:name=".service.UpdateInstanceIDListenerService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name="com.mixpanel.android.surveys.SurveyActivity" />
+        <service android:name=".service.UpdateInstanceIDListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".AddAccountActivity"
             android:excludeFromRecents="true"
@@ -116,8 +98,8 @@
         </activity>
         <activity
             android:name=".ChampionActivity"
-            android:label="@string/title_activity_champion"
             android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_champion"
             android:parentActivityName=".CounterChampionsActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

@@ -50,7 +50,7 @@ dependencies {
     compile 'com.amplitude:android-sdk:2.14.1'
 
     // Support old Android, push notifications and cardviews
-    compile 'com.google.android.gms:play-services-gcm:11.6.2'
+    compile "com.google.firebase:firebase-messaging:9.0.0"
     compile 'com.android.support:support-v4:25.4.0'
     compile 'com.android.support:appcompat-v7:25.4.0'
     compile 'com.android.support:design:25.4.0'
