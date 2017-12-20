@@ -1,13 +1,12 @@
 package fr.neamar.lolgamedata.service;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
-import fr.neamar.lolgamedata.LolApplication;
-
-public class UpdateInstanceIDListenerService extends FirebaseInstanceIdService {
+public class TokenRefreshedService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyInstanceIDLS";
 
@@ -25,7 +24,8 @@ public class UpdateInstanceIDListenerService extends FirebaseInstanceIdService {
         Log.d(TAG, "Refreshed token: " + refreshedToken);
 
         // Resync with server
-        ((LolApplication) getApplication()).syncTokenToServer();
+        Intent intent = new Intent(this, SyncTokenService.class);
+        this.startService(intent);
     }
     // [END refresh_token]
 }

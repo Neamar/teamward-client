@@ -12,6 +12,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.pojo.Account;
+import fr.neamar.lolgamedata.service.SyncTokenService;
 
 public class AccountManager {
     private static final String ACCOUNTS_KEY = "accounts";
@@ -43,8 +44,8 @@ public class AccountManager {
         LocalBroadcastManager.getInstance(context).sendBroadcast(i);
 
         // And (re-)register for push notifications
-        ((LolApplication) context.getApplicationContext()).syncTokenToServer();
-
+        Intent intent = new Intent(context, SyncTokenService.class);
+        context.startService(intent);
     }
 
     public ArrayList<Account> getAccounts() {
