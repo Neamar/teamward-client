@@ -8,20 +8,22 @@ import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.google.android.gms.gcm.GcmListenerService;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.Map;
 
 import fr.neamar.lolgamedata.GameActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.Tracker;
 import fr.neamar.lolgamedata.pojo.Account;
 
-public class NotificationService extends GcmListenerService {
+public class NotificationService extends FirebaseMessagingService {
 
     private static final String TAG = "NotificationService";
     private static final int GAME_NOTIFICATION = 0;
@@ -29,36 +31,29 @@ public class NotificationService extends GcmListenerService {
 
     /**
      * Called when message is received.
-     *
-     * @param from SenderID of the sender.
-     * @param data Data bundle containing message data as key/value pairs.
-     *             For Set of keys use data.keySet().
      */
     @Override
-    public void onMessageReceived(String from, Bundle data) {
+    public void onMessageReceived(RemoteMessage message) {
+        Map<String, String> data = message.getData();
+        Log.i(TAG, "Received notification from " + message.getFrom());
         if (data.containsKey("gameId")) {
-            long gameId = Long.parseLong(data.getString("gameId"));
-            String gameMode = data.getString("gameMode");
-            String summonerName = data.getString("summonerName");
-            String region = data.getString("region");
-            int mapId = Integer.parseInt(data.getString("mapId"));
+            long gameId = Long.parseLong(data.get("gameId"));
+            String summonerName = data.get("summonerName");
+            String region = data.get("region");
+            int mapId = Integer.parseInt(data.get("mapId"));
 
             Account account = new Account(summonerName, region, "");
-
-            Log.d(TAG, "From: " + from);
-            Log.d(TAG, "Game mode: " + gameMode);
-
             displayNotification(account, gameId, mapId);
         } else if (data.containsKey("removeGameId")) {
-            long gameId = Long.parseLong(data.getString("removeGameId"));
+            long gameId = Long.parseLong(data.get("removeGameId"));
 
             Log.i(TAG, "End of game, hiding notification.");
             getNotificationManager().cancel(Long.toString(gameId).hashCode());
         } else if (data.containsKey("mp_message")) {
-            String title = data.getString("mp_title", getString(R.string.app_name));
-            String message = data.getString("mp_message");
-            String url = data.getString("mp_url", "");
-            displayCustomNotification(title, message, url);
+            String title = data.containsKey("mp_title") ? data.get("mp_title") : getString(R.string.app_name);
+            String content = data.get("mp_message");
+            String url = data.containsKey("mp_url") ? data.get("mp_url") : "";
+            displayCustomNotification(title, content, url);
         } else {
             Log.i(TAG, "Received unknown notification:" + data.toString());
         }
@@ -115,7 +110,7 @@ public class NotificationService extends GcmListenerService {
     private void displayCustomNotification(String title, String message, String url) {
         Intent intent;
 
-        if (url.isEmpty()) {
+        if (url == null || url.isEmpty()) {
             intent = new Intent(this, GameActivity.class);
             intent.putExtra("source", "custom_notification");
         } else {

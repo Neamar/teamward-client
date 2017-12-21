@@ -12,7 +12,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import fr.neamar.lolgamedata.pojo.Account;
-import fr.neamar.lolgamedata.service.RegistrationIntentService;
+import fr.neamar.lolgamedata.service.SyncTokenService;
 
 public class AccountManager {
     private static final String ACCOUNTS_KEY = "accounts";
@@ -44,11 +44,8 @@ public class AccountManager {
         LocalBroadcastManager.getInstance(context).sendBroadcast(i);
 
         // And (re-)register for push notifications
-        // TODO: can we start a service automatically from the manifest on a BroadcastManager
-        // Start IntentService to register this application with GCM.
-        Intent intent = new Intent(context, RegistrationIntentService.class);
+        Intent intent = new Intent(context, SyncTokenService.class);
         context.startService(intent);
-
     }
 
     public ArrayList<Account> getAccounts() {
