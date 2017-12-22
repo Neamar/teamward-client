@@ -170,4 +170,6 @@
     <string name="often_gets_first_blood">часто забирает первую кровь</string>
     <string name="often_gets_first_tower">часто забирает первую вышку</string>
     <string name="multi_kill_machine">машина убийств</string>
-</resources>
+<string name="display_level">Всегда показывать уровень аккаунтов</string>
+    <string name="display_level_summary">Показывать уровень аккаунта даже если у него есть ранг</string>
+    </resources>
