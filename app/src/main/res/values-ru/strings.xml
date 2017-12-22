@@ -172,4 +172,5 @@
     <string name="multi_kill_machine">машина убийств</string>
 <string name="display_level">Всегда показывать уровень аккаунтов</string>
     <string name="display_level_summary">Показывать уровень аккаунта даже если у него есть ранг</string>
+    <string name="overcharge">Перегрузка</string>
     </resources>
