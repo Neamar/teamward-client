@@ -170,4 +170,12 @@
     <string name="often_gets_first_blood">часто забирает первую кровь</string>
     <string name="often_gets_first_tower">часто забирает первую вышку</string>
     <string name="multi_kill_machine">машина убийств</string>
+<string name="display_level">Всегда показывать уровень аккаунтов</string>
+    <string name="display_level_summary">Показывать уровень аккаунта даже если у него есть ранг</string>
+    <string name="overcharge">Перегрузка</string>
+    <string name="dialog_remove_account_title">Удаление аккаунта</string>
+    <string name="dialog_remove_account_message">Это удалит аккаунт со списка. Уверены?</string>
+    <string name="dialog_remove">Да, уверен</string>
+    <string name="dialog_cancel">Нет, случайно нажал</string>
+    <string name="remove_hint">(Длинное нажатие на ник для удаления аккаунта из списка)</string>
 </resources>
