@@ -25,5 +25,6 @@
     <dimen name="item_margin">2dp</dimen>
     <dimen name="chip_margin">2dp</dimen>
     <dimen name="chip_radius">6dp</dimen>
+    <dimen name="champion_view_default_border">2dp</dimen>
 
 </resources>

@@ -22,6 +22,7 @@ import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.view.AdApView;
+import fr.neamar.lolgamedata.view.ChampionView;
 
 public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -58,7 +59,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         RANKING_TIER_RESOURCES = Collections.unmodifiableMap(map);
     }
 
-    private final ImageView championImage;
+    private final ChampionView championView;
     private final ImageView championMastery;
     private final TextView championName;
     private final TextView summonerName;
@@ -68,7 +69,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     private final ImageView spellDImage;
     private final ImageView spellFImage;
     private final TextView mainChampionText;
-    private final AdApView adApView;
 
     private Game game;
     private Player player;
@@ -76,7 +76,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     public PlayerHolder(View view) {
         super(view);
 
-        championImage = (ImageView) view.findViewById(R.id.championImage);
+        championView = (ChampionView) view.findViewById(R.id.championView);
         championMastery = (ImageView) view.findViewById(R.id.championMasteryImage);
         championName = (TextView) view.findViewById(R.id.championNameText);
         summonerName = (TextView) view.findViewById(R.id.summonerNameText);
@@ -86,7 +86,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         spellDImage = (ImageView) view.findViewById(R.id.spellDImage);
         spellFImage = (ImageView) view.findViewById(R.id.spellFImage);
         mainChampionText = (TextView) view.findViewById(R.id.mainChampion);
-        adApView = (AdApView) view.findViewById(R.id.apAd);
 
         view.setOnClickListener(this);
     }
@@ -103,8 +102,9 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             this.summonerName.setText("");
         }
 
-        ImageLoader.getInstance().displayImage(player.champion.imageUrl, championImage);
-        championImage.setContentDescription(player.champion.name);
+        championView.setChampion(player.champion);
+        championView.setBorderMode(ChampionView.BorderMode.AP_AD);
+        championView.setContentDescription(player.champion.name);
         ImageLoader.getInstance().displayImage(player.spellD.imageUrl, spellDImage);
         spellDImage.setContentDescription(player.spellD.name);
         ImageLoader.getInstance().displayImage(player.spellF.imageUrl, spellFImage);
@@ -179,9 +179,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
                 mainChampionText.setVisibility(View.GONE);
             }
         }
-
-        adApView.setAd(player.champion.ad);
-        adApView.setAp(player.champion.ap);
     }
 
     @Override
