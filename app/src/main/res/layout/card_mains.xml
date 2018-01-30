@@ -8,15 +8,18 @@
     <fr.neamar.lolgamedata.view.ChampionPortraitView
         android:id="@+id/main1"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/player_pod_height" />
+        android:layout_height="@dimen/player_pod_height"
+        android:layout_weight="1" />
 
     <fr.neamar.lolgamedata.view.ChampionPortraitView
         android:id="@+id/main2"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/player_pod_height" />
+        android:layout_height="@dimen/player_pod_height"
+        android:layout_weight="1" />
 
     <fr.neamar.lolgamedata.view.ChampionPortraitView
         android:id="@+id/main3"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/player_pod_height" />
+        android:layout_height="@dimen/player_pod_height"
+        android:layout_weight="1" />
 </LinearLayout>

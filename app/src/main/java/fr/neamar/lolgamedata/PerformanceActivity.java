@@ -43,6 +43,7 @@ import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Match;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.pojo.Team;
+import fr.neamar.lolgamedata.view.ChampionPortraitView;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 import static fr.neamar.lolgamedata.holder.PlayerHolder.CHAMPION_MASTERIES_RESOURCES;
@@ -235,8 +236,25 @@ public class PerformanceActivity extends SnackBarActivity {
             findViewById(R.id.mainsHolder).setVisibility(View.GONE);
         }
         else {
+            ChampionPortraitView main1 = ((ChampionPortraitView) findViewById(R.id.main1));
+            ChampionPortraitView main2 = ((ChampionPortraitView) findViewById(R.id.main2));
+            ChampionPortraitView main3 = ((ChampionPortraitView) findViewById(R.id.main3));
 
+            main1.setChampion(player.mainChampions.get(0));
+            if(player.mainChampions.size() == 3) {
+                main2.setChampion(player.mainChampions.get(1));
+                main3.setChampion(player.mainChampions.get(2));
+            }
+            else if(player.mainChampions.size() == 2) {
+                main2.setChampion(player.mainChampions.get(1));
+                main3.setVisibility(View.GONE);
+            }
+            else {
+                main2.setVisibility(View.GONE);
+                main3.setVisibility(View.GONE);
+            }
         }
+
         // RECENT MATCHES
         TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
         recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
