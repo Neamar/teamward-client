@@ -2,17 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/champion_mastery_half_size"
+    android:layout_marginRight="@dimen/champion_mastery_half_size"
     android:orientation="horizontal">
 
     <fr.neamar.lolgamedata.view.ChampionPortraitView
         android:id="@+id/main1"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/player_pod_height"
+        android:gravity="center"
         android:layout_weight="1" />
 
     <fr.neamar.lolgamedata.view.ChampionPortraitView
         android:id="@+id/main2"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/player_pod_height"
         android:layout_weight="1" />
@@ -21,5 +23,6 @@
         android:id="@+id/main3"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/player_pod_height"
+        android:gravity="center"
         android:layout_weight="1" />
 </LinearLayout>
