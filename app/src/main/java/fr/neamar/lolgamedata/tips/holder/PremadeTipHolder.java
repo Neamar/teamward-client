@@ -15,7 +15,7 @@ import java.util.List;
 
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.TipHolder;
-import fr.neamar.lolgamedata.pojo.Champion;
+import fr.neamar.lolgamedata.pojo.ChampionInGame;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.pojo.Team;
@@ -78,7 +78,7 @@ public class PremadeTipHolder extends TipHolder {
                     continue;
                 }
 
-                Champion champion = p.champion;
+                ChampionInGame champion = p.champion;
 
                 ImageView imageview = new ImageView(itemView.getContext());
                 imageview.setImageResource(R.drawable.default_champion);

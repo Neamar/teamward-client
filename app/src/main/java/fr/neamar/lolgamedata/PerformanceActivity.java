@@ -38,7 +38,7 @@ import java.util.Map;
 import fr.neamar.lolgamedata.adapter.MatchAdapter;
 import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.AggregatedPerformance;
-import fr.neamar.lolgamedata.pojo.Champion;
+import fr.neamar.lolgamedata.pojo.ChampionInGame;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Match;
 import fr.neamar.lolgamedata.pojo.Player;
@@ -195,7 +195,7 @@ public class PerformanceActivity extends SnackBarActivity {
             }
         }
 
-        if (playerTeam == null || player.champion.role.equals(Champion.UNKNOWN_ROLE) || oppositePlayer == null) {
+        if (playerTeam == null || player.champion.role.equals(ChampionInGame.UNKNOWN_ROLE) || oppositePlayer == null) {
             matchupHolder.setVisibility(View.GONE);
         } else {
             ImageLoader.getInstance().displayImage(player.champion.imageUrl, ownChampion);

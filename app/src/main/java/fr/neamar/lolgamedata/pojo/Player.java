@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public class Player implements Serializable {
     public Summoner summoner;
-    public Champion champion;
+    public ChampionInGame champion;
     public Spell spellD;
     public Spell spellF;
 
@@ -20,7 +20,7 @@ public class Player implements Serializable {
 
     public Player(JSONObject player, String region) throws JSONException {
         this.summoner = new Summoner(player.getJSONObject("summoner"));
-        this.champion = new Champion(player.getJSONObject("champion"));
+        this.champion = new ChampionInGame(player.getJSONObject("champion"));
         this.spellD = new Spell(player.getJSONObject("spell_d"));
         this.spellF = new Spell(player.getJSONObject("spell_f"));
 
