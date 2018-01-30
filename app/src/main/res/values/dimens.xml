@@ -6,6 +6,7 @@
     <dimen name="less_constrained_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="champion_size">60dp</dimen>
+    <dimen name="spells_size">70dp</dimen>
     <dimen name="tier_size">50dp</dimen>
     <dimen name="summoner_spell_size">27dp</dimen>
     <dimen name="player_pod_height">90dp</dimen>

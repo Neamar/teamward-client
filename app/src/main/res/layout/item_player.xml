@@ -12,32 +12,33 @@
 
     <include
         android:id="@+id/championPortrait"
-        layout="@layout/champion_image" />
+        layout="@layout/champion_portrait" />
 
     <LinearLayout
         android:id="@+id/spells"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/champion_size"
+        android:layout_height="@dimen/spells_size"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
         android:layout_toEndOf="@id/championPortrait"
         android:layout_toRightOf="@id/championPortrait"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/spellDImage"
+            android:layout_weight="1"
             android:layout_width="@dimen/summoner_spell_size"
             android:layout_height="@dimen/summoner_spell_size"
-            android:layout_weight="1"
             android:contentDescription="@string/summoner_spell_d"
             android:src="@drawable/default_spell" />
 
         <ImageView
             android:id="@+id/spellFImage"
+            android:layout_weight="1"
             android:layout_width="@dimen/summoner_spell_size"
             android:layout_height="@dimen/summoner_spell_size"
-            android:layout_weight="1"
             android:contentDescription="@string/summoner_spell_f"
             android:src="@drawable/default_spell" />
     </LinearLayout>
@@ -50,7 +51,6 @@
         android:layout_alignTop="@+id/spells"
         android:layout_marginLeft="@dimen/dialog_margin"
         android:layout_marginStart="@dimen/dialog_margin"
-        android:layout_marginTop="-5dp"
         android:layout_toEndOf="@+id/spells"
         android:layout_toLeftOf="@+id/rankingLayout"
         android:layout_toRightOf="@+id/spells"
