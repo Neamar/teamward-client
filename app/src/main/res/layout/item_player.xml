@@ -10,39 +10,7 @@
     android:paddingEnd="@dimen/less_constrained_margin"
     android:paddingRight="@dimen/less_constrained_margin">
 
-    <fr.neamar.lolgamedata.view.AdApView
-        android:id="@+id/apAd"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignLeft="@+id/championImage"
-        android:layout_alignStart="@+id/championImage"
-        android:layout_alignTop="@+id/championImage"
-        android:layout_marginLeft="@dimen/ad_ap_frame_width"
-        android:layout_marginStart="@dimen/ad_ap_frame_width"
-        android:layout_marginTop="@dimen/ad_ap_frame_width" />
-
-    <ImageView
-        android:id="@+id/championImage"
-        android:layout_width="@dimen/champion_size"
-        android:layout_height="@dimen/champion_size"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/champion_mastery_half_size"
-        android:layout_marginStart="@dimen/champion_mastery_half_size"
-        android:contentDescription="@string/champion_image"
-        android:src="@drawable/default_champion" />
-
-    <ImageView
-        android:id="@+id/championMasteryImage"
-        android:layout_width="@dimen/champion_mastery_size"
-        android:layout_height="@dimen/champion_mastery_size"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/ad_ap_frame_width"
-        android:contentDescription="@string/champion_mastery"
-        android:src="@drawable/champion_mastery_4" />
+    <include layout="@layout/champion_image" />
 
     <ImageView
         android:id="@+id/spellDImage"
@@ -123,20 +91,6 @@
             android:text="@string/stub_ranking_division"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/mainChampion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/championImage"
-        android:layout_toLeftOf="@+id/spellDImage"
-        android:layout_toStartOf="@+id/spellDImage"
-        android:background="@drawable/gold_border"
-        android:padding="3dp"
-        android:text="@string/first_main"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#dfbf61"
-        android:textSize="8sp" />
 
     <TextView
         android:id="@+id/summonerLevelText"
