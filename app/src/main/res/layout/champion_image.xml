@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/player_pod_height">
+
     <fr.neamar.lolgamedata.view.AdApView
         android:id="@+id/apAd"
         android:layout_width="65dp"
@@ -39,12 +42,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/championImage"
-        android:layout_toLeftOf="@+id/spellDImage"
-        android:layout_toStartOf="@+id/spellDImage"
+        android:layout_alignEnd="@+id/championImage"
+        android:layout_alignRight="@+id/championImage"
         android:background="@drawable/gold_border"
         android:padding="3dp"
         android:text="@string/first_main"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#dfbf61"
         android:textSize="8sp" />
-</merge>
+</RelativeLayout>

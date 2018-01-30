@@ -9,6 +9,7 @@
     <dimen name="tier_size">50dp</dimen>
     <dimen name="summoner_spell_size">27dp</dimen>
     <dimen name="player_pod_height">90dp</dimen>
+    <dimen name="champion_portrait_height">58dp</dimen>
     <dimen name="champion_mastery_size">36dp</dimen>
     <dimen name="champion_mastery_size_counter">20dp</dimen>
     <dimen name="champion_mastery_half_size">18dp</dimen>
