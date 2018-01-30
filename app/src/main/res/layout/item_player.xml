@@ -5,35 +5,39 @@
     android:background="?android:attr/selectableItemBackground"
     android:clipToPadding="false"
     android:orientation="vertical"
-    android:paddingStart="@dimen/constrained_margin"
-    android:paddingLeft="@dimen/constrained_margin"
     android:paddingEnd="@dimen/less_constrained_margin"
-    android:paddingRight="@dimen/less_constrained_margin">
+    android:paddingLeft="@dimen/constrained_margin"
+    android:paddingRight="@dimen/less_constrained_margin"
+    android:paddingStart="@dimen/constrained_margin">
 
-    <include layout="@layout/champion_image" android:id="@+id/championPortrait" />
+    <include
+        android:id="@+id/championPortrait"
+        layout="@layout/champion_image" />
 
     <LinearLayout
+        android:id="@+id/spells"
         android:layout_width="wrap_content"
+        android:layout_height="@dimen/champion_size"
         android:layout_centerVertical="true"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
-        android:id="@+id/spells"
-        android:layout_toRightOf="@id/championPortrait"
         android:layout_toEndOf="@id/championPortrait"
-        android:layout_height="@dimen/champion_size" android:orientation="vertical">
+        android:layout_toRightOf="@id/championPortrait"
+        android:orientation="vertical">
+
         <ImageView
             android:id="@+id/spellDImage"
-            android:layout_weight="1"
             android:layout_width="@dimen/summoner_spell_size"
             android:layout_height="@dimen/summoner_spell_size"
+            android:layout_weight="1"
             android:contentDescription="@string/summoner_spell_d"
             android:src="@drawable/default_spell" />
 
         <ImageView
             android:id="@+id/spellFImage"
-            android:layout_weight="1"
             android:layout_width="@dimen/summoner_spell_size"
             android:layout_height="@dimen/summoner_spell_size"
+            android:layout_weight="1"
             android:contentDescription="@string/summoner_spell_f"
             android:src="@drawable/default_spell" />
     </LinearLayout>
