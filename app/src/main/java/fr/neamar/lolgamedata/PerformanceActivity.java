@@ -230,13 +230,20 @@ public class PerformanceActivity extends SnackBarActivity {
             }
         });
 
+        // MAIN CHAMPIONS
+        if(player.mainChampions.size() == 0) {
+            findViewById(R.id.mainsHolder).setVisibility(View.GONE);
+        }
+        else {
+
+        }
         // RECENT MATCHES
         TextView recentMatchesText = (TextView) findViewById(R.id.recentMatchesTitle);
         recentMatchesText.setText(String.format(getString(R.string.recent_matches), player.champion.name));
         findViewById(R.id.aggregate).setVisibility(View.GONE);
         downloadPerformance();
 
-        // TEAMARD USER
+        // TEAMWARD USER
         if (player.teamwardUser) {
             findViewById(R.id.teamwardUser).setVisibility(View.VISIBLE);
         }
