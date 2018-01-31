@@ -27,7 +27,6 @@ android {
             resValue "string", "AMPLITUDE_TOKEN", "3c8df80a0f79ba7c3a35a873e61bc88b"
             resValue "string", "API_URL", "https://api.teamward.xyz"
             resValue "string", "app_name", "Team Ward"
-
             lintOptions {
                 disable 'MissingTranslation'
             }
