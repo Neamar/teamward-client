@@ -11,8 +11,6 @@ android {
         versionCode 78
         versionName "2.18.0"
 
-        // Staging mixpanel token
-        resValue "string", "MIXPANEL_TOKEN", "6871a7de8eb71082f3397bb1be7ded58"
         resValue "string", "AMPLITUDE_TOKEN", "9cea7057e49889a741728db2c0f22641"
         resValue "string", "API_URL", "https://staging.teamward.xyz"
         resValue "string", "app_name", "Team Ward (DEV)"
@@ -23,7 +21,6 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            resValue "string", "MIXPANEL_TOKEN", "1a7075d95ff6db6d08714db52edb706a"
             resValue "string", "AMPLITUDE_TOKEN", "3c8df80a0f79ba7c3a35a873e61bc88b"
             resValue "string", "API_URL", "https://api.teamward.xyz"
             resValue "string", "app_name", "Team Ward"
@@ -45,7 +42,6 @@ dependencies {
 
     // Tracking and monitoring
     compile 'com.newrelic.agent.android:android-agent:5.9.0'
-    compile 'com.mixpanel.android:mixpanel-android:4.8.5'
     compile 'com.amplitude:android-sdk:2.14.1'
 
     // Support old Android, push notifications and cardviews

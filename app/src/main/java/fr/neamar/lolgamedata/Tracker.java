@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 
 import com.amplitude.api.Amplitude;
 import com.amplitude.api.Identify;
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,28 +27,18 @@ public class Tracker {
         return ((LolApplication) context.getApplicationContext());
     }
 
-    private static MixpanelAPI getMixpanel(@NonNull Context context) {
-        return getApplication(context).getMixpanel();
-    }
-
-    static void flush(Activity activity) {
-        getMixpanel(activity).flush();
-    }
-
-    static void track(Activity activity, String eventName) {
+    private static void track(Activity activity, String eventName) {
         track(activity, eventName, new JSONObject());
     }
 
     // Track event on both Mixpanel and Amplitude
-    static void track(Activity activity, String eventName, JSONObject props) {
+    private static void track(Activity activity, String eventName, JSONObject props) {
         LolApplication application = getApplication(activity);
-        application.getMixpanel().track(eventName, props);
         application.getAmplitude().logEvent(eventName, props);
     }
 
-    static void trackProfile(Context context, JSONObject props) {
+    private static void trackProfile(Context context, JSONObject props) {
         LolApplication application = (LolApplication) context.getApplicationContext();
-        application.getMixpanel().getPeople().set(props);
         application.getAmplitude().setUserProperties(props);
 
         if(props.has("$username")) {
@@ -97,28 +86,21 @@ public class Tracker {
 
                 if (accountIndex == 0) {
                     // For main user: add data to profile
-                    MixpanelAPI.People people = application.getMixpanel().getPeople();
-                    people.set("player_rank", p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
-
-                    people.union("played_champion_names", application.getJSONArrayFromSingleItem(p.champion.name));
-                    people.union("played_champion_ids", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.id)));
-                    people.union("played_roles", application.getJSONArrayFromSingleItem(p.champion.role));
-                    people.union("played_champions_index", application.getJSONArrayFromSingleItem(Integer.toString(p.champion.championRank)));
-                    people.union("played_game_ids", application.getJSONArrayFromSingleItem(Long.toString(game.gameId)));
-                    people.union("played_map_ids", application.getJSONArrayFromSingleItem(Long.toString(game.mapId)));
+                    JSONObject jp = new JSONObject();
+                    jp.put("player_rank",  p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
+                    jp.put("last_viewed_game", new Date());
+                    trackProfile(activity, jp);
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        MixpanelAPI mixpanel = getMixpanel(activity);
         track(activity, "Game viewed", j);
 
-        mixpanel.getPeople().increment("games_viewed_count", 1);
-        mixpanel.getPeople().set("last_viewed_game", new Date());
-
-        Identify identify = new Identify().add("games_viewed_count", 1).set("last_viewed_game", new Date().toString());
+        Identify identify = new Identify()
+                .add("games_viewed_count", 1)
+                .set("last_viewed_game", new Date().toString());
         Amplitude.getInstance().identify(identify);
     }
 
@@ -144,8 +126,6 @@ public class Tracker {
             e.printStackTrace();
         }
 
-        // Build a new Mixpanel instance, to make sure we don't update the user profile
-        MixpanelAPI.getInstance(context, context.getString(R.string.MIXPANEL_TOKEN)).track("Notification displayed", j);
         // Send this event as outOfSession
         Amplitude.getInstance().logEvent("Notification displayed", j, true);
     }
@@ -180,7 +160,6 @@ public class Tracker {
             e.printStackTrace();
         }
 
-        ((LolApplication) context.getApplicationContext()).getMixpanel().track("Setting updated", j);
         Amplitude.getInstance().logEvent("Setting updated", j);
     }
 

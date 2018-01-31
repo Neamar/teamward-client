@@ -361,12 +361,6 @@ public class GameActivity extends SnackBarActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Tracker.flush(this);
-    }
-
     private void displayGame(String summonerName, Game game) {
         getSupportActionBar().setSubtitle(PerformanceActivity.getQueueName(Integer.toString(game.queue)));
         // Create the adapter that will return a fragment for each of the three
