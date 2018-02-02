@@ -225,4 +225,5 @@
     <string name="dialog_remove">Remove</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="remove_hint">(Long press to remove accounts)</string>
+    <string name="channel_in_game_notifications">Summoner in Game notifications</string>
 </resources>

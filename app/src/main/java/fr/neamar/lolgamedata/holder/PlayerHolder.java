@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +19,7 @@ import fr.neamar.lolgamedata.PerformanceActivity;
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
-import fr.neamar.lolgamedata.view.AdApView;
+import fr.neamar.lolgamedata.view.ChampionPortraitView;
 
 public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -37,13 +35,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             R.drawable.champion_mastery_7,
     };
     public static final Map<String, Integer> RANKING_TIER_RESOURCES;
-    @StringRes
-    private static final int[] mainChampionResources = new int[]{
-            0,
-            R.string.first_main,
-            R.string.second_main,
-            R.string.third_main
-    };
 
     static {
         Map<String, Integer> map = new HashMap<>();
@@ -58,8 +49,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         RANKING_TIER_RESOURCES = Collections.unmodifiableMap(map);
     }
 
-    private final ImageView championImage;
-    private final ImageView championMastery;
     private final TextView championName;
     private final TextView summonerName;
     private final TextView summonerLevel;
@@ -67,8 +56,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     private final ImageView rankingTier;
     private final ImageView spellDImage;
     private final ImageView spellFImage;
-    private final TextView mainChampionText;
-    private final AdApView adApView;
+    private final ChampionPortraitView championPortrait;
 
     private Game game;
     private Player player;
@@ -76,8 +64,6 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
     public PlayerHolder(View view) {
         super(view);
 
-        championImage = (ImageView) view.findViewById(R.id.championImage);
-        championMastery = (ImageView) view.findViewById(R.id.championMasteryImage);
         championName = (TextView) view.findViewById(R.id.championNameText);
         summonerName = (TextView) view.findViewById(R.id.summonerNameText);
         summonerLevel = (TextView) view.findViewById(R.id.summonerLevelText);
@@ -85,8 +71,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         rankingTier = (ImageView) view.findViewById(R.id.rankingTierImage);
         spellDImage = (ImageView) view.findViewById(R.id.spellDImage);
         spellFImage = (ImageView) view.findViewById(R.id.spellFImage);
-        mainChampionText = (TextView) view.findViewById(R.id.mainChampion);
-        adApView = (AdApView) view.findViewById(R.id.apAd);
+        championPortrait = (ChampionPortraitView) view.findViewById(R.id.championPortrait);
 
         view.setOnClickListener(this);
     }
@@ -103,24 +88,10 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             this.summonerName.setText("");
         }
 
-        ImageLoader.getInstance().displayImage(player.champion.imageUrl, championImage);
-        championImage.setContentDescription(player.champion.name);
         ImageLoader.getInstance().displayImage(player.spellD.imageUrl, spellDImage);
         spellDImage.setContentDescription(player.spellD.name);
         ImageLoader.getInstance().displayImage(player.spellF.imageUrl, spellFImage);
         spellFImage.setContentDescription(player.spellF.name);
-
-        @DrawableRes
-        int championMasteryResource = CHAMPION_MASTERIES_RESOURCES[player.champion.mastery];
-
-        if (championMasteryResource == 0) {
-            championMastery.setVisibility(View.GONE);
-        } else {
-            championMastery.setVisibility(View.VISIBLE);
-            championMastery.setImageResource(championMasteryResource);
-            String chammpionMasteryTemplate = championMastery.getContext().getString(R.string.champion_mastery_level);
-            championMastery.setContentDescription(String.format(chammpionMasteryTemplate, player.champion.mastery));
-        }
 
         String summonerLevelTemplate = summonerLevel.getContext().getString(R.string.summoner_level);
         summonerLevel.setText(summonerLevelTemplate.replace("%s", Integer.toString(player.summoner.level)));
@@ -159,29 +130,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             }
         }
 
-        if(player.champion.points > 200000) {
-            mainChampionText.setVisibility(View.VISIBLE);
-            mainChampionText.setText(String.format(mainChampionText.getContext().getString(R.string.champion_points_k), Integer.toString(player.champion.points / 100000)));
-        }
-        else {
-            // Less than 100k points, but can still be his main
-
-            // To qualify as a main champion, has to be:
-            // * at least champion mastery level 3
-            // * be in the top 3 champions played on this account
-            // * championRank should not be -1
-            if (player.champion.mastery >= 3 && player.champion.championRank <= 3 && player.champion.championRank >= 1) {
-                // Main champion!
-                mainChampionText.setVisibility(View.VISIBLE);
-                String mainText = mainChampionText.getContext().getString(mainChampionResources[player.champion.championRank]);
-                mainChampionText.setText(Html.fromHtml(mainText));
-            } else {
-                mainChampionText.setVisibility(View.GONE);
-            }
-        }
-
-        adApView.setAd(player.champion.ad);
-        adApView.setAp(player.champion.ap);
+        championPortrait.setChampion(player.champion);
     }
 
     @Override

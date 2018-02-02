@@ -1,13 +1,15 @@
 package fr.neamar.lolgamedata.pojo;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Player implements Serializable {
     public Summoner summoner;
-    public Champion champion;
+    public ChampionInGame champion;
     public Spell spellD;
     public Spell spellF;
 
@@ -16,11 +18,13 @@ public class Player implements Serializable {
     public Boolean teamwardUser;
     public int averageTimeBetweenGames;
 
+    public ArrayList<Champion> mainChampions = new ArrayList<>();
+
     public String region;
 
     public Player(JSONObject player, String region) throws JSONException {
         this.summoner = new Summoner(player.getJSONObject("summoner"));
-        this.champion = new Champion(player.getJSONObject("champion"));
+        this.champion = new ChampionInGame(player.getJSONObject("champion"));
         this.spellD = new Spell(player.getJSONObject("spell_d"));
         this.spellF = new Spell(player.getJSONObject("spell_f"));
 
@@ -32,5 +36,10 @@ public class Player implements Serializable {
         this.averageTimeBetweenGames = recentGames.getInt("average_time_between_games");
 
         this.region = region;
+
+        JSONArray mainChampionsJson = player.getJSONArray("main_champions");
+        for(int i = 0; i < mainChampionsJson.length(); i++) {
+            mainChampions.add(new Champion(mainChampionsJson.getJSONObject(i)));
+        }
     }
 }

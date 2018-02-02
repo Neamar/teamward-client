@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 
-import fr.neamar.lolgamedata.pojo.Champion;
+import fr.neamar.lolgamedata.pojo.ChampionInGame;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Player;
 import fr.neamar.lolgamedata.pojo.Team;
@@ -32,7 +32,7 @@ public class MatchupsBuilder extends TipBuilder {
         ArrayList<MatchupsTip.Matchup> matchups = new ArrayList<>();
 
         for (Player player : playerTeam.players) {
-            if (!player.champion.role.equals(Champion.UNKNOWN_ROLE)) {
+            if (!player.champion.role.equals(ChampionInGame.UNKNOWN_ROLE)) {
                 // Does the other team have someone with this role too?
                 Player otherPlayer = getPlayerWithRole(otherTeam, player.champion.role);
                 if (otherPlayer != null) {

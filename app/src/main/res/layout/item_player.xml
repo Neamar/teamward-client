@@ -5,78 +5,56 @@
     android:background="?android:attr/selectableItemBackground"
     android:clipToPadding="false"
     android:orientation="vertical"
-    android:paddingStart="@dimen/constrained_margin"
-    android:paddingLeft="@dimen/constrained_margin"
     android:paddingEnd="@dimen/less_constrained_margin"
-    android:paddingRight="@dimen/less_constrained_margin">
+    android:paddingLeft="@dimen/constrained_margin"
+    android:paddingRight="@dimen/less_constrained_margin"
+    android:paddingStart="@dimen/constrained_margin">
 
-    <fr.neamar.lolgamedata.view.AdApView
-        android:id="@+id/apAd"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignLeft="@+id/championImage"
-        android:layout_alignStart="@+id/championImage"
-        android:layout_alignTop="@+id/championImage"
-        android:layout_marginLeft="@dimen/ad_ap_frame_width"
-        android:layout_marginStart="@dimen/ad_ap_frame_width"
-        android:layout_marginTop="@dimen/ad_ap_frame_width" />
+    <fr.neamar.lolgamedata.view.ChampionPortraitView
+        android:id="@+id/championPortrait"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/player_pod_height" />
 
-    <ImageView
-        android:id="@+id/championImage"
-        android:layout_width="@dimen/champion_size"
-        android:layout_height="@dimen/champion_size"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+    <LinearLayout
+        android:id="@+id/spells"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/spells_size"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/champion_mastery_half_size"
-        android:layout_marginStart="@dimen/champion_mastery_half_size"
-        android:contentDescription="@string/champion_image"
-        android:src="@drawable/default_champion" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/championPortrait"
+        android:layout_toRightOf="@id/championPortrait"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/championMasteryImage"
-        android:layout_width="@dimen/champion_mastery_size"
-        android:layout_height="@dimen/champion_mastery_size"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/ad_ap_frame_width"
-        android:contentDescription="@string/champion_mastery"
-        android:src="@drawable/champion_mastery_4" />
+        <ImageView
+            android:id="@+id/spellDImage"
+            android:layout_width="@dimen/summoner_spell_size"
+            android:layout_height="@dimen/summoner_spell_size"
+            android:layout_weight="1"
+            android:contentDescription="@string/summoner_spell_d"
+            android:src="@drawable/default_spell" />
 
-    <ImageView
-        android:id="@+id/spellDImage"
-        android:layout_width="@dimen/summoner_spell_size"
-        android:layout_height="@dimen/summoner_spell_size"
-        android:layout_alignTop="@+id/championImage"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/championImage"
-        android:layout_toRightOf="@+id/championImage"
-        android:contentDescription="@string/summoner_spell_d"
-        android:src="@drawable/default_spell" />
+        <ImageView
+            android:id="@+id/spellFImage"
+            android:layout_width="@dimen/summoner_spell_size"
+            android:layout_height="@dimen/summoner_spell_size"
+            android:layout_weight="1"
+            android:contentDescription="@string/summoner_spell_f"
+            android:src="@drawable/default_spell" />
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/spellFImage"
-        android:layout_width="@dimen/summoner_spell_size"
-        android:layout_height="@dimen/summoner_spell_size"
-        android:layout_alignBottom="@+id/championImage"
-        android:layout_alignLeft="@+id/spellDImage"
-        android:layout_alignStart="@+id/spellDImage"
-        android:contentDescription="@string/summoner_spell_f"
-        android:src="@drawable/default_spell" />
 
     <TextView
         android:id="@+id/championNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/spellDImage"
+        android:layout_alignTop="@+id/spells"
         android:layout_marginLeft="@dimen/dialog_margin"
         android:layout_marginStart="@dimen/dialog_margin"
-        android:layout_marginTop="-5dp"
-        android:layout_toEndOf="@+id/spellDImage"
+        android:layout_toEndOf="@+id/spells"
         android:layout_toLeftOf="@+id/rankingLayout"
-        android:layout_toRightOf="@+id/spellDImage"
+        android:layout_toRightOf="@+id/spells"
         android:layout_toStartOf="@+id/rankingLayout"
         android:ellipsize="end"
         android:maxLines="1"
@@ -123,20 +101,6 @@
             android:text="@string/stub_ranking_division"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/mainChampion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/championImage"
-        android:layout_toLeftOf="@+id/spellDImage"
-        android:layout_toStartOf="@+id/spellDImage"
-        android:background="@drawable/gold_border"
-        android:padding="3dp"
-        android:text="@string/first_main"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#dfbf61"
-        android:textSize="8sp" />
 
     <TextView
         android:id="@+id/summonerLevelText"

@@ -2,17 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'newrelic'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 27
 
     defaultConfig {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 78
         versionName "2.18.0"
 
-        // Staging mixpanel token
-        resValue "string", "MIXPANEL_TOKEN", "6871a7de8eb71082f3397bb1be7ded58"
         resValue "string", "AMPLITUDE_TOKEN", "9cea7057e49889a741728db2c0f22641"
         resValue "string", "API_URL", "https://staging.teamward.xyz"
         resValue "string", "app_name", "Team Ward (DEV)"
@@ -23,11 +21,9 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            resValue "string", "MIXPANEL_TOKEN", "1a7075d95ff6db6d08714db52edb706a"
             resValue "string", "AMPLITUDE_TOKEN", "3c8df80a0f79ba7c3a35a873e61bc88b"
             resValue "string", "API_URL", "https://api.teamward.xyz"
             resValue "string", "app_name", "Team Ward"
-
             lintOptions {
                 disable 'MissingTranslation'
             }
@@ -46,15 +42,14 @@ dependencies {
 
     // Tracking and monitoring
     compile 'com.newrelic.agent.android:android-agent:5.9.0'
-    compile 'com.mixpanel.android:mixpanel-android:4.8.5'
     compile 'com.amplitude:android-sdk:2.14.1'
 
     // Support old Android, push notifications and cardviews
     compile "com.google.firebase:firebase-messaging:11.8.0"
-    compile 'com.android.support:support-v4:25.4.0'
-    compile 'com.android.support:appcompat-v7:25.4.0'
-    compile 'com.android.support:design:25.4.0'
-    compile 'com.android.support:cardview-v7:25.4.0'
+    compile 'com.android.support:support-v4:27.0.2'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:design:27.0.2'
+    compile 'com.android.support:cardview-v7:27.0.2'
 
     // HTTP request
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'

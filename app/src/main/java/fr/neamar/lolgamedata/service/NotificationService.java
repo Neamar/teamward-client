@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata.service;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -26,8 +27,7 @@ import fr.neamar.lolgamedata.pojo.Account;
 public class NotificationService extends FirebaseMessagingService {
 
     private static final String TAG = "NotificationService";
-    private static final int GAME_NOTIFICATION = 0;
-    private static final int ANALYTICS_NOTIFICATION = 1;
+    private static final String CHANNEL_ID = "gameNotification";
 
     /**
      * Called when message is received.
@@ -71,7 +71,7 @@ public class NotificationService extends FirebaseMessagingService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_transparent_white)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_transparent))
                 .setContentTitle(String.format(getString(R.string.welcome_to), getString(GameActivity.getMapName(mapId))))
@@ -85,7 +85,7 @@ public class NotificationService extends FirebaseMessagingService {
             notificationBuilder.setVibrate(new long[]{1000, 1000});
         }
 
-        if(Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
             Uri notificationUri = Uri.parse(prefs.getString("notifications_new_game_ringtone", Settings.System.DEFAULT_NOTIFICATION_URI.toString()));
             notificationBuilder.setSound(notificationUri);
         }
@@ -94,6 +94,13 @@ public class NotificationService extends FirebaseMessagingService {
         boolean unableToDisplay = false;
         if (prefs.getBoolean("notifications_new_game", true)) {
             try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                            getString(R.string.channel_in_game_notifications),
+                            NotificationManager.IMPORTANCE_DEFAULT);
+                    notificationManager.createNotificationChannel(channel);
+                }
+
                 notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
 
             } catch (RuntimeException e) {

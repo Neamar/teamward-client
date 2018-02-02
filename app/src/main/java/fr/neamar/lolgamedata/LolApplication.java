@@ -10,13 +10,10 @@ import android.util.Log;
 
 import com.amplitude.api.Amplitude;
 import com.amplitude.api.AmplitudeClient;
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
-import org.json.JSONArray;
 
 import java.util.List;
 
@@ -25,7 +22,6 @@ import fr.neamar.lolgamedata.pojo.Account;
 public class LolApplication extends Application {
     private static final String TAG = "LolApplication";
 
-    private MixpanelAPI mixpanel = null;
     private AmplitudeClient amplitude = null;
 
     @Override
@@ -50,12 +46,13 @@ public class LolApplication extends Application {
         if (BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectAll()
+                    .permitDiskReads() // Required for sync access to SharedPreferences.
                     .penaltyLog()
+                    .penaltyDeath()
                     .build());
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
-                    .penaltyDeath()
                     .build());
         }
 
@@ -71,15 +68,6 @@ public class LolApplication extends Application {
         handler.post(r);
     }
 
-    public MixpanelAPI getMixpanel() {
-        if (mixpanel == null) {
-            mixpanel = MixpanelAPI.getInstance(this, getString(R.string.MIXPANEL_TOKEN));
-            mixpanel.getPeople().identify(mixpanel.getDistinctId());
-        }
-
-        return mixpanel;
-    }
-
     public AmplitudeClient getAmplitude() {
         if (amplitude == null) {
             Amplitude.getInstance().initialize(this, getString(R.string.AMPLITUDE_TOKEN)).enableForegroundTracking(this);
@@ -87,12 +75,6 @@ public class LolApplication extends Application {
         }
 
         return amplitude;
-    }
-
-    public JSONArray getJSONArrayFromSingleItem(String item) {
-        JSONArray a = new JSONArray();
-        a.put(item);
-        return a;
     }
 
     public void identifyOnTrackers() {
