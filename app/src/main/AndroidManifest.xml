@@ -40,14 +40,6 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name="com.mixpanel.android.mpmetrics.InstallReferrerReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
-        </receiver>
-
         <service android:name=".service.NotificationService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
