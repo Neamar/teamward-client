@@ -395,10 +395,10 @@ public class GameActivity extends SnackBarActivity {
 
         prefs.edit().putInt("game_counter", counter + 1).apply();
 
-        if (counter == 5 || counter == 10) {
+        if (counter == 5 || counter == 10 || counter == 50) {
             displaySnack(getString(R.string.ap_ad_hint));
         }
-        if (counter % 200 == 0 && counter > 0 && !prefs.getBoolean("rated_app", false)) {
+        else if (counter % 100 == 0 && counter > 0 && !prefs.getBoolean("rated_app", false)) {
             displaySnack(getString(R.string.love_the_app), getString(R.string.rate_app), new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
