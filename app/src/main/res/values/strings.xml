@@ -151,7 +151,7 @@
     <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s knows %2$s quite well, be careful!</string>
     <string name="otp">One Trick Pony</string>
-    <string name="error_adding_account">Error adding account. Please double check your summoner name and region!</string>
+    <string name="error_adding_account">Error adding account. Please double check your name and region!\nYou need to use your summoner name (public name, visible by your friends) and not your username (private name, used to log to the client)</string>
     <string name="top" translatable="false">Top</string>
     <string name="aram">ARAM</string>
     <string name="normal">Normal 5v5</string>
