@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class Account implements Serializable {
     public String summonerName;
@@ -13,12 +14,12 @@ public class Account implements Serializable {
     public Account(JSONObject account) throws JSONException {
         this.summonerName = account.getString("name");
         this.summonerImage = account.getString("image");
-        this.region = account.getString("region").toUpperCase();
+        this.region = account.getString("region").toUpperCase(Locale.ROOT);
     }
 
     public Account(String summonerName, String region, String summonerImage) {
         this.summonerName = summonerName;
-        this.region = region.toUpperCase();
+        this.region = region.toUpperCase(Locale.ROOT);
         this.summonerImage = summonerImage;
     }
 

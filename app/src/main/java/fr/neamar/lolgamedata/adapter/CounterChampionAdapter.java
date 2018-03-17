@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Locale;
+
 import fr.neamar.lolgamedata.R;
 import fr.neamar.lolgamedata.holder.CounterChampionHolder;
 import fr.neamar.lolgamedata.pojo.Counters;
@@ -47,7 +49,7 @@ public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampion
     public void filter(String filter) {
         counters = new Counters();
         for (int i = 0; i < allCounters.counters.size(); i++) {
-            if (allCounters.counters.get(i).champion.name.toLowerCase().startsWith(filter.toLowerCase())) {
+            if (allCounters.counters.get(i).champion.name.toLowerCase(Locale.getDefault()).startsWith(filter.toLowerCase())) {
                 counters.counters.add(allCounters.counters.get(i));
             }
         }

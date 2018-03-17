@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import java.util.Locale;
+
 import fr.neamar.lolgamedata.adapter.CounterCountersAdapter;
 import fr.neamar.lolgamedata.adapter.CounterCountersNoDataAdapter;
 import fr.neamar.lolgamedata.pojo.Counter;
@@ -40,7 +42,7 @@ public class CounterCountersActivity extends SnackBarActivity {
             findViewById(R.id.noDataHolder).setVisibility(View.INVISIBLE);
         }
 
-        getSupportActionBar().setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.account.summonerName, counter.champion.name, counter.role.toLowerCase()));
+        getSupportActionBar().setTitle(String.format(getString(R.string.counter_counters_activity_title), counter.account.summonerName, counter.champion.name, counter.role.toLowerCase(Locale.ROOT)));
 
         if (counter.counters.size() == 0) {
             displaySnack(String.format(getString(R.string.no_counters), counter.champion.name));
