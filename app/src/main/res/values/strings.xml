@@ -226,4 +226,12 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="remove_hint">(Long press to remove accounts)</string>
     <string name="channel_in_game_notifications">Summoner in Game notifications</string>
+    <string name="champion_splash_art">Champion splash art</string>
+    <string name="ranked_tier">Ranked tier</string>
+    <string name="ability">Ability</string>
+    <string name="counter_champion">Counter champion</string>
+    <string name="item">Item</string>
+    <string name="ward">Ward</string>
+    <string name="champion">Champion</string>
+    <string name="opponent">Opponent</string>
 </resources>

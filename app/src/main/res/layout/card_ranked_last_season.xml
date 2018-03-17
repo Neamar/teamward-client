@@ -9,6 +9,7 @@
         android:id="@+id/rankingTierImage"
         android:layout_width="@dimen/details_ranked_size"
         android:layout_height="@dimen/details_ranked_size"
+        android:contentDescription="@string/ranked_tier"
         app:srcCompat="@drawable/tier_platinum" />
 
     <LinearLayout

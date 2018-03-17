@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
-    android:paddingTop="@dimen/activity_margin"
-    android:paddingBottom="@dimen/activity_margin">
+    android:paddingBottom="@dimen/activity_margin"
+    android:paddingTop="@dimen/activity_margin">
 
     <View
         android:id="@+id/winOrLossBanner"
@@ -29,6 +30,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@id/winOrLossBanner"
         android:layout_toRightOf="@id/winOrLossBanner"
+        android:contentDescription="@string/item"
         app:srcCompat="@drawable/item_empty" />
 
     <ImageView
@@ -40,6 +42,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item1"
         android:layout_toRightOf="@+id/item1"
+        android:contentDescription="@string/item"
         app:srcCompat="@drawable/item_empty" />
 
     <ImageView
@@ -51,6 +54,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item2"
         android:layout_toRightOf="@+id/item2"
+        android:contentDescription="@string/item"
         app:srcCompat="@drawable/item_empty" />
 
     <ImageView
@@ -62,6 +66,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@id/winOrLossBanner"
         android:layout_toRightOf="@id/winOrLossBanner"
+        android:contentDescription="@string/item"
         app:srcCompat="@drawable/item_empty" />
 
     <ImageView
@@ -73,6 +78,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item4"
         android:layout_toRightOf="@+id/item4"
+        android:contentDescription="@string/item"
         app:srcCompat="@drawable/item_empty" />
 
     <ImageView
@@ -84,6 +90,7 @@
         android:layout_margin="@dimen/item_margin"
         android:layout_toEndOf="@+id/item5"
         android:layout_toRightOf="@+id/item5"
+        android:contentDescription="@string/item"
         app:srcCompat="@drawable/item_empty" />
 
     <ImageView
@@ -97,6 +104,7 @@
         android:layout_marginStart="@dimen/item_margin"
         android:layout_toEndOf="@+id/item3"
         android:layout_toRightOf="@+id/item3"
+        android:contentDescription="@string/ward"
         app:srcCompat="@drawable/item_empty" />
 
     <LinearLayout
@@ -104,12 +112,13 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/itemWard"
-        android:layout_toRightOf="@+id/itemWard"
         android:layout_toLeftOf="@+id/champions"
+        android:layout_toRightOf="@+id/itemWard"
         android:layout_toStartOf="@+id/champions"
         android:orientation="vertical"
         android:paddingLeft="8dp"
-        android:paddingStart="8dp">
+        android:paddingStart="8dp"
+        tools:ignore="RtlSymmetry">
 
         <TextView
             android:id="@+id/gameLengthText"
@@ -140,24 +149,28 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:orientation="vertical"
         android:id="@+id/champions"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_height="match_parent">
+        android:orientation="vertical">
+
         <ImageView
-            android:layout_width="@dimen/item_size"
-            android:layout_height="@dimen/item_size"
             android:id="@+id/championImage"
-            android:layout_margin="@dimen/item_margin"
-            android:src="@drawable/default_champion"/>
-        <ImageView
             android:layout_width="@dimen/item_size"
             android:layout_height="@dimen/item_size"
-            android:id="@+id/opponentImage"
             android:layout_margin="@dimen/item_margin"
-            android:src="@drawable/default_champion"/>
+            android:contentDescription="@string/champion"
+            android:src="@drawable/default_champion" />
+
+        <ImageView
+            android:id="@+id/opponentImage"
+            android:layout_width="@dimen/item_size"
+            android:layout_height="@dimen/item_size"
+            android:layout_margin="@dimen/item_margin"
+            android:contentDescription="@string/opponent"
+            android:src="@drawable/default_champion" />
     </LinearLayout>
 
 </RelativeLayout>
