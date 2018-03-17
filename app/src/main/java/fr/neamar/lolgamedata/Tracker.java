@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.pojo.Account;
@@ -199,7 +200,7 @@ public class Tracker {
     static void trackClickOnOpGG(Activity activity, Player player) {
         JSONObject j = new JSONObject();
         try {
-            j.put("region", player.region.toUpperCase());
+            j.put("region", player.region.toUpperCase(Locale.ROOT));
             j.put("name", player.summoner.name);
             j.put("champion_name", player.champion.name);
             j.put("champion", player.champion.id);
@@ -214,7 +215,7 @@ public class Tracker {
     static void trackPerformanceViewed(Activity activity, Player player, int matchHistoryLength) {
         JSONObject j = new JSONObject();
         try {
-            j.put("region", player.region.toUpperCase());
+            j.put("region", player.region.toUpperCase(Locale.ROOT));
             j.put("name", player.summoner.name);
             j.put("champion_name", player.champion.name);
             j.put("champion", player.champion.id);

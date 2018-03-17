@@ -9,6 +9,7 @@
         android:id="@+id/ownChampion"
         android:layout_width="@dimen/tip_matchup_champion_thumbnail"
         android:layout_height="@dimen/tip_matchup_champion_thumbnail"
+        android:contentDescription="@string/champion"
         android:src="@drawable/default_champion" />
 
     <ImageView
@@ -18,6 +19,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:contentDescription="@string/opponent"
         android:src="@drawable/default_champion" />
 
     <View

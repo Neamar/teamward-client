@@ -1,5 +1,6 @@
 package fr.neamar.lolgamedata.adapter;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +23,9 @@ public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampion
         setHasStableIds(true);
     }
 
+    @NonNull
     @Override
-    public CounterChampionHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CounterChampionHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.item_counter_champion, parent, false);
@@ -32,7 +34,7 @@ public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampion
     }
 
     @Override
-    public void onBindViewHolder(CounterChampionHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CounterChampionHolder holder, int position) {
         holder.bind(counters.counters.get(position));
     }
 
@@ -48,8 +50,9 @@ public class CounterChampionAdapter extends RecyclerView.Adapter<CounterChampion
 
     public void filter(String filter) {
         counters = new Counters();
+        Locale locale = Locale.getDefault();
         for (int i = 0; i < allCounters.counters.size(); i++) {
-            if (allCounters.counters.get(i).champion.name.toLowerCase(Locale.getDefault()).startsWith(filter.toLowerCase())) {
+            if (allCounters.counters.get(i).champion.name.toLowerCase(locale).startsWith(filter.toLowerCase(locale))) {
                 counters.counters.add(allCounters.counters.get(i));
             }
         }
