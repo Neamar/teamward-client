@@ -170,7 +170,7 @@ public class PerformanceActivity extends SnackBarActivity {
         TextView lastRankingText = (TextView) lastSeasonRankHolder.findViewById(R.id.rankingText);
 
         // Do not display unranked, null, or any rank similar to current rank
-        if (player.rank.oldTier.isEmpty() || player.rank.oldTier.equals(player.rank.tier) || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase())) {
+        if (player.rank.oldTier.isEmpty() || player.rank.oldTier.equals(player.rank.tier) || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase(Locale.ROOT))) {
             lastSeasonRankHolder.setVisibility(View.GONE);
         } else {
             lastRankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase(Locale.ROOT)));
