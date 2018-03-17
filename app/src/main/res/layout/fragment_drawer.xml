@@ -55,7 +55,8 @@
         android:paddingBottom="4dp"
         android:paddingLeft="@dimen/dialog_margin"
         android:paddingRight="@dimen/dialog_margin"
-        android:paddingTop="4dp">
+        android:paddingTop="4dp"
+        tools:targetApi="lollipop">
 
         <ImageView
             android:layout_width="@dimen/champion_mastery_size"
@@ -87,7 +88,8 @@
         android:paddingBottom="4dp"
         android:paddingLeft="@dimen/dialog_margin"
         android:paddingRight="@dimen/dialog_margin"
-        android:paddingTop="4dp">
+        android:paddingTop="4dp"
+        tools:targetApi="lollipop">
 
         <ImageView
             android:layout_width="@dimen/champion_mastery_size"

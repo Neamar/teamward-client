@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Locale;
 
 import fr.neamar.lolgamedata.BuildConfig;
 import fr.neamar.lolgamedata.LolApplication;
@@ -115,7 +116,7 @@ public class CounterChampionsFragment extends Fragment {
         final int requiredChampionMastery = Integer.parseInt(prefs.getString("counter_required_mastery", "3"));
 
         try {
-            String url = ((LolApplication) getActivity().getApplication()).getApiUrl() + "/summoner/counter?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region.toLowerCase() + "&role=" + role.toLowerCase() + "&level=" + requiredChampionMastery;
+            String url = ((LolApplication) getActivity().getApplication()).getApiUrl() + "/summoner/counter?summoner=" + URLEncoder.encode(summonerName, "UTF-8") + "&region=" + region.toLowerCase(Locale.ROOT) + "&role=" + role.toLowerCase(Locale.ROOT) + "&level=" + requiredChampionMastery;
 
             if (BuildConfig.DEBUG && summonerName.equalsIgnoreCase("MOCK")) {
                 url = "https://gist.githubusercontent.com/Neamar/eb278b4d5f188546f56028c3a0310507/raw/counters.json";

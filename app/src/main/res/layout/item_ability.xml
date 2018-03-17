@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_marginTop="@dimen/activity_margin"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/activity_margin"
     android:layout_marginLeft="8dp"
     android:layout_marginStart="8dp"
-    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/activity_margin"
     android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/abilityImage"
         android:layout_width="@dimen/ability_size"
         android:layout_height="match_parent"
+        android:contentDescription="@string/ability"
         android:src="@drawable/default_spell" />
 
     <LinearLayout
@@ -31,12 +33,12 @@
 
         <TextView
             android:id="@+id/abilityDescription"
-            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Alistar lets out a wild roar, removing all crowd control effects on himself, and reducing incoming physical and magical damage for the duration."
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="Alistar lets out a wild roar, removing all crowd control effects on himself, and reducing incoming physical and magical damage for the duration." />
 
         <TextView
             android:id="@+id/abilityCooldown"
@@ -44,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="8dp"
-            android:text="10/9/8/7/6"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            tools:text="10/9/8/7/6" />
     </LinearLayout>
 </LinearLayout>

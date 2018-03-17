@@ -9,5 +9,6 @@
         android:id="@+id/champion"
         android:layout_width="@dimen/champion_size"
         android:layout_height="@dimen/champion_size"
+        android:contentDescription="@string/counter_champion"
         android:src="@drawable/default_champion" />
 </RelativeLayout>

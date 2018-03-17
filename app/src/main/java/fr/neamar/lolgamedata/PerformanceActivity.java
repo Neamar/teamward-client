@@ -137,11 +137,11 @@ public class PerformanceActivity extends SnackBarActivity {
         TextView rankingText = (TextView) rankingHolder.findViewById(R.id.rankingText);
         TextView rankingQueue = (TextView) rankingHolder.findViewById(R.id.rankingQueue);
 
-        if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
+        if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase(Locale.ROOT))) {
             rankingHolder.setVisibility(View.GONE);
         } else {
-            rankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase()));
-            rankingText.setText(String.format(getString(R.string.ranking), player.rank.tier.toUpperCase(), player.rank.division));
+            rankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase(Locale.ROOT)));
+            rankingText.setText(String.format(getString(R.string.ranking), player.rank.tier.toUpperCase(Locale.ROOT), player.rank.division));
             rankingHolder.setVisibility(View.VISIBLE);
             rankingQueue.setText(getQueueName(player.rank.queue));
         }
@@ -170,11 +170,11 @@ public class PerformanceActivity extends SnackBarActivity {
         TextView lastRankingText = (TextView) lastSeasonRankHolder.findViewById(R.id.rankingText);
 
         // Do not display unranked, null, or any rank similar to current rank
-        if (player.rank.oldTier.isEmpty() || player.rank.oldTier.equals(player.rank.tier) || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase())) {
+        if (player.rank.oldTier.isEmpty() || player.rank.oldTier.equals(player.rank.tier) || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase(Locale.ROOT))) {
             lastSeasonRankHolder.setVisibility(View.GONE);
         } else {
-            lastRankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase()));
-            lastRankingText.setText(String.format(getString(R.string.ranking_last_season), player.rank.oldTier.toUpperCase()));
+            lastRankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase(Locale.ROOT)));
+            lastRankingText.setText(String.format(getString(R.string.ranking_last_season), player.rank.oldTier.toUpperCase(Locale.ROOT)));
             lastSeasonRankHolder.setVisibility(View.VISIBLE);
         }
 

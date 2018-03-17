@@ -13,6 +13,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.PerformanceActivity;
@@ -99,9 +100,9 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         summonerLevel.setVisibility(View.VISIBLE);
 
         // Are you playing ranked this season?
-        if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase())) {
+        if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase(Locale.ROOT))) {
             // Have you ever played rank?
-            if (player.rank.oldTier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase())) {
+            if (player.rank.oldTier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase(Locale.ROOT))) {
                 // Never played rank: display summoner level,
                 // Bold level < 30
                 rankingDivision.setVisibility(View.INVISIBLE);
@@ -112,7 +113,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
                 // Played ranked last season
                 rankingDivision.setVisibility(View.GONE);
                 rankingTier.setVisibility(View.VISIBLE);
-                rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase()));
+                rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase(Locale.ROOT)));
                 rankingTier.setContentDescription(player.rank.oldTier);
                 if (!PreferenceManager.getDefaultSharedPreferences(championName.getContext()).getBoolean("always_display_level", false)) {
                     summonerLevel.setVisibility(View.GONE);
@@ -123,7 +124,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
             rankingDivision.setVisibility(View.VISIBLE);
             rankingDivision.setText(player.rank.division);
             rankingTier.setVisibility(View.VISIBLE);
-            rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase()));
+            rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase(Locale.ROOT)));
             rankingTier.setContentDescription(player.rank.tier);
             if (!PreferenceManager.getDefaultSharedPreferences(championName.getContext()).getBoolean("always_display_level", false)) {
                 summonerLevel.setVisibility(View.GONE);

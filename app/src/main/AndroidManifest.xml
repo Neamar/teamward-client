@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="fr.neamar.lolgamedata">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,7 +25,8 @@
         android:label="@string/app_name"
         android:resizeableActivity="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:targetApi="n">
         <activity
             android:name=".AccountsActivity"
             android:label="@string/add_account"
@@ -60,7 +62,8 @@
             android:excludeFromRecents="true"
             android:label="@string/title_activity_add_account"
             android:parentActivityName=".GameActivity"
-            android:theme="@android:style/Theme.Holo.Light.Dialog">
+            android:theme="@android:style/Theme.Holo.Light.Dialog"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.neamar.lolgamedata.GameActivity" />
@@ -68,7 +71,8 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".GameActivity">
+            android:parentActivityName=".GameActivity"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.neamar.lolgamedata.GameActivity" />
@@ -77,7 +81,8 @@
             android:name=".CounterChampionsActivity"
             android:label="@string/title_activity_counter"
             android:parentActivityName=".GameActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.neamar.lolgamedata.GameActivity" />
@@ -86,7 +91,8 @@
             android:name=".CounterCountersActivity"
             android:label="@string/title_activity_counter"
             android:parentActivityName=".GameActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.neamar.lolgamedata.GameActivity" />
@@ -96,7 +102,8 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_champion"
             android:parentActivityName=".CounterChampionsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.neamar.lolgamedata.CounterChampionsActivity" />
@@ -105,7 +112,8 @@
             android:name=".PerformanceActivity"
             android:label="@string/title_activity_performance"
             android:parentActivityName=".GameActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.neamar.lolgamedata.GameActivity" />

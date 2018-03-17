@@ -128,7 +128,7 @@ public class NotificationService extends FirebaseMessagingService {
                 PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher_transparent)
+                .setSmallIcon(R.drawable.ic_launcher_transparent_white)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_transparent))
                 .setContentTitle(title)
                 .setContentText(message)
