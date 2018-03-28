@@ -42,6 +42,7 @@ import fr.neamar.lolgamedata.pojo.ChampionInGame;
 import fr.neamar.lolgamedata.pojo.Game;
 import fr.neamar.lolgamedata.pojo.Match;
 import fr.neamar.lolgamedata.pojo.Player;
+import fr.neamar.lolgamedata.pojo.Summoner;
 import fr.neamar.lolgamedata.pojo.Team;
 import fr.neamar.lolgamedata.view.ChampionPortraitView;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
@@ -97,7 +98,7 @@ public class PerformanceActivity extends SnackBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_performance);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
 
@@ -107,8 +108,11 @@ public class PerformanceActivity extends SnackBarActivity {
         Game game = (Game) getIntent().getSerializableExtra("game");
         player = (Player) getIntent().getSerializableExtra("player");
 
+        // Doing this in two steps, got some crash reports on the Store and trying to understand
+        // what can be Null: player.summoner, or summoner.name.
+        Summoner summoner = player.summoner;
         // HERO
-        setTitle(player.summoner.name);
+        setTitle(summoner.name);
 
         // CHAMPION MASTERY
         View masteryHolder = findViewById(R.id.masteryHolder);
