@@ -174,6 +174,7 @@ public class GameActivity extends SnackBarActivity {
         }
 
         if(TokenRefreshedService.tokenUpdateRequired(this)) {
+            Log.i(TAG, "Syncing FCM token with server");
             // Resync token with server
             Intent intent = new Intent(this, SyncTokenService.class);
             this.startService(intent);

@@ -8,8 +8,8 @@ android {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 81
-        versionName "2.19.2"
+        versionCode 82
+        versionName "2.19.3"
 
         resValue "string", "AMPLITUDE_TOKEN", "9cea7057e49889a741728db2c0f22641"
         resValue "string", "API_URL", "https://staging.teamward.xyz"
