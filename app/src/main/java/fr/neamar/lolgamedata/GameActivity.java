@@ -48,6 +48,8 @@ import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
 import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
+import fr.neamar.lolgamedata.service.SyncTokenService;
+import fr.neamar.lolgamedata.service.TokenRefreshedService;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class GameActivity extends SnackBarActivity {
@@ -106,7 +108,7 @@ public class GameActivity extends SnackBarActivity {
 
         setContentView(R.layout.activity_game);
 
-        // First run: open accounts activity, finish this one
+        // First run: open accounts activity, finish this activity
         AccountManager accountManager = new AccountManager(this);
         if (accountManager.getAccounts().isEmpty()) {
             Intent i = new Intent(this, AccountsActivity.class);
@@ -169,6 +171,12 @@ public class GameActivity extends SnackBarActivity {
 
         if (savedInstanceState == null || !savedInstanceState.containsKey("game")) {
             loadCurrentGame(account.summonerName, account.region);
+        }
+
+        if(TokenRefreshedService.tokenUpdateRequired(this)) {
+            // Resync token with server
+            Intent intent = new Intent(this, SyncTokenService.class);
+            this.startService(intent);
         }
     }
 
