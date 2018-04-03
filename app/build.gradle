@@ -37,36 +37,36 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
 
     // Tracking and monitoring
-    compile 'com.newrelic.agent.android:android-agent:5.9.0'
-    compile 'com.amplitude:android-sdk:2.14.1'
+    implementation 'com.newrelic.agent.android:android-agent:5.9.0'
+    implementation 'com.amplitude:android-sdk:2.14.1'
 
     // Support old Android, push notifications and cardviews
-    compile "com.google.firebase:firebase-messaging:11.8.0"
-    compile 'com.android.support:support-v4:27.1.0'
-    compile 'com.android.support:appcompat-v7:27.1.0'
-    compile 'com.android.support:design:27.1.0'
-    compile 'com.android.support:cardview-v7:27.1.0'
+    implementation "com.google.firebase:firebase-messaging:12.0.1"
+    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:cardview-v7:27.1.0'
 
     // HTTP request
-    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+    implementation 'com.mcxiaoke.volley:library-aar:1.0.0'
 
     // Load images
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
     // Display images with a round filter
-    compile 'de.hdodenhof:circleimageview:2.0.0'
+    implementation 'de.hdodenhof:circleimageview:2.0.0'
 
     // Graphs
-    compile 'com.jjoe64:graphview:4.2.1'
+    implementation 'com.jjoe64:graphview:4.2.1'
 
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'
