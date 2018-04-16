@@ -25,14 +25,10 @@
 -keep class android.support.v7.widget.SearchView { *; }
 -dontwarn com.google.android.gms.**
 
-
 # Newrelic
 -keep class com.newrelic.** { *; }
 -dontwarn com.newrelic.**
 -keepattributes Exceptions, Signature, InnerClasses, LineNumberTable
-
-# Mixpanel
--dontwarn com.mixpanel.**
 
 # Amplitude
 -keep class com.google.android.gms.ads.** { *; }
