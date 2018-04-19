@@ -129,7 +129,7 @@
     <string name="kda_template">%1$d / &lt;font color=\"#FF5252\"&gt;%2$d&lt;/font&gt; / %3$d</string>
     <string name="main_level_7">%1$s joue très bien %2$s… soyez prudents !</string>
     <string name="otp">One Trick Pony</string>
-    <string name="error_adding_account">Impossible d\'ajouter le compte. Vérifiez votre nom d\'invocateur et la région !</string>
+    <string name="error_adding_account">"Impossible d\'ajouter le compte. Utilisez votre nom d\'invocateur (public, visible par vos amis), et pas votre nom d\'utilisateur (privé, pour se connecter au client) "</string>
     <string name="normal">Normal</string>
     <string name="normal_3">Normal 3v3</string>
     <string name="aram">ARAM</string>
@@ -192,4 +192,11 @@
     <string name="often_gets_first_blood">a souvent le premier sang</string>
     <string name="often_gets_first_tower">a souvent la première tour</string>
     <string name="multi_kill_machine">machine à multi-kill</string>
-</resources>
+<string name="display_level">Toujours afficher le niveau du joueur</string>
+    <string name="display_level_summary">Afficher le niveau du joueur même si\'il est classé</string>
+    <string name="dialog_remove_account_title">Supprimer le compte</string>
+    <string name="dialog_remove_account_message">"Votre compte sera supprimé. Voulez-vous continuer ? "</string>
+    <string name="dialog_remove">Supprimer</string>
+    <string name="dialog_cancel">Annuler</string>
+    <string name="remove_hint">"(appui long pour supprimer un compte) "</string>
+    </resources>
