@@ -199,4 +199,12 @@
     <string name="dialog_remove">Supprimer</string>
     <string name="dialog_cancel">Annuler</string>
     <string name="remove_hint">"(appui long pour supprimer un compte) "</string>
-    </resources>
+    <string name="overcharge">Overcharge</string>
+    <string name="channel_in_game_notifications">Notifications d\'invocateur en jeu</string>
+    <string name="champion_splash_art">Splash art du champion</string>
+    <string name="item">Objet</string>
+    <string name="ward">Balise de vision</string>
+    <string name="champion">Champion</string>
+    <string name="opponent">Adversaire</string>
+    <string name="what_is_this">Qu\'est ce que c\'est ?</string>
+</resources>
