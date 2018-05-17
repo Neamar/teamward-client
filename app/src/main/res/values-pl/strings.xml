@@ -57,7 +57,7 @@
     <string name="pref_counter_champion_mastery_name">Wymagana masteria bohatera</string>
     <string name="pref_title_vibrate">Wibracje</string>
     <string name="may_be_inaccurate">(może być niedokładne)</string>
-    <string name="premade_information">Informacje premade</string>
+    <string name="premade_information">Informacje o premade</string>
     <string name="s_has_no_flash">%1$s używa %2$s i %3$s.</string>
     <string name="no_smite">Lew śpi tej nocy</string>
     <string name="such_ability">Taka moc zdolności!</string>
@@ -92,13 +92,86 @@
     <string name="no_data">Brak danych:</string>
     <string name="kda_template">%1$d / &lt;font color=#FF5252&gt;%2$d&lt;/font&gt; / %3$d</string>
     <string name="cs_template">CS %1$d &lt;font color=#AAAAAA&gt;(%2$,.1f/min)&lt;/font&gt;</string>
-    <string name="main_level_7">%1$s wie %2$s całkiem dobrze, bądź ostrożny!</string>
+    <string name="main_level_7">%1$s zna %2$s całkiem dobrze, bądź ostrożny!</string>
     <string name="otp">One Trick Pony</string>
-    <string name="error_adding_account">Wystąpił błąd podczas dodawania konta. Sprawdź podwójnie nazwę i region przywoływacza!</string>
+    <string name="error_adding_account">"Wystąpił błąd podczas dodawania konta. Sprawdź podwójnie nazwę i region przywoływacza! (Musisz użyć nazwę widoczną dla twoich znajomych, nie tą którą się logujesz) "</string>
     <string name="aram">ARAM</string>
     <string name="normal">Normalna 5v5</string>
     <string name="normal_3">Normalna 3v3</string>
     <string name="ranked_solo_5">Rankingowa Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>
-    </resources>
+    <string name="no_flash">"Brak flasha! "</string>
+    <string name="action_counter">"Narzędzie do draftów "</string>
+    <string name="double_smite">"Podwójny styl zwierzęcy "</string>
+    <string name="try_harder">Tryhardy</string>
+    <string name="expected_matchups">Przewidywane matchupy</string>
+    <string name="champion_mastery_lvl">Poziom masterii na postaci %d</string>
+    <string name="not_enough_information">"Pomimo, że grasz %s nie mamy wystarczająco informacji aby stwierdzić, czy to dobry matchup. "</string>
+    <string name="teambuilder_ranked">Teambuilder rankingowy</string>
+    <string name="unknown_queue">"Nieznana kolejka "</string>
+    <string name="recent_matches">Ostatnie mecze %1$s</string>
+    <string name="champion_points">%1$s punktów</string>
+    <string name="love_the_app">"TeamWard jest darmowy i wolny od reklam. Proszę, oceń go na Sklepie Play :) "</string>
+    <string name="rate_app">"Oceń! "</string>
+    <string name="thank_you">"Dziękuję! "</string>
+    <string name="custom">Gra niestandardowa</string>
+    <string name="refresh">"Odśwież "</string>
+    <string name="abilities">"Umiejętności "</string>
+    <string name="ability_passive">Umiejętność pasywna</string>
+    <string name="champion_details">Szczegółowe informacje o postaci</string>
+    <string name="teamward_user">"Użytkownik TeamWarda! "</string>
+    <string name="hope_he_wins">"Mam nadzieję, że wygra grę. "</string>
+    <string name="not_using_teamward">"Wstyd! Wstyd! "</string>
+    <string name="s_is_not_using_teamward">"%s gra z tobą, ale nie używa TeamWarda. Smutek. "</string>
+    <string name="s_are_not_using_teamward">"%s nie używa TeamWarda. Chce mi się płakać. "</string>
+    <string name="final_separator">i</string>
+    <string name="s_winrate">%s winratio</string>
+    <string name="spells">Spelle</string>
+    <string name="last_season_rank">Ostatni sezon</string>
+    <string name="unable_to_open_browser">Nie można otworzyć przeglądarki</string>
+    <string name="winrate_by_game_length">Winratio według długości gry</string>
+    <string name="relative_team_colors_summary">"Widź się zawsze po stronie niebieskiej "</string>
+    <string name="relative_team_colors">Włącz zależny kolor drużyn</string>
+    <string name="hardcore_gamer">"Hardkorowy gracz! "</string>
+    <string name="hardcore_gamer_description">"%s zagrał ponad 10 gier w przeciągu 24 godzin. "</string>
+    <string name="filthy_casual_description">%s gra mniej niż jedną grę na tydzień! Co za przypadek!</string>
+    <string name="filthy_casual">Brudny przypadek…</string>
+    <string name="your_team">Twoja drużyna</string>
+    <string name="their_team">Drużyna przeciwna</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• Ten wykres pokazuje powerspike drużyn oraz skalowanie w late-game.
+\n • Wykres bazowany jest na postaciach, nie na graczach.
+\n • Drużyna z lepszymi postaciami do late ma większe szanse na wygraną według długości gry.
+\n • Drużyna stworzona ze słabych postaci w aktualnej mecie raczej nigdy nie będzie mieć ponad 50%.
+\n • Dwie bardzo silne kompozycje mogą mieć średnie winratio ponad 50%.</string>
+    <string name="arurf">ARURF</string>
+    <string name="blind_pick">Normalna 5v5</string>
+    <string name="draft_pick">Draft 5v5</string>
+    <string name="over_x_games">(%1d znanych gier rankingowych)</string>
+    <string name="aggregated_data">(%1$s winratio%2$s)</string>
+    <string name="good_farmer">dobry farmer</string>
+    <string name="exceptional_farmer">nadzwyczajny farmer</string>
+    <string name="exceptional_laner">nadzwyczajny laning phase</string>
+    <string name="good_laner">dobry laner</string>
+    <string name="often_gets_first_blood">często zdobywa pierwszą krew</string>
+    <string name="often_gets_first_tower">często zdobywa pierwszą wieżę</string>
+    <string name="multi_kill_machine">maszyna do zabójstw</string>
+    <string name="display_level">Zawsze wyświetlaj poziom postaci</string>
+    <string name="display_level_summary">Wyświetlaj poziom postaci nawet jeśli grasz jest rankingowy</string>
+    <string name="overcharge">Przeciążenie</string>
+    <string name="dialog_remove_account_title">Usuń konto</string>
+    <string name="dialog_remove_account_message">To spowoduje usunięcie konta. Chcesz kontynuować?</string>
+    <string name="dialog_remove">Usuń</string>
+    <string name="dialog_cancel">Anuluj</string>
+    <string name="remove_hint">(Przytrzymaj dłużej, aby usunąć konto)</string>
+    <string name="channel_in_game_notifications">Powiadomienia z gry</string>
+    <string name="champion_splash_art">Splash art postaci</string>
+    <string name="ranked_tier">Tier Rankingowy</string>
+    <string name="ability">Umiejętność</string>
+    <string name="counter_champion">Kontra</string>
+    <string name="item">Przedmiot</string>
+    <string name="ward">Totem Wizji</string>
+    <string name="champion">Postać</string>
+    <string name="opponent">Przeciwnik</string>
+    <string name="what_is_this">Co to jest?</string>
+</resources>
