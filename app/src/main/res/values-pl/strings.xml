@@ -174,4 +174,5 @@
     <string name="champion">Postać</string>
     <string name="opponent">Przeciwnik</string>
     <string name="what_is_this">Co to jest?</string>
-</resources>
+<string name="title_activity_champion">Szczegóły o postaci</string>
+    </resources>
