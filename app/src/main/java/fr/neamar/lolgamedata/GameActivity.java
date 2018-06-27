@@ -199,6 +199,7 @@ public class GameActivity extends SnackBarActivity {
 
             NotificationManager notificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            assert notificationManager != null;
             notificationManager.cancel(game.getNotificationId());
         }
 
