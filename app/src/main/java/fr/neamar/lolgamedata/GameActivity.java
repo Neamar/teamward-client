@@ -422,6 +422,9 @@ public class GameActivity extends SnackBarActivity {
                 }
             });
         }
+
+        final SharedPreferences gamePrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        gamePrefs.edit().putLong("last_viewed_game", game.gameId).apply();
     }
 
     private String getDefaultTabName() {

@@ -63,6 +63,8 @@ public class NotificationService extends FirebaseMessagingService {
      * Create and show a simple notification containing the received GCM message.
      */
     private void displayNotification(Account account, long gameId, int mapId) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
         Intent intent = new Intent(this, GameActivity.class);
         intent.putExtra("account", account);
         intent.putExtra("source", "notification");
@@ -79,7 +81,6 @@ public class NotificationService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (prefs.getBoolean("notifications_new_game_vibrate", true)) {
             notificationBuilder.setVibrate(new long[]{1000, 1000});
@@ -101,7 +102,12 @@ public class NotificationService extends FirebaseMessagingService {
                     notificationManager.createNotificationChannel(channel);
                 }
 
-                notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
+                if (prefs.getLong("last_viewed_game", -1) == gameId) {
+                    Log.i(TAG, "Skipping notification display, game is already on screen.");
+                }
+                else {
+                    notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
+                }
 
             } catch (RuntimeException e) {
                 // Most likely, the ringtone doesn't exist anymore.
