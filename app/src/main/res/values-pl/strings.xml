@@ -3,7 +3,7 @@
     <string name="title_activity_game">Szczegóły gry</string>
     <string name="blue_team">Niebieska drużyna</string>
     <string name="red_team">Czerwona drużyna</string>
-    <string name="unknown_team">? drużyna</string>
+    <string name="unknown_team">drużyna</string>
     <string name="summoner_level">poziom %s</string>
     <string name="champion_image">Obrazek bohatera</string>
     <string name="summoner_spell_d">Zaklęcie D</string>
