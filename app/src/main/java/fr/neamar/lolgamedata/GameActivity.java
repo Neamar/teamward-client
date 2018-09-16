@@ -425,6 +425,12 @@ public class GameActivity extends SnackBarActivity {
 
         final SharedPreferences gamePrefs = PreferenceManager.getDefaultSharedPreferences(this);
         gamePrefs.edit().putLong("last_viewed_game", game.gameId).apply();
+
+        // Remove notification if already displayed
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if(notificationManager != null) {
+            notificationManager.cancel(Long.toString(game.gameId).hashCode());
+        }
     }
 
     private String getDefaultTabName() {
