@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_pre_game"
+        android:enabled="true"
+        android:icon="@drawable/ic_pre_game"
+        android:title="@string/action_counter"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_in_game"
+        android:enabled="true"
+        android:icon="@drawable/ic_in_game"
+        android:title="@string/title_activity_performance"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_stats"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_recent_history"
+        android:title="@string/stats"
+        app:showAsAction="always" />
+</menu>

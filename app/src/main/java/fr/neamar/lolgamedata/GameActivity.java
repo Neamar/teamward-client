@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -179,6 +180,9 @@ public class GameActivity extends SnackBarActivity {
             Intent intent = new Intent(this, SyncTokenService.class);
             this.startService(intent);
         }
+
+        ((BottomNavigationView) findViewById(R.id.bottom_navigation)).setOnNavigationItemSelectedListener(new BottomNavigationListener(this, account, R.id.action_in_game));
+        ((BottomNavigationView) findViewById(R.id.bottom_navigation)).setSelectedItemId(R.id.action_in_game);
     }
 
     @Override

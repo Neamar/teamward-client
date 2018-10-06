@@ -2,6 +2,7 @@ package fr.neamar.lolgamedata;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -68,6 +69,8 @@ public class CounterChampionsActivity extends SnackBarActivity {
             }
         });
 
+        ((BottomNavigationView) findViewById(R.id.bottom_navigation)).setOnNavigationItemSelectedListener(new BottomNavigationListener(this, account, R.id.action_pre_game));
+        ((BottomNavigationView) findViewById(R.id.bottom_navigation)).setSelectedItemId(R.id.action_pre_game);
     }
 
 
