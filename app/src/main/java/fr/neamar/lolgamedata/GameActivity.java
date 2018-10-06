@@ -173,7 +173,7 @@ public class GameActivity extends SnackBarActivity {
             loadCurrentGame(account.summonerName, account.region);
         }
 
-        if(TokenRefreshedService.tokenUpdateRequired(this)) {
+        if (TokenRefreshedService.tokenUpdateRequired(this)) {
             Log.i(TAG, "Syncing FCM token with server");
             // Resync token with server
             Intent intent = new Intent(this, SyncTokenService.class);
@@ -289,79 +289,83 @@ public class GameActivity extends SnackBarActivity {
             }
 
             NoCacheRetryJsonRequest jsonRequest = new NoCacheRetryJsonRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            game = new Game(response, region, account, shouldUseRelativeTeamColor());
-                            GameActivity.this.summonerName = summonerName;
-                            displayGame(summonerName, game);
-
-                            Log.i(TAG, "Displaying game #" + game.gameId);
-
-                            String source = getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty() ? getIntent().getStringExtra("source") : "unknown";
-                            Tracker.trackGameViewed(GameActivity.this, account, game, getDefaultTabName(), shouldDisplayChampionName(), source);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        } finally {
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
                             try {
-                                if (dialog.isShowing()) {
-                                    dialog.dismiss();
+                                game = new Game(response, region, account, shouldUseRelativeTeamColor());
+                                GameActivity.this.summonerName = summonerName;
+                                displayGame(summonerName, game);
+
+                                Log.i(TAG, "Displaying game #" + game.gameId);
+
+                                String source = getIntent() != null && getIntent().hasExtra("source") && !getIntent().getStringExtra("source").isEmpty() ? getIntent().getStringExtra("source") : "unknown";
+                                Tracker.trackGameViewed(GameActivity.this, account, game, getDefaultTabName(), shouldDisplayChampionName(), source);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            } finally {
+                                try {
+                                    if (dialog.isShowing()) {
+                                        dialog.dismiss();
+                                    }
+                                } catch (IllegalArgumentException e) {
+                                    // View is not attached (rotation for instance)
                                 }
-                            } catch (IllegalArgumentException e) {
-                                // View is not attached (rotation for instance)
+
+                                lastLoaded = new Date();
+
+                                queue.stop();
                             }
-
-                            lastLoaded = new Date();
-
-                            queue.stop();
                         }
                     }
-                }
 
-                , new Response.ErrorListener()
+                    , new Response.ErrorListener()
 
-        {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                game = null;
-                lastLoaded = null;
+            {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    game = null;
+                    lastLoaded = null;
 
-                try {
-                    if (dialog.isShowing()) {
-                        dialog.dismiss();
+                    try {
+                        if (dialog.isShowing()) {
+                            dialog.dismiss();
+                        }
+                    } catch (IllegalArgumentException e) {
+                        // View is not attached (rotation for instance)
                     }
-                } catch (IllegalArgumentException e) {
-                    // View is not attached (rotation for instance)
-                }
 
-                Log.e(TAG, error.toString());
+                    Log.e(TAG, error.toString());
 
-                queue.stop();
+                    queue.stop();
 
-                setUiMode(UI_MODE_NO_INTERNET);
+                    setUiMode(UI_MODE_NO_INTERNET);
 
-                if (error instanceof NoConnectionError) {
-                    displaySnack(getString(R.string.no_internet_connection));
-                    return;
-                }
-
-
-                try {
-                    String responseBody = new String(error.networkResponse.data, "utf-8");
-                    Log.i(TAG, responseBody);
-
-                    if (!responseBody.contains("ummoner not in game")) {
-                        displaySnack(responseBody);
-                        Tracker.trackErrorViewingGame(GameActivity.this, account, responseBody.replace("Error:", ""));
-                    } else {
-                        setUiMode(UI_MODE_NOT_IN_GAME);
+                    if (error instanceof NoConnectionError) {
+                        displaySnack(getString(R.string.no_internet_connection));
+                        return;
                     }
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                } catch (NullPointerException e) {
-                    // Do nothing, no text content in the HTTP reply.
-                }
+
+
+                    try {
+                        String responseBody = new String(error.networkResponse.data, "utf-8");
+                        Log.i(TAG, responseBody);
+
+                        if (!responseBody.contains("ummoner not in game")) {
+                            displaySnack(responseBody);
+                            Tracker.trackErrorViewingGame(GameActivity.this, account, responseBody.replace("Error:", ""));
+                        } else {
+                            Tracker.trackSummonerNotInGame(GameActivity.this, account, responseBody.replace("Error:", ""));
+                            if (responseBody.length() > "Error: summoner not in game".length() + 5) {
+                                displaySnack(responseBody);
+                            }
+                            setUiMode(UI_MODE_NOT_IN_GAME);
+                        }
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    } catch (NullPointerException e) {
+                        // Do nothing, no text content in the HTTP reply.
+                    }
                 }
             });
 
@@ -407,8 +411,7 @@ public class GameActivity extends SnackBarActivity {
 
         if (counter == 5 || counter == 10 || counter == 50) {
             displaySnack(getString(R.string.ap_ad_hint));
-        }
-        else if (counter % 100 == 0 && counter > 0 && !prefs.getBoolean("rated_app", false)) {
+        } else if (counter % 100 == 0 && counter > 0 && !prefs.getBoolean("rated_app", false)) {
             displaySnack(getString(R.string.love_the_app), getString(R.string.rate_app), new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -428,7 +431,7 @@ public class GameActivity extends SnackBarActivity {
 
         // Remove notification if already displayed
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        if(notificationManager != null) {
+        if (notificationManager != null) {
             notificationManager.cancel(Long.toString(game.gameId).hashCode());
         }
     }

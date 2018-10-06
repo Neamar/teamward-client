@@ -99,10 +99,16 @@ public class Tracker {
 
         track(activity, "Game viewed", j);
 
-        Identify identify = new Identify()
-                .add("games_viewed_count", 1)
-                .set("last_viewed_game", new Date().toString());
-        Amplitude.getInstance().identify(identify);
+        try {
+            Identify identify = new Identify()
+                    .add("games_viewed_count", 1)
+                    .set("last_viewed_game", new Date().toString());
+            Amplitude.getInstance().identify(identify);
+        }
+        catch(AssertionError e) {
+            // On Android 8.1, sometimes return an assertion error... just skip.
+            e.printStackTrace();
+        }
     }
 
     static void trackErrorViewingGame(Activity activity, Account account, String error) {
@@ -313,5 +319,15 @@ public class Tracker {
        }
 
        trackProfile(context, j);
+    }
+
+    static void trackSummonerNotInGame(GameActivity activity, Account account, String error) {
+        JSONObject j = account.toJsonObject();
+        try {
+            j.put("error", error);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        track(activity, "Summoner not in game", j);
     }
 }
