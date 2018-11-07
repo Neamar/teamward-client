@@ -86,7 +86,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/rankingTierImage"
+            android:id="@+id/rankedTierImage"
             android:layout_width="@dimen/tier_size"
             android:layout_height="@dimen/tier_size"
             android:contentDescription="@string/current_ranking_tier"

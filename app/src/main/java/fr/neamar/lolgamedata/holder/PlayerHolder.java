@@ -69,7 +69,7 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         summonerName = (TextView) view.findViewById(R.id.summonerNameText);
         summonerLevel = (TextView) view.findViewById(R.id.summonerLevelText);
         rankingDivision = (TextView) view.findViewById(R.id.rankingDivisionText);
-        rankingTier = (ImageView) view.findViewById(R.id.rankingTierImage);
+        rankingTier = (ImageView) view.findViewById(R.id.rankedTierImage);
         spellDImage = (ImageView) view.findViewById(R.id.spellDImage);
         spellFImage = (ImageView) view.findViewById(R.id.spellFImage);
         championPortrait = (ChampionPortraitView) view.findViewById(R.id.championPortrait);
@@ -100,9 +100,9 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         summonerLevel.setVisibility(View.VISIBLE);
 
         // Are you playing ranked this season?
-        if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase(Locale.ROOT))) {
+        if (player.mainRank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.mainRank.tier.toLowerCase(Locale.ROOT))) {
             // Have you ever played rank?
-            if (player.rank.oldTier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase(Locale.ROOT))) {
+            if (player.mainRank.oldTier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.mainRank.oldTier.toLowerCase(Locale.ROOT))) {
                 // Never played rank: display summoner level,
                 // Bold level < 30
                 rankingDivision.setVisibility(View.INVISIBLE);
@@ -113,8 +113,8 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
                 // Played ranked last season
                 rankingDivision.setVisibility(View.GONE);
                 rankingTier.setVisibility(View.VISIBLE);
-                rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase(Locale.ROOT)));
-                rankingTier.setContentDescription(player.rank.oldTier);
+                rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.mainRank.oldTier.toLowerCase(Locale.ROOT)));
+                rankingTier.setContentDescription(player.mainRank.oldTier);
                 if (!PreferenceManager.getDefaultSharedPreferences(championName.getContext()).getBoolean("always_display_level", false)) {
                     summonerLevel.setVisibility(View.GONE);
                 }
@@ -122,10 +122,10 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
         } else {
             // Play ranked this seaon
             rankingDivision.setVisibility(View.VISIBLE);
-            rankingDivision.setText(player.rank.division);
+            rankingDivision.setText(player.mainRank.division);
             rankingTier.setVisibility(View.VISIBLE);
-            rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase(Locale.ROOT)));
-            rankingTier.setContentDescription(player.rank.tier);
+            rankingTier.setImageResource(RANKING_TIER_RESOURCES.get(player.mainRank.tier.toLowerCase(Locale.ROOT)));
+            rankingTier.setContentDescription(player.mainRank.tier);
             if (!PreferenceManager.getDefaultSharedPreferences(championName.getContext()).getBoolean("always_display_level", false)) {
                 summonerLevel.setVisibility(View.GONE);
             }
