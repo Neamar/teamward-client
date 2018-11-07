@@ -188,7 +188,7 @@
     <string name="final_separator">and</string>
     <string name="patch_s">(data: patch %1$s)</string>
     <string name="s_winrate">%s winrate</string>
-    <string name="s_detailed_winrate">(%1$d games, %2$.2f%% winrate)</string>
+    <string name="s_detailed_winrate">%1$d games\n%2$.2f%% winrate</string>
     <string name="spells">Spells</string>
     <string name="champion_gg">champion.gg</string>
     <string name="last_season_rank">Last season</string>

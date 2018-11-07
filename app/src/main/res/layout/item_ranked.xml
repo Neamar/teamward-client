@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/activity_margin"
         android:layout_weight="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:text="@string/s_detailed_winrate" />
 
 </LinearLayout>
