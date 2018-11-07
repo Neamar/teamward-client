@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'newrelic'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 88
-        versionName "2.19.9"
+        targetSdkVersion 28
+        versionCode 89
+        versionName "2.19.10"
 
         resValue "string", "AMPLITUDE_TOKEN", "9cea7057e49889a741728db2c0f22641"
         // resValue "string", "API_URL", "https://staging.teamward.xyz"
@@ -46,11 +46,11 @@ dependencies {
     implementation 'com.amplitude:android-sdk:2.16.0'
 
     // Support old Android, push notifications and cardviews
-    implementation "com.google.firebase:firebase-messaging:17.3.1"
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation "com.google.firebase:firebase-messaging:17.3.3"
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
 
     // HTTP request
     implementation 'com.mcxiaoke.volley:library-aar:1.0.0'
