@@ -37,7 +37,7 @@ public class RankHolder extends RecyclerView.ViewHolder implements View.OnClickL
         rankedQueue = view.findViewById(R.id.rankedQueue);
         rankedText = view.findViewById(R.id.rankedText);
         rankedWinrate = view.findViewById(R.id.rankedWinrate);
-        rankedTier = view.findViewById(R.id.gameLengthText);
+        rankedTier = view.findViewById(R.id.rankedTierImage);
 
         view.setOnClickListener(this);
     }
@@ -49,9 +49,14 @@ public class RankHolder extends RecyclerView.ViewHolder implements View.OnClickL
         rankedText.setText(String.format(rankedText.getContext().getString(R.string.ranking), rank.tier.toUpperCase(Locale.ROOT), rank.division));
         rankedQueue.setText(PerformanceActivity.getQueueName(rank.queue));
 
-        if(rank.wins + rank.losses >= 10) {
-            float winrate = (float) rank.wins / (rank.wins + rank.losses);
-            rankedWinrate.setText(String.format(rankedWinrate.getContext().getString(R.string.s_detailed_winrate), winrate));
+        int totalGames = rank.wins + rank.losses;
+        if(totalGames >= 10) {
+            float winrate = 100 * (float) rank.wins / totalGames;
+            rankedWinrate.setText(String.format(rankedWinrate.getContext().getString(R.string.s_detailed_winrate), totalGames, winrate));
+            rankedWinrate.setVisibility(View.VISIBLE);
+        }
+        else {
+            rankedWinrate.setVisibility(View.INVISIBLE);
         }
     }
 

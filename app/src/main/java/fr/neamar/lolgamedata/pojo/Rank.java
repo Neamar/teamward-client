@@ -18,6 +18,9 @@ public class Rank implements Serializable {
         division = rank.getString("division");
         queue = rank.getString("queue");
 
+        wins = rank.optInt("wins", -1);
+        losses = rank.optInt("losses", -1);
+
         this.oldTier = oldTier;
     }
 }
