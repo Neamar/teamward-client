@@ -63,10 +63,10 @@ public class RankHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View v) {
         try {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + player.region + ".op.gg/summoner/userName=" + URLEncoder.encode(player.summoner.name, "UTF-8")));
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.teamward.xyz/achievements/?summoner=" + URLEncoder.encode(player.summoner.name, "UTF-8") + "&region=" + player.region + "&season=8"));
             v.getContext().startActivity(browserIntent);
 
-            Tracker.trackClickOnOpGG((Activity) v.getContext(), player);
+            Tracker.trackClickOnAchievements((Activity) v.getContext(), player);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

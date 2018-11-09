@@ -203,7 +203,7 @@ public class Tracker {
         track(activity, "Click on GG", j);
     }
 
-    public static void trackClickOnOpGG(Activity activity, Player player) {
+    public static void trackClickOnAchievements(Activity activity, Player player) {
         JSONObject j = new JSONObject();
         try {
             j.put("region", player.region.toUpperCase(Locale.ROOT));
@@ -215,7 +215,7 @@ public class Tracker {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        track(activity, "Click on op.gg", j);
+        track(activity, "Click on ranked stats", j);
     }
 
     static void trackPerformanceViewed(Activity activity, Player player, int matchHistoryLength) {
