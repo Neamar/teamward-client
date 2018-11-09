@@ -8,8 +8,8 @@ android {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 89
-        versionName "2.19.10"
+        versionCode 91
+        versionName "2.20.1"
 
         resValue "string", "AMPLITUDE_TOKEN", "9cea7057e49889a741728db2c0f22641"
         // resValue "string", "API_URL", "https://staging.teamward.xyz"
@@ -46,7 +46,7 @@ dependencies {
     implementation 'com.amplitude:android-sdk:2.16.0'
 
     // Support old Android, push notifications and cardviews
-    implementation "com.google.firebase:firebase-messaging:17.3.3"
+    implementation "com.google.firebase:firebase-messaging:17.3.4"
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'

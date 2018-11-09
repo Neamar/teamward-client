@@ -36,6 +36,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import fr.neamar.lolgamedata.adapter.MatchAdapter;
+import fr.neamar.lolgamedata.adapter.RankedAdapter;
 import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.AggregatedPerformance;
 import fr.neamar.lolgamedata.pojo.ChampionInGame;
@@ -111,17 +112,22 @@ public class PerformanceActivity extends SnackBarActivity {
         Game game = (Game) getIntent().getSerializableExtra("game");
         player = (Player) getIntent().getSerializableExtra("player");
 
-        // Doing this in two steps, got some crash reports on the Store and trying to understand
-        // what can be Null: player.summoner, or summoner.name.
+        if (player.summoner == null) {
+            finish();
+            return;
+        }
+
+        // Some crash reports on the Store for Android 6,
+        // so we finish if summoner is null
         Summoner summoner = player.summoner;
         // HERO
         setTitle(summoner.name);
 
         // CHAMPION MASTERY
         View masteryHolder = findViewById(R.id.masteryHolder);
-        ImageView championMasteryImage = (ImageView) findViewById(R.id.championMasteryImage);
-        TextView championMasteryText = (TextView) findViewById(R.id.championMasteryText);
-        TextView championPointsText = (TextView) findViewById(R.id.championPointsText);
+        ImageView championMasteryImage = findViewById(R.id.championMasteryImage);
+        TextView championMasteryText = findViewById(R.id.championMasteryText);
+        TextView championPointsText = findViewById(R.id.championPointsText);
 
         @DrawableRes
         int championMasteryResource = CHAMPION_MASTERIES_RESOURCES[player.champion.mastery];
@@ -139,49 +145,24 @@ public class PerformanceActivity extends SnackBarActivity {
         }
 
         // RANKED INFORMATION
-        View rankingHolder = findViewById(R.id.rankingHolder);
-        ImageView rankingTierImage = (ImageView) rankingHolder.findViewById(R.id.rankingTierImage);
-        TextView rankingText = (TextView) rankingHolder.findViewById(R.id.rankingText);
-        TextView rankingQueue = (TextView) rankingHolder.findViewById(R.id.rankingQueue);
-
-        if (player.rank.tier.isEmpty() || !RANKING_TIER_RESOURCES.containsKey(player.rank.tier.toLowerCase(Locale.ROOT))) {
-            rankingHolder.setVisibility(View.GONE);
+        if (player.allRanks.size() > 0) {
+            RecyclerView rankedRecyclerView = findViewById(R.id.rankedRecyclerView);
+            rankedRecyclerView.setAdapter(new RankedAdapter(player));
         } else {
-            rankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.tier.toLowerCase(Locale.ROOT)));
-            rankingText.setText(String.format(getString(R.string.ranking), player.rank.tier.toUpperCase(Locale.ROOT), player.rank.division));
-            rankingHolder.setVisibility(View.VISIBLE);
-            rankingQueue.setText(getQueueName(player.rank.queue));
+            findViewById(R.id.rankedHolder).setVisibility(View.GONE);
         }
-
-        rankingHolder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + player.region + ".op.gg/summoner/userName=" + URLEncoder.encode(player.summoner.name, "UTF-8")));
-                    startActivity(browserIntent);
-
-                    Tracker.trackClickOnOpGG(PerformanceActivity.this, player);
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                catch(ActivityNotFoundException e) {
-                    Toast.makeText(PerformanceActivity.this, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-            }
-        });
 
         // LAST SEASON RANKED INFORMATION
         View lastSeasonRankHolder = findViewById(R.id.lastSeasonRankHolder);
-        ImageView lastRankingTierImage = (ImageView) lastSeasonRankHolder.findViewById(R.id.rankingTierImage);
-        TextView lastRankingText = (TextView) lastSeasonRankHolder.findViewById(R.id.rankingText);
+        ImageView lastRankingTierImage = lastSeasonRankHolder.findViewById(R.id.rankedTierImage);
+        TextView lastRankingText = lastSeasonRankHolder.findViewById(R.id.rankedText);
 
         // Do not display unranked, null, or any rank similar to current rank
-        if (player.rank.oldTier.isEmpty() || player.rank.oldTier.equals(player.rank.tier) || !RANKING_TIER_RESOURCES.containsKey(player.rank.oldTier.toLowerCase(Locale.ROOT))) {
+        if (player.mainRank.oldTier.isEmpty() || player.mainRank.oldTier.equals(player.mainRank.tier) || !RANKING_TIER_RESOURCES.containsKey(player.mainRank.oldTier.toLowerCase(Locale.ROOT))) {
             lastSeasonRankHolder.setVisibility(View.GONE);
         } else {
-            lastRankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.rank.oldTier.toLowerCase(Locale.ROOT)));
-            lastRankingText.setText(String.format(getString(R.string.ranking_last_season), player.rank.oldTier.toUpperCase(Locale.ROOT)));
+            lastRankingTierImage.setImageResource(RANKING_TIER_RESOURCES.get(player.mainRank.oldTier.toLowerCase(Locale.ROOT)));
+            lastRankingText.setText(String.format(getString(R.string.ranking_last_season), player.mainRank.oldTier.toUpperCase(Locale.ROOT)));
             lastSeasonRankHolder.setVisibility(View.VISIBLE);
         }
 
@@ -193,7 +174,7 @@ public class PerformanceActivity extends SnackBarActivity {
 
         final Team playerTeam = game.getTeamForPlayer(player);
         Player oppositePlayer = null;
-        if(game.teams.size() > 1) {
+        if (game.teams.size() > 1) {
             Team otherTeam = game.teams.get(0) == playerTeam ? game.teams.get(1) : game.teams.get(0);
             for (Player tplayer : otherTeam.players) {
                 if (player.champion.role.equals(tplayer.champion.role)) {
@@ -228,9 +209,8 @@ public class PerformanceActivity extends SnackBarActivity {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(player.champion.ggUrl));
 
                 try {
-                startActivity(browserIntent);
-                }
-                catch(ActivityNotFoundException e) {
+                    startActivity(browserIntent);
+                } catch (ActivityNotFoundException e) {
                     Toast.makeText(PerformanceActivity.this, R.string.unable_to_open_browser, Toast.LENGTH_SHORT).show();
                 }
 
@@ -239,24 +219,21 @@ public class PerformanceActivity extends SnackBarActivity {
         });
 
         // MAIN CHAMPIONS
-        if(player.mainChampions.size() == 0) {
+        if (player.mainChampions.size() == 0) {
             findViewById(R.id.mainsHolder).setVisibility(View.GONE);
-        }
-        else {
+        } else {
             ChampionPortraitView main1 = ((ChampionPortraitView) findViewById(R.id.main1));
             ChampionPortraitView main2 = ((ChampionPortraitView) findViewById(R.id.main2));
             ChampionPortraitView main3 = ((ChampionPortraitView) findViewById(R.id.main3));
 
             main1.setChampion(player.mainChampions.get(0));
-            if(player.mainChampions.size() == 3) {
+            if (player.mainChampions.size() == 3) {
                 main2.setChampion(player.mainChampions.get(1));
                 main3.setChampion(player.mainChampions.get(2));
-            }
-            else if(player.mainChampions.size() == 2) {
+            } else if (player.mainChampions.size() == 2) {
                 main2.setChampion(player.mainChampions.get(1));
                 main3.setVisibility(View.GONE);
-            }
-            else {
+            } else {
                 main2.setVisibility(View.GONE);
                 main3.setVisibility(View.GONE);
             }
@@ -366,7 +343,7 @@ public class PerformanceActivity extends SnackBarActivity {
     }
 
     private void displayPerformance(ArrayList<Match> matches, AggregatedPerformance aggregatedPerformance) {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.VISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.GONE);
         recyclerView.setAdapter(new MatchAdapter(matches));
@@ -375,9 +352,9 @@ public class PerformanceActivity extends SnackBarActivity {
             findViewById(R.id.matchHistoryHolder).setVisibility(View.GONE);
         }
 
-        if(aggregatedPerformance != null && aggregatedPerformance.gamesCount > 10) {
+        if (aggregatedPerformance != null && aggregatedPerformance.gamesCount > 10) {
             findViewById(R.id.aggregate).setVisibility(View.VISIBLE);
-            TextView kdaText= ((TextView) findViewById(R.id.averageKda));
+            TextView kdaText = ((TextView) findViewById(R.id.averageKda));
             kdaText.setText(Html.fromHtml(String.format(getString(R.string.average_kda_template), aggregatedPerformance.kills, aggregatedPerformance.deaths, aggregatedPerformance.assists)));
 
             ((TextView) findViewById(R.id.numberOfGames)).setText(String.format(getString(R.string.over_x_games), aggregatedPerformance.gamesCount));

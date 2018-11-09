@@ -13,8 +13,8 @@ public class Player implements Serializable {
     public Spell spellD;
     public Spell spellF;
 
-    public Rank rank;
-
+    public Rank mainRank;
+    public ArrayList<Rank> allRanks = new ArrayList<>();
     public Boolean teamwardUser;
     public int averageTimeBetweenGames;
 
@@ -30,7 +30,12 @@ public class Player implements Serializable {
 
         this.teamwardUser = player.getBoolean("teamward_user");
 
-        this.rank = new Rank(player.getJSONObject("current_season_rank"), player.getString("last_season_rank"));
+        this.mainRank = new Rank(player.getJSONObject("current_season_rank"), player.getString("last_season_rank"));
+
+        JSONArray allRanksJson = player.getJSONArray("all_ranks");
+        for (int i = 0; i < allRanksJson.length(); i++) {
+            allRanks.add(new Rank(allRanksJson.getJSONObject(i), player.getString("last_season_rank")));
+        }
 
         JSONObject recentGames = player.getJSONObject("recent_games");
         this.averageTimeBetweenGames = recentGames.getInt("average_time_between_games");
@@ -38,7 +43,7 @@ public class Player implements Serializable {
         this.region = region;
 
         JSONArray mainChampionsJson = player.getJSONArray("main_champions");
-        for(int i = 0; i < mainChampionsJson.length(); i++) {
+        for (int i = 0; i < mainChampionsJson.length(); i++) {
             mainChampions.add(new Champion(mainChampionsJson.getJSONObject(i)));
         }
     }

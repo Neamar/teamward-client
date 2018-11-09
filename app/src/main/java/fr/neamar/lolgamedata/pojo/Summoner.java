@@ -10,7 +10,7 @@ public class Summoner implements Serializable {
     public String name;
     public int level;
 
-    public Summoner(JSONObject summoner) throws JSONException {
+    Summoner(JSONObject summoner) throws JSONException {
         id = summoner.getInt("id");
         name = summoner.getString("name");
         level = summoner.getInt("level");

@@ -10,11 +10,16 @@ public class Rank implements Serializable {
     public String division;
     public String queue;
     public String oldTier;
+    public int wins = -1;
+    public int losses = -1;
 
-    public Rank(JSONObject rank, String oldTier) throws JSONException {
+    Rank(JSONObject rank, String oldTier) throws JSONException {
         tier = rank.getString("tier");
         division = rank.getString("division");
         queue = rank.getString("queue");
+
+        wins = rank.optInt("wins", -1);
+        losses = rank.optInt("losses", -1);
 
         this.oldTier = oldTier;
     }

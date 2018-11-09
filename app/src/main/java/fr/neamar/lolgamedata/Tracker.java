@@ -75,7 +75,7 @@ public class Tracker {
                 j.putOpt("champion_mastery", p.champion.mastery);
                 j.putOpt("champion_role", p.champion.role);
 
-                j.putOpt("player_rank", p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
+                j.putOpt("player_rank", p.mainRank.tier.isEmpty() ? p.mainRank.oldTier : p.mainRank.tier);
                 j.putOpt("player_level", p.summoner.level);
                 j.putOpt("player_champion_index", p.champion.championRank);
 
@@ -88,7 +88,7 @@ public class Tracker {
                 if (accountIndex == 0) {
                     // For main user: add data to profile
                     JSONObject jp = new JSONObject();
-                    jp.put("player_rank",  p.rank.tier.isEmpty() ? p.rank.oldTier : p.rank.tier);
+                    jp.put("player_rank",  p.mainRank.tier.isEmpty() ? p.mainRank.oldTier : p.mainRank.tier);
                     jp.put("last_viewed_game", new Date());
                     trackProfile(activity, jp);
                 }
@@ -203,19 +203,19 @@ public class Tracker {
         track(activity, "Click on GG", j);
     }
 
-    static void trackClickOnOpGG(Activity activity, Player player) {
+    public static void trackClickOnAchievements(Activity activity, Player player) {
         JSONObject j = new JSONObject();
         try {
             j.put("region", player.region.toUpperCase(Locale.ROOT));
             j.put("name", player.summoner.name);
             j.put("champion_name", player.champion.name);
             j.put("champion", player.champion.id);
-            j.put("tier", player.rank.tier);
-            j.put("division", player.rank.division);
+            j.put("tier", player.mainRank.tier);
+            j.put("division", player.mainRank.division);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        track(activity, "Click on op.gg", j);
+        track(activity, "Click on ranked stats", j);
     }
 
     static void trackPerformanceViewed(Activity activity, Player player, int matchHistoryLength) {
@@ -225,8 +225,8 @@ public class Tracker {
             j.put("name", player.summoner.name);
             j.put("champion_name", player.champion.name);
             j.put("champion", player.champion.id);
-            j.put("tier", player.rank.tier);
-            j.put("division", player.rank.division);
+            j.put("tier", player.mainRank.tier);
+            j.put("division", player.mainRank.division);
             j.put("match_history_length", matchHistoryLength);
 
         } catch (JSONException e) {

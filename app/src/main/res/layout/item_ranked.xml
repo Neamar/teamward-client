@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="?android:attr/selectableItemBackground"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/rankingTierImage"
+        android:id="@+id/rankedTierImage"
         android:layout_width="@dimen/details_ranked_size"
         android:contentDescription="@string/ranked_tier"
         android:layout_height="@dimen/details_ranked_size"
@@ -21,18 +22,30 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/rankingQueue"
+            android:id="@+id/rankedQueue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ranked_flex_5"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
         <TextView
-            android:id="@+id/rankingText"
+            android:id="@+id/rankedText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/ranking"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/rankedWinrate"
+        android:layout_width="0dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="end"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_margin"
+        android:layout_weight="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:text="@string/s_detailed_winrate" />
+
 </LinearLayout>
