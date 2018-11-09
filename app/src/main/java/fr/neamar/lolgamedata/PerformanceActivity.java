@@ -112,8 +112,13 @@ public class PerformanceActivity extends SnackBarActivity {
         Game game = (Game) getIntent().getSerializableExtra("game");
         player = (Player) getIntent().getSerializableExtra("player");
 
-        // Doing this in two steps, got some crash reports on the Store and trying to understand
-        // what can be Null: player.summoner, or summoner.name.
+        if (player.summoner == null) {
+            finish();
+            return;
+        }
+
+        // Some crash reports on the Store for Android 6,
+        // so we finish if summoner is null
         Summoner summoner = player.summoner;
         // HERO
         setTitle(summoner.name);
@@ -140,11 +145,10 @@ public class PerformanceActivity extends SnackBarActivity {
         }
 
         // RANKED INFORMATION
-        if(player.allRanks.size() > 0) {
+        if (player.allRanks.size() > 0) {
             RecyclerView rankedRecyclerView = findViewById(R.id.rankedRecyclerView);
             rankedRecyclerView.setAdapter(new RankedAdapter(player));
-        }
-        else {
+        } else {
             findViewById(R.id.rankedHolder).setVisibility(View.GONE);
         }
 
