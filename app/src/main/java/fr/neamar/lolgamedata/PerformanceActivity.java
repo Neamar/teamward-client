@@ -120,9 +120,9 @@ public class PerformanceActivity extends SnackBarActivity {
 
         // CHAMPION MASTERY
         View masteryHolder = findViewById(R.id.masteryHolder);
-        ImageView championMasteryImage = (ImageView) findViewById(R.id.championMasteryImage);
-        TextView championMasteryText = (TextView) findViewById(R.id.championMasteryText);
-        TextView championPointsText = (TextView) findViewById(R.id.championPointsText);
+        ImageView championMasteryImage = findViewById(R.id.championMasteryImage);
+        TextView championMasteryText = findViewById(R.id.championMasteryText);
+        TextView championPointsText = findViewById(R.id.championPointsText);
 
         @DrawableRes
         int championMasteryResource = CHAMPION_MASTERIES_RESOURCES[player.champion.mastery];
@@ -140,8 +140,13 @@ public class PerformanceActivity extends SnackBarActivity {
         }
 
         // RANKED INFORMATION
-        RecyclerView rankedRecyclerView = findViewById(R.id.rankedRecyclerView);
-        rankedRecyclerView.setAdapter(new RankedAdapter(player));
+        if(player.allRanks.size() > 0) {
+            RecyclerView rankedRecyclerView = findViewById(R.id.rankedRecyclerView);
+            rankedRecyclerView.setAdapter(new RankedAdapter(player));
+        }
+        else {
+            findViewById(R.id.rankedHolder).setVisibility(View.GONE);
+        }
 
         // LAST SEASON RANKED INFORMATION
         View lastSeasonRankHolder = findViewById(R.id.lastSeasonRankHolder);
