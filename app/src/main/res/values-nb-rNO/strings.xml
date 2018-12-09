@@ -3,7 +3,7 @@
     <string name="title_activity_game">Spilldetaljer</string>
     <string name="blue_team">Blått lag</string>
     <string name="red_team">Rødt lag</string>
-    <string name="unknown_team">" lag"</string>
+    <string name="unknown_team">\? lag</string>
     <string name="summoner_level">nivå %s</string>
     <string name="champion_image">Heltebilde</string>
     <string name="current_ranking_tier">Nåværende rangeringsklasse</string>
@@ -75,4 +75,32 @@
     <string name="ranking_last_season">%1$s</string>
     <string name="unable_to_open_browser">Klarte ikke å åpne nettleser</string>
     <string name="their_team">Deres lag</string>
+    <string name="champion_mastery">Heltmestring</string>
+    <string name="champion_mastery_level">Heltmestringsnivå %d</string>
+    <string name="reload">Last inn på ny</string>
+    <string name="pref_header_counters">Tellere</string>
+
+    <string name="pref_counter_champion_mastery_name">Påkrevd heltmestring</string>
+    <string name="premade_information">Forhåndslaget info</string>
+    <string name="no_smite">Løven sover i natt</string>
+    <string name="tips">Tips</string>
+    <string name="such_ability">Hvilken ferdighetskraft!</string>
+    <string name="much_damage">Stort skadeverk!</string>
+    <string name="no_internet_connection">Sjekk din nettverkstilkobling.</string>
+    <string name="try_harder">strebere</string>
+    <string name="normal_3">Normal 3v3</string>
+    <string name="your_team">Ditt lag</string>
+    <string name="aggregated_data">(%1$s vinstrate%2$s)</string>
+    <string name="often_gets_first_tower">får ofte ned første tårn</string>
+    <string name="multi_kill_machine">multidrapsmaskin</string>
+    <string name="display_level">Alltid vis mesternivå</string>
+    <string name="dialog_remove_account_title">Fjern konto</string>
+    <string name="dialog_remove_account_message">Dette vil fjerne din konto. Ønsker du å fortsette\?</string>
+    <string name="dialog_remove">Fjern</string>
+    <string name="dialog_cancel">Avbryt</string>
+    <string name="remove_hint">(Trykk lenge for å fjerne kontoer)</string>
+    <string name="ability">Ferdighet</string>
+    <string name="champion">Mester</string>
+    <string name="opponent">Motstander</string>
+    <string name="what_is_this">Hva er dette\?</string>
     </resources>
