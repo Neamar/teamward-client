@@ -206,7 +206,7 @@
     <string name="winrate_by_time_disclaimer" formatted="false">  • This graph is an indicator of each team powerspike and late-game scaling.\n  • Graph based on champions, not players\n • A team with late game champions will have a better winrate the longer the game is.\n  • A team made of weak champions in the current meta will likely never be above 50%.\n • Two very strong team compositions can both have an average winrate of more than 50%.</string>
     <string name="arurf">All Random URF</string>
     <string name="one_for_all">One for All</string>
-    <string name="nexus_blitz">One for All</string>
+    <string name="nexus_blitz">Nexus Blitz</string>
     <string name="blind_pick">Blind pick 5v5</string>
     <string name="draft_pick">Draft pick 5v5</string>
     <string name="over_x_games">(%1d known ranked games)</string>
