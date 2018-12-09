@@ -98,8 +98,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:maxLines="1"
-            android:text="@string/stub_ranking_division"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="@string/stub_ranking_division" />
     </LinearLayout>
 
     <TextView

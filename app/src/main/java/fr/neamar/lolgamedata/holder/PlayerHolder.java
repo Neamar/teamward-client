@@ -39,12 +39,14 @@ public class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClic
 
     static {
         Map<String, Integer> map = new HashMap<>();
+        map.put("iron", R.drawable.tier_iron);
         map.put("bronze", R.drawable.tier_bronze);
         map.put("silver", R.drawable.tier_silver);
         map.put("gold", R.drawable.tier_gold);
         map.put("platinum", R.drawable.tier_platinum);
         map.put("diamond", R.drawable.tier_diamond);
         map.put("master", R.drawable.tier_master);
+        map.put("grandmaster", R.drawable.tier_grandmaster);
         map.put("challenger", R.drawable.tier_challenger);
 
         RANKING_TIER_RESOURCES = Collections.unmodifiableMap(map);
