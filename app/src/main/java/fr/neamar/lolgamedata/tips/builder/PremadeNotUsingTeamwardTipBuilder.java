@@ -25,13 +25,13 @@ public class PremadeNotUsingTeamwardTipBuilder extends TipBuilder {
             return tips;
         }
 
-        List<Integer> premade = findPlayerPremade(game, mainPlayer);
+        List<String> premade = findPlayerPremade(game, mainPlayer);
         if (premade == null) {
             return tips;
         }
 
         List<String> playersNotUsingTeamward = new ArrayList<>();
-        for (Integer summonerId : premade) {
+        for (String summonerId : premade) {
             Player player = findPlayerById(game, summonerId);
             if (player != null && !player.teamwardUser && player != mainPlayer) {
                 playersNotUsingTeamward.add(player.summoner.name);
@@ -59,11 +59,11 @@ public class PremadeNotUsingTeamwardTipBuilder extends TipBuilder {
         return tips;
     }
 
-    private List<Integer> findPlayerPremade(Game game, Player player) {
+    private List<String> findPlayerPremade(Game game, Player player) {
         for (Team team : game.teams) {
-            for (List<Integer> premade : team.premades) {
-                for (Integer summonerId : premade) {
-                    if (player.summoner.id == summonerId) {
+            for (List<String> premade : team.premades) {
+                for (String summonerId : premade) {
+                    if (player.summoner.id.equals(summonerId)) {
                         return premade;
                     }
                 }
@@ -73,10 +73,10 @@ public class PremadeNotUsingTeamwardTipBuilder extends TipBuilder {
         return null;
     }
 
-    private Player findPlayerById(Game game, int summonerId) {
+    private Player findPlayerById(Game game, String summonerId) {
         for (Team team : game.teams) {
             for (Player player : team.players) {
-                if (player.summoner.id == summonerId) {
+                if (player.summoner.id.equals(summonerId)) {
                     return player;
                 }
             }

@@ -13,10 +13,10 @@ import java.util.List;
 import fr.neamar.lolgamedata.R;
 
 public class Team implements Serializable {
-    public final List<List<Integer>> premades = new ArrayList<>();
+    public final List<List<String>> premades = new ArrayList<>();
     public final WinrateByGameLength winrateByGameLength;
     public int teamId;
-    public boolean isPlayerOwnTeam;
+    boolean isPlayerOwnTeam;
     public ArrayList<Player> players;
 
     public Team(JSONObject team, String region, boolean useRelativeTeamColor) throws JSONException {
@@ -42,10 +42,10 @@ public class Team implements Serializable {
         if(team.has("premades")) {
             JSONArray premadesJson = team.getJSONArray("premades");
             for (int i = 0; i < premadesJson.length(); i++) {
-                List<Integer> subPremade = new ArrayList<>();
+                List<String> subPremade = new ArrayList<>();
                 JSONArray subPremadeJson = premadesJson.getJSONArray(i);
                 for (int j = 0; j < subPremadeJson.length(); j++) {
-                    subPremade.add(subPremadeJson.getInt(j));
+                    subPremade.add(subPremadeJson.getString(j));
                 }
                 premades.add(subPremade);
             }

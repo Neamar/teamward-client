@@ -29,8 +29,8 @@ public class PremadeTipHolder extends TipHolder {
 
     private PremadeTipHolder(View itemView) {
         super(itemView);
-        redTeamLayout = (LinearLayout) itemView.findViewById(R.id.redTeam);
-        blueTeamLayout = (LinearLayout) itemView.findViewById(R.id.blueTeam);
+        redTeamLayout = itemView.findViewById(R.id.redTeam);
+        blueTeamLayout = itemView.findViewById(R.id.blueTeam);
         disclaimer = itemView.findViewById(R.id.disclaimer);
     }
 
@@ -71,8 +71,8 @@ public class PremadeTipHolder extends TipHolder {
 
         // Clean up old views
         linearLayout.removeAllViews();
-        for (List<Integer> subPremade : team.premades) {
-            for (int summonerId : subPremade) {
+        for (List<String> subPremade : team.premades) {
+            for (String summonerId : subPremade) {
                 Player p = findPlayerById(team, summonerId);
                 if (p == null) {
                     continue;
@@ -100,9 +100,9 @@ public class PremadeTipHolder extends TipHolder {
     }
 
     @Nullable
-    private Player findPlayerById(Team team, long summonerId) {
+    private Player findPlayerById(Team team, String summonerId) {
         for (Player player : team.players) {
-            if (player.summoner.id == summonerId) {
+            if (player.summoner.id.equals(summonerId)) {
                 return player;
             }
         }
