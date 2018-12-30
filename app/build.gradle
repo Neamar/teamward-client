@@ -8,12 +8,12 @@ android {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 94
-        versionName "2.21.1"
+        versionCode 95
+        versionName "2.21.2"
 
         resValue "string", "AMPLITUDE_TOKEN", "9cea7057e49889a741728db2c0f22641"
-        // resValue "string", "API_URL", "https://staging.teamward.xyz"
-        resValue "string", "API_URL", "https://api.teamward.xyz"
+        resValue "string", "API_URL", "https://staging.teamward.xyz"
+        // resValue "string", "API_URL", "https://api.teamward.xyz"
         resValue "string", "app_name", "Team Ward (DEV)"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
