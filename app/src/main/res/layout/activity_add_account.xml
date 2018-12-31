@@ -24,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:spinnerMode="dialog"
+        android:prompt="@string/pick_region"
         android:layout_margin="@dimen/dialog_margin"
         android:entries="@array/regions" />
 
