@@ -239,4 +239,5 @@
     <string name="opponent">Opponent</string>
     <string name="what_is_this">What is this?</string>
     <string name="clash">Clash</string>
+    <string name="pick_region">Pick a Riot region</string>
 </resources>

@@ -26,7 +26,8 @@
         android:resizeableActivity="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="P">
+        tools:targetApi="P"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
