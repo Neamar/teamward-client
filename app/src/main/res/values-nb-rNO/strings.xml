@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources><string name="action_settings">Innstillinger</string>
     <string name="title_activity_game">Spilldetaljer</string>
     <string name="blue_team">Blått lag</string>
@@ -103,4 +103,6 @@
     <string name="champion">Mester</string>
     <string name="opponent">Motstander</string>
     <string name="what_is_this">Hva er dette\?</string>
-    </resources>
+    <string name="title_activity_counter">Finn din motsats!</string>
+    <string name="refresh">Gjenoppfrisk</string>
+</resources>
