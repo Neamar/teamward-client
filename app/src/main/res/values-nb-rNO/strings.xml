@@ -105,4 +105,93 @@
     <string name="what_is_this">Hva er dette\?</string>
     <string name="title_activity_counter">Finn din motsats!</string>
     <string name="refresh">Gjenoppfrisk</string>
+    <string name="summoner_spell_d">Påkallers trolldom D</string>
+    <string name="summoner_spell_f">Påkallers trolldom F</string>
+    <string name="loading_summoner_data">Laster påkallerinfo for %s</string>
+    <string name="summoners_rift">Påkallers rift</string>
+    <string name="proving_grounds">Kyndighetstestplassen</string>
+    <string name="about_text">https://github.com/Neamar/teamward-client
+\n
+\nTeamWard har ikke velsignelse fra Riot Games, og henspeiler på ingen måte Riot Games formaninger, eller noen offisielt involvert i produksjon eller håndtering av Leage of Legends. League of Legends og Riot Games er registrerte varemerker tilhørende Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="rammus_ok">Rammus</string>
+    <string name="first_main">HOVED</string>
+    <string name="second_main">Hoved nr. 2</string>
+    <string name="third_main">Hoved nr. 3</string>
+    <string name="summoner_icon">Påkallersikon</string>
+    <string name="summoner_name">Påkallersnavn</string>
+    <string name="no_flash">Flashfri</string>
+    <string name="no_smite_desc">%s har ingen jungelspiller</string>
+    <string name="full_ap">%s er for det meste AP-helter.</string>
+    <string name="full_ad">%s er for det meste AD-helter.</string>
+    <string name="action_counter">Utvalgsverktøy</string>
+    <string name="double_smite_desc">%s spiller med mer enn én Smite.</string>
+    <string name="double_smite">Dobbel dobbel dyrestil</string>
+    <string name="try_harder_desc">Alle i %1$s spiller en helt med mestring %2$d+</string>
+    <string name="select_champion_playing_against">Velg helten du er i utvalg mot</string>
+    <string name="no_counters">Ikke nok data på %s mot heltene du spiller med :(</string>
+    <string name="expected_matchups">Forventede kampoppsett</string>
+    <string name="matchup_stats_source">(data: http://teamward.xyz)</string>
+    <string name="ap_ad_hint">Hint. Merk deg rammen rundt heltebildet. Rød er AD, lilla er AP.</string>
+    <string name="champion_mastery_lvl">Heltemestring %d</string>
+    <string name="noobs_noobs_everywhere">Førstegangsspiller</string>
+    <string name="is_playing_for_first_time">%1$s spiller %2$s for første gang.</string>
+    <string name="no_data_for_this_champion">Ingen data for denne helten.</string>
+    <string name="not_enough_information">Selv om du spiller %s, mangler det nok data til å anslå om det er et fordelaktig kampoppsett.</string>
+    <string name="kda_template">%1$d / &lt;font color=#FF5252&gt;%2$d&lt;/font&gt; / %3$d</string>
+    <string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
+    <string name="cs_template">Kryp %1$d &lt;font color=#AAAAAA&gt;(%2$,.1f/min)&lt;/font&gt;</string>
+    <string name="main_level_7">%1$s kjenner %2$s ganske godt, vær forsiktig!</string>
+    <string name="otp">Snever utfoldelse</string>
+    <string name="error_adding_account">Feil ved tillegg av konto. Dobbeltsjekk ditt navn og region.
+\nDu må bruke ditt påkallingsnavn (offentlig navn, synlig for dine venner), ikke ditt brukernavn (privat navn, brukt til innlogging i klienten).</string>
+    <string name="aram">ARAM</string>
+    <string name="normal">Normal 5v5</string>
+    <string name="ranked_solo_5">Rangert enkel/dobbel</string>
+    <string name="ranked_flex_5">Fleksibel 5v5</string>
+    <string name="ranked_flex_3">Fleksibel 3v3</string>
+    <string name="teambuilder_ranked">Lagbygger rangert</string>
+    <string name="recent_matches">Nylige kamper med %1$s</string>
+    <string name="ability_passive">Passiv</string>
+    <string name="s_is_not_using_teamward">%s spiller med deg, men bruker ikke TeamWard. Trist.</string>
+    <string name="s_are_not_using_teamward">%s bruker ikke TeamWard. Det er til å grine av.</string>
+    <string name="standard_separator">,</string>
+    <string name="patch_s">(data: feilrettingssett %1$s)</string>
+    <string name="s_winrate">%s vinstrate</string>
+    <string name="s_detailed_winrate">%1$d spill
+\n%2$.2f%% vinstrate</string>
+    <string name="spells">Trollkunster</string>
+    <string name="champion_gg">champion.gg</string>
+    <string name="winrate_by_game_length">Vinstrate etter spilllengde</string>
+    <string name="relative_team_colors_summary">Alltid se deg selv på blått lag</string>
+    <string name="relative_team_colors">Skru på relativ lagfarge</string>
+    <string name="hardcore_gamer">Dedikert spiller.</string>
+    <string name="hardcore_gamer_description">%s har spilt mer enn 10 spill det siste døgnet.</string>
+    <string name="filthy_casual_description">%s spiller mindre enn ett spill i uka. Udedikert.</string>
+    <string name="filthy_casual">Udedikert opptreden…</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• Denne grafen er en indikator for hvert lags evnetopp og skalering inn i spillets senere deler.
+\n• Graf basert på helter, ikke spillere
+\n• Et lag med tungrodde helter har bedre vinstrate desto lenger spillet varer.
+\n• Et spill med svake helter i nåværende meta vil antagelig aldri være over 50%.
+\n• To veldig sterke lagoppsett kan begge ha en gjennomsnittlig vinstrate på mer enn 50%.</string>
+    <string name="arurf">Alle tilfeldig URF</string>
+    <string name="one_for_all">Én for alle</string>
+    <string name="nexus_blitz">Nexus blitz</string>
+    <string name="blind_pick">Blindt valg 5v5</string>
+    <string name="draft_pick">Annenhvers utvalg 5v5</string>
+    <string name="over_x_games">(%1d kjente poenggivende spill)</string>
+    <string name="good_farmer">god jordbruker</string>
+    <string name="exceptional_farmer">framragende jordbruker</string>
+    <string name="exceptional_laner">framragende kjørefeltsfase</string>
+    <string name="good_laner">god kjørefeltshelt</string>
+    <string name="often_gets_first_blood">begår ofte åpningsdrapet</string>
+    <string name="display_level_summary">Vis heltenivå selv når spilleren er i rangeringen</string>
+    <string name="overcharge">Overladning</string>
+    <string name="channel_in_game_notifications">Påkaller i spillmerknader</string>
+    <string name="champion_splash_art">Heltevelkomstbilde</string>
+    <string name="ranked_tier">Rangert nivå</string>
+    <string name="counter_champion">Motsvarshelt</string>
+    <string name="item">Objekt</string>
+    <string name="ward">Varde</string>
+    <string name="clash">Sammenstøt</string>
+    <string name="pick_region">Velg en Riot-region</string>
 </resources>
