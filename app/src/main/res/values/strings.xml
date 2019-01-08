@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">Settings</string>
     <string name="title_activity_game">Game details</string>
@@ -203,7 +204,11 @@
     <string name="filthy_casual">Filthy casual…</string>
     <string name="your_team">Your team</string>
     <string name="their_team">Their team</string>
-    <string name="winrate_by_time_disclaimer" formatted="false">  • This graph is an indicator of each team powerspike and late-game scaling.\n  • Graph based on champions, not players\n • A team with late game champions will have a better winrate the longer the game is.\n  • A team made of weak champions in the current meta will likely never be above 50%.\n • Two very strong team compositions can both have an average winrate of more than 50%.</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• This graph is an indicator of each team\'s powerspike and late-game scaling.
+\n• Graph based on champions, not players.
+\n• A team with late game champions will better their winrate the longer the game lasts.
+\n• A team makeup of weak champions in the current meta will likely never be above 50%.
+\n• Two very strong team compositions can both average a winrate of more than 50%.</string>
     <string name="arurf">All Random URF</string>
     <string name="one_for_all">One for All</string>
     <string name="nexus_blitz">Nexus Blitz</string>
