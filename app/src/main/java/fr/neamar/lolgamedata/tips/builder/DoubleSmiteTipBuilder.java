@@ -13,7 +13,7 @@ import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
 public class DoubleSmiteTipBuilder extends TipBuilder {
-    private static final String SMITE_URL = "http://ddragon.leagueoflegends.com/cdn/6.14.2/img/spell/SummonerSmite.png";
+    private static final String SMITE_URL = "http://ddragon.leagueoflegends.com/cdn/9.1.1/img/spell/SummonerSmite.png";
 
     @Override
     public ArrayList<Tip> getTips(Game game, Context context) {
