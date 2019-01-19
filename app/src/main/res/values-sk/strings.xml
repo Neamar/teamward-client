@@ -86,7 +86,7 @@
     <string name="default_tab">Domov</string>
     <string name="matchup_stub">50%</string>
     <string name="expected_matchups">Predpokladané šance</string>
-    <string name="matchup_stats_source">(údaje: http://teamward.xyz)</string>
+    <string name="matchup_stats_source">(údaje: https://teamward.xyz)</string>
     <string name="gg">GG</string>
     <string name="welcome_to">Vitajte v %s!</string>
     <string name="player_is_in_game">%s je v hre. Kliknite pre viac informácií</string>

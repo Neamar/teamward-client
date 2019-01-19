@@ -80,7 +80,7 @@
     <string name="pref_title_new_game_notifications">Powiadomienia o nowej grze</string>
     <string name="default_tab">Zakładka domyślna</string>
     <string name="matchup_stub">50%</string>
-    <string name="matchup_stats_source">(dane: http://teamward.xyz)</string>
+    <string name="matchup_stats_source">(dane: https://teamward.xyz)</string>
     <string name="gg">GG</string>
     <string name="welcome_to">Witamy w %s!</string>
     <string name="player_is_in_game">%s jest w grze. Dotknij, aby uzyskać informacje</string>

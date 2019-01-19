@@ -130,7 +130,7 @@
     <string name="select_champion_playing_against">Velg helten du er i utvalg mot</string>
     <string name="no_counters">Ikke nok data på %s mot heltene du spiller med :(</string>
     <string name="expected_matchups">Forventede kampoppsett</string>
-    <string name="matchup_stats_source">(data: http://teamward.xyz)</string>
+    <string name="matchup_stats_source">(data: https://teamward.xyz)</string>
     <string name="ap_ad_hint">Hint. Merk deg rammen rundt heltebildet. Rød er AD, lilla er AP.</string>
     <string name="champion_mastery_lvl">Heltemestring %d</string>
     <string name="noobs_noobs_everywhere">Førstegangsspiller</string>

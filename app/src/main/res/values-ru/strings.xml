@@ -87,7 +87,7 @@
     <string name="default_tab">Вкладка по умолчанию</string>
     <string name="matchup_stub">50%</string>
     <string name="expected_matchups">Матчапы</string>
-    <string name="matchup_stats_source">(Источник: http://teamward.xyz)</string>
+    <string name="matchup_stats_source">(Источник: https://teamward.xyz)</string>
     <string name="gg">ГГ</string>
     <string name="welcome_to">Добро пожаловать в %s!</string>
     <string name="player_is_in_game">%s в игре. Нажмите для подробной информации</string>

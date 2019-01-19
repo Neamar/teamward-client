@@ -134,7 +134,7 @@
     <string name="default_tab">Default tab</string>
     <string name="matchup_stub">50%</string>
     <string name="expected_matchups">Expected matchups</string>
-    <string name="matchup_stats_source">(data: http://teamward.xyz)</string>
+    <string name="matchup_stats_source">(data: https://teamward.xyz)</string>
     <string name="gg">GG</string>
     <string name="welcome_to">Welcome to %s!</string>
     <string name="player_is_in_game">%s is in game. Touch for information</string>
