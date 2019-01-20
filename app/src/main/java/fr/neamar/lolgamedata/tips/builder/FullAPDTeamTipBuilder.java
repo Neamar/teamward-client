@@ -12,8 +12,8 @@ import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.Tip;
 
 public class FullAPDTeamTipBuilder extends TipBuilder {
-    private static final String MAGIC_MANTLE_URL = "http://ddragon.leagueoflegends.com/cdn/6.14.2/img/item/1033.png";
-    private static final String CLOTH_ARMOR = "http://ddragon.leagueoflegends.com/cdn/6.14.2/img/item/1029.png";
+    private static final String MAGIC_MANTLE_URL = "https://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/1033.png";
+    private static final String CLOTH_ARMOR = "https://ddragon.leagueoflegends.com/cdn/9.1.1/img/item/1029.png";
 
     @Override
     public ArrayList<Tip> getTips(Game game, Context context) {
