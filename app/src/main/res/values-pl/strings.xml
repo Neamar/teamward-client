@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources><string name="action_settings">Ustawienia</string>
     <string name="title_activity_game">Szczegóły gry</string>
     <string name="blue_team">Niebieska drużyna</string>
@@ -146,7 +146,7 @@
 \n • Drużyna stworzona ze słabych postaci w aktualnej mecie raczej nigdy nie będzie mieć ponad 50%.
 \n • Dwie bardzo silne kompozycje mogą mieć średnie winratio ponad 50%.</string>
     <string name="arurf">ARURF</string>
-    <string name="blind_pick">Normalna 5v5</string>
+    <string name="blind_pick">Normalna w ciemno 5v5</string>
     <string name="draft_pick">Draft 5v5</string>
     <string name="over_x_games">(%1d znanych gier rankingowych)</string>
     <string name="aggregated_data">(%1$s winratio%2$s)</string>
@@ -188,5 +188,9 @@
     <string name="champion_gg">champion.gg</string>
     <string name="ranking_last_season">%1$s</string>
     <string name="one_for_all">Jeden za wszystkich</string>
-    <string name="nexus_blitz">Jeden za wszystkich</string>
-    </resources>
+    <string name="nexus_blitz">Nexus Blitz</string>
+    <string name="s_detailed_winrate">%1$d gier
+\n%2$.2f%% współczynnik wygranych</string>
+    <string name="clash">Clash</string>
+    <string name="pick_region">Wybierz region</string>
+</resources>
