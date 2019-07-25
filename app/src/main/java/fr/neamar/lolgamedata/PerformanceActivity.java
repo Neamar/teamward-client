@@ -68,6 +68,7 @@ public class PerformanceActivity extends SnackBarActivity {
         queueNames.put("RANKED_SOLO_5x5", R.string.ranked_solo_5);
         queueNames.put("TEAM_BUILDER_RANKED_SOLO", R.string.ranked_solo_5);
         queueNames.put("RANKED_FLEX_SR", R.string.ranked_flex_5);
+        queueNames.put("RANKED_TFT", R.string.ranked_tft);
         queueNames.put("RANKED_FLEX_TT", R.string.ranked_flex_3);
         queueNames.put("TEAM_BUILDER_DRAFT_RANKED_5x5", R.string.teambuilder_ranked);
 
