@@ -11,8 +11,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -25,9 +26,36 @@ import fr.neamar.lolgamedata.Tracker;
 import fr.neamar.lolgamedata.pojo.Account;
 
 public class NotificationService extends FirebaseMessagingService {
+    private static final String TOKEN_UPDATE_REQUIRED = "tokenUpdateRequired";
 
     private static final String TAG = "NotificationService";
     private static final String CHANNEL_ID = "gameNotification";
+
+    @Override
+    public void onNewToken(String refreshedToken) {
+        super.onNewToken(refreshedToken);
+        // Get updated InstanceID token.
+        Log.d(TAG, "Refreshed token: " + refreshedToken);
+
+        try {
+            // Resync with server
+            Intent intent = new Intent(this, SyncTokenService.class);
+            this.startService(intent);
+        } catch (IllegalStateException e) {
+            // This will happen when the token changes remotely, but the app isn't in the foreground yet.
+            PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean(TOKEN_UPDATE_REQUIRED, true).apply();
+        }
+    }
+
+    public static boolean tokenUpdateRequired(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        if (prefs.contains(TOKEN_UPDATE_REQUIRED)) {
+            prefs.edit().remove(TOKEN_UPDATE_REQUIRED).apply();
+            return true;
+        }
+
+        return false;
+    }
 
     /**
      * Called when message is received.
@@ -104,8 +132,7 @@ public class NotificationService extends FirebaseMessagingService {
 
                 if (prefs.getLong("last_viewed_game", -1) == gameId) {
                     Log.i(TAG, "Skipping notification display, game is already on screen.");
-                }
-                else {
+                } else {
                     notificationManager.notify(Long.toString(gameId).hashCode(), notificationBuilder.build());
                 }
 

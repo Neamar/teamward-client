@@ -1,7 +1,7 @@
 package fr.neamar.lolgamedata.tips.builder;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 

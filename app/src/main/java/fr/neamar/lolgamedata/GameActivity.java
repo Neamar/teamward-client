@@ -11,14 +11,14 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import com.google.android.material.tabs.TabLayout;
+import androidx.core.view.GravityCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,8 +48,8 @@ import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
 import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
+import fr.neamar.lolgamedata.service.NotificationService;
 import fr.neamar.lolgamedata.service.SyncTokenService;
-import fr.neamar.lolgamedata.service.TokenRefreshedService;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class GameActivity extends SnackBarActivity {
@@ -173,7 +173,7 @@ public class GameActivity extends SnackBarActivity {
             loadCurrentGame(account.summonerName, account.region);
         }
 
-        if (TokenRefreshedService.tokenUpdateRequired(this)) {
+        if (NotificationService.tokenUpdateRequired(this)) {
             Log.i(TAG, "Syncing FCM token with server");
             // Resync token with server
             Intent intent = new Intent(this, SyncTokenService.class);
