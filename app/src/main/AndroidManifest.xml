@@ -47,15 +47,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.NotificationService">
+        <service android:name=".service.NotificationService" android:stopWithTask="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
-        <service android:name=".service.TokenRefreshedService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service

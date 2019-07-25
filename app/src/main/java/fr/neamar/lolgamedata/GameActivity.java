@@ -48,8 +48,8 @@ import fr.neamar.lolgamedata.adapter.SectionsPagerAdapter;
 import fr.neamar.lolgamedata.network.VolleyQueue;
 import fr.neamar.lolgamedata.pojo.Account;
 import fr.neamar.lolgamedata.pojo.Game;
+import fr.neamar.lolgamedata.service.NotificationService;
 import fr.neamar.lolgamedata.service.SyncTokenService;
-import fr.neamar.lolgamedata.service.TokenRefreshedService;
 import fr.neamar.lolgamedata.volley.NoCacheRetryJsonRequest;
 
 public class GameActivity extends SnackBarActivity {
@@ -173,7 +173,7 @@ public class GameActivity extends SnackBarActivity {
             loadCurrentGame(account.summonerName, account.region);
         }
 
-        if (TokenRefreshedService.tokenUpdateRequired(this)) {
+        if (NotificationService.tokenUpdateRequired(this)) {
             Log.i(TAG, "Syncing FCM token with server");
             // Resync token with server
             Intent intent = new Intent(this, SyncTokenService.class);
