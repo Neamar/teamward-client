@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><string name="action_settings">Innstillinger</string>
+<resources>
+    <string name="action_settings">Innstillinger</string>
     <string name="title_activity_game">Spilldetaljer</string>
     <string name="blue_team">Blått lag</string>
     <string name="red_team">Rødt lag</string>
@@ -17,23 +18,17 @@
 \nfor å komme i gang.</string>
     <string name="action_about">Om</string>
     <string name="add_account">Legg til konto</string>
-
     <string name="title_activity_add_account">Legg til ny konto</string>
     <string name="s_is_not_in_game_right_now">%s er ikke i spillet nå.</string>
-
     <string name="account_removed">Konto fjernet.</string>
     <string name="stale_data">Fastlåst data?</string>
     <string name="data_only_on_loading_screen">TeamWard kan bare hente data når du er på spillastingsskjermen.</string>
     <string name="in_lobby_wait_then_refresh">Hvis du fremdeles er i lobbyen, vent og trykk gjenoppfrisk.</string>
     <string name="title_activity_settings">Innstillinger</string>
-
     <string name="pref_header_general">Spilldata</string>
-
     <string name="pref_header_notifications">Merknader</string>
-
     <string name="pref_title_ringtone">Ringetone</string>
     <string name="pref_ringtone_silent">Stille</string>
-
     <string name="pref_title_vibrate">Vibrer</string>
     <string name="may_be_inaccurate">(kan være unøyaktig)</string>
     <string name="s_has_no_flash">%1$s bruker %2$s og %3$s.</string>
@@ -79,7 +74,6 @@
     <string name="champion_mastery_level">Heltmestringsnivå %d</string>
     <string name="reload">Last inn på ny</string>
     <string name="pref_header_counters">Tellere</string>
-
     <string name="pref_counter_champion_mastery_name">Påkrevd heltmestring</string>
     <string name="premade_information">Forhåndslaget info</string>
     <string name="no_smite">Løven sover i natt</string>
@@ -194,4 +188,5 @@
     <string name="ward">Varde</string>
     <string name="clash">Sammenstøt</string>
     <string name="pick_region">Velg en Riot-region</string>
+    <string name="ranked_tft">Rangert lagkamptaktikk (TFT)</string>
 </resources>
