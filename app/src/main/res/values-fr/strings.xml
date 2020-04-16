@@ -206,5 +206,5 @@
     <string name="ability">Capacité</string>
     <string name="one_for_all">Tous pour un</string>
     <string name="s_detailed_winrate">%1$d parties
-\nTaux de victoire : %2$,2f% %</string>
+\n%2$,2f% % chances de victoire</string>
 </resources>
