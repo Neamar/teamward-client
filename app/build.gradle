@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "fr.neamar.lolgamedata"
         minSdkVersion 16
-        targetSdkVersion 28
-        versionCode 99
-        versionName "2.21.6"
+        targetSdkVersion 29
+        versionCode 100
+        versionName "2.21.7"
 
         resValue "string", "AMPLITUDE_TOKEN", "9cea7057e49889a741728db2c0f22641"
         // resValue "string", "API_URL", "https://staging.teamward.xyz"
@@ -47,8 +47,8 @@ dependencies {
     // Support old Android, push notifications and cardviews
     implementation "com.google.firebase:firebase-messaging:19.0.1"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
     // HTTP request
