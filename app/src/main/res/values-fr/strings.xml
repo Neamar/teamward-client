@@ -205,6 +205,5 @@
     <string name="what_is_this">Qu\'est-ce que c\'est \?</string>
     <string name="ability">Capacité</string>
     <string name="one_for_all">Tous pour un</string>
-    <string name="s_detailed_winrate">%1$d parties
-\n%2$,2f% % chances de victoire</string>
+    <string name="s_detailed_winrate">%1$d parties\n%2$.2f%% taux de victoire</string>
 </resources>
