@@ -36,6 +36,7 @@
         android:layout_alignParentTop="true"
         android:text="@string/select_champion_playing_against"
         android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:gravity="center_horizontal" />
 
 </RelativeLayout>
