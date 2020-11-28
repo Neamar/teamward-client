@@ -1,9 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="action_settings">Настройки</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Настройки</string>
     <string name="title_activity_game">Информация об игре</string>
     <string name="blue_team">Синяя команда</string>
     <string name="red_team">Красная команда</string>
-    <string name="unknown_team">" команда"</string>
+    <string name="unknown_team">\? команда</string>
     <string name="summoner_level">уровень %s</string>
     <string name="champion_image">Изображение чемпиона</string>
     <string name="summoner_spell_d">Заклинание призывателя D</string>
@@ -34,27 +35,20 @@
     <string name="summoner_icon">Иконка призывателя</string>
     <string name="summoner_name">Имя призывателя</string>
     <string name="add_account">Добавить аккаунт</string>
-
     <string name="title_activity_add_account">Добавить новый аккаунт</string>
     <string name="s_is_not_in_game_right_now">%s сейчас не в игре!</string>
-
     <string name="account_removed">Аккаунт удален.</string>
     <string name="reload">Обновить</string>
     <string name="stale_data">Устаревшие данные?</string>
     <string name="data_only_on_loading_screen">TeamWard получает данные только когда вы на загрузочном экране.</string>
     <string name="in_lobby_wait_then_refresh">Если вы еще в лобби, подождите и нажмите обновить.</string>
     <string name="title_activity_settings">Настройки</string>
-
     <string name="pref_header_general">Отображение</string>
-
     <string name="pref_header_counters">Контр пики</string>
-
     <string name="pref_counter_champion_mastery_name">Требуемое мастерство чемпиона</string>
     <string name="pref_header_notifications">Уведомления</string>
-
     <string name="pref_title_ringtone">Рингтон</string>
     <string name="pref_ringtone_silent">Без звука</string>
-
     <string name="pref_title_vibrate">Вибрация</string>
     <string name="may_be_inaccurate">(данные могут быть не точными)</string>
     <string name="premade_information">Информация о премейдах</string>
@@ -160,7 +154,7 @@
     <string name="arurf">АУРФ</string>
     <string name="blind_pick">Выбор вслепую 5x5</string>
     <string name="draft_pick">Режим выбора 5x5</string>
-<string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
+    <string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
     <string name="over_x_games">(%1d ранговых игр)</string>
     <string name="aggregated_data">(%1$s процент побед %2$s)</string>
     <string name="good_farmer">хорошо фармит</string>
@@ -170,7 +164,7 @@
     <string name="often_gets_first_blood">часто забирает первую кровь</string>
     <string name="often_gets_first_tower">часто забирает первую вышку</string>
     <string name="multi_kill_machine">машина убийств</string>
-<string name="display_level">Всегда показывать уровень аккаунтов</string>
+    <string name="display_level">Всегда показывать уровень аккаунтов</string>
     <string name="display_level_summary">Показывать уровень аккаунта даже если у него есть ранг</string>
     <string name="overcharge">Перегрузка</string>
     <string name="dialog_remove_account_title">Удаление аккаунта</string>
