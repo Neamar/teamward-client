@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">Configurações</string>
     <string name="title_activity_game">Detalhes do jogo</string>
@@ -15,7 +15,7 @@
     <string name="loading_game_data">Carregando dados de jogo para %s</string>
     <string name="loading_summoner_data">Carregando informações de invocador para %s</string>
     <string name="summoners_rift">Summoner\'s Rift</string>
-    <string name="proving_grounds">The proving grounds</string>
+    <string name="proving_grounds">O campo de provas</string>
     <string name="twisted_treeline">Twisted Treeline</string>
     <string name="crystal_scar">The Crystal Scar</string>
     <string name="howling_abyss">Howling Abyss</string>
@@ -31,7 +31,6 @@
     <string name="summoner_icon">Ícone de invocador</string>
     <string name="summoner_name">Nome de invocador</string>
     <string name="add_account">Adicionar conta</string>
-
     <string-array name="regions">
         <item>EUW [EU Ocidental]</item>
         <item>BR [Brasil]</item>
@@ -47,24 +46,19 @@
     </string-array>
     <string name="title_activity_add_account">Adicionar nova conta</string>
     <string name="s_is_not_in_game_right_now">%s não está em jogo agora!</string>
-
     <string name="account_removed">Conta removida.</string>
     <string name="reload">Recarregar</string>
     <string name="stale_data">Dados obsoletos?</string>
     <string name="data_only_on_loading_screen">TeamWard apenas consegue dados uma vez que você está ou já passou pela tela de carregamento do jogo.</string>
     <string name="in_lobby_wait_then_refresh">Se ainda está na seleção de campeões, espere e depois recarregue.</string>
     <string name="title_activity_settings">Configurações</string>
-
     <string name="pref_header_general">Dados do jogo</string>
-
     <string-array name="pref_game_data_tabs_titles">
         <item>Meu time</item>
         <item>Time inimigo</item>
         <item>Dicas</item>
     </string-array>
-
     <string name="pref_header_counters">Counters</string>
-
     <string name="pref_counter_champion_mastery_name">Maestria de campeão exigida</string>
     <string-array name="pref_counter_champion_mastery_titles">
         <item>Jogado com o campeão pelo menos uma vez</item>
@@ -76,12 +70,9 @@
         <item>Maestria de campeão 6+</item>
         <item>Maestria de campeão 7 apenas</item>
     </string-array>
-
     <string name="pref_header_notifications">Notificações</string>
-
     <string name="pref_title_ringtone">Ringtone</string>
     <string name="pref_ringtone_silent">Silencioso</string>
-
     <string name="pref_title_vibrate">Vibração</string>
     <string name="may_be_inaccurate">(pode ser impreciso)</string>
     <string name="premade_information">Informação de premade</string>
@@ -130,14 +121,15 @@
     <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s conhece %2$s bem, tome cuidado!</string>
     <string name="otp">É espertinho</string>
-    <string name="error_adding_account">Erro ao adicionar conta. Por favor, cheque novamente seu nome de invocador e região!</string>
+    <string name="error_adding_account">Erro ao adicionar conta. Por favor, cheque novamente seu nome e região!
+\nVocê precisa usar seu nome de invocador (nome público, visível por seus amigos) e não seu nome de usuário (nome privado, usado para entrar no cliente)</string>
     <string name="aram">ARAM</string>
     <string name="normal">Normal</string>
     <string name="normal_3">Normal 3v3</string>
     <string name="ranked_solo_5">Ranqueada Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>
-    <string name="teambuilder_ranked">Teambuilder ranked</string>
+    <string name="teambuilder_ranked">Teambuilder ranqueado</string>
     <string name="unknown_queue">Fila desconhecida</string>
     <string name="recent_matches">Partidas recentes com %1$s</string>
     <string name="champion_points">%1$s pontos</string>
@@ -159,12 +151,12 @@
     <string name="teamward_user">Um usuário TeamWard!</string>
     <string name="hope_he_wins">Eu espero que ele ganhe este jogo.</string>
     <string name="not_using_teamward">Vergonha! Vergonha!</string>
-    <string name="s_is_not_using_teamward">%s está jogando com você, mas não está usando TeamWard. Triste :(</string>
-    <string name="s_are_not_using_teamward">%s não está usando TeamWard. Badfeels man</string>
+    <string name="s_is_not_using_teamward">%s está jogando com você, mas não está usando TeamWard. estou triste.</string>
+    <string name="s_are_not_using_teamward">%s não está usando TeamWard. Isso me faz chorar.</string>
     <string name="standard_separator">,</string>
     <string name="final_separator">e</string>
     <string name="patch_s">(Dados: patch %1$s)</string>
-    <string name="s_winrate">%s winrate</string>
+    <string name="s_winrate">%s taxa de vitória</string>
     <string name="champion_gg">champion.gg</string>
     <string name="spells">Feitiços</string>
     <string name="last_season_rank">Última season</string>
@@ -179,8 +171,47 @@
     <string name="filthy_casual">Casualsinho…</string>
     <string name="their_team">Time deles</string>
     <string name="your_team">Seu time</string>
-    <string name="winrate_by_time_disclaimer" formatted="false">	• Gráfico baseado em campeões, não em jogadores\n	• O time que tiver campeões late game irão ter melhor winrate quanto mais longo for o jogo.\n	• Um time feito de campeões fracos no meta atual básicamente nunca estará acima de 50%.\n	• Duas composições de times fortes podem ter uma média de winrate maior que 50%.\n	• Este gráfico é um indicador de escalamento de cada powerspike e late-game.</string>
-    <string name="blind_pick">Blind pick 5v5</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• Este gráfico é um indicador do aumento de potência de cada equipe e do escalonamento no final do jogo.
+\n• Gráfico baseado em campeões, não em jogadores.
+\n• Uma equipe com campeões no final do jogo melhorará sua taxa de vitória quanto mais tempo o jogo durar.
+\n• Uma composição de equipe de campeões fracos no meta atual provavelmente nunca estará acima de 50%.
+\n• Duas composições de equipe muito fortes podem ter uma média de taxa de vitória de mais de 50%.</string>
+    <string name="blind_pick">Escolha às cegas 5v5</string>
     <string name="draft_pick">Escolha alternada 5v5</string>
-    <string name="arurf">All Random URF</string>
+    <string name="arurf">Todos aleatórios URF</string>
+    <string name="ranked_tft">Ranqueado TFT</string>
+    <string name="pick_region">Escolha uma região da Riot</string>
+    <string name="clash">Clash</string>
+    <string name="what_is_this">O que é isso\?</string>
+    <string name="opponent">Oponente</string>
+    <string name="champion">Campeão</string>
+    <string name="ward">Ward</string>
+    <string name="item">Item</string>
+    <string name="counter_champion">Counter do campeão</string>
+    <string name="ability">Abilidade</string>
+    <string name="ranked_tier">Tier ranqueado</string>
+    <string name="champion_splash_art">splash art do campeão</string>
+    <string name="channel_in_game_notifications">Notificações de invocador no jogo</string>
+    <string name="remove_hint">(Pressione e segure para remover contas)</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="dialog_remove">Remover</string>
+    <string name="dialog_remove_account_message">Isso removerá sua conta. Você deseja continuar\?</string>
+    <string name="dialog_remove_account_title">Remover conta</string>
+    <string name="overcharge">Sobrecarga</string>
+    <string name="display_level_summary">Exibir o nível do campeão mesmo quando o jogador for ranqueado</string>
+    <string name="display_level">Sempre exibir o nível de campeão</string>
+    <string name="multi_kill_machine">máquina de multi kill</string>
+    <string name="often_gets_first_tower">frequentemente fica com a primeira torre</string>
+    <string name="often_gets_first_blood">frequentemente obtém a primeira kill</string>
+    <string name="good_laner">bom de rota</string>
+    <string name="exceptional_laner">fase de rota excepcional</string>
+    <string name="exceptional_farmer">excepcional farmer</string>
+    <string name="good_farmer">bom farmer</string>
+    <string name="aggregated_data">(%1$s taxa de vitória%2$s)</string>
+    <string name="over_x_games">(%1d jogos ranqueados conhecidos)</string>
+    <string name="nexus_blitz">Blitz do Nexus</string>
+    <string name="one_for_all">Todos Por Um</string>
+    <string name="s_detailed_winrate">%1$d jogos
+\n%2$.2f%% taxa de vitória</string>
+    <string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
 </resources>
