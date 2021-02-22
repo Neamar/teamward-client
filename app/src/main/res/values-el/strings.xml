@@ -1,2 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="draft_pick">Draft 5x5</string>
+    <string name="clash">Clash</string>
+    <string name="ranked_flex_3">Ευέλικτη ουρά 3x3</string>
+    <string name="ranked_flex_5">Ευέλικτη ουρά 5x5</string>
+    <string name="champion_splash_art">Splash art του ήρωα</string>
+    <string name="champion_mastery">Εξειδίκευση ήρωα</string>
+    <string name="champion_mastery_level">Επίπεδο εξειδίκευση ήρωα %d</string>
+    <string name="pref_counter_champion_mastery_name">Απαιτούμενη εξειδίκευση ήρωα</string>
+    <string name="try_harder_desc">Όλοι στο %1$s παίζουν έναν ήρωα με εξειδίκευση %2$d+</string>
+    <string name="champion_mastery_lvl">Εξειδίκευση ήρωα %d</string>
+    <string name="ward">Μάτι</string>
+    <string name="display_level_summary">Εμφάνιση επιπέδου του ήρωα ακόμη κι όταν ο ήρωας έχει καταταχθεί</string>
+    <string name="blind_pick">Τυφλή επιλογή 5x5</string>
+    <string name="butchers_bridge">Γέφυρα της Σφαγής</string>
+    <string name="love_the_app">Το TeamWard είναι δωρεάν και χωρίς διαφημίσεις! Αν σου αρέσει, παρακαλώ αξιολόγησέ το στο Play Store :)</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• Αυτό το γράφημα είναι ένας δείκτης της κλίμακας powerspike και της κλίμακας της τελευταίας φάσης του παιχνιδιού κάθε ομάδας.
+\n• Γράφημα βασιζόμενο σε ήρωες, όχι σε παίκτες.
+\n• Μια ομάδα με ήρωες της τελευταίας φάσης του παιχνιδιού θα βελτιώσει το ποσοστό νικών όσο περισσότερο διαρκέσει το παιχνίδι.
+\n• Η ομάδα των αδύναμων ηρώων, στο τρέχον meta, πιθανότατα δεν θα είναι ποτέ άνω του 50%.
+\n• Δύο πολύ δυνατές ομαδικές συνθέσεις μπορούν να φτάσουν, κατά μέσο όρο, ένα ποσοστό νικών κατά πολύ άνω του 50%.</string>
+    <string name="select_champion_playing_against">Επίλεξε τον αντίπαλο ήρωα</string>
+    <string name="try_harder">αγωνιστές</string>
+    <string name="proving_grounds">Οι τόποι δοκιμής</string>
+    <string name="ranked_tft">Κατατάχθηκε TFT</string>
+    <string name="pick_region">Διάλεξε μια περιοχή Riot</string>
+    <string name="ranked_tier">Βαθμίδα κατάταξης</string>
+    <string name="channel_in_game_notifications">Επικαλεστής στις Ειδοποίησεις παιχνιδιού</string>
+    <string name="aggregated_data">(%1$s ποσοστό νικών%2$s)</string>
+    <string name="winrate_by_game_length">Ποσοστό νικών ανά μήκος παιχνιδιού</string>
+    <string name="last_season_rank">Τελευταία σεζόν</string>
+    <string name="s_detailed_winrate">%1$d παιχνίδια
+\n%2$.2f%% ποσοστό νικών</string>
+    <string name="s_winrate">%s ποσοστό νικών</string>
+    <string name="patch_s">(data: patch %1$s)</string>
+    <string name="expected_matchups">Αναμενόμενες αντιστοιχίσεις</string>
+    <string name="bad_counters">Οι κακοί σου %s μετρητές</string>
+    <string name="good_counters">Οι καλοί σου %s μετρητές</string>
+    <string name="double_smite_desc">%s παίζει με πάνω από ένα Πλήγμα!</string>
+    <string name="no_smite_desc">%s δεν έχει κανέναν ήρωα ζούγκλας</string>
+    <string name="normal_3">Κανονικό 3x3</string>
+    <string name="normal">Κανονικό 5x5</string>
+    <string name="twisted_treeline">Το Δάσος της Σύγχυσης</string>
+    <string name="summoners_rift">Φαράγγι του Επικαλεστή</string>
+    <string name="error_adding_account">Σφάλμα κατά την καταχώριση λογαριασμού. Παρακαλώ έλεγξε προσεκτικά το όνομα και την περιοχή σου.
+\nΠρέπει να χρησιμοποιήσεις το όνομα επικαλεστή σου (δημόσιο όνομα, ορατό από τους φίλους σου) κι όχι το ψευδώνυμό σου (ιδιωτικό όνομα, χρησιμοποιούμενο για τη σύνδεσή σου στον πελάτη)</string>
+    <string name="summoner_name">Όνομα επικαλεστή</string>
+    <string name="summoner_icon">Εικόνα επικαλεστή</string>
+    <string name="loading_summoner_data">Φόρτωση πληροφοριών επικαλεστή για %s</string>
+    <string name="summoner_spell_f">Ξόρκι επικαλεστή F</string>
+    <string name="summoner_spell_d">Ξόρκι επικαλεστή D</string>
+    <string name="ranked_solo_5">Κατάταξη Σόλο/Δυάδα</string>
+    <string name="champion">Ήρωας</string>
+    <string name="counter_champion">Μετρητής ήρωα</string>
+    <string name="display_level">Να εμφανίζεται πάντοτε το επίπεδο του ήρωα</string>
+    <string name="title_activity_champion">Λεπτομέρειες ήρωα</string>
+    <string name="champion_details">Λεπτομέρειες ήρωα</string>
+    <string name="no_data_for_this_champion">Δεν υπάρχουν δεδομένα για αυτόν τον ήρωα.</string>
+    <string name="ap_ad_hint">Στοιχείο! Παρατηρείς το πλαίσιο γύρω από την εικόνα του ήρωα; Το κόκκινο είναι AD, το μωβ είναι AP.</string>
+    <string name="no_counters">Δεν υπάρχουν αρκετά δεδομένα στο %s εναντίον των ηρώων που παίζεις :(</string>
+    <string name="display_champion_name_summary">Η εικόνα του ήρωα θα εμφανίζεται μόνιμα</string>
+    <string name="display_champion_name">Εμφάνιση ονόματος ήρωα</string>
+    <string name="full_ad">%s αποτελείται κυρίως από ήρωες AD.</string>
+    <string name="full_ap">%s αποτελείται κυρίως από ήρωες AP.</string>
+    <string name="champion_image">Εικόνα ήρωα</string>
+    <string name="howling_abyss">Μαινόμενη Άβυσσος</string>
+    <string name="such_ability">Τόση δύναμη και ικανότητα!</string>
+    <string name="in_lobby_wait_then_refresh">Αν βρίσκεσαι ακόμα στον προθάλαμο, περίμενε και πάτα ανανέωση.</string>
+    <string name="what_is_this">Τι είναι αυτό;</string>
+    <string name="opponent">Αντίπαλος</string>
+    <string name="item">Αντικείμενο</string>
+    <string name="ability">Ικανότητα</string>
+    <string name="remove_hint">(Παρατεταμένο πάτημα για αφαίρεση λογαριασμών)</string>
+    <string name="dialog_cancel">Ακύρωση</string>
+    <string name="dialog_remove">Αφαίρεση</string>
+    <string name="dialog_remove_account_message">Θα αφαιρεθεί ο λογαριασμός σου. Θες να συνεχίσεις;</string>
+    <string name="dialog_remove_account_title">Αφαίρεση Λογαριασμού</string>
+    <string name="overcharge">Υπερφόρτωση</string>
+    <string name="multi_kill_machine">μηχανή μαζικού θανάτου</string>
+    <string name="often_gets_first_tower">συχνά παίρνει τον πρώτο πύργο</string>
+    <string name="often_gets_first_blood">συχνά παίρνει το πρώτο αίμα</string>
+    <string name="exceptional_farmer">εξαιρετικός αγρότης</string>
+    <string name="good_farmer">καλός αγρότης</string>
+    <string name="nexus_blitz">Nexus Blitz</string>
+    <string name="one_for_all">Ένας για Όλους</string>
+    <string name="arurf">Τυχαία URF</string>
+    <string name="their_team">Η ομάδα τους</string>
+    <string name="your_team">Η ομάδα σου</string>
+    <string name="filthy_casual">Βρωμερέ περιστασιακέ…</string>
+    <string name="filthy_casual_description">%s παίζει λιγότερο από ένα παιχνίδι τη βδομάδα. Τι περιστασιακός!</string>
+    <string name="hardcore_gamer_description">%s έχει παίξει πάνω από 10 παιχνίδια το τελευταίο 24ωρο.</string>
+    <string name="hardcore_gamer">Σκληροπυρηνικός παίκτης!</string>
+    <string name="relative_team_colors">Ενεργοποίηση σχετικού χρώματος ομάδας</string>
+    <string name="relative_team_colors_summary">Να βλέπεις πάντα τον εαυτό σου στη μπλε ομάδα</string>
+    <string name="unable_to_open_browser">Δεν ήταν δυνατό το άνοιγμα του περιηγητή</string>
+    <string name="ranking_last_season">%1$s</string>
+    <string name="champion_gg">champion.gg</string>
+    <string name="spells">Ξόρκια</string>
+    <string name="final_separator">και</string>
+    <string name="standard_separator">,</string>
+    <string name="s_are_not_using_teamward">%s δεν χρησιμοποιούν το TeamWard. Θα βάλω τα κλάματα.</string>
+    <string name="s_is_not_using_teamward">%s παίζει μαζί σου, μα δε χρησιμοποιεί το TeamWard. Στενοχωριέμαι.</string>
+    <string name="not_using_teamward">Αίσχος! Αίσχος!</string>
+    <string name="hope_he_wins">Εύχομαι να βγει νικητής.</string>
+    <string name="teamward_user">Ένας χρήστης του TeamWard!</string>
+    <string name="ability_cooldowns">%ss</string>
+    <string name="ability_r">R</string>
+    <string name="ability_e">E</string>
+    <string name="ability_w">W</string>
+    <string name="ability_q">Q</string>
+    <string name="ability_passive">Παθητική</string>
+    <string name="ability_name">%1$s — %2$s</string>
+    <string name="abilities">Ικανότητες</string>
+    <string name="refresh">Ανανέωση</string>
+    <string name="custom">Προσαρμοσμένο παιχνίδι</string>
+    <string name="thank_you">Σ\' ευχαριστώ!</string>
+    <string name="rate_app">Αξιολόγησέ το!</string>
+    <string name="champion_points">%1$s βαθμοί</string>
+    <string name="recent_matches">Πρόσφατοι αγώνες με %1$s</string>
+    <string name="unknown_queue">Άγνωστη ουρά</string>
+    <string name="aram">ARAM</string>
+    <string name="main_level_7">%1$s γνωρίζει %2$s πολύ καλά, πρόσεχε!</string>
+    <string name="cs_template">CS %1$d &lt;font color=#AAAAAA&gt;(%2$,.1f/min)&lt;/font&gt;</string>
+    <string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
+    <string name="kda_template">%1$d / &lt;font color=#FF5252&gt;%2$d&lt;/font&gt; / %3$d</string>
+    <string name="not_enough_information">Παρ\' όλο που παίζεις %s, δε διαθέτουμε αρκετά δεδομένα οπότε δε ξέρουμε αν είναι καλή αντιστοίχηση.</string>
+    <string name="no_data">Δεν υπάρχουν δεδομένα:</string>
+    <string name="is_playing_for_first_time">%1$s παίζει %2$s για πρώτη φορά.</string>
+    <string name="noobs_noobs_everywhere">Πρώτο χρονόμετρο</string>
+    <string name="ranking">%1$s %2$s</string>
+    <string name="player_is_in_game">%s είναι στο παιχνίδι. Πάτα για περισσότερες πληροφορίες</string>
+    <string name="welcome_to">Καλωσόρισες στο %s!</string>
+    <string name="gg">GG</string>
+    <string name="matchup_stats_source">(δεδομένα: https://teamward.xyz)</string>
+    <string name="matchup_stub">50%</string>
+    <string name="default_tab">Προεπιλεγμένη καρτέλα</string>
+    <string name="pref_title_new_game_notifications">Νέες ειδοποιήσεις παιχνιδιού</string>
+    <string name="title_activity_performance">Λεπτομέρειες παιχνιδιού</string>
+    <string name="search">Αναζήτηση</string>
+    <string name="counter_counters_activity_title">%1$s εναντίον %2$s %3$s</string>
+    <string name="action_counter">Πρόχειρο εργαλείο</string>
+    <string name="title_activity_counter">Βρες τον μετρητή σου!</string>
+    <string name="no_internet_connection">Παρακαλώ έλεγξε τη σύνδεση σου στο διαδίκτυο.</string>
+    <string name="much_damage">Μεγάλη ζημιά!</string>
+    <string name="tips">Συμβουλές</string>
+    <string name="no_smite">Το λιοντάρι κοιμάται απόψε</string>
+    <string name="no_flash">Χωρίς φλας!</string>
+    <string name="s_has_no_flash">%1$s χρησιμοποιεί %2$s και %3$s.</string>
+    <string name="premade_information">Προκατασκευασμένες πληροφορίες</string>
+    <string name="may_be_inaccurate">(ίσως είναι ανακριβείς)</string>
+    <string name="pref_title_vibrate">Δόνηση</string>
+    <string name="pref_ringtone_silent">Σίγαση</string>
+    <string name="pref_title_ringtone">Ήχος κλήσης</string>
+    <string name="pref_header_notifications">Ειδοποιήσεις</string>
+    <string name="pref_header_counters">Μετρητές</string>
+    <string name="pref_header_general">Δεδομένα παιχνιδιού</string>
+    <string name="title_activity_settings">Ρυθμίσεις</string>
+    <string name="data_only_on_loading_screen">Το TeamWard λαμβάνει δεδομένα μόνο όταν βρίσκεσαι στην οθόνη φόρτωσης του παιχνιδιού.</string>
+    <string name="stale_data">Παλιά δεδομένα;</string>
+    <string name="reload">Επαναφόρτωση</string>
+    <string name="account_removed">Ο λογαριασμός αφαιρέθηκε.</string>
+    <string name="s_is_not_in_game_right_now">%s δεν είναι στο παιχνίδι αυτή τη στιγμή!</string>
+    <string name="title_activity_add_account">Καταχώρισε νέο λογαριασμό</string>
+    <string name="add_account">Καταχώρισε λογαριασμό</string>
+    <string name="third_main">3ος ΚΥΡΙΟΣ</string>
+    <string name="second_main">2ος ΚΥΡΙΟΣ</string>
+    <string name="first_main">ΚΥΡΙΟΣ</string>
+    <string name="rammus_ok">Rammus</string>
+    <string name="about_text">https://github.com/Neamar/teamward-client
+\n
+\nΤο TeamWard δεν προωθείται από την Riot Games και δεν αντικατοπτρίζει τα πιστεύω ή τις απόψεις της Riot Games ή οποιουδήποτε επίσημα εμπλεκόμενου στην παραγωγή ή τη διαχείριση του League of Legends. Το League of Legends και η Riot Games είναι εμπορικά σήματα ή σήματα κατατεθέντα της Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
+    <string name="action_about">Περί</string>
+    <string name="home_empty">Καταχώρισε τον κύριο λογαριασμό σου
+\nστο League of Legends για να ξεκινήσεις.</string>
+    <string name="unknown_map">LoL</string>
+    <string name="crystal_scar">Η Κρυστάλλινη Ουλή</string>
+    <string name="loading_game_data">Δημιουργία δεδομένων παιχνιδιού για %s</string>
+    <string name="current_ranking_tier">Τρέχουσα βαθμίδα κατάταξης</string>
+    <string name="summoner_level">επίπεδο %s</string>
+    <string name="unknown_team">; ομάδα</string>
+    <string name="red_team">Κόκκινη ομάδα</string>
+    <string name="blue_team">Μπλε ομάδα</string>
+    <string name="title_activity_game">Λεπτομέρειες παιχνιδιού</string>
+    <string name="action_settings">Ρυθμίσεις</string>
+</resources>
