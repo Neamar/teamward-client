@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="summoner_level">මට්ටම %s</string>
+    <string name="unknown_team">\? කණ්ඩායම</string>
+    <string name="red_team">රතු කණ්ඩායම</string>
+    <string name="blue_team">නිල් කණ්ඩායම</string>
+    <string name="action_settings">සැකසුම්</string>
+</resources>
