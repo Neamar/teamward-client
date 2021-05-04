@@ -98,7 +98,7 @@
     <string name="premade_information">Informação de premade</string>
     <string name="may_be_inaccurate">(pode ser impreciso)</string>
     <string name="pref_title_vibrate">Vibração</string>
-    <string name="pref_ringtone_silent">Silencioso</string>
+    <string name="pref_ringtone_silent">Silêncio</string>
     <string name="pref_title_ringtone">Ringtone</string>
     <string name="pref_header_notifications">Notificações</string>
     <string name="pref_counter_champion_mastery_name">Maestria de campeão exigida</string>
@@ -145,4 +145,46 @@
     <string name="blue_team">Equipa azul</string>
     <string name="title_activity_game">Detalhes do jogo</string>
     <string name="action_settings">Configurações</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• Este gráfico é um indicador do aumento de potência de cada equipe e do escalonamento no final do jogo.
+\n• Gráfico baseado em campeões, não em jogadores.
+\n• Uma equipa com campeões no final do jogo melhorará a sua taxa de vitória quanto mais tempo o jogo durar.
+\n• Uma composição de equipa de campeões fracos no meta atual provavelmente nunca estará acima de 50%.
+\n• Duas composições de equipa muito fortes podem ter uma média de taxa de vitória de mais de 50%.</string>
+    <string name="ranked_tft">Ranqueado TFT</string>
+    <string name="pick_region">Escolha uma região da Riot</string>
+    <string name="what_is_this">O que é isso\?</string>
+    <string name="opponent">Oponente</string>
+    <string name="champion">Campeão</string>
+    <string name="ward">Ward</string>
+    <string name="item">Item</string>
+    <string name="counter_champion">Counter do campeão</string>
+    <string name="ability">Abilidade</string>
+    <string name="ranked_tier">Tier ranqueado</string>
+    <string name="champion_splash_art">splash art do campeão</string>
+    <string name="channel_in_game_notifications">Notificações de invocador no jogo</string>
+    <string name="remove_hint">(Pressione e segure para remover contas)</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="dialog_remove">Remover</string>
+    <string name="dialog_remove_account_message">Isso removerá a sua conta. Deseja continuar\?</string>
+    <string name="dialog_remove_account_title">Remover conta</string>
+    <string name="overcharge">Sobrecarga</string>
+    <string name="display_level_summary">Exibir o nível do campeão mesmo quando o jogador for ranqueado</string>
+    <string name="display_level">Sempre exibir o nível de campeão</string>
+    <string name="multi_kill_machine">máquina de multi kill</string>
+    <string name="often_gets_first_tower">frequentemente fica com a primeira torre</string>
+    <string name="often_gets_first_blood">frequentemente obtém a primeira kill</string>
+    <string name="good_laner">bom de rota</string>
+    <string name="exceptional_laner">fase de rota excepcional</string>
+    <string name="exceptional_farmer">excepcional farmer</string>
+    <string name="good_farmer">bom farmer</string>
+    <string name="aggregated_data">(%1$s taxa de vitória%2$s)</string>
+    <string name="over_x_games">(%1d jogos ranqueados conhecidos)</string>
+    <string name="nexus_blitz">Blitz do Nexus</string>
+    <string name="one_for_all">Todos Por Um</string>
+    <string name="hardcore_gamer">Gamer hardcore!</string>
+    <string name="s_detailed_winrate">%1$d jogos
+\n%2$.2f%% taxa de vitória</string>
+    <string name="error_adding_account">Erro ao adicionar conta. Por favor, confirme novamente o seu nome e região!
+\nPrecisa usar o seu nome de invocador (nome público, visível pelos seus amigos) e não o seu nome de utilizador (nome privado, usado para entrar no cliente)</string>
+    <string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
 </resources>
