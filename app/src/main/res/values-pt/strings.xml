@@ -145,7 +145,7 @@
     <string name="blue_team">Equipa azul</string>
     <string name="title_activity_game">Detalhes do jogo</string>
     <string name="action_settings">Configurações</string>
-    <string name="winrate_by_time_disclaimer" formatted="false">• Este gráfico é um indicador do aumento de potência de cada equipe e do escalonamento no final do jogo.
+    <string name="winrate_by_time_disclaimer" formatted="false">• Este gráfico é um indicador do aumento de potência de cada equipa e do escalonamento no final do jogo.
 \n• Gráfico baseado em campeões, não em jogadores.
 \n• Uma equipa com campeões no final do jogo melhorará a sua taxa de vitória quanto mais tempo o jogo durar.
 \n• Uma composição de equipa de campeões fracos no meta atual provavelmente nunca estará acima de 50%.
