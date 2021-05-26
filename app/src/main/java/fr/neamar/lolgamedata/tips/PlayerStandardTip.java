@@ -15,6 +15,7 @@ public class PlayerStandardTip extends Tip {
     public String image = "";
     @DrawableRes
     public int imageId = 0;
+    public String urlTarget;
 
     public PlayerStandardTip(Game game, @Nullable Player player, String image, String text, String description) {
         super(game);

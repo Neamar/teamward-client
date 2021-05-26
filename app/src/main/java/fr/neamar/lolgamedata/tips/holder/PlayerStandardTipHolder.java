@@ -1,5 +1,7 @@
 package fr.neamar.lolgamedata.tips.holder;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +32,16 @@ public class PlayerStandardTipHolder extends TipHolder {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.item_tip_text_description_image, parent, false);
-
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(v.getTag() == null) {
+                    return;
+                }
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(v.getTag().toString()));
+                v.getContext().startActivity(browserIntent);
+            }
+        });
         return new PlayerStandardTipHolder(view);
     }
 
@@ -41,6 +52,17 @@ public class PlayerStandardTipHolder extends TipHolder {
             ImageLoader.getInstance().displayImage(playerStandardTip.image, championImage);
         } else {
             championImage.setImageResource(playerStandardTip.imageId);
+        }
+
+        if(playerStandardTip.urlTarget == null) {
+            itemView.setClickable(false);
+            itemView.setFocusable(true);
+            itemView.setTag(null);
+        }
+        else {
+            itemView.setClickable(true);
+            itemView.setFocusable(true);
+            itemView.setTag(playerStandardTip.urlTarget);
         }
 
         titleText.setText(playerStandardTip.text);
