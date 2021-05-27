@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import fr.neamar.lolgamedata.R;
+import fr.neamar.lolgamedata.Tracker;
 import fr.neamar.lolgamedata.holder.TipHolder;
 import fr.neamar.lolgamedata.tips.PlayerStandardTip;
 import fr.neamar.lolgamedata.tips.Tip;
@@ -40,6 +41,7 @@ public class PlayerStandardTipHolder extends TipHolder {
                 }
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(v.getTag().toString()));
                 v.getContext().startActivity(browserIntent);
+                Tracker.trackHttpClicked(v.getContext(), v.getTag().toString());
             }
         });
         return new PlayerStandardTipHolder(view);

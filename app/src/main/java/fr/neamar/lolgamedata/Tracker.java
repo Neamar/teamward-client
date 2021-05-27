@@ -32,9 +32,9 @@ public class Tracker {
         track(activity, eventName, new JSONObject());
     }
 
-    // Track event on both Mixpanel and Amplitude
-    private static void track(Activity activity, String eventName, JSONObject props) {
-        LolApplication application = getApplication(activity);
+    // Track event on Amplitude
+    private static void track(Context context, String eventName, JSONObject props) {
+        LolApplication application = getApplication(context);
         application.getAmplitude().logEvent(eventName, props);
     }
 
@@ -47,6 +47,16 @@ public class Tracker {
         }
     }
 
+    public static void trackHttpClicked(Context context, String urlTarget) {
+        JSONObject j = new JSONObject();
+
+        try {
+            j.putOpt("urlTarget", urlTarget);
+        }catch(JSONException e) {
+            e.printStackTrace();
+        }
+        track(context, "Tip clicked", j);
+    }
 
     static void trackGameViewed(Activity activity, Account account, Game game, String defaultTab, Boolean shouldDisplayChampionName, String source) {
         JSONObject j = account.toJsonObject();
