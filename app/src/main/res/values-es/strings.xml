@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">Ajustes</string>
     <string name="title_activity_game">Detalles del juego</string>
     <string name="blue_team">Equipo Azul</string>
     <string name="red_team">Equipo Rojo</string>
-    <string name="unknown_team">\Equipo desconocido</string>
+    <string name="unknown_team">Equipo desconocido</string>
     <string name="summoner_level">Nivel %s</string>
     <string name="champion_image">Imagen del campeon</string>
     <string name="summoner_spell_d">Hechizo de invocador D</string>
@@ -20,7 +21,8 @@
     <string name="howling_abyss">Abismo de los lamentos</string>
     <string name="butchers_bridge">Puente del asesinato</string>
     <string name="unknown_map">LoL</string>
-    <string name="home_empty">Añade tu cuenta principal para comenzar.</string>
+    <string name="home_empty">Añade tu cuenta principal de League of Legends
+\npara empezar.</string>
     <string name="action_about">Acerca de</string>
     <string name="about_text">https://github.com/Neamar/teamward-client\n\nTeamWard no es respaldado por Riot Games y no refleja las opiniones o opiniones de Riot Games ni nadie oficialmente involucrado en la producción o gestión de League of Legends. League of Legends y Riot Games son marcas comerciales o marcas registradas de Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
     <string name="rammus_ok">Rammus</string>
@@ -30,7 +32,6 @@
     <string name="summoner_icon">Icono de invocador</string>
     <string name="summoner_name">Nombre de invocador</string>
     <string name="add_account">Añadir cuenta</string>
-
     <string-array name="regions">
         <item>EUW [EU Oeste]</item>
         <item>BR [Brasil]</item>
@@ -45,25 +46,20 @@
         <item>JP [Japon]</item>
     </string-array>
     <string name="title_activity_add_account">Añadir nueva cuenta</string>
-    <string name="s_is_not_in_game_right_now">%s no esta en juego en este momento.</string>
-
-    <string name="account_removed">Cuenta eliminada</string>
+    <string name="s_is_not_in_game_right_now">%s no esta en un juego en este momento!</string>
+    <string name="account_removed">Cuenta eliminada.</string>
     <string name="reload">Recargar</string>
     <string name="stale_data">¿Datos obsoletos?</string>
     <string name="data_only_on_loading_screen">TeamWard solo obtiene informacion cuando estas en pantalla de carga.</string>
     <string name="in_lobby_wait_then_refresh">Si estas en el lobby, espera y presiona refrescar.</string>
     <string name="title_activity_settings">Configuracion</string>
-
     <string name="pref_header_general">Datos del juego</string>
-
     <string-array name="pref_game_data_tabs_titles">
         <item>Mi equipo</item>
         <item>Equipo enemigo</item>
         <item>Consejos</item>
     </string-array>
-
     <string name="pref_header_counters">Counters</string>
-
     <string name="pref_counter_champion_mastery_name">Maestria de campeon requerida</string>
     <string-array name="pref_counter_champion_mastery_titles">
         <item>Campeon jugado al menos una vez</item>
@@ -75,12 +71,9 @@
         <item>Maestria de campeon 6+</item>
         <item>Maestria de campeon 7 solo</item>
     </string-array>
-
     <string name="pref_header_notifications">Notificaciones</string>
-
     <string name="pref_title_ringtone">Ringtone</string>
     <string name="pref_ringtone_silent">Silencio</string>
-
     <string name="pref_title_vibrate">Vibrar</string>
     <string name="may_be_inaccurate">(Puede ser impreciso)</string>
     <string name="premade_information">Premade informarcion</string>
@@ -129,18 +122,19 @@
     <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s sabe %2$s muy bien, tenga cuidado!</string>
     <string name="otp">One Trick Pony</string>
-    <string name="error_adding_account">Error añadiendo la cuenta. Porfavor revisa tu nombre de invocador y region!</string>
+    <string name="error_adding_account">Error añadiendo la cuenta. Por favor revisa tu nombre de invocador y region!
+\nNecesitas usar tu nombre de invocador (nombre publico, visible por tus amigos) y no tu usuario (nombre privado, usado para ingresar al cliente).</string>
     <string name="aram">ARAM</string>
     <string name="normal">Normal 5v5</string>
     <string name="normal_3">Normal 3v3</string>
     <string name="ranked_solo_5">Ranked Solo/Duo</string>
     <string name="ranked_flex_5">Flex 5v5</string>
     <string name="ranked_flex_3">Flex 3v3</string>
-    <string name="teambuilder_ranked">Teambuilder ranked</string>
+    <string name="teambuilder_ranked">Armador de equipos en ranked</string>
     <string name="unknown_queue">Cola desconocida</string>
     <string name="recent_matches">Partidas recientes con %1$s</string>
     <string name="champion_points">%1$s puntos</string>
-    <string name="love_the_app">Teamward es gratis y sin publicidad! Si te gusta, porfavor valoranos en la Play Store :)</string>
+    <string name="love_the_app">Teamward es gratis y sin publicidad! Si te gusta, porfavor puntualo en la Play Store :)</string>
     <string name="rate_app">Valorar!</string>
     <string name="thank_you">Gracias!</string>
     <string name="custom">Juego personalizado</string>
@@ -155,7 +149,7 @@
     <string name="ability_cooldowns">%ss</string>
     <string name="champion_details">Detalles del campeon</string>
     <string name="title_activity_champion">Detalles del campeon</string>
-    <string name="teamward_user">Un TeamWard usuario!</string>
+    <string name="teamward_user">Un usuario de TeamWard!</string>
     <string name="hope_he_wins">Espero que ganes este juego.</string>
     <string name="not_using_teamward">Verguenza! Verguenza!</string>
     <string name="s_is_not_using_teamward">%s esta jugando contigo, pero no esta usando TeamWard. Estoy triste.</string>
@@ -170,16 +164,34 @@
     <string name="ranking_last_season">%1$s</string>
     <string name="unable_to_open_browser">No se puede abrir el buscador</string>
     <string name="winrate_by_game_length">Winrate por longitud del juego</string>
-    <string name="relative_team_colors_summary">Siempre ves el equipo azul</string>
+    <string name="relative_team_colors_summary">Siempre te verás en el equipo azul</string>
     <string name="relative_team_colors">Permitir color relativo de equipo</string>
     <string name="hardcore_gamer"> Gamer hardcore!</string>
-    <string name="hardcore_gamer_description">%s a jugado mas de 10 juegos en 24 horas.</string>
-    <string name="filthy_casual_description">%s juega menos de una semana! Qué casual!</string>
+    <string name="hardcore_gamer_description">%s ha jugado mas de 10 juegos en las últimas 24 horas.</string>
+    <string name="filthy_casual_description">%s juega menos de un juego a la semana! Qué casual!</string>
     <string name="filthy_casual">Filthy casual…</string>
     <string name="your_team">Tu equipo</string>
-    <string name="their_team">Equipo de ellos</string>
+    <string name="their_team">Su equipo</string>
     <string name="winrate_by_time_disclaimer" formatted="false">  • Este grafico es un indicador de cada equipo potencia y escalado de juego tardio.\n  • Grafico basado en campeones no jugadores. • Un equipo con campeones de juego tardio puede tener un mayor winrate según la longitud del juego. • Un equipo de campeones debiles en el meta actual puede tener un uso del 50% • Dos composiciones de equipo muy fuertes superan un winrate del 50%.</string>
-    <string name="arurf">Todo Aletorio URF</string>
-    <string name="blind_pick">Seleccion oculta</string>
-    <string name="draft_pick">Seleccion mostrada</string>
+    <string name="arurf">Todo Aleatorio URF</string>
+    <string name="blind_pick">Seleccion oculta 5v5</string>
+    <string name="draft_pick">Seleccion mostrada 5v5</string>
+    <string name="often_gets_first_tower">consigue primera torre a menudo</string>
+    <string name="nexus_blitz">Nexus Blitz</string>
+    <string name="dialog_remove_account_message">Esto va a remover tu cuenta. Deseas continuar\?</string>
+    <string name="aggregated_data">(%1$s winrate%2$s)</string>
+    <string name="good_farmer">buen farmeador</string>
+    <string name="one_for_all">Uno para Todos</string>
+    <string name="exceptional_farmer">farmeador excepcional</string>
+    <string name="exceptional_laner">fase de línea excepcional</string>
+    <string name="s_detailed_winrate">%1$d juegos
+\n%2$.2f%% winrate</string>
+    <string name="often_gets_first_blood">consigue primera sangre a menudo</string>
+    <string name="multi_kill_machine">maquina de matar</string>
+    <string name="display_level">Siempre mostrar nivel del campeón</string>
+    <string name="display_level_summary">Mostrar nivel del campeón incluso cuando el jugador está en ranked</string>
+    <string name="overcharge">Sobrecarga</string>
+    <string name="dialog_remove_account_title">Remover Cuenta</string>
+    <string name="dialog_remove">Remover</string>
+    <string name="dialog_cancel">Cancelar</string>
 </resources>
