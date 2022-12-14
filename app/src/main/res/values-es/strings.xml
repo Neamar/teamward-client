@@ -172,7 +172,11 @@
     <string name="filthy_casual">Filthy casual…</string>
     <string name="your_team">Tu equipo</string>
     <string name="their_team">Su equipo</string>
-    <string name="winrate_by_time_disclaimer" formatted="false">  • Este grafico es un indicador de cada equipo potencia y escalado de juego tardio.\n  • Grafico basado en campeones no jugadores. • Un equipo con campeones de juego tardio puede tener un mayor winrate según la longitud del juego. • Un equipo de campeones debiles en el meta actual puede tener un uso del 50% • Dos composiciones de equipo muy fuertes superan un winrate del 50%.</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• Este gráfico es un indicador del aumento de poder de cada equipo y la escala al final del juego.
+\n• Gráfico basado en campeones, no en jugadores.
+\n• Un equipo con campeones al final del juego mejorará su índice de victorias cuanto más dure el juego.
+\n• La composición de un equipo de campeones débiles en el meta actual probablemente nunca supere el 50 %.
+\n• Dos composiciones de equipo muy fuertes pueden promediar una tasa de victorias de más del 50%.</string>
     <string name="arurf">Todo Aleatorio URF</string>
     <string name="blind_pick">Seleccion oculta 5v5</string>
     <string name="draft_pick">Seleccion mostrada 5v5</string>
@@ -194,4 +198,21 @@
     <string name="dialog_remove_account_title">Remover Cuenta</string>
     <string name="dialog_remove">Remover</string>
     <string name="dialog_cancel">Cancelar</string>
+    <string name="ward">Sala</string>
+    <string name="good_laner">buena ruta</string>
+    <string name="what_is_this">¿Qué es esto\?</string>
+    <string name="clash">Enfrentamiento</string>
+    <string name="pick_region">Elige una región de Riot</string>
+    <string name="ranked_tft">Clasificación TFT</string>
+    <string name="champion_splash_art">El arte del campeón</string>
+    <string name="ranked_tier">Nivel de clasificación</string>
+    <string name="counter_champion">Contador de los campeones</string>
+    <string name="item">Artículo</string>
+    <string name="champion">Campeón</string>
+    <string name="over_x_games">(%1d juegos clasificados conocidos)</string>
+    <string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
+    <string name="channel_in_game_notifications">Notificaciones del invocador en el juego</string>
+    <string name="remove_hint">(Mantenga presionado para eliminar cuentas)</string>
+    <string name="ability">Habilidad</string>
+    <string name="opponent">Oponente</string>
 </resources>
