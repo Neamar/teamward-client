@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><string name="action_settings">Ustawienia</string>
+<resources>
+    <string name="action_settings">Ustawienia</string>
     <string name="title_activity_game">Szczegóły gry</string>
     <string name="blue_team">Niebieska drużyna</string>
     <string name="red_team">Czerwona drużyna</string>
@@ -29,31 +30,24 @@
     <string name="summoner_icon">Ikona przywoływacza</string>
     <string name="summoner_name">Imię przywoływacza</string>
     <string name="add_account">Dodaj konto</string>
-
     <string name="title_activity_add_account">Dodaj nowe konto</string>
     <string name="s_is_not_in_game_right_now">%s nie jest jeszcze w grze!</string>
-
     <string name="account_removed">Konto usunięte.</string>
     <string name="reload">Załaduj ponownie</string>
     <string name="stale_data">Pewne dane?</string>
     <string name="data_only_on_loading_screen">TeamWard pobiera informacje tylko kiedy jesteś w ekranie ładowania gry.</string>
     <string name="in_lobby_wait_then_refresh">Jeżeli nadal jesteś w poczekalni, poczekaj i kliknij odśwież.</string>
     <string name="title_activity_settings">Ustawienia</string>
-
     <string name="pref_header_general">Dane gry</string>
-
     <string name="pref_header_notifications">Powiadomienia</string>
-
     <string name="pref_title_ringtone">Dzwonek</string>
     <string name="pref_ringtone_silent">Cichy</string>
-
     <string name="no_smite_desc">%s nie ma junglera</string>
     <string name="tips">Porady</string>
     <string name="about_text">https://github.com/Neamar/teamward-client
 \n
 \nTeamWard nie jest zatwierdzony przez Riot Games i nie odzwierciedla poglądów lub opinii Riot Games lub każdego oficjalnie zaangażowanego w produkowanie lub zarządzanie League of Legends. League of Legends i Riot Games są markami lub zarejestrowanymi znakami firmowymi Riot Games, Inc. League of Legends © Riot Games, Inc.</string>
     <string name="pref_header_counters">Kontry</string>
-
     <string name="pref_counter_champion_mastery_name">Wymagana masteria bohatera</string>
     <string name="pref_title_vibrate">Wibracje</string>
     <string name="may_be_inaccurate">(może być niedokładne)</string>
@@ -175,7 +169,7 @@
     <string name="champion">Postać</string>
     <string name="opponent">Przeciwnik</string>
     <string name="what_is_this">Co to jest?</string>
-<string name="title_activity_champion">Szczegóły o postaci</string>
+    <string name="title_activity_champion">Szczegóły o postaci</string>
     <string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
     <string name="ability_name">%1$s — %2$s</string>
     <string name="ability_q">Q</string>
