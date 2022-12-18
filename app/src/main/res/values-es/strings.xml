@@ -122,8 +122,8 @@
     <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s sabe %2$s muy bien, tenga cuidado!</string>
     <string name="otp">One Trick Pony</string>
-    <string name="error_adding_account">Error añadiendo la cuenta. Por favor revisa tu nombre de invocador y region!
-\nNecesitas usar tu nombre de invocador (nombre publico, visible por tus amigos) y no tu usuario (nombre privado, usado para ingresar al cliente).</string>
+    <string name="error_adding_account">Error al añadir la cuenta. ¡Comprueba tu nombre y región!.
+\nDebes utilizar tu nombre de invocador (nombre público, visible para tus amigos) y no tu nombre de usuario (nombre privado, utilizado para iniciar sesión en el cliente).</string>
     <string name="aram">ARAM</string>
     <string name="normal">Normal 5v5</string>
     <string name="normal_3">Normal 3v3</string>
@@ -180,11 +180,11 @@
     <string name="arurf">Todo Aleatorio URF</string>
     <string name="blind_pick">Seleccion oculta 5v5</string>
     <string name="draft_pick">Seleccion mostrada 5v5</string>
-    <string name="often_gets_first_tower">consigue primera torre a menudo</string>
+    <string name="often_gets_first_tower">a menudo gana la primera torre</string>
     <string name="nexus_blitz">Nexus Blitz</string>
     <string name="dialog_remove_account_message">Esto va a remover tu cuenta. Deseas continuar\?</string>
     <string name="aggregated_data">(%1$s winrate%2$s)</string>
-    <string name="good_farmer">buen farmeador</string>
+    <string name="good_farmer">buen farmeo</string>
     <string name="one_for_all">Uno para Todos</string>
     <string name="exceptional_farmer">farmeador excepcional</string>
     <string name="exceptional_laner">fase de línea excepcional</string>
