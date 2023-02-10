@@ -78,7 +78,7 @@
     <string name="may_be_inaccurate">(Puede ser impreciso)</string>
     <string name="premade_information">Premade informarcion</string>
     <string name="s_has_no_flash">%1$s usa %2$s y %3$s.</string>
-    <string name="no_flash">Sin flash</string>
+    <string name="no_flash">¡Sin destellos!</string>
     <string name="no_smite">El león duerme esta noche</string>
     <string name="no_smite_desc">%s no tiene jungla</string>
     <string name="tips">Consejos</string>
@@ -96,7 +96,7 @@
     <string name="double_smite_desc">%s juega con más de un smite!</string>
     <string name="double_smite">Doble doble estilo animal</string>
     <string name="try_harder_desc">Todos en %1$s juegan un campeon con maestria %2$d+</string>
-    <string name="try_harder">Perfeccionistas!</string>
+    <string name="try_harder">Perfeccionistas</string>
     <string name="select_champion_playing_against">Selecciona el campeon que tienes en contrast</string>
     <string name="good_counters">Tus buenos %s counters</string>
     <string name="bad_counters">Tus malos %s counters</string>
@@ -113,7 +113,7 @@
     <string name="ap_ad_hint">Pista! Observas el marco alrederos de la foto del campeon? Rojo es AD, Morado es AP.</string>
     <string name="champion_mastery_lvl">Maestria de campeon %d</string>
     <string name="ranking">%1$s %2$s</string>
-    <string name="noobs_noobs_everywhere">Primera vez!</string>
+    <string name="noobs_noobs_everywhere">Primera vez</string>
     <string name="is_playing_for_first_time">%1$s esta jugando %2$s por primera vez.</string>
     <string name="no_data_for_this_champion">No hay datos para este campeon.</string>
     <string name="no_data">No datos:</string>
@@ -122,8 +122,8 @@
     <string name="cs_template">CS %1$d &lt;font color="#AAAAAA"&gt;(%2$,.1f/min)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s sabe %2$s muy bien, tenga cuidado!</string>
     <string name="otp">One Trick Pony</string>
-    <string name="error_adding_account">Error al añadir la cuenta. ¡Comprueba tu nombre y región!.
-\nDebes utilizar tu nombre de invocador (nombre público, visible para tus amigos) y no tu nombre de usuario (nombre privado, utilizado para iniciar sesión en el cliente).</string>
+    <string name="error_adding_account">Error al añadir la cuenta. Comprueba tu nombre y región.
+\nDebes utilizar tu nombre de invocador (nombre público, visible para tus amigos) y no tu nombre de usuario (nombre privado, utilizado para iniciar sesión en el cliente)</string>
     <string name="aram">ARAM</string>
     <string name="normal">Normal 5v5</string>
     <string name="normal_3">Normal 3v3</string>
