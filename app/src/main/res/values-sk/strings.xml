@@ -1,9 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<resources><string name="action_settings">Nastavenia</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Nastavenia</string>
     <string name="title_activity_game">Detaily o hre</string>
     <string name="blue_team">Modrý tím</string>
     <string name="red_team">Červený tím</string>
-    <string name="unknown_team">" tím"</string>
+    <string name="unknown_team">\? tím</string>
     <string name="summoner_level">level %s</string>
     <string name="champion_image">Obrázok šampióna</string>
     <string name="summoner_spell_d">Vyvolávačovo kúzlo D</string>
@@ -33,27 +34,20 @@
     <string name="summoner_icon">Ikona vyvolávača</string>
     <string name="summoner_name">Meno vyvolávača</string>
     <string name="add_account">Pridať účet</string>
-
     <string name="title_activity_add_account">Pridať nový účet</string>
     <string name="s_is_not_in_game_right_now">%s nie je práve v žiadnej hre!</string>
-
     <string name="account_removed">Účet odstránený.</string>
     <string name="reload">Znovu načítať</string>
     <string name="stale_data">Rovnaké údaje?</string>
     <string name="data_only_on_loading_screen">TeamWard získava informácia iba keď si v načítacej obrazovke.</string>
     <string name="in_lobby_wait_then_refresh">Ak si stále v lobby, počkaj a stlač znovu načítať.</string>
     <string name="title_activity_settings">Nastavenia</string>
-
     <string name="pref_header_general">Data o hre</string>
-
     <string name="pref_header_counters">Counter</string>
-
     <string name="pref_counter_champion_mastery_name">Potrebné majstrovstvo šampióna</string>
     <string name="pref_header_notifications">Upozornenia</string>
-
     <string name="pref_title_ringtone">Zvonenie</string>
     <string name="pref_ringtone_silent">Potichu</string>
-
     <string name="pref_title_vibrate">Vibrácie</string>
     <string name="may_be_inaccurate">(nemusia byť presné)</string>
     <string name="premade_information">Informácie o premade</string>
@@ -65,7 +59,7 @@
     <string name="such_ability">Veľa sily schopností (Full AP)!</string>
     <string name="full_ap">%s sú z väčšiny AP šampióni.</string>
     <string name="full_ad">%s sú z väčšiny AD šampióni.</string>
-    <string name="much_damage">"Veľa  fyzického poškodenia (Full AD)!"</string>
+    <string name="much_damage">Veľa škody!</string>
     <string name="no_internet_connection">Prosím skontroluj svoje internetové pripojenie.</string>
     <string name="title_activity_counter">Najdi svojho countera!</string>
     <string name="action_counter">Pomocník</string>
@@ -90,7 +84,7 @@
     <string name="gg">GG</string>
     <string name="welcome_to">Vitajte v %s!</string>
     <string name="player_is_in_game">%s je v hre. Kliknite pre viac informácií</string>
-    <string name="ap_ad_hint">"Rada! Všimol si si rámček okolo obrázku šampióna?  Červená je AD a fialová AP."</string>
+    <string name="ap_ad_hint">Tip! Všimnite si rám okolo šampióna\? Červená je AD, fialová je AP.</string>
     <string name="champion_mastery_lvl">Majstrovstvo šampióna %d</string>
     <string name="ranking">%1$s %2$s</string>
     <string name="noobs_noobs_everywhere">Prvý krát</string>
@@ -102,7 +96,8 @@
     <string name="cs_template">CS %1$d &lt;font color=#AAAAAA&gt;(%2$,.1f/min)&lt;/font&gt;</string>
     <string name="main_level_7">%1$s vie %2$s celkom dobre, buď opatrný!</string>
     <string name="otp">One Trick Pony</string>
-    <string name="error_adding_account">Error pri pridávaní účtu. Prosím znova skontroluj vyvolávačovo meno a región!</string>
+    <string name="error_adding_account">Chyba pridanie účtu. Prosím, skontrolujte svoje meno a región!
+\nMusíte použiť svoje meno Summoner (verejné meno, viditeľné vašimi priateľmi) a nie vaše užívateľské meno (vlastné meno, používané na prihlásenie klientovi)</string>
     <string name="aram">ARAM</string>
     <string name="normal">Normálka 5vs5</string>
     <string name="normal_3">Normálka 3vs3</string>
@@ -151,15 +146,15 @@
     <string name="filthy_casual">Ružbašan…</string>
     <string name="your_team">Tvoj tím</string>
     <string name="their_team">Ich tím</string>
-    <string name="winrate_by_time_disclaimer" formatted="false">• Tento graf je indikátorom sily a late-game škálovania
-\n • Graf je podľa šampiónov nie podľa hráčov
-\n • Tím s viacej late game šampiónmi budú mať väčšiu šancu na výhru ak bude hra dlhšia.
-\n • Tím so slabými šampiónmi ktorý nie sú momentálne v mete nebudú mať nikdy viac ako 50%.
-\n • Dve veľmi silné tímové kompozície môžu mať priemernú šancu na výhru viac ako 50%.</string>
+    <string name="winrate_by_time_disclaimer" formatted="false">• Tento graf je ukazovateľom každého tímu mocipike a late-hra škálovanie.
+\n• Graf založený na šampiónoch, nie hráči.
+\n• Tím s neskorými šampiónmi hry bude lepšie ich vyhrať dlhšie hra trvá.
+\n• Tím make-up slabých šampiónov v súčasnom meta nebude pravdepodobne nikdy nad 50%.
+\n• Dva veľmi silné skladby tímu môžu v priemere vyhrať viac ako 50%.</string>
     <string name="arurf">Náhodný URF</string>
     <string name="blind_pick">Slepý výber 5vs5</string>
     <string name="draft_pick">Draft výber 5vs5</string>
-<string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
+    <string name="average_kda_template">%1$.2f / &lt;font color=#FF5252&gt;%2$.2f&lt;/font&gt; / %3$.2f</string>
     <string name="over_x_games">(%1d hrá z väčšiny ranked)</string>
     <string name="aggregated_data">(%1$s winrate%2$s)</string>
     <string name="good_farmer">Je dobrý vo farmení</string>
@@ -169,7 +164,29 @@
     <string name="often_gets_first_blood">väčšinou získa First Blood</string>
     <string name="often_gets_first_tower">väčšinou získa prvú vežu</string>
     <string name="multi_kill_machine">Mačok the zabijak</string>
-<string name="display_level">Vždy zobraziť level šampióna</string>
+    <string name="display_level">Vždy zobraziť level šampióna</string>
     <string name="display_level_summary">Zobraziť level šampióna aj keď má hráč hodnosť</string>
     <string name="overcharge">Overcharge</string>
+    <string name="opponent">Oponent</string>
+    <string name="remove_hint">(Long stlačte na odstránenie účtov)</string>
+    <string name="ability">Schopnosť</string>
+    <string name="channel_in_game_notifications">Summoner v herných oznámení</string>
+    <string name="champion">Šampión</string>
+    <string name="item">Položka</string>
+    <string name="pick_region">Vyberte oblasť Riot</string>
+    <string name="clash">Clash</string>
+    <string name="ranked_tier">Poradie</string>
+    <string name="dialog_remove">Odstrániť</string>
+    <string name="ward">Ward</string>
+    <string name="dialog_remove_account_message">To odstráni váš účet. Chcete pokračovať\?</string>
+    <string name="dialog_remove_account_title">Odstráňte účet</string>
+    <string name="s_detailed_winrate">%1$d hry
+\n%2$.2f% výhra</string>
+    <string name="nexus_blitz">Nexus Blitz</string>
+    <string name="dialog_cancel">Zrušiť</string>
+    <string name="counter_champion">Counter šampión</string>
+    <string name="champion_splash_art">Šampión striekacie umenie</string>
+    <string name="one_for_all">Jeden pre všetko</string>
+    <string name="what_is_this">Čo je to\?</string>
+    <string name="ranked_tft">Poradie TFT</string>
 </resources>
