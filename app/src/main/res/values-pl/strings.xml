@@ -187,4 +187,5 @@
 \n%2$.2f%% współczynnik wygranych</string>
     <string name="clash">Clash</string>
     <string name="pick_region">Wybierz region</string>
+    <string name="ranked_tft">Rankingowe TFT</string>
 </resources>
